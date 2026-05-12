@@ -1,0 +1,77 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/elliptic.mat",
+  "k": 6,
+  "topk": 32,
+  "variants": {
+    "base_ndc": {
+      "auc": 0.5701430787073091,
+      "ap": 0.14482855140065917,
+      "normal_mean": -0.6885420083999634,
+      "anomaly_mean": -0.4990939795970917,
+      "difference": 0.1894480288028717,
+      "ks_stat": 0.24692082954457895,
+      "ks_pvalue": 1.0422848328907048e-220,
+      "topk_anomaly_ratio": 0.0
+    },
+    "anomaly_prior_q": {
+      "auc": 0.5701430708529336,
+      "ap": 0.14482879239275806,
+      "normal_mean": 0.4745037257671356,
+      "anomaly_mean": 0.5761788487434387,
+      "difference": 0.1016751229763031,
+      "ks_stat": 0.24692082954457895,
+      "ks_pvalue": 1.0422848328907048e-220,
+      "topk_anomaly_ratio": 0.0
+    },
+    "local_mean_c": {
+      "auc": 0.5883353229775488,
+      "ap": 0.14856746513587085,
+      "normal_mean": 0.4568699896335602,
+      "anomaly_mean": 0.5722551941871643,
+      "difference": 0.11538520455360413,
+      "ks_stat": 0.24782028120706356,
+      "ks_pvalue": 2.439734999460177e-222,
+      "topk_anomaly_ratio": 0.0
+    },
+    "affinity_mul": {
+      "auc": 0.5720971452198886,
+      "ap": 0.14592296343902847,
+      "normal_mean": 0.2563742995262146,
+      "anomaly_mean": 0.3934721350669861,
+      "difference": 0.13709783554077148,
+      "ks_stat": 0.24875963309698734,
+      "ks_pvalue": 4.760596269528056e-224,
+      "topk_anomaly_ratio": 0.34375
+    },
+    "affinity_geom": {
+      "auc": 0.5720971530742641,
+      "ap": 0.1459230328830906,
+      "normal_mean": 0.4638890027999878,
+      "anomaly_mean": 0.5735689997673035,
+      "difference": 0.10967999696731567,
+      "ks_stat": 0.24875963309698734,
+      "ks_pvalue": 4.760596269528056e-224,
+      "topk_anomaly_ratio": 0.34375
+    },
+    "affinity_hmean": {
+      "auc": 0.5726898756654979,
+      "ap": 0.14603921316430613,
+      "normal_mean": 0.46215736865997314,
+      "anomaly_mean": 0.5729426741600037,
+      "difference": 0.11078530550003052,
+      "ks_stat": 0.24885482812780668,
+      "ks_pvalue": 3.191669929412039e-224,
+      "topk_anomaly_ratio": 0.09375
+    },
+    "affinity_maxblend": {
+      "auc": 0.5679292653794759,
+      "ap": 0.14497758918388226,
+      "normal_mean": 0.4742511808872223,
+      "anomaly_mean": 0.5767961144447327,
+      "difference": 0.10254493355751038,
+      "ks_stat": 0.2476060923877199,
+      "ks_pvalue": 5.97339827120858e-222,
+      "topk_anomaly_ratio": 0.125
+    }
+  }
+}

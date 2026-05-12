@@ -1,0 +1,16 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/elliptic.mat",
+  "k": 6,
+  "topk": 32,
+  "self_weight": 0.5,
+  "metrics": {
+    "auc": 0.5716246050460017,
+    "ap": 0.1458316752129168,
+    "normal_mean": 0.4656868875026703,
+    "anomaly_mean": 0.5742170214653015,
+    "difference": 0.10853013396263123,
+    "ks_stat": 0.2487834318546922,
+    "ks_pvalue": 4.307815588960357e-224,
+    "topk_anomaly_ratio": 0.1875
+  }
+}

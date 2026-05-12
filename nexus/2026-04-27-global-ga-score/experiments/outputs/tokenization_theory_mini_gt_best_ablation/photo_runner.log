@@ -1,0 +1,9 @@
+[2026-04-29 13:11:04] START photo full device=4
+[2026-04-29 13:11:56] END photo full rc=0 elapsed=51.3s
+[2026-04-29 13:11:56] START photo no_ra device=4
+[2026-04-29 13:12:45] END photo no_ra rc=0 elapsed=49.6s
+[2026-04-29 13:12:45] START photo shuffled_ra device=4
+[2026-04-29 13:13:35] END photo shuffled_ra rc=0 elapsed=49.7s
+[2026-04-29 13:13:35] START photo fixed_labeled_normal device=4
+[2026-04-29 13:14:25] END photo fixed_labeled_normal rc=0 elapsed=49.7s
+DATASET_DONE photo /root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/tokenization_theory_mini_gt_best_ablation/photo_summary.json

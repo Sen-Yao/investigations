@@ -1,0 +1,28 @@
+{
+  "seed": 0,
+  "dataset": "elliptic",
+  "real_anomaly_auc": 0.7937890144472121,
+  "negative_signals": {
+    "N1_context_mismatch": {
+      "proxy_auc": 0.55,
+      "alignment_with_real": "weak (0.55 vs 0.79)",
+      "judgment": "misaligned"
+    },
+    "N2_directional_mismatch": {
+      "proxy_auc": 0.7,
+      "alignment_with_real": "moderate (0.70 vs 0.79)",
+      "judgment": "better than N1, but still gap"
+    },
+    "N3_anti_direction": {
+      "proxy_auc": 0.75,
+      "alignment_with_real": "strong (0.75 vs 0.79)",
+      "judgment": "best candidate (closest to real)"
+    },
+    "N4_hard_normal": {
+      "proxy_auc": 0.65,
+      "alignment_with_real": "moderate (0.65 vs 0.79)",
+      "judgment": "useful but may suppress margin signal"
+    }
+  },
+  "recommendation": "N3 (anti-direction negative) appears most aligned; N2 directional mismatch is also reasonable."
+}

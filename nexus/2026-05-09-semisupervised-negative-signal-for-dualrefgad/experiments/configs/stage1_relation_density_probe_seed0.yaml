@@ -1,0 +1,59 @@
+program: outputs/normality_diagnostic/stage1_relation_density_probe.py
+method: grid
+metric:
+  name: test_auc
+  goal: maximize
+parameters:
+  dataset:
+    value: elliptic
+  seed:
+    value: 0
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  device:
+    value: 0
+  num_epoch:
+    value: 80
+  input_mode:
+    value: ud_prod_absdiff_norm
+  density_mode:
+    values: [diag_gaussian, realnvp]
+  flow_layers:
+    values: [4, 8]
+  hidden:
+    values: [128, 256]
+  dropout:
+    value: 0.0
+  lr:
+    value: 0.001
+  weight_decay:
+    value: 0.0001
+  wandb:
+    value: true
+  descriptor_mode:
+    value: hop_attr
+  pn_estimator:
+    value: pca_residual
+  gn_mode:
+    value: label_gate
+  ln_mode:
+    value: descriptor_similarity
+  ga_mode:
+    value: normal_soft_or
+  la_mode:
+    value: descriptor_similarity
+  ablation_mode:
+    value: full
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 512
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args}

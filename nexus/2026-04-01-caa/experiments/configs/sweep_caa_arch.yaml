@@ -1,0 +1,33 @@
+# Sweep 2: Architecture Sensitivity (simplified)
+# Using best lr from sweep1
+# Runs = 3 × 2 × 2 = 12
+# Time = 12 × 5 min / 2 GPU = 30 min
+
+program: run_caa.py
+method: grid
+name: caa_arch_sweep
+metric:
+  name: AUC.max
+  goal: maximize
+
+parameters:
+  dataset:
+    value: photo
+  epochs:
+    value: 100
+  lr:
+    value: 0.0005  # Best from Sweep 1
+  K:
+    value: 6
+  batch_size:
+    value: 64
+  hidden_dim:
+    values: [64, 128, 256]
+  num_heads:
+    values: [2, 4]
+  num_layers:
+    value: 3
+  ffn_dim:
+    value: 256
+  seed:
+    values: [0, 1]

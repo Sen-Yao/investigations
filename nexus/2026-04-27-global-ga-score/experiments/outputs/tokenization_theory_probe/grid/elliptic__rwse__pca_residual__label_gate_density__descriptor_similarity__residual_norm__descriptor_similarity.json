@@ -1,0 +1,91 @@
+{
+  "config": {
+    "dataset": "elliptic",
+    "seed": 0,
+    "train_rate": 0.05,
+    "descriptor_mode": "rwse",
+    "pn_estimator": "pca_residual",
+    "gn_mode": "label_gate_density",
+    "ln_mode": "descriptor_similarity",
+    "ga_mode": "residual_norm",
+    "la_mode": "descriptor_similarity",
+    "reference_mode": "dual_reference",
+    "normal_k": 4,
+    "anom_k": 16,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/tokenization_theory_probe/grid/elliptic__rwse__pca_residual__label_gate_density__descriptor_similarity__residual_norm__descriptor_similarity.json"
+  },
+  "meta": {
+    "dataset": "elliptic",
+    "n": 46564,
+    "normal_train": 2086,
+    "anomaly_rate": 0.09760759384932566,
+    "descriptor_dim": 8
+  },
+  "scores": {
+    "ga": {
+      "auc": 0.6328901083068634,
+      "ap": 0.1403382973286968,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.0078125,
+      "top512_density": 0.03125
+    },
+    "residual_norm": {
+      "auc": 0.6235831053535397,
+      "ap": 0.14439971575232127,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.0078125,
+      "top512_density": 0.037109375
+    },
+    "rn_explanation_error": {
+      "auc": 0.5998195457233436,
+      "ap": 0.14152797963919583,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.0078125,
+      "top512_density": 0.00390625
+    },
+    "ra_residual_alignment": {
+      "auc": 0.41133244217589127,
+      "ap": 0.09715032927163562,
+      "top16_density": 0.1875,
+      "top32_density": 0.21875,
+      "top64_density": 0.203125,
+      "top128_density": 0.1875,
+      "top256_density": 0.20703125,
+      "top512_density": 0.1796875
+    },
+    "contrast_margin": {
+      "auc": 0.4786873458758808,
+      "ap": 0.10599694171072815,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0390625,
+      "top256_density": 0.078125,
+      "top512_density": 0.1171875
+    }
+  },
+  "reference": {
+    "normal_ref_normal_ratio": 1.0,
+    "anom_ref_anom_ratio": 0.024376395928184864,
+    "anom_ref_anom_ratio_on_anom_nodes": 0.022084708470847085,
+    "rn_err_mean_normal": 0.084092383915398,
+    "rn_err_mean_anom": 0.021638779516607178,
+    "align_mean_normal": 0.011260648258030415,
+    "align_mean_anom": -0.23930978775024414,
+    "contrast_mean_normal": -0.7741183638572693,
+    "contrast_mean_anom": -0.7800519466400146
+  },
+  "elapsed_sec": 176.41204619407654
+}

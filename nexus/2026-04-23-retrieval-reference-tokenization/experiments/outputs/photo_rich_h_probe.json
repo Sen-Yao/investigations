@@ -1,0 +1,35 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "k": 6,
+  "topk": 32,
+  "small_h_affinity": {
+    "auc": 0.6097976080763987,
+    "ap": 0.1232366531809419,
+    "normal_mean": 0.2574368119239807,
+    "anomaly_mean": 0.3041592240333557,
+    "difference": 0.046722412109375,
+    "ks_stat": 0.18772790727010832,
+    "ks_pvalue": 5.250239806938584e-20,
+    "topk_anomaly_ratio": 0.0625
+  },
+  "rich_h_affinity": {
+    "auc": 0.6098170958374562,
+    "ap": 0.12324382479681348,
+    "normal_mean": 0.25741398334503174,
+    "anomaly_mean": 0.30414387583732605,
+    "difference": 0.04672989249229431,
+    "ks_stat": 0.18772790727010832,
+    "ks_pvalue": 5.250239806938584e-20,
+    "topk_anomaly_ratio": 0.0625
+  },
+  "base_anom_prior": {
+    "auc": 0.6097976080763987,
+    "ap": 0.1232366531809419,
+    "normal_mean": 0.2574368119239807,
+    "anomaly_mean": 0.3041592240333557,
+    "difference": 0.046722412109375,
+    "ks_stat": 0.18772790727010832,
+    "ks_pvalue": 5.250239806938584e-20,
+    "topk_anomaly_ratio": 0.0625
+  }
+}

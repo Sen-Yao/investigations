@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>方案 B: Contrastive Offset Learning 详细报告</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.7; }
+    h1 { color: #2c3e50; border-bottom: 3px solid #27ae60; padding-bottom: 10px; }
+    h2 { color: #2980b9; margin-top: 30px; }
+    h3 { color: #34495e; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background-color: #27ae60; color: white; }
+    tr:hover { background-color: #f5f5f5; }
+    .highlight { background-color: #e8f5e9; padding: 15px; border-left: 4px solid #27ae60; margin: 15px 0; }
+    .paper-box { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin: 12px 0; border-radius: 5px; }
+    code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+    pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    .insight-box { background-color: #fff3e0; border-left: 4px solid #e67e22; padding: 15px; margin: 15px 0; }
+    .conclusion-box { background-color: #e8f5e9; border-left: 4px solid #27ae60; padding: 15px; margin: 15px 0; }
+    .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<h1>🎯 方案 B: Contrastive Offset Learning 详细报告</h1>
+
+<p><strong>优先级</strong>：P2</p>
+<p><strong>工作量</strong>：中（3-5 天）</p>
+<p><strong>类型</strong>：方法改进，基于方案 A 的分析结果</p>
+
+<hr>
+
+<h2>📋 核心思想</h2>
+
+<div class="highlight">
+  <strong>借鉴 Jinsong Chen NeurIPS 2024 论文，设计 Offset 专用的对比学习目标。</strong>
+  
+  <p>目标：</p>
+  <ul>
+    <li>增强同一节点不同采样的 Offset 表示一致性</li>
+    <li>增强 Offset 表示的可分性</li>
+    <li>提升异常检测性能</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📐 对比学习基础</h2>
+
+<h3>对比学习核心概念</h3>
+
+<div class="paper-box">
+  <h4>基本框架</h4>
+  <pre>
+对比学习的目标：
+
+拉近（正样本对）: 同一类别的样本在表示空间中靠近
+推远（负样本对）: 不同类别的样本在表示空间中远离
+
+损失函数（InfoNCE）：
+
+L = -log( exp(sim(z_i, z_i+)/τ) / Σ_j exp(sim(z_i, z_j)/τ) )
+
+其中：
+- z_i: 锚点样本的表示
+- z_i+: 正样本的表示
+- z_j: 所有样本（包括正负）
+- τ: 温度参数
+  </pre>
+</div>
+
+<h3>关键设计问题</h3>
+
+<table>
+  <tr><th>问题</th><th>选择</th><th>理由</th></tr>
+  <tr><td><strong>正样本定义</strong></td><td>同一节点不同邻居采样</td><td>同一节点的 Offset 应一致</td></tr>
+  <tr><td><strong>负样本定义</strong><td>不同节点的 Offset</td><td>不同节点的 Offset 应可分</td></tr>
+  <tr><td><strong>表示层级</strong><td>Offset 向量本身 或 Transformer 输出</td><td>需要实验验证</td></tr>
+  <tr><td><strong>对比粒度</strong><td>Hop-level 或 Node-level</td><td>需要实验验证</td></tr>
+</table>
+
+<hr>
+
+<h2>🔬 方法设计</h2>
+
+<h3>方案 B1: Hop-level Contrastive Learning</h3>
+
+<div class="paper-box">
+  <h4>思路</h4>
+  <p>对每个 hop 的 Offset 进行对比学习。</p>
+  
+  <h4>实现</h4>
+  <pre>
+class HopLevelContrastiveLoss(nn.Module):
+    def __init__(self, temperature=0.2):
+        super().__init__()
+        self.temperature = temperature
+    
+    def forward(self, offsets_1, offsets_2, node_ids):
+        """
+        offsets_1: [N, K, D] - 第一次采样的 Offset
+        offsets_2: [N, K, D] - 第二次采样的 Offset（同一节点）
+        node_ids: [N] - 节点 ID
+        
+        返回：对比损失
+        """
+        N, K, D = offsets_1.shape
+        
+        # 展平为 [N*K, D]
+        z1 = offsets_1.view(N*K, D)
+        z2 = offsets_2.view(N*K, D)
+        
+        # 归一化
+        z1 = F.normalize(z1, dim=-1)
+        z2 = F.normalize(z2, dim=-1)
+        
+        # 计算相似度矩阵 [N*K, N*K]
+        sim_matrix = torch.mm(z1, z2.t()) / self.temperature
+        
+        # 正样本对：同一节点的同一 hop
+        # 即 indices i 和 i 是正样本对
+        labels = torch.arange(N*K, device=z1.device)
+        
+        # 交叉熵损失
+        loss = F.cross_entropy(sim_matrix, labels)
+        
+        return loss
+  </pre>
+  
+  <h4>特点</h4>
+  <ul>
+    <li><strong>细粒度</strong>：每个 hop 独立对比</li>
+    <li><strong>计算高效</strong>：只需两次采样</li>
+    <li><strong>缺点</strong>：可能忽略 hop 间关系</li>
+  </ul>
+</div>
+
+<h3>方案 B2: Node-level Contrastive Learning</h3>
+
+<div class="paper-box">
+  <h4>思路</h4>
+  <p>将整个 Offset 序列聚合成节点表示，再进行对比。</p>
+  
+  <h4>实现</h4>
+  <pre>
+class NodeLevelContrastiveLoss(nn.Module):
+    def __init__(self, temperature=0.2, hidden_dim=256):
+        super().__init__()
+        self.temperature = temperature
+        self.projector = nn.Sequential(
+            nn.Linear(hidden_dim, hidden_dim),
+            nn.ReLU(),
+            nn.Linear(hidden_dim, hidden_dim)
+        )
+    
+    def forward(self, offset_sequences_1, offset_sequences_2, node_ids):
+        """
+        offset_sequences_1: [N, K, D] - 第一次采样的 Offset 序列
+        offset_sequences_2: [N, K, D] - 第二次采样的 Offset 序列
+        
+        返回：对比损失
+        """
+        # 聚合 Offset 序列为节点表示
+        # 方法1: 平均池化
+        node_repr_1 = offset_sequences_1.mean(dim=1)  # [N, D]
+        node_repr_2 = offset_sequences_2.mean(dim=1)  # [N, D]
+        
+        # 方法2: Attention 池化（可选）
+        # node_repr_1 = self.attention_pool(offset_sequences_1)
+        
+        # 投影到对比空间
+        z1 = self.projector(node_repr_1)
+        z2 = self.projector(node_repr_2)
+        
+        # 归一化
+        z1 = F.normalize(z1, dim=-1)
+        z2 = F.normalize(z2, dim=-1)
+        
+        # 计算相似度
+        sim_matrix = torch.mm(z1, z2.t()) / self.temperature
+        
+        # 正样本：对角线
+        labels = torch.arange(len(node_ids), device=z1.device)
+        
+        loss = F.cross_entropy(sim_matrix, labels)
+        
+        return loss
+  </pre>
+  
+  <h4>特点</h4>
+  <ul>
+    <li><strong>全局视角</strong>：考虑整个 Offset 序列</li>
+    <li><strong>灵活聚合</strong>：可用不同池化方法</li>
+    <li><strong>缺点</strong>：可能丢失 hop 细节</li>
+  </ul>
+</div>
+
+<h3>方案 B3: Supervised Contrastive Learning（推荐）</h3>
+
+<div class="paper-box">
+  <h4>思路</h4>
+  <p>利用标签信息，正常节点互为正样本，异常节点互为正样本。</p>
+  
+  <h4>实现</h4>
+  <pre>
+class SupervisedContrastiveLoss(nn.Module):
+    def __init__(self, temperature=0.2):
+        super().__init__()
+        self.temperature = temperature
+    
+    def forward(self, node_reprs, labels):
+        """
+        node_reprs: [N, D] - 节点表示（从 Offset 聚合）
+        labels: [N] - 0=正常，1=异常
+        
+        返回：对比损失
+        """
+        # 归一化
+        z = F.normalize(node_reprs, dim=-1)
+        
+        # 计算相似度矩阵
+        sim_matrix = torch.mm(z, z.t()) / self.temperature
+        
+        # 构建正样本掩码
+        # 同标签 = 正样本
+        labels = labels.view(-1, 1)
+        positive_mask = (labels == labels.t()).float()
+        
+        # 移除对角线（自身不是正样本）
+        positive_mask.fill_diagonal_(0)
+        
+        # 负样本掩码
+        negative_mask = 1 - positive_mask
+        negative_mask.fill_diagonal_(0)
+        
+        # Supervised Contrastive Loss
+        # 正样本：同标签
+        # 负样本：不同标签
+        
+        exp_sim = torch.exp(sim_matrix)
+        
+        # 正样本相似度
+        pos_sim = (exp_sim * positive_mask).sum(dim=1)
+        
+        # 所有相似度
+        all_sim = exp_sim.sum(dim=1) - exp_sim.diag()  # 减去自身
+        
+        # 损失
+        loss = -torch.log(pos_sim / all_sim + 1e-8).mean()
+        
+        return loss
+  </pre>
+  
+  <h4>特点</h4>
+  <ul>
+    <li><strong>利用标签</strong>：充分利用监督信息</li>
+    <li><strong>聚类效果</strong>：正常/异常各自聚集</li>
+    <li><strong>适合半监督</strong>：只用有标签节点计算对比损失</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📊 与现有模型的集成</h2>
+
+<h3>集成方式 1: 预训练</h3>
+
+<pre>
+# 步骤 1: 使用对比学习预训练 Offset 编码器
+encoder = OffsetEncoder()
+optimizer = Adam(encoder.parameters())
+
+for batch in dataloader:
+    offsets_1 = compute_offsets(batch, sampling_1)
+    offsets_2 = compute_offsets(batch, sampling_2)
+    
+    repr_1 = encoder(offsets_1)
+    repr_2 = encoder(offsets_2)
+    
+    loss = contrastive_loss(repr_1, repr_2)
+    
+    optimizer.zero_grad()
+    loss.backward()
+    optimizer.step()
+
+# 步骤 2: 冻结或微调编码器，用于异常检测
+model = VoxGFormer(encoder=encoder)
+</pre>
+
+<h3>集成方式 2: 联合训练</h3>
+
+<pre>
+# 同时优化对比损失和异常检测损失
+for batch in dataloader:
+    offsets = compute_offsets(batch)
+    
+    # Transformer 前向
+    node_repr = model(offsets)
+    
+    # 异常检测损失
+    anomaly_loss = compute_anomaly_loss(node_repr, labels)
+    
+    # 对比损失
+    offsets_aug = compute_offsets(batch, augmented_sampling)
+    node_repr_aug = model(offsets_aug)
+    contrastive_loss = contrastive_loss_fn(node_repr, node_repr_aug)
+    
+    # 总损失
+    total_loss = anomaly_loss + λ * contrastive_loss
+    
+    optimizer.zero_grad()
+    total_loss.backward()
+    optimizer.step()
+</pre>
+
+<hr>
+
+<h2>📈 预期效果</h2>
+
+<table>
+  <tr><th>指标</th><th>预期改进</th><th>原因</th></tr>
+  <tr><td>AUC</td><td>+1-3%</td><td>表示增强提升可分性</td></tr>
+  <tr><td>表示一致性</td><td>+10-20%</td><td>对比学习拉近同节点表示</td></tr>
+  <tr><td>收敛速度</td><td>可能更快</td><td>预训练提供良好初始化</td></tr>
+  <tr><td>鲁棒性</td><td>提升</td><td>对比学习增强泛化</td></tr>
+</table>
+
+<hr>
+
+<h2>📅 实施计划</h2>
+
+<table>
+  <tr><th>阶段</th><th>任务</th><th>时间</th></tr>
+  <tr><td>第1天</td><td>实现对比学习模块（B1/B2/B3）</td><td>3小时</td></tr>
+  <tr><td>第2天</td><td>集成到 VoxGFormer，测试预训练</td><td>3小时</td></tr>
+  <tr><td>第3天</td><td>测试联合训练，调参</td><td>3小时</td></tr>
+  <tr><td>第4天</td><td>完整实验，对比不同方案</td><td>3小时</td></tr>
+</table>
+
+<hr>
+
+<div class="footer">
+  <p><strong>报告类型</strong>：方案详细设计文档</p>
+  <p><strong>生成时间</strong>：2026-03-31</p>
+  <p><strong>作者</strong>：Nexus</p>
+</div>
+
+</body>
+</html>

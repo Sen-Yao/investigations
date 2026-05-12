@@ -1,0 +1,462 @@
+START elliptic full
+972084321610729, "best_val_ap": 0.14771607591252306, "best_test_auc": 0.6899612590402835, "best_test_ap": 0.15177310542286082}
+{"epoch": 170, "loss": 0.2882631719112396, "val_auc": 0.37728632030887754, "val_ap": 0.06747052325530242, "test_auc": 0.3963901500979401, "test_ap": 0.07493652210537975, "best_val_auc": 0.6972084321610729, "best_val_ap": 0.14771607591252306, "best_test_auc": 0.6899612590402835, "best_test_ap": 0.15177310542286082}
+{"epoch": 180, "loss": 0.2979110777378082, "val_auc": 0.5838005358989906, "val_ap": 0.10191070235079114, "test_auc": 0.5995467503908877, "test_ap": 0.1128409242398584, "best_val_auc": 0.6972084321610729, "best_val_ap": 0.14771607591252306, "best_test_auc": 0.6899612590402835, "best_test_ap": 0.15177310542286082}
+{"epoch": 190, "loss": 0.16889575123786926, "val_auc": 0.39911656917644545, "val_ap": 0.06937213969485417, "test_auc": 0.3868440379749083, "test_ap": 0.0729524742707711, "best_val_auc": 0.6972084321610729, "best_val_ap": 0.14771607591252306, "best_test_auc": 0.6899612590402835, "best_test_ap": 0.15177310542286082}
+{"epoch": 200, "loss": 0.1354358196258545, "val_auc": 0.3856499892998538, "val_ap": 0.06770301418823971, "test_auc": 0.3868773630813091, "test_ap": 0.07292437217262947, "best_val_auc": 0.6972084321610729, "best_val_ap": 0.14771607591252306, "best_test_auc": 0.6899612590402835, "best_test_ap": 0.15177310542286082}
+FINAL {
+  "dataset": "elliptic",
+  "seed": 0,
+  "config": {
+    "dataset": "elliptic",
+    "device": 2,
+    "seed": 0,
+    "train_rate": 0.05,
+    "num_epoch": 200,
+    "descriptor_mode": "hop_attr",
+    "pn_estimator": "pca_residual",
+    "gn_mode": "label_gate",
+    "ln_mode": "descriptor_similarity",
+    "ga_mode": "normal_soft_or",
+    "la_mode": "descriptor_similarity",
+    "reference_mode": "dual_reference",
+    "ablation_mode": "full",
+    "normal_k": 4,
+    "anom_k": 16,
+    "pp_k": 6,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "pseudo_beta": 0.3,
+    "pseudo_noise": 0.01,
+    "embedding_dim": 256,
+    "GT_ffn_dim": 256,
+    "GT_dropout": 0.4,
+    "GT_attention_dropout": 0.4,
+    "GT_num_heads": 2,
+    "GT_num_layers": 3,
+    "sample_rate": 0.15,
+    "mean": 0.02,
+    "var": 0.01,
+    "outlier_beta": 0.3,
+    "ring_R_max": 1.0,
+    "ring_R_min": 0.3,
+    "lambda_rec_tok": 1.0,
+    "lambda_rec_emb": 0.1,
+    "encode_batch_size": 512,
+    "wandb": true,
+    "dry_run": false,
+    "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/tokenization_theory_mini_gt_best_ablation/elliptic__full.json"
+  },
+  "best": {
+    "val_auc": 0.6972084321610729,
+    "val_ap": 0.14771607591252306,
+    "test_auc": 0.6899612590402835,
+    "test_ap": 0.15177310542286082,
+    "epoch": 0
+  },
+  "purity": {
+    "normal_ref_normal_ratio": 1.0,
+    "anom_ref_anom_ratio": 0.10741130487071557,
+    "anom_ref_anom_ratio_on_anom_nodes": 0.6836908690869087
+  },
+  "time_sec": 176.75777435302734
+}
+
+/root/gpufree-data/linziyao/VoxG/utils.py:59: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/root/gpufree-data/linziyao/VoxG/utils.py:59: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /root/gpufree-data/linziyao/.netrc.
+wandb: Currently logged in as: jerryyoursister (Senyao) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run wotqx52x
+wandb: Tracking run with wandb version 0.25.0
+wandb: Run data is saved locally in /root/gpufree-data/linziyao/VoxG/wandb/run-20260429_131413-wotqx52x
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run tokgt_elliptic_hop_attr_pca_residual_normal_soft_or_full
+wandb: ⭐️ View project at https://wandb.ai/HCCS/VoxG
+wandb: 🚀 View run at https://wandb.ai/HCCS/VoxG/runs/wotqx52x
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading history steps 18-20, summary, console lines 19-80
+wandb: 
+wandb: Run history:
+wandb:  best_test_ap ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: best_test_auc ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   best_val_ap ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:  best_val_auc ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:         epoch ▁▁▂▂▂▃▃▃▄▄▅▅▅▆▆▆▇▇▇██
+wandb:          loss ██████▇▇▇▆▆▅▅▃▃▂▂▃▃▁▁
+wandb:       test_ap ▇▃▅▄█▄▃▂▂▂▁▂▂▁▁▂▁▁▄▁▁
+wandb:      test_auc █▅▇▆█▆▅▄▄▃▁▂▄▁▂▃▁▂▆▁▁
+wandb:        val_ap █▃▅▃█▄▃▂▂▂▁▂▂▁▁▂▁▁▄▁▁
+wandb:       val_auc █▅▆▅█▆▅▄▄▃▁▂▄▁▂▃▁▁▆▁▁
+wandb: 
+wandb: Run summary:
+wandb:               anom_ref_anom_ratio 0.10741
+wandb: anom_ref_anom_ratio_on_anom_nodes 0.68369
+wandb:                      best_test_ap 0.15177
+wandb:                     best_test_auc 0.68996
+wandb:                       best_val_ap 0.14772
+wandb:                      best_val_auc 0.69721
+wandb:                             epoch 200
+wandb:                              loss 0.13544
+wandb:           normal_ref_normal_ratio 1
+wandb:                           test_ap 0.07292
+wandb:                                +3 ...
+wandb: 
+wandb: 🚀 View run tokgt_elliptic_hop_attr_pca_residual_normal_soft_or_full at: https://wandb.ai/HCCS/VoxG/runs/wotqx52x
+wandb: ⭐️ View project at: https://wandb.ai/HCCS/VoxG
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260429_131413-wotqx52x/logs
+
+START elliptic no_ra
+606276995, "best_val_auc": 0.5491000173877376, "best_val_ap": 0.10245174836666257, "best_test_auc": 0.5334531679607964, "best_test_ap": 0.10825739440637432}
+{"epoch": 170, "loss": 0.6898459196090698, "val_auc": 0.5355356314869637, "val_ap": 0.09882480576361702, "test_auc": 0.5262468140855281, "test_ap": 0.10400102315209674, "best_val_auc": 0.5491000173877376, "best_val_ap": 0.10245174836666257, "best_test_auc": 0.5334531679607964, "best_test_ap": 0.10825739440637432}
+{"epoch": 180, "loss": 0.6882987022399902, "val_auc": 0.537758419677569, "val_ap": 0.10421168317970898, "test_auc": 0.5341686215289618, "test_ap": 0.10654595027731216, "best_val_auc": 0.5491000173877376, "best_val_ap": 0.10245174836666257, "best_test_auc": 0.5334531679607964, "best_test_ap": 0.10825739440637432}
+{"epoch": 190, "loss": 0.6857141256332397, "val_auc": 0.5440166119770303, "val_ap": 0.10475681784701601, "test_auc": 0.5399248747396624, "test_ap": 0.10983528904002002, "best_val_auc": 0.5491000173877376, "best_val_ap": 0.10245174836666257, "best_test_auc": 0.5334531679607964, "best_test_ap": 0.10825739440637432}
+{"epoch": 200, "loss": 0.6806734204292297, "val_auc": 0.5292604415593679, "val_ap": 0.09858191113792028, "test_auc": 0.5379478618998059, "test_ap": 0.10859116732680352, "best_val_auc": 0.5491000173877376, "best_val_ap": 0.10245174836666257, "best_test_auc": 0.5334531679607964, "best_test_ap": 0.10825739440637432}
+FINAL {
+  "dataset": "elliptic",
+  "seed": 0,
+  "config": {
+    "dataset": "elliptic",
+    "device": 2,
+    "seed": 0,
+    "train_rate": 0.05,
+    "num_epoch": 200,
+    "descriptor_mode": "hop_attr",
+    "pn_estimator": "pca_residual",
+    "gn_mode": "label_gate",
+    "ln_mode": "descriptor_similarity",
+    "ga_mode": "normal_soft_or",
+    "la_mode": "descriptor_similarity",
+    "reference_mode": "dual_reference",
+    "ablation_mode": "no_ra",
+    "normal_k": 4,
+    "anom_k": 16,
+    "pp_k": 6,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "pseudo_beta": 0.3,
+    "pseudo_noise": 0.01,
+    "embedding_dim": 256,
+    "GT_ffn_dim": 256,
+    "GT_dropout": 0.4,
+    "GT_attention_dropout": 0.4,
+    "GT_num_heads": 2,
+    "GT_num_layers": 3,
+    "sample_rate": 0.15,
+    "mean": 0.02,
+    "var": 0.01,
+    "outlier_beta": 0.3,
+    "ring_R_max": 1.0,
+    "ring_R_min": 0.3,
+    "lambda_rec_tok": 1.0,
+    "lambda_rec_emb": 0.1,
+    "encode_batch_size": 512,
+    "wandb": true,
+    "dry_run": false,
+    "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/tokenization_theory_mini_gt_best_ablation/elliptic__no_ra.json"
+  },
+  "best": {
+    "val_auc": 0.5491000173877376,
+    "val_ap": 0.10245174836666257,
+    "test_auc": 0.5334531679607964,
+    "test_ap": 0.10825739440637432,
+    "epoch": 70
+  },
+  "purity": {
+    "normal_ref_normal_ratio": 1.0,
+    "anom_ref_anom_ratio": 0.0,
+    "anom_ref_anom_ratio_on_anom_nodes": 0.0
+  },
+  "time_sec": 174.83326697349548
+}
+
+/root/gpufree-data/linziyao/VoxG/utils.py:59: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/root/gpufree-data/linziyao/VoxG/utils.py:59: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /root/gpufree-data/linziyao/.netrc.
+wandb: Currently logged in as: jerryyoursister (Senyao) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run fzdv7e2u
+wandb: Tracking run with wandb version 0.25.0
+wandb: Run data is saved locally in /root/gpufree-data/linziyao/VoxG/wandb/run-20260429_132023-fzdv7e2u
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run tokgt_elliptic_hop_attr_pca_residual_normal_soft_or_no_ra
+wandb: ⭐️ View project at https://wandb.ai/HCCS/VoxG
+wandb: 🚀 View run at https://wandb.ai/HCCS/VoxG/runs/fzdv7e2u
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log
+wandb: 
+wandb: Run history:
+wandb:  best_test_ap ▁▁▁▁▁▁▁██████████████
+wandb: best_test_auc ▁▁▁▁▁▁▁██████████████
+wandb:   best_val_ap ▁▁▁▁▁▁▁██████████████
+wandb:  best_val_auc ▁▁▁▁▁▁▁██████████████
+wandb:         epoch ▁▁▂▂▂▃▃▃▄▄▅▅▅▆▆▆▇▇▇██
+wandb:          loss ▅▅▅▄▄▄▄▄▃▂▁█▅▅▅▅▅▄▄▄▄
+wandb:       test_ap ▄▄▄▄▂▁▃▇▂▃▂▂▂▅▅▅▅▅▆█▇
+wandb:      test_auc ▄▄▅▄▄▂▃▇▃▃▂▃▁▄▆▆▆▆▇██
+wandb:        val_ap ▅▄▃▁▁▁▄▇▃▃▂▃▅▅▅▅▅▆██▆
+wandb:       val_auc ▆▄▄▂▂▁▄█▃▃▃▃▄▆▅▆▆▇▇█▆
+wandb: 
+wandb: Run summary:
+wandb:               anom_ref_anom_ratio 0
+wandb: anom_ref_anom_ratio_on_anom_nodes 0
+wandb:                      best_test_ap 0.10826
+wandb:                     best_test_auc 0.53345
+wandb:                       best_val_ap 0.10245
+wandb:                      best_val_auc 0.5491
+wandb:                             epoch 200
+wandb:                              loss 0.68067
+wandb:           normal_ref_normal_ratio 1
+wandb:                           test_ap 0.10859
+wandb:                                +3 ...
+wandb: 
+wandb: 🚀 View run tokgt_elliptic_hop_attr_pca_residual_normal_soft_or_no_ra at: https://wandb.ai/HCCS/VoxG/runs/fzdv7e2u
+wandb: ⭐️ View project at: https://wandb.ai/HCCS/VoxG
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260429_132023-fzdv7e2u/logs
+
+START elliptic shuffled_ra
+est_val_ap": 0.12321090362447844, "best_test_auc": 0.5443349633462462, "best_test_ap": 0.10645117963308653}
+{"epoch": 170, "loss": 0.17622269690036774, "val_auc": 0.49281028194885323, "val_ap": 0.08622500868864363, "test_auc": 0.49927805832607064, "test_ap": 0.09198986757681198, "best_val_auc": 0.5709478211827228, "best_val_ap": 0.12321090362447844, "best_test_auc": 0.5443349633462462, "best_test_ap": 0.10645117963308653}
+{"epoch": 180, "loss": 0.4781283438205719, "val_auc": 0.5205239393480044, "val_ap": 0.09586570365820024, "test_auc": 0.4608283629280136, "test_ap": 0.0884988504460189, "best_val_auc": 0.5709478211827228, "best_val_ap": 0.12321090362447844, "best_test_auc": 0.5443349633462462, "best_test_ap": 0.10645117963308653}
+{"epoch": 190, "loss": 0.2046809047460556, "val_auc": 0.5201753486464316, "val_ap": 0.09501741280782607, "test_auc": 0.4679594374459194, "test_ap": 0.08946890916768611, "best_val_auc": 0.5709478211827228, "best_val_ap": 0.12321090362447844, "best_test_auc": 0.5443349633462462, "best_test_ap": 0.10645117963308653}
+{"epoch": 200, "loss": 0.13582904636859894, "val_auc": 0.5120036692584798, "val_ap": 0.09309682888325232, "test_auc": 0.4574664662596585, "test_ap": 0.08872784289905893, "best_val_auc": 0.5709478211827228, "best_val_ap": 0.12321090362447844, "best_test_auc": 0.5443349633462462, "best_test_ap": 0.10645117963308653}
+FINAL {
+  "dataset": "elliptic",
+  "seed": 0,
+  "config": {
+    "dataset": "elliptic",
+    "device": 2,
+    "seed": 0,
+    "train_rate": 0.05,
+    "num_epoch": 200,
+    "descriptor_mode": "hop_attr",
+    "pn_estimator": "pca_residual",
+    "gn_mode": "label_gate",
+    "ln_mode": "descriptor_similarity",
+    "ga_mode": "normal_soft_or",
+    "la_mode": "descriptor_similarity",
+    "reference_mode": "dual_reference",
+    "ablation_mode": "shuffled_ra",
+    "normal_k": 4,
+    "anom_k": 16,
+    "pp_k": 6,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "pseudo_beta": 0.3,
+    "pseudo_noise": 0.01,
+    "embedding_dim": 256,
+    "GT_ffn_dim": 256,
+    "GT_dropout": 0.4,
+    "GT_attention_dropout": 0.4,
+    "GT_num_heads": 2,
+    "GT_num_layers": 3,
+    "sample_rate": 0.15,
+    "mean": 0.02,
+    "var": 0.01,
+    "outlier_beta": 0.3,
+    "ring_R_max": 1.0,
+    "ring_R_min": 0.3,
+    "lambda_rec_tok": 1.0,
+    "lambda_rec_emb": 0.1,
+    "encode_batch_size": 512,
+    "wandb": true,
+    "dry_run": false,
+    "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/tokenization_theory_mini_gt_best_ablation/elliptic__shuffled_ra.json"
+  },
+  "best": {
+    "val_auc": 0.5709478211827228,
+    "val_ap": 0.12321090362447844,
+    "test_auc": 0.5443349633462462,
+    "test_ap": 0.10645117963308653,
+    "epoch": 150
+  },
+  "purity": {
+    "normal_ref_normal_ratio": 1.0,
+    "anom_ref_anom_ratio": 0.10741130487071557,
+    "anom_ref_anom_ratio_on_anom_nodes": 0.10726072607260725
+  },
+  "time_sec": 174.64090657234192
+}
+
+/root/gpufree-data/linziyao/VoxG/utils.py:59: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/root/gpufree-data/linziyao/VoxG/utils.py:59: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+wandb: [wandb.login()] Loaded credentials for https://api.wandb.ai from /root/gpufree-data/linziyao/.netrc.
+wandb: Currently logged in as: jerryyoursister (Senyao) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run 3lxk2jp0
+wandb: Tracking run with wandb version 0.25.0
+wandb: Run data is saved locally in /root/gpufree-data/linziyao/VoxG/wandb/run-20260429_132631-3lxk2jp0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run tokgt_elliptic_hop_attr_pca_residual_normal_soft_or_shuffled_ra
+wandb: ⭐️ View project at https://wandb.ai/HCCS/VoxG
+wandb: 🚀 View run at https://wandb.ai/HCCS/VoxG/runs/3lxk2jp0
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading history steps 18-20, summary, console lines 19-80
+wandb: 
+wandb: Run history:
+wandb:  best_test_ap ▇▇▇▃▃▃▆▄▄▄▁▃▃▇▇██████
+wandb: best_test_auc ▇▇▇▄▄▄▆▅▅▅▁▃▃▇▇██████
+wandb:   best_val_ap ▁▂▂▁▁▁▃▂▂▂▃▃▃▅▅██████
+wandb:  best_val_auc ▁▂▂▂▂▂▂▃▃▃▄▅▅▆▆██████
+wandb:         epoch ▁▁▂▂▂▃▃▃▄▄▅▅▅▆▆▆▇▇▇██
+wandb:          loss ███████▇▇▇▆▅▅▅▃▃▂▂▅▂▁
+wandb:       test_ap ▇▆█▄▄▄▅▅▃▃▂▄▂▆▆▇▇▂▁▁▁
+wandb:      test_auc ▇▇█▅▅▆▆▆▄▅▃▄▃▇▆█▇▄▁▂▁
+wandb:        val_ap ▂▃▃▃▂▂▄▃▃▃▄▄▄▆▅█▇▁▃▃▂
+wandb:       val_auc ▂▃▂▃▃▂▃▄▄▄▅▅▄▇▅█▇▁▃▃▃
+wandb: 
+wandb: Run summary:
+wandb:               anom_ref_anom_ratio 0.10741
+wandb: anom_ref_anom_ratio_on_anom_nodes 0.10726
+wandb:                      best_test_ap 0.10645
+wandb:                     best_test_auc 0.54433
+wandb:                       best_val_ap 0.12321
+wandb:                      best_val_auc 0.57095
+wandb:                             epoch 200
+wandb:                              loss 0.13583
+wandb:           normal_ref_normal_ratio 1
+wandb:                           test_ap 0.08873
+wandb:                                +3 ...
+wandb: 
+wandb: 🚀 View run tokgt_elliptic_hop_attr_pca_residual_normal_soft_or_shuffled_ra at: https://wandb.ai/HCCS/VoxG/runs/3lxk2jp0
+wandb: ⭐️ View project at: https://wandb.ai/HCCS/VoxG
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260429_132631-3lxk2jp0/logs
+
+START elliptic fixed_labeled_normal
+0186841922936797, "best_test_auc": 0.6016087404468058, "best_test_ap": 0.11184089094134246}
+{"epoch": 170, "loss": 0.4130212962627411, "val_auc": 0.47669959562364017, "val_ap": 0.07979761352093641, "test_auc": 0.46176649897314265, "test_ap": 0.08245113469995512, "best_val_auc": 0.5933679713414416, "best_val_ap": 0.10186841922936797, "best_test_auc": 0.6016087404468058, "best_test_ap": 0.11184089094134246}
+{"epoch": 180, "loss": 0.3129754066467285, "val_auc": 0.42334571280807504, "val_ap": 0.07311600692870254, "test_auc": 0.4130479013057513, "test_ap": 0.07761730678585335, "best_val_auc": 0.5933679713414416, "best_val_ap": 0.10186841922936797, "best_test_auc": 0.6016087404468058, "best_test_ap": 0.11184089094134246}
+{"epoch": 190, "loss": 0.25736868381500244, "val_auc": 0.4001999589827727, "val_ap": 0.07212007914069765, "test_auc": 0.3845858847168383, "test_ap": 0.07405545905312358, "best_val_auc": 0.5933679713414416, "best_val_ap": 0.10186841922936797, "best_test_auc": 0.6016087404468058, "best_test_ap": 0.11184089094134246}
+{"epoch": 200, "loss": 0.22316041588783264, "val_auc": 0.488341298997753, "val_ap": 0.08896372573386954, "test_auc": 0.48101692901685184, "test_ap": 0.09001893587766419, "best_val_auc": 0.5933679713414416, "best_val_ap": 0.10186841922936797, "best_test_auc": 0.6016087404468058, "best_test_ap": 0.11184089094134246}
+FINAL {
+  "dataset": "elliptic",
+  "seed": 0,
+  "config": {
+    "dataset": "elliptic",
+    "device": 2,
+    "seed": 0,
+    "train_rate": 0.05,
+    "num_epoch": 200,
+    "descriptor_mode": "hop_attr",
+    "pn_estimator": "pca_residual",
+    "gn_mode": "label_gate",
+    "ln_mode": "descriptor_similarity",
+    "ga_mode": "normal_soft_or",
+    "la_mode": "descriptor_similarity",
+    "reference_mode": "dual_reference",
+    "ablation_mode": "fixed_labeled_normal",
+    "normal_k": 4,
+    "anom_k": 16,
+    "pp_k": 6,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "pseudo_beta": 0.3,
+    "pseudo_noise": 0.01,
+    "embedding_dim": 256,
+    "GT_ffn_dim": 256,
+    "GT_dropout": 0.4,
+    "GT_attention_dropout": 0.4,
+    "GT_num_heads": 2,
+    "GT_num_layers": 3,
+    "sample_rate": 0.15,
+    "mean": 0.02,
+    "var": 0.01,
+    "outlier_beta": 0.3,
+    "ring_R_max": 1.0,
+    "ring_R_min": 0.3,
+    "lambda_rec_tok": 1.0,
+    "lambda_rec_emb": 0.1,
+    "encode_batch_size": 512,
+    "wandb": true,
+    "dry_run": false,
+    "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/tokenization_theory_mini_gt_best_ablation/elliptic__fixed_labeled_normal.json"
+  },
+  "best": {
+    "val_auc": 0.5933679713414416,
+    "val_ap": 0.10186841922936797,
+    "test_auc": 0.6016087404468058,
+    "test_ap": 0.11184089094134246,
+    "epoch": 0
+  },
+  "purity": {
+    "normal_ref_normal_ratio": 1.0,
+    "anom_ref_anom_ratio": 0.10741130487071557,
+    "anom_ref_anom_ratio_on_anom_nodes": 0.6836908690869087
+  },
+  "time_sec": 174.8223419189453
+}
+
+ziyao/.netrc.
+wandb: Currently logged in as: jerryyoursister (Senyao) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run aku7au4d
+wandb: Tracking run with wandb version 0.25.0
+wandb: Run data is saved locally in /root/gpufree-data/linziyao/VoxG/wandb/run-20260429_133239-aku7au4d
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run tokgt_elliptic_hop_attr_pca_residual_normal_soft_or_fixed_labeled_normal
+wandb: ⭐️ View project at https://wandb.ai/HCCS/VoxG
+wandb: 🚀 View run at https://wandb.ai/HCCS/VoxG/runs/aku7au4d
+wandb: updating run metadata
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading history steps 18-20, summary, console lines 19-80
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml; uploading data
+wandb: uploading output.log; uploading wandb-summary.json; uploading config.yaml
+wandb: uploading data
+wandb: 
+wandb: Run history:
+wandb:  best_test_ap ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb: best_test_auc ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:   best_val_ap ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:  best_val_auc ▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁
+wandb:         epoch ▁▁▂▂▂▃▃▃▄▄▅▅▅▆▆▆▇▇▇██
+wandb:          loss ▇▇▇▇▇▇▇▆▇▇▆▆▆█▅▄▄▃▂▁▁
+wandb:       test_ap █▂▄▃▃▁▂▂▃▆▃▃▃▂▆▂▂▃▂▂▄
+wandb:      test_auc █▃▅▃▅▁▃▃▄▇▄▄▄▂▇▃▂▄▃▃▅
+wandb:        val_ap █▂▅▂▃▁▂▂▃▇▃▃▃▂▆▃▂▄▃▃▆
+wandb:       val_auc █▃▆▃▄▁▃▂▄▇▄▃▃▂▆▃▂▅▃▃▅
+wandb: 
+wandb: Run summary:
+wandb:               anom_ref_anom_ratio 0.10741
+wandb: anom_ref_anom_ratio_on_anom_nodes 0.68369
+wandb:                      best_test_ap 0.11184
+wandb:                     best_test_auc 0.60161
+wandb:                       best_val_ap 0.10187
+wandb:                      best_val_auc 0.59337
+wandb:                             epoch 200
+wandb:                              loss 0.22316
+wandb:           normal_ref_normal_ratio 1
+wandb:                           test_ap 0.09002
+wandb:                                +3 ...
+wandb: 
+wandb: 🚀 View run tokgt_elliptic_hop_attr_pca_residual_normal_soft_or_fixed_labeled_normal at: https://wandb.ai/HCCS/VoxG/runs/aku7au4d
+wandb: ⭐️ View project at: https://wandb.ai/HCCS/VoxG
+wandb: Synced 5 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20260429_133239-aku7au4d/logs
+

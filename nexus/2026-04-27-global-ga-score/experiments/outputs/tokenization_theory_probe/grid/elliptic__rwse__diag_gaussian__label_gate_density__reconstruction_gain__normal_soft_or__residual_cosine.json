@@ -1,0 +1,91 @@
+{
+  "config": {
+    "dataset": "elliptic",
+    "seed": 0,
+    "train_rate": 0.05,
+    "descriptor_mode": "rwse",
+    "pn_estimator": "diag_gaussian",
+    "gn_mode": "label_gate_density",
+    "ln_mode": "reconstruction_gain",
+    "ga_mode": "normal_soft_or",
+    "la_mode": "residual_cosine",
+    "reference_mode": "dual_reference",
+    "normal_k": 4,
+    "anom_k": 16,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/tokenization_theory_probe/grid/elliptic__rwse__diag_gaussian__label_gate_density__reconstruction_gain__normal_soft_or__residual_cosine.json"
+  },
+  "meta": {
+    "dataset": "elliptic",
+    "n": 46564,
+    "normal_train": 2086,
+    "anomaly_rate": 0.09760759384932566,
+    "descriptor_dim": 8
+  },
+  "scores": {
+    "ga": {
+      "auc": 0.43659786050477295,
+      "ap": 0.07987329467934588,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.0,
+      "top512_density": 0.01171875
+    },
+    "residual_norm": {
+      "auc": 0.5932812520167745,
+      "ap": 0.1320042949170575,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.0078125,
+      "top512_density": 0.03125
+    },
+    "rn_explanation_error": {
+      "auc": 0.5919979962964526,
+      "ap": 0.12521764832840368,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.01953125,
+      "top512_density": 0.021484375
+    },
+    "ra_residual_alignment": {
+      "auc": 0.6452037609577375,
+      "ap": 0.14878533752476952,
+      "top16_density": 0.0,
+      "top32_density": 0.03125,
+      "top64_density": 0.03125,
+      "top128_density": 0.0546875,
+      "top256_density": 0.04296875,
+      "top512_density": 0.0546875
+    },
+    "contrast_margin": {
+      "auc": 0.63664075324927,
+      "ap": 0.15653950411239204,
+      "top16_density": 0.5,
+      "top32_density": 0.4375,
+      "top64_density": 0.359375,
+      "top128_density": 0.3984375,
+      "top256_density": 0.390625,
+      "top512_density": 0.3359375
+    }
+  },
+  "reference": {
+    "normal_ref_normal_ratio": 1.0,
+    "anom_ref_anom_ratio": 0.016015591444034017,
+    "anom_ref_anom_ratio_on_anom_nodes": 0.010162266226622663,
+    "rn_err_mean_normal": 0.19553624180759194,
+    "rn_err_mean_anom": 0.19317073031528217,
+    "align_mean_normal": 0.9949941039085388,
+    "align_mean_anom": 0.9974149465560913,
+    "contrast_mean_normal": 0.20718854665756226,
+    "contrast_mean_anom": 0.4550464451313019
+  },
+  "elapsed_sec": 182.6282606124878
+}

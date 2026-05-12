@@ -1,0 +1,106 @@
+{
+  "dataset": "photo",
+  "timestamp": "2026-03-31T15:48:57.510035",
+  "config": {
+    "pp_k": 6,
+    "alpha": 0.1
+  },
+  "entropy_analysis": {
+    "original": {
+      "feature_name": "original",
+      "N": 7535,
+      "D": 745,
+      "entropy_total": 14.365595417342622,
+      "entropy_normal": 15.28699914893824,
+      "entropy_anomaly": 51.97566187438866,
+      "entropy_per_dim_mean": -1.0472967010590657,
+      "entropy_per_dim_std": 3.904605265924317,
+      "entropy_per_dim_max": 0.0,
+      "entropy_per_dim_min": -15.60472084578008,
+      "top_10_dim": [
+        744,
+        262,
+        260,
+        259,
+        258,
+        257,
+        256,
+        255,
+        254,
+        253
+      ]
+    },
+    "hop_features": {
+      "feature_name": "hop_features",
+      "N": 7535,
+      "D": 5215,
+      "entropy_total": -8.828729920349396,
+      "entropy_normal": -8.472015802808624,
+      "entropy_anomaly": 1.1478321477125126,
+      "entropy_per_dim_mean": -0.025567918533202224,
+      "entropy_per_dim_std": 0.49692455379657124,
+      "entropy_per_dim_max": 0.0,
+      "entropy_per_dim_min": -15.60472084578008,
+      "top_10_dim": [
+        5214,
+        1758,
+        1739,
+        1740,
+        1741,
+        1742,
+        1743,
+        1744,
+        1745,
+        1746
+      ]
+    },
+    "offset": {
+      "feature_name": "offset",
+      "N": 7535,
+      "D": 4470,
+      "entropy_total": 42.31519247190846,
+      "entropy_normal": 42.50400173429942,
+      "entropy_anomaly": 45.059409407235094,
+      "entropy_per_dim_mean": -0.010300907569940508,
+      "entropy_per_dim_std": 0.10199514339399,
+      "entropy_per_dim_max": 0.0,
+      "entropy_per_dim_min": -1.7454290866916935,
+      "top_10_dim": [
+        4469,
+        1500,
+        1494,
+        1495,
+        1496,
+        1497,
+        1498,
+        1499,
+        1501,
+        1509
+      ]
+    },
+    "delta": {
+      "feature_name": "delta",
+      "N": 7535,
+      "D": 4470,
+      "entropy_total": -56.3754992921855,
+      "entropy_normal": -55.524893499679095,
+      "entropy_anomaly": -48.64784965750041,
+      "entropy_per_dim_mean": -0.032619116225099054,
+      "entropy_per_dim_std": 0.33129531251323435,
+      "entropy_per_dim_max": 0.0,
+      "entropy_per_dim_min": -4.805030997279301,
+      "top_10_dim": [
+        4469,
+        1500,
+        1494,
+        1495,
+        1496,
+        1497,
+        1498,
+        1499,
+        1501,
+        1509
+      ]
+    }
+  }
+}

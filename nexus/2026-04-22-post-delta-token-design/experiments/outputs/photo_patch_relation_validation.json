@@ -1,0 +1,152 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/photo.mat",
+  "patch_feature_stats": {
+    "patch_size": {
+      "normal_mean": 31.927746087465263,
+      "anomaly_mean": 39.26504297994269,
+      "difference": 7.337296892477429,
+      "ks_stat": 0.06478800459156796,
+      "ks_p": 0.009340138742812393
+    },
+    "patch_density": {
+      "normal_mean": 0.49571781977260215,
+      "anomaly_mean": 0.5640642892320745,
+      "difference": 0.06834646945947237,
+      "ks_stat": 0.12969125938293785,
+      "ks_p": 9.52096252544228e-10
+    },
+    "patch_feature_mean_norm": {
+      "normal_mean": 14.175313082991838,
+      "anomaly_mean": 12.155092300232388,
+      "difference": -2.0202207827594503,
+      "ks_stat": 0.24877007082229552,
+      "ks_p": 5.587593208727966e-35
+    },
+    "patch_feature_var": {
+      "normal_mean": 0.18707808306819249,
+      "anomaly_mean": 0.1860277284214419,
+      "difference": -0.001050354646750573,
+      "ks_stat": 0.15140963567106838,
+      "ks_p": 3.86252276769941e-13
+    },
+    "patch_internal_mean_pairwise_cos": {
+      "normal_mean": 0.5085117011523894,
+      "anomaly_mean": 0.44161891805823644,
+      "difference": -0.06689278309415297,
+      "ks_stat": 0.23204202818558886,
+      "ks_p": 1.9260096153174634e-30
+    },
+    "target_to_patch_center_cos": {
+      "normal_mean": 0.6577171373761421,
+      "anomaly_mean": 0.5957238304026606,
+      "difference": -0.06199330697348149,
+      "ks_stat": 0.15682660460757725,
+      "ks_p": 4.5484391304906665e-14
+    },
+    "target_to_patch_center_l2": {
+      "normal_mean": 11.901176382329723,
+      "anomaly_mean": 11.860352465871962,
+      "difference": -0.040823916457760845,
+      "ks_stat": 0.0878108035956386,
+      "ks_p": 0.00010626990324694845
+    },
+    "patch_boundary_contrast": {
+      "normal_mean": 5.149942414848932,
+      "anomaly_mean": 4.864210738993123,
+      "difference": -0.2857316758558097,
+      "ks_stat": 0.0862149026471085,
+      "ks_p": 0.0001514007308807744
+    },
+    "patch_internal_external_gap": {
+      "normal_mean": -4.6414307136965425,
+      "anomaly_mean": -4.422591820934886,
+      "difference": 0.21883889276165647,
+      "ks_stat": 0.0718855309870069,
+      "ks_p": 0.002714359971657968
+    }
+  },
+  "relation_feature_stats": {
+    "node_to_neigh_cos": {
+      "normal_mean": 0.6065586977959166,
+      "anomaly_mean": 0.551509486634859,
+      "difference": -0.055049211161057654,
+      "ks_stat": 0.14216531237204608,
+      "ks_p": 1.246085137154524e-11
+    },
+    "node_to_neigh_l2": {
+      "normal_mean": 13.060611103844616,
+      "anomaly_mean": 12.779849588370034,
+      "difference": -0.28076151547458217,
+      "ks_stat": 0.104573211746468,
+      "ks_p": 1.741602114426407e-06
+    },
+    "node_to_neigh_corr": {
+      "normal_mean": 0.3310946525098362,
+      "anomaly_mean": 0.3183943009656816,
+      "difference": -0.012700351544154609,
+      "ks_stat": 0.09234181281439731,
+      "ks_p": 3.754662492507405e-05
+    },
+    "node_to_patch_cos": {
+      "normal_mean": 0.6577171373761421,
+      "anomaly_mean": 0.5957238304026606,
+      "difference": -0.06199330697348149,
+      "ks_stat": 0.15682660460757725,
+      "ks_p": 4.5484391304906665e-14
+    },
+    "node_to_patch_l2": {
+      "normal_mean": 11.901176382329723,
+      "anomaly_mean": 11.860352465871962,
+      "difference": -0.040823916457760845,
+      "ks_stat": 0.0878108035956386,
+      "ks_p": 0.00010626990324694845
+    },
+    "neigh_internal_mean_pairwise_cos": {
+      "normal_mean": 0.5139325874950957,
+      "anomaly_mean": 0.455993681218894,
+      "difference": -0.05793890627620174,
+      "ks_stat": 0.20631965041052122,
+      "ks_p": 4.164521757503258e-24
+    },
+    "patch_internal_mean_pairwise_cos": {
+      "normal_mean": 0.5085117011523894,
+      "anomaly_mean": 0.44161891805823644,
+      "difference": -0.06689278309415297,
+      "ks_stat": 0.23204202818558886,
+      "ks_p": 1.9260096153174634e-30
+    },
+    "node_context_contrast_gap": {
+      "normal_mean": 0.14920543622375268,
+      "anomaly_mean": 0.15410491234442428,
+      "difference": 0.0048994761206715975,
+      "ks_stat": 0.027101398802152288,
+      "ks_p": 0.7292799953833613
+    }
+  },
+  "probes": {
+    "node_only": {
+      "auc": 0.9489512089444542,
+      "ap": 0.7484599543949343
+    },
+    "patch_only": {
+      "auc": 0.6898287087747469,
+      "ap": 0.255366632521214
+    },
+    "relation_only": {
+      "auc": 0.6866926856576807,
+      "ap": 0.1755742954205035
+    },
+    "node_plus_patch": {
+      "auc": 0.9522749576569834,
+      "ap": 0.7614254853891567
+    },
+    "node_plus_relation": {
+      "auc": 0.9507664484077265,
+      "ap": 0.7558390926514168
+    },
+    "node_plus_patch_plus_relation": {
+      "auc": 0.9529445681515147,
+      "ap": 0.7617208183933103
+    }
+  }
+}

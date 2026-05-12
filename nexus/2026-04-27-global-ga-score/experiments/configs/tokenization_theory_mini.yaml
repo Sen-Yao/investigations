@@ -1,0 +1,65 @@
+# Tokenization theory validation - mini GT ablation profile
+# Purpose: small WandB-backed clean GT validation after offline probe narrows candidates.
+
+program: nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt.py
+method: grid
+
+metric:
+  name: best_val_auc
+  goal: maximize
+
+parameters:
+  dataset:
+    values: [photo, elliptic]
+  seed:
+    value: 0
+  train_rate:
+    value: 0.05
+  num_epoch:
+    value: 200
+  wandb:
+    value: true
+
+  reference_mode:
+    value: dual_reference
+  descriptor_mode:
+    values:
+      - hop_attr_rwse
+  pn_estimator:
+    values:
+      - diag_gaussian
+      - pca_residual
+
+  gn_mode:
+    values:
+      - label_gate_density
+  ln_mode:
+    values:
+      - descriptor_similarity
+      - reconstruction_gain
+  ga_mode:
+    values:
+      - normal_rejection
+      - residual_norm
+      - normal_soft_or
+  la_mode:
+    values:
+      - residual_cosine
+
+  ablation_mode:
+    values:
+      - full
+      - no_ra
+      - shuffled_ra
+      - fixed_labeled_normal
+
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  pp_k:
+    value: 6
+  gl_combine:
+    value: add
+  encode_batch_size:
+    value: 512

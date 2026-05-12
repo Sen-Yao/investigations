@@ -1,0 +1,32 @@
+【v3 实验2】Hop-Offset vs Delta 信息熵分析
+配置: alpha=0.1, 对称归一化 D^(-0.5)AD^(-0.5)
+============================================================
+
+数据集: Photo
+  节点数: 7535, 特征维度: 745
+  Hop-Offset 每节点熵: 11.5758 +/- 0.1642 bits
+  Delta 每节点熵: 11.6175 +/- 0.1613 bits
+  熵比值 (Delta/Hop-Offset): 1.0036
+  信息量赢家: Delta
+
+数据集: elliptic
+  节点数: 46564, 特征维度: 93
+  Hop-Offset 每节点熵: 7.5707 +/- 0.4589 bits
+  Delta 每节点熵: 7.0099 +/- 1.4496 bits
+  熵比值 (Delta/Hop-Offset): 0.9259
+  信息量赢家: Hop-Offset
+
+数据集: tolokers
+  节点数: 11758, 特征维度: 8
+  Hop-Offset 每节点熵: 4.3912 +/- 0.5256 bits
+  Delta 每节点熵: 4.5670 +/- 0.5568 bits
+  熵比值 (Delta/Hop-Offset): 1.0400
+  信息量赢家: Delta
+
+
+总结:
+  Hop-Offset 赢 1 次
+  Delta 赢 2 次
+  平均 Hop-Offset 熵: 7.8459 bits
+  平均 Delta 熵: 7.7315 bits
+  平均比值: 0.9899

@@ -1,0 +1,56 @@
+{
+  "dataset": "Photo",
+  "timestamp": "2026-04-01T16:18:14.657086",
+  "config": {
+    "alpha": 0,
+    "K": 6,
+    "convergence_formula": "||delta_t - delta_{t-1}|| / ||delta_{t-1}||"
+  },
+  "results": {
+    "delta_1_to_2": {
+      "normal_mean": 1.1136925220489502,
+      "normal_std": 0.1245867908000946,
+      "anomaly_mean": 1.079562783241272,
+      "anomaly_std": 0.08509913086891174,
+      "ks_statistic": 0.14883201256604361,
+      "ks_pvalue": 1.040623362577203e-12,
+      "separation": 1.0316144227981567
+    },
+    "delta_2_to_3": {
+      "normal_mean": 1.2423537969589233,
+      "normal_std": 0.2203070968389511,
+      "anomaly_mean": 1.1259783506393433,
+      "anomaly_std": 0.17585717141628265,
+      "ks_statistic": 0.2285503662232258,
+      "ks_pvalue": 1.548493011109106e-29,
+      "separation": 1.1033549308776855
+    },
+    "delta_3_to_4": {
+      "normal_mean": 1.2358322143554688,
+      "normal_std": 0.3685205578804016,
+      "anomaly_mean": 1.0404553413391113,
+      "anomaly_std": 0.30814018845558167,
+      "ks_statistic": 0.2703444891335825,
+      "ks_pvalue": 2.530986398845314e-41,
+      "separation": 1.1877801418304443
+    },
+    "delta_4_to_5": {
+      "normal_mean": 1.1363383531570435,
+      "normal_std": 0.5064846277236938,
+      "anomaly_mean": 0.8570284843444824,
+      "anomaly_std": 0.37077441811561584,
+      "ks_statistic": 0.26201462378353413,
+      "ks_pvalue": 8.295308321524832e-39,
+      "separation": 1.3259049654006958
+    },
+    "delta_5_to_6": {
+      "normal_mean": 0.9759321808815002,
+      "normal_std": 0.5474600791931152,
+      "anomaly_mean": 0.6790703535079956,
+      "anomaly_std": 0.4300558567047119,
+      "ks_statistic": 0.27165226458260777,
+      "ks_pvalue": 1.0014912777155574e-41,
+      "separation": 1.4371591806411743
+    }
+  }
+}

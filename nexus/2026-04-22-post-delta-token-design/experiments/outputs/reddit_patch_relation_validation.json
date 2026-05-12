@@ -1,0 +1,156 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/reddit.mat",
+  "config": {
+    "max_neighbors": 48,
+    "max_boundary": 48
+  },
+  "patch_feature_stats": {
+    "patch_size": {
+      "normal_mean": 10.85618782043457,
+      "anomaly_mean": 12.0,
+      "difference": 1.1438121795654297,
+      "ks_stat": 0.11142332795016605,
+      "ks_p": 0.0002773610412457937
+    },
+    "patch_density": {
+      "normal_mean": 0.8237063884735107,
+      "anomaly_mean": 0.6588411331176758,
+      "difference": -0.16486525535583496,
+      "ks_stat": 0.11142332795016607,
+      "ks_p": 0.00027736104124579243
+    },
+    "patch_feature_mean_norm": {
+      "normal_mean": 0.12559211254119873,
+      "anomaly_mean": 0.1255245953798294,
+      "difference": -6.751716136932373e-05,
+      "ks_stat": 0.10407731175125856,
+      "ks_p": 0.000859384096386162
+    },
+    "patch_feature_var": {
+      "normal_mean": 1.4499366898235166e-06,
+      "anomaly_mean": 1.7064693338397774e-06,
+      "difference": 2.5653264401626075e-07,
+      "ks_stat": 0.12363220719121153,
+      "ks_p": 3.565649746668498e-05
+    },
+    "patch_internal_mean_pairwise_cos": {
+      "normal_mean": 0.8691487312316895,
+      "anomaly_mean": 0.8883827328681946,
+      "difference": 0.019234001636505127,
+      "ks_stat": 0.08896893305213238,
+      "ks_p": 0.006895999232573129
+    },
+    "target_to_patch_center_cos": {
+      "normal_mean": 0.9987583756446838,
+      "anomaly_mean": 0.9983715415000916,
+      "difference": -0.00038683414459228516,
+      "ks_stat": 0.1256439472305509,
+      "ks_p": 2.4909975962213733e-05
+    },
+    "target_to_patch_center_l2": {
+      "normal_mean": 0.005318833515048027,
+      "anomaly_mean": 0.006381344981491566,
+      "difference": 0.0010625114664435387,
+      "ks_stat": 0.12554976753569314,
+      "ks_p": 2.5335072426136246e-05
+    },
+    "patch_boundary_contrast": {
+      "normal_mean": 0.006760164629667997,
+      "anomaly_mean": 0.00719955051317811,
+      "difference": 0.00043938588351011276,
+      "ks_stat": 0.08852376673490835,
+      "ks_p": 0.0072961273678959875
+    },
+    "patch_internal_external_gap": {
+      "normal_mean": 0.8623884916305542,
+      "anomaly_mean": 0.8811830878257751,
+      "difference": 0.018794596195220947,
+      "ks_stat": 0.10864476963029068,
+      "ks_p": 0.0004293157185689743
+    }
+  },
+  "relation_feature_stats": {
+    "node_to_neigh_cos": {
+      "normal_mean": 0.9987568855285645,
+      "anomaly_mean": 0.9983712434768677,
+      "difference": -0.00038564205169677734,
+      "ks_stat": 0.12479632997683077,
+      "ks_p": 2.899428652632634e-05
+    },
+    "node_to_neigh_l2": {
+      "normal_mean": 0.005321808625012636,
+      "anomaly_mean": 0.006382219027727842,
+      "difference": 0.0010604104027152061,
+      "ks_stat": 0.12470215028197296,
+      "ks_p": 2.9485680573092727e-05
+    },
+    "node_to_neigh_corr": {
+      "normal_mean": 0.9375498294830322,
+      "anomaly_mean": 0.9119558930397034,
+      "difference": -0.025593936443328857,
+      "ks_stat": 0.15642629744109138,
+      "ks_p": 4.953842952331283e-08
+    },
+    "node_to_patch_cos": {
+      "normal_mean": 0.9987583756446838,
+      "anomaly_mean": 0.9983715415000916,
+      "difference": -0.00038683414459228516,
+      "ks_stat": 0.1256439472305509,
+      "ks_p": 2.4909975962213733e-05
+    },
+    "node_to_patch_l2": {
+      "normal_mean": 0.005318833515048027,
+      "anomaly_mean": 0.006381344981491566,
+      "difference": 0.0010625114664435387,
+      "ks_stat": 0.12554976753569314,
+      "ks_p": 2.5335072426136246e-05
+    },
+    "neigh_internal_mean_pairwise_cos": {
+      "normal_mean": 0.8670841455459595,
+      "anomaly_mean": 0.8992958068847656,
+      "difference": 0.03221166133880615,
+      "ks_stat": 0.09654808259404846,
+      "ks_p": 0.0025272933077403535
+    },
+    "patch_internal_mean_pairwise_cos": {
+      "normal_mean": 0.8691487312316895,
+      "anomaly_mean": 0.8883827328681946,
+      "difference": 0.019234001636505127,
+      "ks_stat": 0.08896893305213238,
+      "ks_p": 0.006895999232573129
+    },
+    "node_context_contrast_gap": {
+      "normal_mean": 0.12960971891880035,
+      "anomaly_mean": 0.10998890548944473,
+      "difference": -0.01962081342935562,
+      "ks_stat": 0.09104088633900369,
+      "ks_p": 0.005284066692198202
+    }
+  },
+  "probes": {
+    "node_only": {
+      "auc": 0.6938048287936662,
+      "ap": 0.06734675111755345
+    },
+    "patch_only": {
+      "auc": 0.6060849346454675,
+      "ap": 0.04749175183848718
+    },
+    "relation_only": {
+      "auc": 0.5803141793449005,
+      "ap": 0.0450362483467239
+    },
+    "node_plus_patch": {
+      "auc": 0.7077732729348143,
+      "ap": 0.07369999728247999
+    },
+    "node_plus_relation": {
+      "auc": 0.7052108647342846,
+      "ap": 0.07326494307818122
+    },
+    "node_plus_patch_plus_relation": {
+      "auc": 0.7073811148611441,
+      "ap": 0.07299419039051652
+    }
+  }
+}

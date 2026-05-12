@@ -1,0 +1,129 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "n": 7535,
+  "anom_rate": 0.09263437292634373,
+  "train_normal": 376,
+  "scores": {
+    "baseline_anom_affinity_qc": {
+      "auc": 0.6097976080763987,
+      "ap": 0.1232366531809419,
+      "normal_mean": 0.3929140536710896,
+      "anomaly_mean": 0.46488262012433174,
+      "ks": 0.18772790727010832,
+      "top16_anom_ratio": 0.0625,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.109375,
+      "top128_anom_ratio": 0.1171875
+    },
+    "attr_normal_density_failure": {
+      "auc": 0.5866025624100786,
+      "ap": 0.12217083011640652,
+      "normal_mean": 0.49872504552009317,
+      "anomaly_mean": 0.5784391796014587,
+      "ks": 0.14211963138376096,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.1875,
+      "top64_anom_ratio": 0.25,
+      "top128_anom_ratio": 0.2265625
+    },
+    "mps_normal_density_failure": {
+      "auc": 0.6104279218964064,
+      "ap": 0.11779393039667369,
+      "normal_mean": 0.22459815197782595,
+      "anomaly_mean": 0.26573606995484367,
+      "ks": 0.20628696126294102,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.03125,
+      "top128_anom_ratio": 0.0859375
+    },
+    "struct_context_density_failure": {
+      "auc": 0.6384228240657503,
+      "ap": 0.12623561800264926,
+      "normal_mean": 0.1841621153526352,
+      "anomaly_mean": 0.23504669171910714,
+      "ks": 0.24428390440855063,
+      "top16_anom_ratio": 0.0625,
+      "top32_anom_ratio": 0.09375,
+      "top64_anom_ratio": 0.078125,
+      "top128_anom_ratio": 0.0546875
+    },
+    "struct_attr_disagreement": {
+      "auc": 0.5383093759599819,
+      "ap": 0.0982168273491776,
+      "normal_mean": 0.36340536957005587,
+      "anomaly_mean": 0.39026640062585893,
+      "ks": 0.0926777147603655,
+      "top16_anom_ratio": 0.1875,
+      "top32_anom_ratio": 0.09375,
+      "top64_anom_ratio": 0.046875,
+      "top128_anom_ratio": 0.0390625
+    },
+    "joint_disagreement_failure": {
+      "auc": 0.5710861136920171,
+      "ap": 0.10864839378878863,
+      "normal_mean": 0.47874472304004484,
+      "anomaly_mean": 0.5414472372767715,
+      "ks": 0.11656279480477245,
+      "top16_anom_ratio": 0.1875,
+      "top32_anom_ratio": 0.09375,
+      "top64_anom_ratio": 0.078125,
+      "top128_anom_ratio": 0.1015625
+    },
+    "lof_relative_density_failure": {
+      "auc": 0.5971669195884688,
+      "ap": 0.11436157883136391,
+      "normal_mean": 2.1020715557424342e-07,
+      "anomaly_mean": 0.0014328981910074995,
+      "ks": 0.18493612833926976,
+      "top16_anom_ratio": 0.0625,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.140625,
+      "top128_anom_ratio": 0.1015625
+    },
+    "mps_failure_plus_qc": {
+      "auc": 0.6690418685116758,
+      "ap": 0.1557112628175829,
+      "normal_mean": 0.3536201524511647,
+      "anomaly_mean": 0.42551073096717246,
+      "ks": 0.24329086677789358,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.09375,
+      "top64_anom_ratio": 0.125,
+      "top128_anom_ratio": 0.203125
+    },
+    "mps_failure_times_qc": {
+      "auc": 0.6919559132362969,
+      "ap": 0.17082756236290403,
+      "normal_mean": 0.11730080476069896,
+      "anomaly_mean": 0.16968070816274547,
+      "ks": 0.27608436817535464,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.09375,
+      "top64_anom_ratio": 0.125,
+      "top128_anom_ratio": 0.171875
+    },
+    "joint_disagreement_plus_qc": {
+      "auc": 0.6305820386544979,
+      "ap": 0.1359700020115491,
+      "normal_mean": 0.510507907733883,
+      "anomaly_mean": 0.5920654165072953,
+      "ks": 0.193467157674427,
+      "top16_anom_ratio": 0.0625,
+      "top32_anom_ratio": 0.03125,
+      "top64_anom_ratio": 0.109375,
+      "top128_anom_ratio": 0.1796875
+    },
+    "lof_plus_qc": {
+      "auc": 0.611222938729222,
+      "ap": 0.1247889800419592,
+      "normal_mean": 0.3929142627411809,
+      "anomaly_mean": 0.46631551696585727,
+      "ks": 0.1891605720265553,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.09375,
+      "top64_anom_ratio": 0.125,
+      "top128_anom_ratio": 0.125
+    }
+  }
+}

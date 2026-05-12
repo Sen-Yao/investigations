@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>方案 A: Offset 方向语义分析详细报告</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.7; }
+    h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+    h2 { color: #2980b9; margin-top: 30px; }
+    h3 { color: #34495e; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background-color: #3498db; color: white; }
+    tr:hover { background-color: #f5f5f5; }
+    .highlight { background-color: #e8f4f8; padding: 15px; border-left: 4px solid #3498db; margin: 15px 0; }
+    .paper-box { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin: 12px 0; border-radius: 5px; }
+    code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+    pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    .insight-box { background-color: #fff3e0; border-left: 4px solid #e67e22; padding: 15px; margin: 15px 0; }
+    .conclusion-box { background-color: #e8f5e9; border-left: 4px solid #27ae60; padding: 15px; margin: 15px 0; }
+    .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<h1>🔬 方案 A: Offset 方向语义分析详细报告</h1>
+
+<p><strong>优先级</strong>：P1（最高）</p>
+<p><strong>工作量</strong>：低（2-3 天）</p>
+<p><strong>类型</strong>：分析性研究，为后续改进提供理论基础</p>
+
+<hr>
+
+<h2>📋 核心问题</h2>
+
+<div class="highlight">
+  <strong>Offset 向量的"方向"是否携带与异常检测相关的语义信息？</strong>
+  
+  <p>具体来说：</p>
+  <ul>
+    <li>正常节点的 Offset 方向是否聚集？</li>
+    <li>异常节点的 Offset 方向是否偏离正常方向？</li>
+    <li>偏离程度是否与异常程度相关？</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📐 Offset 方向的数学定义</h2>
+
+<h3>Offset 向量</h3>
+
+<pre>
+对于节点 v，其 k-hop 的 Offset 向量定义为：
+
+Offset_k(v) = Feature(Hop_k(v)) - Feature(Hop_0(v))
+
+其中：
+- Feature(Hop_0(v)) = 节点 v 自身的特征
+- Feature(Hop_k(v)) = k-hop 邻居的聚合特征
+- Offset_k(v) ∈ R^D (D 为特征维度)
+</pre>
+
+<h3>方向向量</h3>
+
+<pre>
+方向向量 = Offset / ||Offset||_2
+
+归一化后，只保留方向信息，丢失大小信息。
+
+方向向量 ∈ S^{D-1} (D-1 维单位球面上的点)
+</pre>
+
+<h3>方向相似度</h3>
+
+<pre>
+两个方向向量的相似度 = 余弦相似度
+
+sim(direction_i, direction_j) = (direction_i · direction_j) / (||direction_i|| × ||direction_j||)
+
+范围：[-1, 1]
+- 1 表示完全相同方向
+- 0 表示正交
+- -1 表示相反方向
+</pre>
+
+<hr>
+
+<h2>🧠 理论假设</h2>
+
+<div class="paper-box">
+  <h3>假设 1: 聚集假设</h3>
+  <p><strong>内容</strong>：正常节点的 Offset 方向聚集在某个"正常方向"附近。</p>
+  <p><strong>直觉</strong>：正常节点具有相似的特征变化模式。</p>
+  <p><strong>验证指标</strong>：正常节点方向向量的方差（越小越支持假设）</p>
+</div>
+
+<div class="paper-box">
+  <h3>假设 2: 偏离假设</h3>
+  <p><strong>内容</strong>：异常节点的 Offset 方向偏离"正常方向"。</p>
+  <p><strong>直觉</strong>：异常节点的特征变化模式与正常节点不同。</p>
+  <p><strong>验证指标</strong>：异常节点方向与正常中心的夹角（越大越支持假设）</p>
+</div>
+
+<div class="paper-box">
+  <h3>假设 3: 相关假设</h3>
+  <p><strong>内容</strong>：方向偏离程度与异常程度正相关。</p>
+  <p><strong>直觉</strong>：越异常的节点，其 Offset 方向越偏离正常方向。</p>
+  <p><strong>验证指标</strong>：方向偏离度与异常分数的 Spearman 相关系数</p>
+</div>
+
+<hr>
+
+<h2>🔬 实验设计</h2>
+
+<h3>实验 1: 方向分布可视化</h3>
+
+<div class="paper-box">
+  <h4>目的</h4>
+  <p>直观观察正常/异常节点的 Offset 方向分布差异。</p>
+  
+  <h4>方法</h4>
+  <pre>
+1. 提取所有节点的 Offset 方向向量
+2. 使用 t-SNE / UMAP 降维到 2D
+3. 按标签（正常/异常）着色散点图
+4. 使用核密度估计 (KDE) 绘制分布轮廓
+  </pre>
+  
+  <h4>预期观察</h4>
+  <ul>
+    <li><strong>支持假设</strong>：正常节点聚集，异常节点分散或形成独立簇</li>
+    <li><strong>不支持假设</strong>：两类节点分布重叠，无明显差异</li>
+  </ul>
+</div>
+
+<h3>实验 2: 方向聚集度分析</h3>
+
+<div class="paper-box">
+  <h4>目的</h4>
+  <p>量化正常/异常节点的方向聚集程度。</p>
+  
+  <h4>方法</h4>
+  <pre>
+1. 计算正常节点的"方向中心"（平均方向向量）
+   center_normal = normalize(mean(directions_normal))
+
+2. 计算每个节点与中心的方向相似度
+   similarity_i = cosine_sim(direction_i, center_normal)
+
+3. 比较正常/异常节点的相似度分布
+   - 统计量：均值、方差、分位数
+   - 假设检验：Mann-Whitney U test
+  </pre>
+  
+  <h4>评估指标</h4>
+  <table>
+    <tr><th>指标</th><th>计算方式</th><th>预期结果</th></tr>
+    <tr><td>正常节点平均相似度</td><td>mean(sim_normal)</td><td>接近 1</td></tr>
+    <tr><td>异常节点平均相似度</td><td>mean(sim_anomaly)</td><td>显著低于正常</td></tr>
+    <tr><td>方向方差比</td><td>var(anomaly) / var(normal)</td><td>> 1</td></tr>
+  </table>
+</div>
+
+<h3>实验 3: 方向-异常相关性分析</h3>
+
+<div class="paper-box">
+  <h4>目的</h4>
+  <p>验证方向偏离度与异常分数的相关性。</p>
+  
+  <h4>方法</h4>
+  <pre>
+1. 计算方向偏离度
+   deviation_i = 1 - cosine_sim(direction_i, center_normal)
+
+2. 获取异常分数（从模型输出或标签）
+   anomaly_score_i = model_output(node_i) 或 label_i
+
+3. 计算相关性
+   - Spearman 相关系数
+   - Kendall's tau
+   - Pearson 相关系数
+  </pre>
+  
+  <h4>评估指标</h4>
+  <table>
+    <tr><th>相关系数</th><th>范围</th><th>预期值</th></tr>
+    <tr><td>Spearman ρ</td><td>[-1, 1]</td><td>> 0.3 (中等相关)</td></tr>
+    <tr><td>Kendall's τ</td><td>[-1, 1]</td><td>> 0.2</td></tr>
+  </table>
+</div>
+
+<h3>实验 4: Hop-wise 方向一致性分析</h3>
+
+<div class="paper-box">
+  <h4>目的</h4>
+  <p>分析不同 hop 的 Offset 方向是否一致。</p>
+  
+  <h4>方法</h4>
+  <pre>
+对于每个节点，有 K 个 Offset 向量：[Offset_1, Offset_2, ..., Offset_K]
+
+方向一致性 = 方向向量之间的平均相似度
+
+consistency = mean(cosine_sim(Offset_i, Offset_j)) for all i ≠ j
+  </pre>
+  
+  <h4>预期发现</h4>
+  <ul>
+    <li>正常节点：不同 hop 方向可能一致（特征变化稳定）</li>
+    <li>异常节点：不同 hop 方向可能不一致（特征变化不稳定）</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📊 分析脚本框架</h2>
+
+<pre>
+# offset_direction_analysis.py
+
+import numpy as np
+from sklearn.manifold import TSNE
+import matplotlib.pyplot as plt
+from scipy import stats
+
+class OffsetDirectionAnalyzer:
+    def __init__(self, offsets, labels):
+        """
+        offsets: [N, K, D] - N个节点，K个hop，D维特征
+        labels: [N] - 0=正常，1=异常
+        """
+        self.offsets = offsets
+        self.labels = labels
+        self.directions = self._normalize(offsets)
+    
+    def _normalize(self, vectors):
+        """归一化为方向向量"""
+        norms = np.linalg.norm(vectors, axis=-1, keepdims=True)
+        return vectors / (norms + 1e-8)
+    
+    def visualize_distribution(self, save_path):
+        """可视化方向分布"""
+        # 展平方向向量
+        directions_flat = self.directions.reshape(-1, self.directions.shape[-1])
+        
+        # t-SNE 降维
+        tsne = TSNE(n_components=2, random_state=42)
+        directions_2d = tsne.fit_transform(directions_flat)
+        
+        # 按标签着色
+        plt.figure(figsize=(10, 8))
+        normal_mask = self.labels == 0
+        anomaly_mask = self.labels == 1
+        
+        plt.scatter(directions_2d[normal_mask, 0], directions_2d[normal_mask, 1], 
+                   c='blue', alpha=0.5, label='Normal')
+        plt.scatter(directions_2d[anomaly_mask, 0], directions_2d[anomaly_mask, 1], 
+                   c='red', alpha=0.5, label='Anomaly')
+        
+        plt.legend()
+        plt.title('Offset Direction Distribution')
+        plt.savefig(save_path)
+        plt.close()
+        
+        return directions_2d
+    
+    def compute_direction_center(self, subset='normal'):
+        """计算方向中心"""
+        if subset == 'normal':
+            mask = self.labels == 0
+        else:
+            mask = self.labels == 1
+        
+        directions_subset = self.directions[mask]
+        center = np.mean(directions_subset, axis=(0, 1))  # 平均方向
+        return center / np.linalg.norm(center)  # 归一化
+    
+    def compute_similarity_distribution(self):
+        """计算与正常中心的相似度分布"""
+        center = self.compute_direction_center('normal')
+        
+        similarities = np.einsum('nkd,d->nk', self.directions, center)
+        
+        normal_sims = similarities[self.labels == 0].flatten()
+        anomaly_sims = similarities[self.labels == 1].flatten()
+        
+        return normal_sims, anomaly_sims
+    
+    def statistical_test(self):
+        """统计检验"""
+        normal_sims, anomaly_sims = self.compute_similarity_distribution()
+        
+        # Mann-Whitney U test
+        statistic, p_value = stats.mannwhitneyu(normal_sims, anomaly_sims, alternative='greater')
+        
+        return {
+            'normal_mean': np.mean(normal_sims),
+            'normal_std': np.std(normal_sims),
+            'anomaly_mean': np.mean(anomaly_sims),
+            'anomaly_std': np.std(anomaly_sims),
+            'mann_whitney_u': statistic,
+            'p_value': p_value
+        }
+    
+    def correlation_with_anomaly(self, anomaly_scores):
+        """与异常分数的相关性"""
+        center = self.compute_direction_center('normal')
+        deviations = 1 - np.einsum('nkd,d->nk', self.directions, center)
+        deviations = deviations.mean(axis=1)  # 平均偏离度
+        
+        # Spearman 相关
+        rho, p = stats.spearmanr(deviations, anomaly_scores)
+        
+        return {'spearman_rho': rho, 'p_value': p}
+</pre>
+
+<hr>
+
+<h2>📈 预期输出</h2>
+
+<h3>1. 可视化结果</h3>
+
+| 图表 | 内容 | 文件 |
+|------|------|------|
+| t-SNE 散点图 | 正常/异常方向分布 | `direction_tsne.png` |
+| KDE 分布图 | 方向相似度分布 | `similarity_kde.png` |
+| 箱线图 | 正常/异常相似度对比 | `similarity_boxplot.png` |
+
+<h3>2. 统计报告</h3>
+
+<pre>
+=== Offset 方向语义分析报告 ===
+
+数据集: Photo
+节点数: 652
+正常节点: 602 (92.3%)
+异常节点: 50 (7.7%)
+
+1. 方向聚集度
+   正常节点方向相似度: 0.85 ± 0.12
+   异常节点方向相似度: 0.62 ± 0.25
+   Mann-Whitney U: 12500.5, p < 0.001 ***
+   
+   结论: 正常节点方向显著更聚集
+
+2. 方向-异常相关性
+   Spearman ρ: 0.42, p < 0.001 ***
+   
+   结论: 方向偏离度与异常显著正相关
+
+3. Hop-wise 一致性
+   正常节点一致性: 0.78 ± 0.15
+   异常节点一致性: 0.55 ± 0.22
+   
+   结论: 正常节点不同 hop 方向更一致
+</pre>
+
+<hr>
+
+<h2>🎯 后续方向</h2>
+
+<div class="conclusion-box">
+  <h3>如果假设成立</h3>
+  <ul>
+    <li><strong>设计方向感知异常分数</strong>：direction_deviation = 1 - sim(offset, center_normal)</li>
+    <li><strong>改进 Transformer</strong>：在 attention 中融入方向信息</li>
+    <li><strong>对比学习目标</strong>：拉近正常方向，推远异常方向</li>
+  </ul>
+</div>
+
+<div class="insight-box">
+  <h3>如果假设不成立</h3>
+  <ul>
+    <li><strong>重新思考</strong>：Offset 的价值可能在大小而非方向</li>
+    <li><strong>转向其他分析</strong>：Offset 大小分布、Delta vs Offset 对比等</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📅 实施计划</h2>
+
+<table>
+  <tr><th>阶段</th><th>任务</th><th>时间</th><th>输出</th></tr>
+  <tr><td>第1天上午</td><td>实现分析脚本框架</td><td>2小时</td><td>代码</td></tr>
+  <tr><td>第1天下午</td><td>在 Photo 数据集上运行</td><td>2小时</td><td>可视化+统计报告</td></tr>
+  <tr><td>第2天上午</td><td>在 Elliptic, Tolokers 上运行</td><td>2小时</td><td>对比分析报告</td></tr>
+  <tr><td>第2天下午</td><td>总结发现，撰写报告</td><td>2小时</td><td>最终报告</td></tr>
+</table>
+
+<hr>
+
+<div class="footer">
+  <p><strong>报告类型</strong>：方案详细设计文档</p>
+  <p><strong>生成时间</strong>：2026-03-31</p>
+  <p><strong>作者</strong>：Nexus</p>
+</div>
+
+</body>
+</html>

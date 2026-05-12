@@ -1,0 +1,47 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "seed": 0,
+  "train_rate": 0.05,
+  "alpha": 0.1,
+  "k": 6,
+  "center_only": {
+    "auc": 0.5709932848947221,
+    "ap": 0.10809027871631775,
+    "normal_mean": 0.3019576668739319,
+    "anomaly_mean": 0.17894567549228668,
+    "difference": -0.1230119913816452,
+    "ks_stat": 0.1115621934082753,
+    "ks_pvalue": 2.535219887153068e-07,
+    "anomaly_high": false
+  },
+  "delta_ndc_only_assume_anomaly_high": {
+    "auc": 0.49853789405614907,
+    "ap": 0.09704590662213558,
+    "normal_mean": 0.9873991012573242,
+    "anomaly_mean": 0.9928096532821655,
+    "difference": 0.005410552024841309,
+    "ks_stat": 0.1716360457363084,
+    "ks_pvalue": 8.874479808975851e-17,
+    "anomaly_high": true
+  },
+  "delta_ndc_only_assume_anomaly_low": {
+    "auc": 0.5014621059438509,
+    "ap": 0.09299269825584758,
+    "normal_mean": 0.9873991012573242,
+    "anomaly_mean": 0.9928096532821655,
+    "difference": 0.005410552024841309,
+    "ks_stat": 0.1716360457363084,
+    "ks_pvalue": 8.874479808975851e-17,
+    "anomaly_high": false
+  },
+  "center_plus_delta_ndc": {
+    "auc": 0.5713552752950091,
+    "ap": 0.10808619283526401,
+    "normal_mean": -0.3427206873893738,
+    "anomaly_mean": -0.4069320559501648,
+    "difference": -0.06421136856079102,
+    "ks_stat": 0.11398370487902292,
+    "ks_pvalue": 1.2627617660361645e-07,
+    "anomaly_high": false
+  }
+}

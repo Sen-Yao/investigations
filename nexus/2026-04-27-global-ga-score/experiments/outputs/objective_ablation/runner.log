@@ -1,0 +1,33 @@
+[2026-04-29 14:29:42] START photo self_residual device=4
+Traceback (most recent call last):
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_refguided.py", line 26, in <module>
+    from utils.data import load_graph_data
+ModuleNotFoundError: No module named 'utils.data'; 'utils' is not a package
+[2026-04-29 14:29:45] END photo self_residual rc=1 elapsed=2.9s
+[2026-04-29 14:29:45] START photo ref_guided device=4
+Traceback (most recent call last):
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_refguided.py", line 26, in <module>
+    from utils.data import load_graph_data
+ModuleNotFoundError: No module named 'utils.data'; 'utils' is not a package
+[2026-04-29 14:29:48] END photo ref_guided rc=1 elapsed=2.8s
+[2026-04-29 14:29:48] START elliptic self_residual device=2
+Traceback (most recent call last):
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_refguided.py", line 26, in <module>
+    from utils.data import load_graph_data
+ModuleNotFoundError: No module named 'utils.data'; 'utils' is not a package
+[2026-04-29 14:29:51] END elliptic self_residual rc=1 elapsed=2.9s
+[2026-04-29 14:29:51] START elliptic ref_guided device=2
+Traceback (most recent call last):
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_refguided.py", line 26, in <module>
+    from utils.data import load_graph_data
+ModuleNotFoundError: No module named 'utils.data'; 'utils' is not a package
+[2026-04-29 14:29:54] END elliptic ref_guided rc=1 elapsed=2.8s
+ALL_DONE
+
+=== Objective Ablation Summary ===
+Traceback (most recent call last):
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_objective_ablation.py", line 102, in <module>
+    main()
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_objective_ablation.py", line 98, in main
+    b = r.get("result", {}).get("best", {})
+AttributeError: 'NoneType' object has no attribute 'get'

@@ -1,0 +1,56 @@
+{
+  "dataset": "Photo",
+  "timestamp": "2026-04-01T16:29:00.579207",
+  "math_verification": {
+    "offset_from_delta_diff": 1.7881393432617188e-07,
+    "delta_from_offset_diff": 5.960464477539063e-08,
+    "mathematically_equivalent": true
+  },
+  "ks_comparison": [
+    {
+      "hop": 1,
+      "delta_ks": 0.11056307894890141,
+      "offset_ks": 0.11056307894890141,
+      "diff": 0.0
+    },
+    {
+      "hop": 2,
+      "delta_ks": 0.20677499347264777,
+      "offset_ks": 0.08701117675483097,
+      "diff": 0.1197638167178168
+    },
+    {
+      "hop": 3,
+      "delta_ks": 0.26940635250719475,
+      "offset_ks": 0.11644000095552894,
+      "diff": 0.15296635155166582
+    },
+    {
+      "hop": 4,
+      "delta_ks": 0.30474122558319744,
+      "offset_ks": 0.1021961239890986,
+      "diff": 0.20254510159409883
+    },
+    {
+      "hop": 5,
+      "delta_ks": 0.30611039795684447,
+      "offset_ks": 0.11623737014969535,
+      "diff": 0.18987302780714913
+    },
+    {
+      "hop": 6,
+      "delta_ks": 0.273633520290112,
+      "offset_ks": 0.11208207658229095,
+      "diff": 0.16155144370782104
+    }
+  ],
+  "variance_comparison": {
+    "delta_variance": 0.03415524214506149,
+    "offset_variance": 0.17692753672599792,
+    "ratio": 5.180099010467529
+  },
+  "label_correlation": {
+    "delta_corr_mean": 0.0729800383325477,
+    "offset_corr_mean": 0.04725748929071072
+  }
+}

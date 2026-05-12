@@ -1,0 +1,30 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/elliptic.mat",
+  "seed": 0,
+  "train_rate": 0.05,
+  "alpha": 0.05,
+  "center_only": {
+    "auc_neg_score": 0.7999072084080775,
+    "ap_neg_score": 0.341845901625056,
+    "normal_mean": -0.3633359204280511,
+    "anomaly_mean": -0.5969250078459434,
+    "ks_stat": 0.5467771861076728,
+    "ks_pvalue": 0.0
+  },
+  "residual_only": {
+    "auc_neg_score": 0.5067095766907899,
+    "ap_neg_score": 0.09242461737996759,
+    "normal_mean": 0.05758996260734437,
+    "anomaly_mean": 0.047437532404312546,
+    "ks_stat": 0.08541146363380953,
+    "ks_pvalue": 1.7764291752656303e-26
+  },
+  "hybrid": {
+    "auc_neg_score": 0.22318702752495198,
+    "ap_neg_score": 0.05879400816662069,
+    "normal_mean": 0.15287297891035337,
+    "anomaly_mean": 0.27474373772081545,
+    "ks_stat": 0.4806478948663566,
+    "ks_pvalue": 0.0
+  }
+}

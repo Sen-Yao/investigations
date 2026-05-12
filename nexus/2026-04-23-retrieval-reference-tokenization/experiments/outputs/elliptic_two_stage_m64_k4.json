@@ -1,0 +1,26 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/elliptic.mat",
+  "k": 6,
+  "topm": 64,
+  "topk": 4,
+  "self_weight": 0.25,
+  "single_stage": {
+    "topk_anomaly_ratio": 0.0,
+    "indices": [
+      33108,
+      33064,
+      32972,
+      33282
+    ]
+  },
+  "two_stage": {
+    "topk_anomaly_ratio": 0.0,
+    "indices": [
+      14351,
+      27560,
+      8879,
+      38269
+    ]
+  },
+  "delta": 0.0
+}

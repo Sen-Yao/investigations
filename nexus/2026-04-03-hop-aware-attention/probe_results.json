@@ -1,0 +1,9 @@
+{
+  "dataset": "Photo",
+  "train_rate": 0.05,
+  "n_seeds": 5,
+  "test_auc_mean": 0.5973897819916509,
+  "test_auc_std": 0.009224273655619009,
+  "test_ap_mean": 0.02787164361584083,
+  "test_ap_std": 0.0009175169561408398
+}

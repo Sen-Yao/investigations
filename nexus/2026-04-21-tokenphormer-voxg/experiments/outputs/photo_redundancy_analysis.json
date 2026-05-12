@@ -1,0 +1,62 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "k": 6,
+  "shapes": {
+    "hop_flat": [
+      7535,
+      5215
+    ],
+    "delta_flat": [
+      7535,
+      4470
+    ],
+    "prototype_only": [
+      7535,
+      4
+    ],
+    "consistency_only": [
+      7535,
+      4
+    ]
+  },
+  "delta_probe": {
+    "auc": 0.9602239633398731,
+    "ap": 0.822529327505127
+  },
+  "linear_recovery": {
+    "hop_to_delta": {
+      "r2": 0.6595572720740688,
+      "mse": 0.43188152560675386
+    },
+    "delta_to_hop": {
+      "r2": -25.222245287914276,
+      "mse": 26.8499104367596
+    },
+    "delta_to_proto_seq": {
+      "r2": -14.213660521120069,
+      "mse": 19.297728516172345
+    },
+    "delta_to_prototype_only": {
+      "r2": -65.75342685890702,
+      "mse": 71.8425690623887
+    },
+    "delta_to_consistency_only": {
+      "r2": -67.99173156707342,
+      "mse": 75.67627278833258
+    }
+  },
+  "residual_analysis": {
+    "prototype_feature_residual_corr": [
+      0.017366628444465786,
+      0.00772128048641268,
+      0.02861620023450166,
+      0.0516429278329913
+    ],
+    "consistency_feature_residual_corr": [
+      -0.00941114798847371,
+      0.010399408298423571,
+      0.02861620023450166,
+      0.00772128048641268
+    ]
+  }
+}

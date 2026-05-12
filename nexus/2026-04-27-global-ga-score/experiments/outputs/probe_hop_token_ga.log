@@ -1,0 +1,15 @@
+DATASET_START photo
+Training Counter({0: 341, 1: 35})
+Test Counter({0: 5802, 1: 604})
+Training rate 1
+DATASET_DONE photo {"hop_pca_rec": {"auc": 0.5744749934307386, "ap": 0.11960743599775676, "top16_density": 0.0, "top32_density": 0.03125, "top64_density": 0.0625, "top128_density": 0.0703125, "top256_density": 0.1484375, "top512_density": 0.1640625}, "hop_diag_mahal": {"auc": 0.441426810046297, "ap": 0.0779578471440268, "top16_density": 0.1875, "top32_density": 0.15625, "top64_density": 0.09375, "top128_density": 0.0625, "top256_density": 0.03515625, "top512_density": 0.03125}, "ego_struct_dev": {"auc": 0.4867831070867138, "ap": 0.08660631505837077, "top16_density": 0.125, "top32_density": 0.0625, "top64_density": 0.0625, "top128_density": 0.0703125, "top256_density": 0.05078125, "top512_density": 0.048828125}, "min_hop_pca_ego": {"auc": 0.5372221474842138, "ap": 0.10183227033414825, "top16_density": 0.0, "top32_density": 0.0625, "top64_density": 0.03125, "top128_density": 0.0234375, "top256_density": 0.07421875, "top512_density": 0.125}, "prod_hop_pca_ego": {"auc": 0.5424487440452317, "ap": 0.10315875659380107, "top16_density": 0.0, "top32_density": 0.0625, "top64_density": 0.03125, "top128_density": 0.0234375, "top256_density": 0.08203125, "top512_density": 0.115234375}}
+DATASET_START elliptic
+/root/gpufree-data/linziyao/VoxG/utils.py:59: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/root/gpufree-data/linziyao/VoxG/utils.py:59: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+Training Counter({0: 2095, 1: 233})
+Test Counter({0: 35722, 1: 3858})
+Training rate 1
+DATASET_DONE elliptic {"hop_pca_rec": {"auc": 0.24385462797213822, "ap": 0.06049191585545914, "top16_density": 0.0, "top32_density": 0.0, "top64_density": 0.015625, "top128_density": 0.03125, "top256_density": 0.0390625, "top512_density": 0.0390625}, "hop_diag_mahal": {"auc": 0.25183380162429014, "ap": 0.0611430720779428, "top16_density": 0.0, "top32_density": 0.0, "top64_density": 0.0, "top128_density": 0.0078125, "top256_density": 0.03515625, "top512_density": 0.025390625}, "ego_struct_dev": {"auc": 0.6089172793144995, "ap": 0.16055663972417006, "top16_density": 0.0, "top32_density": 0.0, "top64_density": 0.015625, "top128_density": 0.03125, "top256_density": 0.0234375, "top512_density": 0.025390625}, "min_hop_pca_ego": {"auc": 0.29369770671348294, "ap": 0.06381221945859716, "top16_density": 0.0, "top32_density": 0.0, "top64_density": 0.03125, "top128_density": 0.046875, "top256_density": 0.03515625, "top512_density": 0.025390625}, "prod_hop_pca_ego": {"auc": 0.3168482061562019, "ap": 0.06568874252787774, "top16_density": 0.0, "top32_density": 0.0, "top64_density": 0.03125, "top128_density": 0.046875, "top256_density": 0.03515625, "top512_density": 0.02734375}}
+ALL_DONE /root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/hop_token_ga/summary.json

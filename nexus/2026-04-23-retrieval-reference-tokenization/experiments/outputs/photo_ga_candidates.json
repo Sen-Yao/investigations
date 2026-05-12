@@ -1,0 +1,118 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "n": 7535,
+  "anom_rate": 0.09263437292634373,
+  "train_normal": 376,
+  "scores": {
+    "ndc_zsig": {
+      "auc": 0.5869021081566547,
+      "ap": 0.11281908666416168,
+      "normal_mean": 0.46731787912233896,
+      "anomaly_mean": 0.5217723445506327,
+      "ks": 0.16284538913287008,
+      "top16_anom_ratio": 0.0625,
+      "top32_anom_ratio": 0.03125,
+      "top64_anom_ratio": 0.140625,
+      "top128_anom_ratio": 0.1171875
+    },
+    "local_concentration_c": {
+      "auc": 0.6118406798001603,
+      "ap": 0.11875006874393614,
+      "normal_mean": 0.49708069186701276,
+      "anomaly_mean": 0.5428640008270135,
+      "ks": 0.2081355744677641,
+      "top16_anom_ratio": 0.0,
+      "top32_anom_ratio": 0.0,
+      "top64_anom_ratio": 0.015625,
+      "top128_anom_ratio": 0.0703125
+    },
+    "anom_affinity_qc": {
+      "auc": 0.6097976080763987,
+      "ap": 0.1232366531809419,
+      "normal_mean": 0.3929141190168637,
+      "anomaly_mean": 0.46488269081447037,
+      "ks": 0.18772790727010832,
+      "top16_anom_ratio": 0.0625,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.109375,
+      "top128_anom_ratio": 0.1171875
+    },
+    "one_minus_Gn": {
+      "auc": 0.5961063034315642,
+      "ap": 0.11330888008789568,
+      "normal_mean": 0.21173695291091094,
+      "anomaly_mean": 0.24375010957124119,
+      "ks": 0.20523168852439092,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.046875,
+      "top128_anom_ratio": 0.0703125
+    },
+    "center_distance": {
+      "auc": 0.5961061986586553,
+      "ap": 0.11330893571831968,
+      "normal_mean": 0.3560340701780255,
+      "anomaly_mean": 0.39913278713182604,
+      "ks": 0.20523168852439092,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.046875,
+      "top128_anom_ratio": 0.0703125
+    },
+    "normal_explain_residual_topk": {
+      "auc": 0.6104279218964065,
+      "ap": 0.11779393039667369,
+      "normal_mean": 0.2245982227181342,
+      "anomaly_mean": 0.2657361394004379,
+      "ks": 0.20628696126294102,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.03125,
+      "top128_anom_ratio": 0.0859375
+    },
+    "ring_distance_score": {
+      "auc": 0.5961346968898791,
+      "ap": 0.11279989694470322,
+      "normal_mean": 0.11362854310788287,
+      "anomaly_mean": 0.13511351811597996,
+      "ks": 0.20523168852439092,
+      "top16_anom_ratio": 0.0625,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.09375,
+      "top128_anom_ratio": 0.1015625
+    },
+    "residual_plus_affinity": {
+      "auc": 0.6690420780574936,
+      "ap": 0.15571155679065782,
+      "normal_mean": 0.35362013455210883,
+      "anomaly_mean": 0.42551071934434664,
+      "ks": 0.24329086677789358,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.09375,
+      "top64_anom_ratio": 0.125,
+      "top128_anom_ratio": 0.203125
+    },
+    "centerdist_plus_affinity": {
+      "auc": 0.6789552716070028,
+      "ap": 0.16516712648642193,
+      "normal_mean": 0.4228800248817343,
+      "anomaly_mean": 0.49538755027624864,
+      "ks": 0.2599162319638676,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.09375,
+      "top64_anom_ratio": 0.15625,
+      "top128_anom_ratio": 0.265625
+    },
+    "residual_times_affinity": {
+      "auc": 0.6919561227821148,
+      "ap": 0.1708276176716047,
+      "normal_mean": 0.11730085017245796,
+      "anomaly_mean": 0.16968075752137574,
+      "ks": 0.27608436817535464,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.09375,
+      "top64_anom_ratio": 0.125,
+      "top128_anom_ratio": 0.171875
+    }
+  }
+}

@@ -1,0 +1,9 @@
+[2026-04-29 13:11:04] START elliptic full device=2
+[2026-04-29 13:17:17] END elliptic full rc=0 elapsed=372.2s
+[2026-04-29 13:17:17] START elliptic no_ra device=2
+[2026-04-29 13:23:25] END elliptic no_ra rc=0 elapsed=368.2s
+[2026-04-29 13:23:25] START elliptic shuffled_ra device=2
+[2026-04-29 13:29:32] END elliptic shuffled_ra rc=0 elapsed=367.5s
+[2026-04-29 13:29:32] START elliptic fixed_labeled_normal device=2
+[2026-04-29 13:37:52] END elliptic fixed_labeled_normal rc=0 elapsed=500.1s
+DATASET_DONE elliptic /root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/tokenization_theory_mini_gt_best_ablation/elliptic_summary.json

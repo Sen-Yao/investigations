@@ -1,0 +1,905 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "n": 7535,
+  "anom_rate": 0.09263437292634373,
+  "train_rate": 0.05,
+  "ref_k": 16,
+  "seeds": [
+    {
+      "seed": 0,
+      "train_normal": 376,
+      "scores": {
+        "baseline_support_qc": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.109375,
+            "top128": 0.1171875,
+            "top256": 0.09765625
+          },
+          "reference": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          }
+        },
+        "normal_cal_support": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.109375,
+            "top128": 0.1171875,
+            "top256": 0.1015625
+          },
+          "reference": {
+            "avg_ref_purity": 0.02159090909090909,
+            "normal_node_ref_purity": 0.022469650431475793,
+            "anomaly_node_ref_purity": 0.01298352435530086
+          }
+        },
+        "normal_cal_max_dev": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.0625,
+            "top64": 0.046875,
+            "top128": 0.0859375,
+            "top256": 0.0859375
+          },
+          "reference": {
+            "avg_ref_purity": 0.08139515593895157,
+            "normal_node_ref_purity": 0.08005155770074594,
+            "anomaly_node_ref_purity": 0.09455587392550144
+          }
+        },
+        "normal_cal_max_support_density": {
+          "global_topk": {
+            "top16": 0.1875,
+            "top32": 0.125,
+            "top64": 0.0625,
+            "top128": 0.078125,
+            "top256": 0.09765625
+          },
+          "reference": {
+            "avg_ref_purity": 0.07505806237558062,
+            "normal_node_ref_purity": 0.07403649261371947,
+            "anomaly_node_ref_purity": 0.08506446991404011
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.1875,
+            "top64": 0.25,
+            "top128": 0.21875,
+            "top256": 0.16796875
+          },
+          "reference": {
+            "avg_ref_purity": 0.23974784339747843,
+            "normal_node_ref_purity": 0.23849093169518795,
+            "anomaly_node_ref_purity": 0.25205945558739257
+          }
+        },
+        "normal_cal_attr_dev": {
+          "global_topk": {
+            "top16": 0.25,
+            "top32": 0.25,
+            "top64": 0.21875,
+            "top128": 0.2265625,
+            "top256": 0.16015625
+          },
+          "reference": {
+            "avg_ref_purity": 0.25591406768414066,
+            "normal_node_ref_purity": 0.2552014772561065,
+            "anomaly_node_ref_purity": 0.2628939828080229
+          }
+        },
+        "normal_cal_hmean_support_density": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.09375,
+            "top64": 0.203125,
+            "top128": 0.3046875,
+            "top256": 0.32421875
+          },
+          "reference": {
+            "avg_ref_purity": 0.0649552090245521,
+            "normal_node_ref_purity": 0.06498647067427234,
+            "anomaly_node_ref_purity": 0.06464899713467048
+          }
+        },
+        "normal_cal_min_support_center": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.0625,
+            "top64": 0.09375,
+            "top128": 0.1796875,
+            "top256": 0.25
+          },
+          "reference": {
+            "avg_ref_purity": 0.10602189781021898,
+            "normal_node_ref_purity": 0.10540990200380283,
+            "anomaly_node_ref_purity": 0.11201647564469915
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "train_normal": 376,
+      "scores": {
+        "baseline_support_qc": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.109375,
+            "top128": 0.1171875,
+            "top256": 0.09765625
+          },
+          "reference": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          }
+        },
+        "normal_cal_support": {
+          "global_topk": {
+            "top16": 0.0,
+            "top32": 0.0625,
+            "top64": 0.0625,
+            "top128": 0.125,
+            "top256": 0.09765625
+          },
+          "reference": {
+            "avg_ref_purity": 0.029454213669542137,
+            "normal_node_ref_purity": 0.029819365218663157,
+            "anomaly_node_ref_purity": 0.025877507163323783
+          }
+        },
+        "normal_cal_max_dev": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.0625,
+            "top64": 0.0625,
+            "top128": 0.0546875,
+            "top256": 0.0859375
+          },
+          "reference": {
+            "avg_ref_purity": 0.09046947577969476,
+            "normal_node_ref_purity": 0.08925698405733509,
+            "anomaly_node_ref_purity": 0.10234598853868195
+          }
+        },
+        "normal_cal_max_support_density": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.046875,
+            "top128": 0.1015625,
+            "top256": 0.08203125
+          },
+          "reference": {
+            "avg_ref_purity": 0.06557730590577306,
+            "normal_node_ref_purity": 0.0643191458241919,
+            "anomaly_node_ref_purity": 0.07790114613180515
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.15625,
+            "top64": 0.171875,
+            "top128": 0.203125,
+            "top256": 0.18359375
+          },
+          "reference": {
+            "avg_ref_purity": 0.21089084273390843,
+            "normal_node_ref_purity": 0.20991480181366096,
+            "anomaly_node_ref_purity": 0.2204512893982808
+          }
+        },
+        "normal_cal_attr_dev": {
+          "global_topk": {
+            "top16": 0.1875,
+            "top32": 0.21875,
+            "top64": 0.234375,
+            "top128": 0.2265625,
+            "top256": 0.171875
+          },
+          "reference": {
+            "avg_ref_purity": 0.2413735899137359,
+            "normal_node_ref_purity": 0.2411053824776949,
+            "anomaly_node_ref_purity": 0.24400071633237821
+          }
+        },
+        "normal_cal_hmean_support_density": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.09375,
+            "top64": 0.15625,
+            "top128": 0.28125,
+            "top256": 0.3125
+          },
+          "reference": {
+            "avg_ref_purity": 0.10350033178500331,
+            "normal_node_ref_purity": 0.10264918824045634,
+            "anomaly_node_ref_purity": 0.11183739255014327
+          }
+        },
+        "normal_cal_min_support_center": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.09375,
+            "top64": 0.09375,
+            "top128": 0.171875,
+            "top256": 0.23046875
+          },
+          "reference": {
+            "avg_ref_purity": 0.12315029860650299,
+            "normal_node_ref_purity": 0.1230802983764809,
+            "anomaly_node_ref_purity": 0.12383595988538681
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "train_normal": 376,
+      "scores": {
+        "baseline_support_qc": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.109375,
+            "top128": 0.1171875,
+            "top256": 0.09765625
+          },
+          "reference": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          }
+        },
+        "normal_cal_support": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.140625,
+            "top128": 0.109375,
+            "top256": 0.09375
+          },
+          "reference": {
+            "avg_ref_purity": 0.02086098208360982,
+            "normal_node_ref_purity": 0.021253839403247037,
+            "anomaly_node_ref_purity": 0.017012893982808024
+          }
+        },
+        "normal_cal_max_dev": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.0625,
+            "top64": 0.046875,
+            "top128": 0.09375,
+            "top256": 0.0859375
+          },
+          "reference": {
+            "avg_ref_purity": 0.07457697412076975,
+            "normal_node_ref_purity": 0.07305835892935499,
+            "anomaly_node_ref_purity": 0.08945200573065902
+          }
+        },
+        "normal_cal_max_support_density": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.09375,
+            "top64": 0.0625,
+            "top128": 0.0703125,
+            "top256": 0.1015625
+          },
+          "reference": {
+            "avg_ref_purity": 0.0681320504313205,
+            "normal_node_ref_purity": 0.06693359660669884,
+            "anomaly_node_ref_purity": 0.07987106017191978
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "global_topk": {
+            "top16": 0.25,
+            "top32": 0.21875,
+            "top64": 0.25,
+            "top128": 0.2265625,
+            "top256": 0.17578125
+          },
+          "reference": {
+            "avg_ref_purity": 0.24164731254147312,
+            "normal_node_ref_purity": 0.24019123884744772,
+            "anomaly_node_ref_purity": 0.25590974212034384
+          }
+        },
+        "normal_cal_attr_dev": {
+          "global_topk": {
+            "top16": 0.1875,
+            "top32": 0.1875,
+            "top64": 0.25,
+            "top128": 0.234375,
+            "top256": 0.17578125
+          },
+          "reference": {
+            "avg_ref_purity": 0.25135202388852024,
+            "normal_node_ref_purity": 0.2502011115986544,
+            "anomaly_node_ref_purity": 0.2626253581661891
+          }
+        },
+        "normal_cal_hmean_support_density": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.09375,
+            "top64": 0.140625,
+            "top128": 0.2734375,
+            "top256": 0.32421875
+          },
+          "reference": {
+            "avg_ref_purity": 0.09780192435301924,
+            "normal_node_ref_purity": 0.09706377065964604,
+            "anomaly_node_ref_purity": 0.10503223495702006
+          }
+        },
+        "normal_cal_min_support_center": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.09375,
+            "top64": 0.09375,
+            "top128": 0.1796875,
+            "top256": 0.234375
+          },
+          "reference": {
+            "avg_ref_purity": 0.11989880557398806,
+            "normal_node_ref_purity": 0.11965225976305396,
+            "anomaly_node_ref_purity": 0.1223137535816619
+          }
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "train_normal": 376,
+      "scores": {
+        "baseline_support_qc": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.109375,
+            "top128": 0.1171875,
+            "top256": 0.09765625
+          },
+          "reference": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          }
+        },
+        "normal_cal_support": {
+          "global_topk": {
+            "top16": 0.0,
+            "top32": 0.09375,
+            "top64": 0.140625,
+            "top128": 0.109375,
+            "top256": 0.09765625
+          },
+          "reference": {
+            "avg_ref_purity": 0.026410086264100862,
+            "normal_node_ref_purity": 0.027296328799180928,
+            "anomaly_node_ref_purity": 0.017729226361031518
+          }
+        },
+        "normal_cal_max_dev": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.0625,
+            "top64": 0.03125,
+            "top128": 0.0625,
+            "top256": 0.0859375
+          },
+          "reference": {
+            "avg_ref_purity": 0.0822826808228268,
+            "normal_node_ref_purity": 0.08092913558578324,
+            "anomaly_node_ref_purity": 0.09554083094555874
+          }
+        },
+        "normal_cal_max_support_density": {
+          "global_topk": {
+            "top16": 0.1875,
+            "top32": 0.125,
+            "top64": 0.15625,
+            "top128": 0.1015625,
+            "top256": 0.0859375
+          },
+          "reference": {
+            "avg_ref_purity": 0.0806320504313205,
+            "normal_node_ref_purity": 0.07975903173906684,
+            "anomaly_node_ref_purity": 0.08918338108882522
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "global_topk": {
+            "top16": 0.25,
+            "top32": 0.21875,
+            "top64": 0.21875,
+            "top128": 0.1796875,
+            "top256": 0.17578125
+          },
+          "reference": {
+            "avg_ref_purity": 0.23995520902455209,
+            "normal_node_ref_purity": 0.23913083223636097,
+            "anomaly_node_ref_purity": 0.24803008595988538
+          }
+        },
+        "normal_cal_attr_dev": {
+          "global_topk": {
+            "top16": 0.1875,
+            "top32": 0.1875,
+            "top64": 0.265625,
+            "top128": 0.21875,
+            "top256": 0.17578125
+          },
+          "reference": {
+            "avg_ref_purity": 0.25131884538818844,
+            "normal_node_ref_purity": 0.25074959777680267,
+            "anomaly_node_ref_purity": 0.25689469914040114
+          }
+        },
+        "normal_cal_hmean_support_density": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.09375,
+            "top64": 0.1875,
+            "top128": 0.2734375,
+            "top256": 0.30859375
+          },
+          "reference": {
+            "avg_ref_purity": 0.08745852687458527,
+            "normal_node_ref_purity": 0.08711788796255668,
+            "anomaly_node_ref_purity": 0.09079512893982808
+          }
+        },
+        "normal_cal_min_support_center": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.0625,
+            "top64": 0.109375,
+            "top128": 0.15625,
+            "top256": 0.21875
+          },
+          "reference": {
+            "avg_ref_purity": 0.12104346383543464,
+            "normal_node_ref_purity": 0.12082236360977036,
+            "anomaly_node_ref_purity": 0.12320916905444126
+          }
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "train_normal": 376,
+      "scores": {
+        "baseline_support_qc": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.109375,
+            "top128": 0.1171875,
+            "top256": 0.09765625
+          },
+          "reference": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          }
+        },
+        "normal_cal_support": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.09375,
+            "top128": 0.125,
+            "top256": 0.09765625
+          },
+          "reference": {
+            "avg_ref_purity": 0.016746848042468482,
+            "normal_node_ref_purity": 0.017524133391838524,
+            "anomaly_node_ref_purity": 0.009133237822349571
+          }
+        },
+        "normal_cal_max_dev": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.09375,
+            "top64": 0.0625,
+            "top128": 0.078125,
+            "top256": 0.08203125
+          },
+          "reference": {
+            "avg_ref_purity": 0.08073158593231586,
+            "normal_node_ref_purity": 0.07919226268831359,
+            "anomaly_node_ref_purity": 0.09580945558739255
+          }
+        },
+        "normal_cal_max_support_density": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.125,
+            "top64": 0.0625,
+            "top128": 0.046875,
+            "top256": 0.1015625
+          },
+          "reference": {
+            "avg_ref_purity": 0.08495355009953551,
+            "normal_node_ref_purity": 0.08393666812929647,
+            "anomaly_node_ref_purity": 0.09491404011461319
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "global_topk": {
+            "top16": 0.375,
+            "top32": 0.375,
+            "top64": 0.25,
+            "top128": 0.2109375,
+            "top256": 0.17578125
+          },
+          "reference": {
+            "avg_ref_purity": 0.24907100199071003,
+            "normal_node_ref_purity": 0.2476689337428697,
+            "anomaly_node_ref_purity": 0.262804441260745
+          }
+        },
+        "normal_cal_attr_dev": {
+          "global_topk": {
+            "top16": 0.375,
+            "top32": 0.25,
+            "top64": 0.25,
+            "top128": 0.2265625,
+            "top256": 0.171875
+          },
+          "reference": {
+            "avg_ref_purity": 0.25437956204379564,
+            "normal_node_ref_purity": 0.2531172297791429,
+            "anomaly_node_ref_purity": 0.2667442693409742
+          }
+        },
+        "normal_cal_hmean_support_density": {
+          "global_topk": {
+            "top16": 0.0625,
+            "top32": 0.0625,
+            "top64": 0.21875,
+            "top128": 0.328125,
+            "top256": 0.33984375
+          },
+          "reference": {
+            "avg_ref_purity": 0.08697743861977439,
+            "normal_node_ref_purity": 0.08663339183852567,
+            "anomaly_node_ref_purity": 0.0903474212034384
+          }
+        },
+        "normal_cal_min_support_center": {
+          "global_topk": {
+            "top16": 0.125,
+            "top32": 0.09375,
+            "top64": 0.09375,
+            "top128": 0.1875,
+            "top256": 0.25390625
+          },
+          "reference": {
+            "avg_ref_purity": 0.1149386197743862,
+            "normal_node_ref_purity": 0.11448734825215738,
+            "anomaly_node_ref_purity": 0.11935888252148998
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "baseline_support_qc": {
+      "global_topk": {
+        "top16": {
+          "mean": 0.0625,
+          "std": 0.0
+        },
+        "top32": {
+          "mean": 0.0625,
+          "std": 0.0
+        },
+        "top64": {
+          "mean": 0.109375,
+          "std": 0.0
+        },
+        "top128": {
+          "mean": 0.1171875,
+          "std": 0.0
+        },
+        "top256": {
+          "mean": 0.09765625,
+          "std": 0.0
+        }
+      },
+      "reference": {
+        "avg_ref_purity": {
+          "mean": 0.05442932979429329,
+          "std": 6.938893903907228e-18
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.05413558578323826,
+          "std": 0.0
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.05730659025787967,
+          "std": 6.938893903907228e-18
+        }
+      }
+    },
+    "normal_cal_support": {
+      "global_topk": {
+        "top16": {
+          "mean": 0.0375,
+          "std": 0.03061862178478973
+        },
+        "top32": {
+          "mean": 0.06875,
+          "std": 0.012499999999999999
+        },
+        "top64": {
+          "mean": 0.109375,
+          "std": 0.029646353064078555
+        },
+        "top128": {
+          "mean": 0.1171875,
+          "std": 0.006987712429686843
+        },
+        "top256": {
+          "mean": 0.09765625,
+          "std": 0.0024705294220065464
+        }
+      },
+      "reference": {
+        "avg_ref_purity": {
+          "mean": 0.023012607830126076,
+          "std": 0.00444854160089602
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.02367266344888109,
+          "std": 0.004382128824298655
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.01654727793696275,
+          "std": 0.005591695775123145
+        }
+      }
+    },
+    "normal_cal_max_dev": {
+      "global_topk": {
+        "top16": {
+          "mean": 0.125,
+          "std": 0.0
+        },
+        "top32": {
+          "mean": 0.06875,
+          "std": 0.012499999999999999
+        },
+        "top64": {
+          "mean": 0.05,
+          "std": 0.011692679333668566
+        },
+        "top128": {
+          "mean": 0.075,
+          "std": 0.014490028899212037
+        },
+        "top256": {
+          "mean": 0.08515625,
+          "std": 0.0015625
+        }
+      },
+      "reference": {
+        "avg_ref_purity": {
+          "mean": 0.08189117451891174,
+          "std": 0.005075997188588001
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.08049765979230657,
+          "std": 0.005179926620039979
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.09554083094555875,
+          "std": 0.004109166871627423
+        }
+      }
+    },
+    "normal_cal_max_support_density": {
+      "global_topk": {
+        "top16": {
+          "mean": 0.125,
+          "std": 0.05590169943749474
+        },
+        "top32": {
+          "mean": 0.10625,
+          "std": 0.025
+        },
+        "top64": {
+          "mean": 0.078125,
+          "std": 0.03952847075210474
+        },
+        "top128": {
+          "mean": 0.0796875,
+          "std": 0.020610790559801435
+        },
+        "top256": {
+          "mean": 0.09375,
+          "std": 0.00819381912632931
+        }
+      },
+      "reference": {
+        "avg_ref_purity": {
+          "mean": 0.07487060384870603,
+          "std": 0.007302995294203805
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.07379698698259471,
+          "std": 0.007420944345002874
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.08538681948424068,
+          "std": 0.006192650943391328
+        }
+      }
+    },
+    "normal_cal_max_support_attr": {
+      "global_topk": {
+        "top16": {
+          "mean": 0.225,
+          "std": 0.09354143466934854
+        },
+        "top32": {
+          "mean": 0.23125,
+          "std": 0.07551903733496608
+        },
+        "top64": {
+          "mean": 0.228125,
+          "std": 0.030618621784789725
+        },
+        "top128": {
+          "mean": 0.2078125,
+          "std": 0.016086922095292187
+        },
+        "top256": {
+          "mean": 0.17578125,
+          "std": 0.004941058844013093
+        }
+      },
+      "reference": {
+        "avg_ref_purity": {
+          "mean": 0.2362624419376244,
+          "std": 0.013134372008606615
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.2350793476671055,
+          "std": 0.01300720500187824
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.2478510028653295,
+          "std": 0.014539848977006336
+        }
+      }
+    },
+    "normal_cal_attr_dev": {
+      "global_topk": {
+        "top16": {
+          "mean": 0.2375,
+          "std": 0.07288689868556625
+        },
+        "top32": {
+          "mean": 0.21875,
+          "std": 0.02795084971874737
+        },
+        "top64": {
+          "mean": 0.24375,
+          "std": 0.01593443597997745
+        },
+        "top128": {
+          "mean": 0.2265625,
+          "std": 0.004941058844013093
+        },
+        "top256": {
+          "mean": 0.17109375,
+          "std": 0.005740991584648073
+        }
+      },
+      "reference": {
+        "avg_ref_purity": {
+          "mean": 0.25086761778367617,
+          "std": 0.005067054961311766
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.25007495977768024,
+          "std": 0.004826198418436956
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.2586318051575931,
+          "std": 0.007962574917816765
+        }
+      }
+    },
+    "normal_cal_hmean_support_density": {
+      "global_topk": {
+        "top16": {
+          "mean": 0.075,
+          "std": 0.025
+        },
+        "top32": {
+          "mean": 0.0875,
+          "std": 0.012499999999999999
+        },
+        "top64": {
+          "mean": 0.18125,
+          "std": 0.028980057798424073
+        },
+        "top128": {
+          "mean": 0.2921875,
+          "std": 0.0213096589015404
+        },
+        "top256": {
+          "mean": 0.321875,
+          "std": 0.010937500000000001
+        }
+      },
+      "reference": {
+        "avg_ref_purity": {
+          "mean": 0.08813868613138687,
+          "std": 0.01318061495740059
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.08769014187509142,
+          "std": 0.012872753131532222
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.09253223495702005,
+          "std": 0.016212371878326953
+        }
+      }
+    },
+    "normal_cal_min_support_center": {
+      "global_topk": {
+        "top16": {
+          "mean": 0.125,
+          "std": 0.0
+        },
+        "top32": {
+          "mean": 0.08125,
+          "std": 0.015309310892394862
+        },
+        "top64": {
+          "mean": 0.096875,
+          "std": 0.0062499999999999995
+        },
+        "top128": {
+          "mean": 0.175,
+          "std": 0.010597390598633233
+        },
+        "top256": {
+          "mean": 0.2375,
+          "std": 0.0129319885603491
+        }
+      },
+      "reference": {
+        "avg_ref_purity": {
+          "mean": 0.11701061712010619,
+          "std": 0.006121213915573192
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.11669043440105309,
+          "std": 0.006305229731424248
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.12014684813753582,
+          "std": 0.004345265947542861
+        }
+      }
+    }
+  }
+}

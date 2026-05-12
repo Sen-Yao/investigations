@@ -1,0 +1,11 @@
+Training Counter({0: 355, 1: 21})
+Test Counter({0: 5804, 1: 602})
+Training rate 1
+Traceback (most recent call last):
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_v3_refguided.py", line 211, in <module>
+    if __name__=="__main__": main()
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_v3_refguided.py", line 159, in main
+    model=VecGAD(features_np.shape[1],args.embedding_dim,"prelu",args).to(device)
+  File "/root/gpufree-data/linziyao/VoxG/VecGAD.py", line 211, in __init__
+    nn.Linear(args.embedding_dim, (args.pp_k+1) * self.n_in)
+AttributeError: 'Namespace' object has no attribute 'pp_k'

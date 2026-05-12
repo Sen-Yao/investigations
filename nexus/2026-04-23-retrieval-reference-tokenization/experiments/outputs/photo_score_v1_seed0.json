@@ -1,0 +1,66 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "seed": 0,
+  "train_rate": 0.05,
+  "alpha": 0.05,
+  "components": {
+    "center_term": {
+      "auc_neg_score": 0.5869791162447043,
+      "ap_neg_score": 0.11273049530447662,
+      "normal_mean": 0.23671692609786987,
+      "anomaly_mean": 0.09108272939920425,
+      "ks_stat": 0.13444124398132024,
+      "ks_pvalue": 1.914978604912906e-10
+    },
+    "ndc_term": {
+      "auc_neg_score": 0.48316383172129734,
+      "ap_neg_score": 0.09292488197051951,
+      "normal_mean": 0.48753753304481506,
+      "anomaly_mean": 0.5346088409423828,
+      "ks_stat": 0.06817950365301224,
+      "ks_pvalue": 0.005258610096827167
+    },
+    "anr_term": {
+      "auc_neg_score": 0.46303297454898407,
+      "ap_neg_score": 0.09699946767746619,
+      "normal_mean": 0.47051307559013367,
+      "anomaly_mean": 0.5091125965118408,
+      "ks_stat": 0.10122005956968509,
+      "ks_pvalue": 4.199040910530505e-06
+    }
+  },
+  "scores": {
+    "center_only": {
+      "auc_neg_score": 0.5869791162447043,
+      "ap_neg_score": 0.11273049530447662,
+      "normal_mean": 0.23671692609786987,
+      "anomaly_mean": 0.09108272939920425,
+      "ks_stat": 0.13444124398132024,
+      "ks_pvalue": 1.914978604912906e-10
+    },
+    "center_plus_ndc": {
+      "auc_neg_score": 0.6108851508708935,
+      "ap_neg_score": 0.11217370625617537,
+      "normal_mean": -0.1254103183746338,
+      "anomaly_mean": -0.22176304459571838,
+      "ks_stat": 0.2436896324692083,
+      "ks_pvalue": 1.4463359521147522e-33
+    },
+    "center_plus_anr": {
+      "auc_neg_score": 0.6191253306109141,
+      "ap_neg_score": 0.11964331759248599,
+      "normal_mean": -0.1168980747461319,
+      "anomaly_mean": -0.20901493728160858,
+      "ks_stat": 0.213483183738574,
+      "ks_pvalue": 8.567315119317733e-26
+    },
+    "center_plus_ndc_plus_anr": {
+      "auc_neg_score": 0.6159117359488004,
+      "ap_neg_score": 0.11446937424037251,
+      "normal_mean": -0.12115418910980225,
+      "anomaly_mean": -0.21538899838924408,
+      "ks_stat": 0.22705630454215706,
+      "ks_pvalue": 3.7406796454935677e-29
+    }
+  }
+}

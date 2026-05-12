@@ -1,0 +1,129 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/elliptic.mat",
+  "n": 46564,
+  "anom_rate": 0.09760759384932566,
+  "train_normal": 2328,
+  "scores": {
+    "baseline_anom_affinity_qc": {
+      "auc": 0.5720971321292627,
+      "ap": 0.14592296407525707,
+      "normal_mean": 0.2262202433899126,
+      "anomaly_mean": 0.4121331785611927,
+      "ks": 0.24875963309698734,
+      "top16_anom_ratio": 0.3125,
+      "top32_anom_ratio": 0.34375,
+      "top64_anom_ratio": 0.265625,
+      "top128_anom_ratio": 0.296875
+    },
+    "attr_normal_density_failure": {
+      "auc": 0.598642821515784,
+      "ap": 0.10913403966773295,
+      "normal_mean": 0.1869497315217198,
+      "anomaly_mean": 0.21685344660362374,
+      "ks": 0.3346512242313977,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.03125,
+      "top128_anom_ratio": 0.015625
+    },
+    "mps_normal_density_failure": {
+      "auc": 0.5920229915373555,
+      "ap": 0.11384058722063688,
+      "normal_mean": 0.34513686981076197,
+      "anomaly_mean": 0.4048815533314323,
+      "ks": 0.26152516105986,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.03125,
+      "top128_anom_ratio": 0.0546875
+    },
+    "struct_context_density_failure": {
+      "auc": 0.6650962445062898,
+      "ap": 0.16094875828490152,
+      "normal_mean": 0.3580642672789788,
+      "anomaly_mean": 0.5792516928616869,
+      "ks": 0.2537660172642838,
+      "top16_anom_ratio": 0.25,
+      "top32_anom_ratio": 0.1875,
+      "top64_anom_ratio": 0.234375,
+      "top128_anom_ratio": 0.25
+    },
+    "struct_attr_disagreement": {
+      "auc": 0.6011343812693462,
+      "ap": 0.12992328120805383,
+      "normal_mean": 0.2591352039888675,
+      "anomaly_mean": 0.40737555049416674,
+      "ks": 0.25390106539628954,
+      "top16_anom_ratio": 0.0,
+      "top32_anom_ratio": 0.0,
+      "top64_anom_ratio": 0.0,
+      "top128_anom_ratio": 0.0
+    },
+    "joint_disagreement_failure": {
+      "auc": 0.6243071976109293,
+      "ap": 0.1333778896508652,
+      "normal_mean": 0.35409280376426394,
+      "anomaly_mean": 0.536705816009284,
+      "ks": 0.2539962604271089,
+      "top16_anom_ratio": 0.0,
+      "top32_anom_ratio": 0.0,
+      "top64_anom_ratio": 0.0,
+      "top128_anom_ratio": 0.0
+    },
+    "lof_relative_density_failure": {
+      "auc": 0.6180547508093345,
+      "ap": 0.11745986111278836,
+      "normal_mean": 0.043336763071672016,
+      "anomaly_mean": 0.05178330821866129,
+      "ks": 0.30338854252402087,
+      "top16_anom_ratio": 0.0,
+      "top32_anom_ratio": 0.0,
+      "top64_anom_ratio": 0.015625,
+      "top128_anom_ratio": 0.046875
+    },
+    "mps_failure_plus_qc": {
+      "auc": 0.671150745337034,
+      "ap": 0.1962773010181267,
+      "normal_mean": 0.3054123115663462,
+      "anomaly_mean": 0.4382008751107966,
+      "ks": 0.3334631242700177,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.0625,
+      "top128_anom_ratio": 0.1171875
+    },
+    "mps_failure_times_qc": {
+      "auc": 0.61524154914361,
+      "ap": 0.18725444077326558,
+      "normal_mean": 0.08068695814241143,
+      "anomaly_mean": 0.18164273367967548,
+      "ks": 0.3330823441467401,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.0625,
+      "top128_anom_ratio": 0.1171875
+    },
+    "joint_disagreement_plus_qc": {
+      "auc": 0.605920277408164,
+      "ap": 0.130017487635012,
+      "normal_mean": 0.312506260173715,
+      "anomaly_mean": 0.5110598183517346,
+      "ks": 0.2539962604271089,
+      "top16_anom_ratio": 0.0,
+      "top32_anom_ratio": 0.0,
+      "top64_anom_ratio": 0.0,
+      "top128_anom_ratio": 0.0
+    },
+    "lof_plus_qc": {
+      "auc": 0.6293858237057671,
+      "ap": 0.187383358858136,
+      "normal_mean": 0.2464158093083781,
+      "anomaly_mean": 0.42460819199645355,
+      "ks": 0.3321429922568163,
+      "top16_anom_ratio": 0.125,
+      "top32_anom_ratio": 0.0625,
+      "top64_anom_ratio": 0.046875,
+      "top128_anom_ratio": 0.109375
+    }
+  }
+}

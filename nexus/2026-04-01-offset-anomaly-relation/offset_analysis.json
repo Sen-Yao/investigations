@@ -1,0 +1,65 @@
+{
+  "dataset": "Photo",
+  "timestamp": "2026-04-01T15:30:38.381970",
+  "config": {
+    "alpha": 0,
+    "normalization": "D^{-0.5}AD^{-0.5}",
+    "K": 6
+  },
+  "statistics": {
+    "hop_1": {
+      "normal_norm_mean": 11.476033210754395,
+      "normal_norm_std": 2.7278013229370117,
+      "anomaly_norm_mean": 10.959951400756836,
+      "anomaly_norm_std": 2.6804604530334473,
+      "ks_statistic": 0.11056307894890141,
+      "ks_pvalue": 3.3656603881479856e-07,
+      "separation_ratio": 0.9550296068191528
+    },
+    "hop_2": {
+      "normal_norm_mean": 10.634171485900879,
+      "normal_norm_std": 2.5331382751464844,
+      "anomaly_norm_mean": 10.407442092895508,
+      "anomaly_norm_std": 2.5052738189697266,
+      "ks_statistic": 0.08701117675483097,
+      "ks_pvalue": 0.00012699722112338924,
+      "separation_ratio": 0.9786791801452637
+    },
+    "hop_3": {
+      "normal_norm_mean": 11.302044868469238,
+      "normal_norm_std": 2.6255154609680176,
+      "anomaly_norm_mean": 10.823086738586426,
+      "anomaly_norm_std": 2.6094677448272705,
+      "ks_statistic": 0.11644000095552894,
+      "ks_pvalue": 6.133286755038157e-08,
+      "separation_ratio": 0.9576219916343689
+    },
+    "hop_4": {
+      "normal_norm_mean": 11.195686340332031,
+      "normal_norm_std": 2.665630578994751,
+      "anomaly_norm_mean": 10.801499366760254,
+      "anomaly_norm_std": 2.64141845703125,
+      "ks_statistic": 0.1021961239890986,
+      "ks_pvalue": 3.2598855621187166e-06,
+      "separation_ratio": 0.9647911787033081
+    },
+    "hop_5": {
+      "normal_norm_mean": 11.415090560913086,
+      "normal_norm_std": 2.6359806060791016,
+      "anomaly_norm_mean": 10.90481185913086,
+      "anomaly_norm_std": 2.611100196838379,
+      "ks_statistic": 0.11623737014969535,
+      "ks_pvalue": 6.513695565944446e-08,
+      "separation_ratio": 0.9552978873252869
+    },
+    "hop_6": {
+      "normal_norm_mean": 11.376059532165527,
+      "normal_norm_std": 2.7191684246063232,
+      "anomaly_norm_mean": 10.898609161376953,
+      "anomaly_norm_std": 2.6694953441619873,
+      "ks_statistic": 0.11208207658229095,
+      "ks_pvalue": 2.1860682243520842e-07,
+      "separation_ratio": 0.9580302238464355
+    }
+  }
+}

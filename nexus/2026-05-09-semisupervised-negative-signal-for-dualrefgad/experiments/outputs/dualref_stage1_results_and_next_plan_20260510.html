@@ -1,0 +1,100 @@
+<html><body style="background:#f3efe7;color:#2b2a27;font-family:Georgia,'Times New Roman','Noto Serif SC',serif;font-size:17px;line-height:1.82;margin:0;padding:0;">
+<div style="max-width:960px;margin:0 auto;padding:32px 22px;">
+  <div style="background:#fffaf0;border:1px solid #ded3bd;border-radius:18px;padding:34px 38px;box-shadow:0 10px 30px rgba(74,63,45,.08);">
+    <div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#7a6a47;margin-bottom:8px;">SenyaoLab · Nexus Research Memo</div>
+    <h1 style="font-size:31px;line-height:1.28;margin:0 0 8px;color:#243528;">DualRefGAD 阶段复盘与下一步计划：从普通 MLP 转向可学习方向度量</h1>
+    <p style="color:#71685d;margin:0 0 22px;">Nexus ｜ 2026-05-10 ｜ Elliptic / DualRef margin / Stage-1 probes</p>
+
+    <div style="background:#eef4ea;border-left:5px solid #5f7f5f;border-radius:12px;padding:18px 20px;margin:24px 0;">
+      <strong>摘要：</strong>这轮实验已经把问题定位得更清楚：旧 sweep reference 构造下的 closed-form DualRef margin 确实携带强异常排序信号，但普通 MLP head 无论使用 scalar calibration features、高维 relation vector，还是直接回归 margin，都没有恢复出接近 margin-only 的 AUC/AP。当前最合理的下一步不是继续堆普通 MLP，也不是把 margin 作为 residual 硬加回 score，而是把 margin 背后的几何结构抽象成可学习方向度量：学习投影、维度权重或双线性 metric，但保留 normalized directional similarity 这一核心 inductive bias。
+    </div>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">一、当前证据链：我们已经排除了哪些解释</h2>
+    <p>这轮探索从一个很自然的假设开始：如果 <code><code>cos(h - r_n, r_a - r_n)</code></code> 的 closed-form margin 在 frozen DualRef relation 中表现很好，那么构成它的输入 <code><code>u = h - r_n</code></code> 与 <code><code>d = r_a - r_n</code></code> 理论上应该足以训练一个可学习 head。这个想法本身是合理的，因为它没有把 margin 当成不可动摇的最终公式，而是把 margin 看成一个证据：relation input 中存在可以被学习的异常方向信息。</p>
+    <p>实验结果把这个假设拆成了三个层次。第一层，margin-only 本身很强，旧 reference 构造下可以达到 AUC 0.7938 / AP 0.5510，top-k purity 也非常高。第二层，自由 MLP + normal-only pairwise ranking 失败，说明人工 mismatch ranking 和真实 anomaly ranking 不充分对齐。第三层，margin-regression MLP 也失败，说明问题不只是 pairwise objective；普通 MLP 在当前输入和训练设置下也没有自然恢复出 cosine margin 的排序结构。</p>
+    <p>这三个层次合在一起，给出的不是一个简单的“MLP 不行”的结论，而是一个更精确的判断：DualRef 的有效信号是 <strong>metric-structured</strong> 的。它不是任意 nonlinear classifier 都能轻松学出的模式，而是依赖方向归一化、reference-relative displacement、normal-anomaly reference axis 之间的角度关系。</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:22px 0;font-size:15px;">
+      <thead><tr style="background:#ede3cf;"><th style="padding:9px;border:1px solid #d8ccb8;text-align:left;">实验</th><th style="padding:9px;border:1px solid #d8ccb8;">目标</th><th style="padding:9px;border:1px solid #d8ccb8;">最好结果</th><th style="padding:9px;border:1px solid #d8ccb8;">解释</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:9px;border:1px solid #d8ccb8;">margin-only baseline</td><td style="padding:9px;border:1px solid #d8ccb8;">closed-form score</td><td style="padding:9px;border:1px solid #d8ccb8;">AUC 0.7938 / AP 0.5510</td><td style="padding:9px;border:1px solid #d8ccb8;">当前 frozen DualRef relation 中存在强方向信号</td></tr>
+        <tr><td style="padding:9px;border:1px solid #d8ccb8;">scalar MLP + pairwise</td><td style="padding:9px;border:1px solid #d8ccb8;">用 6 个 scalar feature 训练 ranking</td><td style="padding:9px;border:1px solid #d8ccb8;">AUC 0.7261 / AP 0.2193</td><td style="padding:9px;border:1px solid #d8ccb8;">比 margin 明显退化，top-k purity 被破坏</td></tr>
+        <tr><td style="padding:9px;border:1px solid #d8ccb8;">high-dimensional Relation MLP + pairwise</td><td style="padding:9px;border:1px solid #d8ccb8;">用 [u,d] 或 [u,d,u*d,|u-d|] 训练 ranking</td><td style="padding:9px;border:1px solid #d8ccb8;">AUC 0.5805 / AP 0.1119</td><td style="padding:9px;border:1px solid #d8ccb8;">输入维度提高没有解决 objective 对齐问题</td></tr>
+        <tr><td style="padding:9px;border:1px solid #d8ccb8;">Relation MLP margin-regression</td><td style="padding:9px;border:1px solid #d8ccb8;">直接回归 closed-form margin</td><td style="padding:9px;border:1px solid #d8ccb8;">AUC 0.5732 / AP 0.1087</td><td style="padding:9px;border:1px solid #d8ccb8;">普通 MLP 也没有自然恢复 cosine margin 结构</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Insight：</strong>如果只有 pairwise MLP 失败，我们可以主要归因于 normal-only mismatch objective 不对齐。但 margin-regression 也失败后，解释必须升级：普通 MLP 的结构归纳偏置与 margin 的几何结构不匹配。换句话说，margin 的强信号不是“输入里有信息，任意 MLP 都能学”，而是“输入里有信息，但必须以方向度量的方式读出”。</p>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">二、为什么 ordinary MLP 没有学回 margin</h2>
+    <p>普通 MLP 的失败并不一定意味着神经网络无法学习 DualRef relation。更准确地说，它说明普通 fully-connected classifier 不是这个几何关系的好载体。closed-form margin 做了两件很关键的事情：先构造 reference-relative displacement，再对两个 displacement direction 做归一化相似度。这个过程强制模型忽略许多 norm scale 与局部密度变化，把排序集中到“target 相对 normal reference 的方向，是否朝向 anomaly-side reference axis”上。</p>
+    <p>普通 MLP 接收的是高维 raw vector。即使输入包含 <code><code>u</code></code> 和 <code><code>d</code></code>，它也没有被要求先 normalize，也没有被要求用同一个 metric 去比较两个 direction。MSE 回归 margin 时，它可能在 normal training nodes 的分布上拟合了一些局部数值，但这个函数延伸到 test nodes，特别是异常节点时，没有保留 margin 的单调排序。AP 只有 0.10 左右，说明 top-ranked region 几乎没有恢复出 margin 的高纯度异常集中效果。</p>
+    <p>这也解释了为什么加入更多输入没有明显改善。<code><code>h_rn_ra_ud</code></code> 把 h、r_n、r_a 都交给 MLP，但这相当于增加了更多非方向因素；如果目标结构本身没有被编码，更多自由度会让模型更容易学习与异常排序无关的 normal-distribution artifact。最好的结果来自 <code><code>ud_prod_absdiff</code></code>，但仍远低于 margin，说明交互项只能提供一点帮助，不能替代 normalized metric。</p>
+
+    <div style="background:#fff3d6;border-left:5px solid #c6973f;border-radius:12px;padding:16px 18px;margin:24px 0;">
+      <strong>Key Finding：</strong>DualRef margin 的核心不是“一个可以被 MLP 任意替代的 feature”，而是一个带强归纳偏置的几何读出函数。下一步要做的可学习模块应该围绕 direction normalization、projection、bilinear metric、feature-wise weighting 展开，而不是继续把所有东西拼接后交给普通 MLP。
+    </div>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">三、下一步计划 A：Parameterized Directional Metric Head</h2>
+    <p>我建议把下一步主线定为 <strong>Parameterized Directional Metric Head</strong>。它的目标不是把 margin 硬加回 score，而是把 margin 中“方向相似度”这个有效结构参数化。最小形式是学习两个投影矩阵，把 u 和 d 映射到一个新的 metric space，然后再计算 normalized cosine。这样 score 仍然由模型学习出来，但模型的自由度被限制在“如何定义方向空间”上。</p>
+    <pre style="background:#2d3748;color:#e2e8f0;padding:14px 16px;border-radius:10px;overflow:auto;"><code>u = h_v - r_n(v)
+d = r_a(v) - r_n(v)
+u' = W_u u
+d' = W_d d
+score = cos(u', d')</code></pre>
+    <p>这个方案比 residual 更自然，因为最终 score 不是 <code><code>margin + correction</code></code>；它也比普通 MLP 更稳，因为 score 仍然遵循 direction metric 的形式。论文表达上，它可以被描述为从 closed-form DualRef margin 推广到 learnable DualRef metric：closed-form cosine 是 identity metric 的特例，而 projected cosine / diagonal weighted cosine / low-rank bilinear cosine 是它的可学习扩展。</p>
+    <p>实验上应先做 seed0 小 probe，而不是直接 5-seed。第一步只验证 expression：用 margin-regression 训练，检查 projected metric 是否能比普通 MLP 更接近 margin-only AP。第二步再验证 objective：用 normal-only pairwise ranking 或 one-class relation loss 训练，检查 learned metric 是否比普通 MLP 更不容易破坏 top-k purity。</p>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">四、下一步计划 B：Normal Relation Contrastive Learning，但 score 仍用 metric</h2>
+    <p>第二条路线可以保留你之前觉得更正常的方案 B：学习 normal relation representation。但这里需要吸收当前实验教训：representation learning 不应直接输出自由 score，而应服务于一个 metric score。也就是说，模型可以学习 relation embedding <code><code>z_u</code></code> 与 <code><code>z_d</code></code>，但最终异常分数仍然来自 normalized similarity 或 distance，而不是 unconstrained MLP classifier。</p>
+    <p>一种较干净的形式是 normal-only contrastive metric learning：对正常训练节点，matched relation 应该在 metric space 内形成稳定方向结构；mismatched relation 或 shuffled reference relation 应该远离。训练目标可以是 InfoNCE 或 pairwise softplus，但 score 形式保持为 cosine / projected cosine。这样做的关键好处是，objective 仍然可以是 self-supervised / normal-only，而 inductive bias 不会完全丢失。</p>
+    <p>这条路线的风险是负样本构造。前面 N1/N2/mixed 的结果都说明，当前人工 mismatch 未必对应真实 anomaly ranking。因此 contrastive route 要先作为诊断：观察它是否至少能保持 margin top-k purity，而不是一上来追求超越 SOTA。如果它连 margin-like purity 都保持不住，就说明需要重新设计 negative sampling，而不是调模型容量。</p>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">五、下一步计划 C：Reference construction 稳定性验证</h2>
+    <p>还有一条更基础但很重要的路线：验证旧 sweep reference construction 的稳定性。我们已经知道 <code><code>descriptor_mode=hop_attr</code></code> 与 <code><code>gn_mode=label_gate</code></code> 下 margin 很强，而错误/不同 reference 构造会把 AUC 拉到约 0.64。这个现象说明 reference construction 本身可能就是 DualRefGAD 的核心创新来源之一。</p>
+    <p>因此，在投入更多 head 设计前，应确认 margin baseline 在 seed、dataset、reference hyperparameters 上是否稳定。至少需要先做 Elliptic 的 seed 0-4 margin-only readout，再扩展到 Amazon、T-Finance 或 Tolokers 中的一两个代表数据集。如果 margin 只在单 seed/single dataset 上强，那么 head 设计应谨慎；如果它跨 seed 稳定，reference construction + learnable metric 就是更有价值的主线。</p>
+    <p>这条路线的产出不是一个复杂模型，而是研究定位：我们是在改 classifier head，还是在提出一种 reference-conditioned anomaly direction metric。如果稳定性结果支持后者，论文方法会更清晰，也更容易解释为什么普通 GNN head 或 arbitrary MLP 不适合。</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:22px 0;font-size:15px;">
+      <thead><tr style="background:#ede3cf;"><th style="padding:9px;border:1px solid #d8ccb8;text-align:left;">优先级</th><th style="padding:9px;border:1px solid #d8ccb8;">计划</th><th style="padding:9px;border:1px solid #d8ccb8;">核心问题</th><th style="padding:9px;border:1px solid #d8ccb8;">成功标准</th></tr></thead>
+      <tbody>
+        <tr><td style="padding:9px;border:1px solid #d8ccb8;">P0</td><td style="padding:9px;border:1px solid #d8ccb8;">Parameterized Directional Metric seed0 probe</td><td style="padding:9px;border:1px solid #d8ccb8;">可学习 metric 是否能恢复/接近 margin？</td><td style="padding:9px;border:1px solid #d8ccb8;">AP 明显高于普通 MLP，最好接近 0.55；top-k purity 不崩</td></tr>
+        <tr><td style="padding:9px;border:1px solid #d8ccb8;">P1</td><td style="padding:9px;border:1px solid #d8ccb8;">Margin-only 5-seed stability</td><td style="padding:9px;border:1px solid #d8ccb8;">closed-form signal 是否稳定？</td><td style="padding:9px;border:1px solid #d8ccb8;">AUC/AP mean±std 稳定，非单 seed 偶然</td></tr>
+        <tr><td style="padding:9px;border:1px solid #d8ccb8;">P1</td><td style="padding:9px;border:1px solid #d8ccb8;">Metric head + normal-only objective</td><td style="padding:9px;border:1px solid #d8ccb8;">可学习 metric 能否从 normal-only signal 学到有效排序？</td><td style="padding:9px;border:1px solid #d8ccb8;">不显著低于 margin baseline，至少优于普通 MLP</td></tr>
+        <tr><td style="padding:9px;border:1px solid #d8ccb8;">P2</td><td style="padding:9px;border:1px solid #d8ccb8;">Cross-dataset margin readout</td><td style="padding:9px;border:1px solid #d8ccb8;">reference-conditioned direction signal 是否泛化？</td><td style="padding:9px;border:1px solid #d8ccb8;">在至少 2-3 个数据集上出现可解释信号</td></tr>
+      </tbody>
+    </table>
+    <p><strong>Insight：</strong>优先级不应按“模型复杂度”排序，而应按“信息增益”排序。P0 能直接回答 ordinary MLP 是否只是缺少 metric bias；P1 能判断当前强 margin 是否值得发展成主线；P2 才决定它是否有跨数据集论文价值。</p>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">六、建议的近期执行顺序</h2>
+    <p>我建议下一次实验先做一个很小但信息密度高的 probe：<code><code>stage1_parameterized_directional_metric_seed0</code></code>。它包含 identity cosine、diagonal weighted cosine、low-rank projected cosine 三类 head。第一阶段训练目标仍然是 margin-regression，用来验证 metric head 能否恢复 closed-form margin 的排序；第二阶段再用 normal-only pairwise，检查 learned metric 在没有 margin target 的情况下是否比普通 MLP 更稳定。</p>
+    <p>如果 P0 成功，我们就可以把方法命名为 Learnable DualRef Directional Metric，并进一步设计训练目标。如果 P0 失败，说明问题可能不在 head，而在 frozen embedding/reference 的分布、训练集只覆盖 normal nodes 的外推性，或者 margin 的有效性高度依赖 closed-form normalization 而难以通过训练学习。那时下一步应回到 reference construction 稳定性与 closed-form method 的理论解释，而不是继续堆神经网络。</p>
+    <p>同时，我建议补一个只读 benchmark：把 margin-only 在 seed 0-4 上跑完整，并记录 AP/top-k purity。这个动作成本低，但能决定我们是否值得把“margin 是强信号”提升为正式研究结论。没有 5-seed 稳定性前，不建议把任何单 seed probe 写成最终结论。</p>
+
+    <div style="background:#eef4ea;border-left:5px solid #5f7f5f;border-radius:12px;padding:16px 18px;margin:24px 0;">
+      <strong>Recommendation：</strong>短期停止普通 MLP 的容量/学习率 sweep。下一步先做 parameterized directional metric 的 seed0 诊断，同时补 margin-only 5-seed 稳定性。这个组合能最大限度地区分三种可能：普通 MLP 缺少 metric bias、normal-only objective 不对齐、或 margin 信号本身不稳定。
+    </div>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">七、可执行配置草案</h2>
+    <p>如果你同意，我建议下一步按 skill 启动以下两个 probe。第一个是模型机制诊断，第二个是信号稳定性诊断。它们都应该先保持 seed0 或 readout-only，不直接进入正式 5-seed sweep，等诊断通过后再扩大。</p>
+    <pre style="background:#2d3748;color:#e2e8f0;padding:14px 16px;border-radius:10px;overflow:auto;"><code># Probe 1: stage1_parameterized_directional_metric_seed0
+head:
+  - identity_cosine
+  - diagonal_weighted_cosine
+  - low_rank_projected_cosine
+train_objective:
+  - margin_regression
+  - normal_only_pairwise
+seed: 0
+encoder: frozen
+reference: old_sweep_construction
+
+# Probe 2: margin_only_stability_elliptic_5seed
+score: cos(h - r_n, r_a - r_n)
+seed: [0,1,2,3,4]
+metrics: AUC, AP, top1_ratio, top5_ratio
+training: none / readout only</code></pre>
+
+    <p>这封邮件作为阶段性研究备忘录保存。当前最重要的路线修正是：不要把“深度学习味道”理解为完全自由的 MLP，而要把它理解为对有效几何结构的可学习参数化。这样既保留可学习性，也避免丢掉已经由实验证明的 DualRef direction signal。</p>
+  </div>
+</div>
+</body></html>

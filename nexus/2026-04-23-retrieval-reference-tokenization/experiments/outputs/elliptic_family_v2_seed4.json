@@ -1,0 +1,46 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/elliptic.mat",
+  "seed": 4,
+  "train_rate": 0.05,
+  "alpha": 0.1,
+  "k": 6,
+  "topk": 32,
+  "families": {
+    "center_family": {
+      "auc": 0.21380756272157359,
+      "ap": 0.05835544903229677,
+      "normal_mean": 0.3643113970756531,
+      "anomaly_mean": 0.585141122341156,
+      "difference": 0.22082972526550293,
+      "ks_stat": 0.5216403308147755,
+      "ks_pvalue": 0.0,
+      "anomaly_high": false,
+      "normal_topk_normal_ratio": 0.8125,
+      "anomaly_topk_anomaly_ratio": 0.03125
+    },
+    "delta_ndc_family": {
+      "auc": 0.5701430787073091,
+      "ap": 0.14482855140065917,
+      "normal_mean": -0.6885420083999634,
+      "anomaly_mean": -0.4990939795970917,
+      "difference": 0.1894480288028717,
+      "ks_stat": 0.24692082954457895,
+      "ks_pvalue": 1.0422848328907048e-220,
+      "anomaly_high": true,
+      "normal_topk_normal_ratio": 0.90625,
+      "anomaly_topk_anomaly_ratio": 0.0
+    },
+    "anr_proxy_family": {
+      "auc": 0.3262696316515204,
+      "ap": 0.06805437557376574,
+      "normal_mean": 0.2503410279750824,
+      "anomaly_mean": 0.12426553666591644,
+      "difference": -0.12607549130916595,
+      "ks_stat": 0.26476192301397733,
+      "ks_pvalue": 3.133782577852625e-254,
+      "anomaly_high": true,
+      "normal_topk_normal_ratio": 0.71875,
+      "anomaly_topk_anomaly_ratio": 0.0
+    }
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "dataset": "elliptic",
+  "timestamp": "2026-03-31T20:27:58.811545",
+  "config": {
+    "k": 6,
+    "alpha": 0,
+    "normalization": "D^{-1/2} A D^{-1/2}",
+    "num_tokens": 7,
+    "token_dim": 93,
+    "sample_size": 5000
+  },
+  "strategies": {
+    "hop": {
+      "strategy": "hop",
+      "shape": [
+        46564,
+        7,
+        93
+      ],
+      "entropy_total": 1218.061198204606,
+      "mi_total": 28.644896262679374,
+      "fisher_total": 37.212677001953125,
+      "entropy_per_token": [
+        {
+          "token_idx": 0,
+          "entropy": 30.370533593390324
+        },
+        {
+          "token_idx": 1,
+          "entropy": -456.20067506552897
+        },
+        {
+          "token_idx": 2,
+          "entropy": -451.2764201384343
+        },
+        {
+          "token_idx": 3,
+          "entropy": -455.7296699197347
+        },
+        {
+          "token_idx": 4,
+          "entropy": -455.6136605817
+        },
+        {
+          "token_idx": 5,
+          "entropy": -458.69907851076397
+        },
+        {
+          "token_idx": 6,
+          "entropy": -459.23410279269973
+        }
+      ],
+      "mi_per_token": [
+        {
+          "token_idx": 0,
+          "mi": 5.704704629701398
+        },
+        {
+          "token_idx": 1,
+          "mi": 4.0623581581300074
+        },
+        {
+          "token_idx": 2,
+          "mi": 3.95065922895275
+        },
+        {
+          "token_idx": 3,
+          "mi": 3.7425038879144408
+        },
+        {
+          "token_idx": 4,
+          "mi": 3.9704705382586987
+        },
+        {
+          "token_idx": 5,
+          "mi": 3.4507415300264226
+        },
+        {
+          "token_idx": 6,
+          "mi": 3.7806788855222937
+        }
+      ],
+      "fisher_per_token": [
+        {
+          "token_idx": 0,
+          "fisher": 6.6757378578186035
+        },
+        {
+          "token_idx": 1,
+          "fisher": 4.318160057067871
+        },
+        {
+          "token_idx": 2,
+          "fisher": 5.379312515258789
+        },
+        {
+          "token_idx": 3,
+          "fisher": 4.772389888763428
+        },
+        {
+          "token_idx": 4,
+          "fisher": 5.533113956451416
+        },
+        {
+          "token_idx": 5,
+          "fisher": 4.94066047668457
+        },
+        {
+          "token_idx": 6,
+          "fisher": 5.593299388885498
+        }
+      ]
+    },
+    "offset": {
+      "strategy": "offset",
+      "shape": [
+        46564,
+        7,
+        93
+      ],
+      "entropy_total": 1423.1951347422853,
+      "mi_total": 40.010911219211934,
+      "fisher_total": 19.93752098083496,
+      "entropy_per_token": [
+        {
+          "token_idx": 0,
+          "entropy": 30.370533593390324
+        },
+        {
+          "token_idx": 1,
+          "entropy": 112.21856647247048
+        },
+        {
+          "token_idx": 2,
+          "entropy": -46.271093877505244
+        },
+        {
+          "token_idx": 3,
+          "entropy": 112.14740664805831
+        },
+        {
+          "token_idx": 4,
+          "entropy": -35.020043909707994
+        },
+        {
+          "token_idx": 5,
+          "entropy": 111.76905310583317
+        },
+        {
+          "token_idx": 6,
+          "entropy": -30.936550145365928
+        }
+      ],
+      "mi_per_token": [
+        {
+          "token_idx": 0,
+          "mi": 5.704704629701398
+        },
+        {
+          "token_idx": 1,
+          "mi": 6.265338991740631
+        },
+        {
+          "token_idx": 2,
+          "mi": 5.495199592311527
+        },
+        {
+          "token_idx": 3,
+          "mi": 5.829400693426457
+        },
+        {
+          "token_idx": 4,
+          "mi": 5.548865438695508
+        },
+        {
+          "token_idx": 5,
+          "mi": 5.685917135283185
+        },
+        {
+          "token_idx": 6,
+          "mi": 5.484416004556005
+        }
+      ],
+      "fisher_per_token": [
+        {
+          "token_idx": 0,
+          "fisher": 6.6757378578186035
+        },
+        {
+          "token_idx": 1,
+          "fisher": 1.7154533863067627
+        },
+        {
+          "token_idx": 2,
+          "fisher": 2.525435209274292
+        },
+        {
+          "token_idx": 3,
+          "fisher": 1.9547383785247803
+        },
+        {
+          "token_idx": 4,
+          "fisher": 2.5035018920898438
+        },
+        {
+          "token_idx": 5,
+          "fisher": 2.0586581230163574
+        },
+        {
+          "token_idx": 6,
+          "fisher": 2.503995656967163
+        }
+      ]
+    },
+    "delta": {
+      "strategy": "delta",
+      "shape": [
+        46564,
+        7,
+        93
+      ],
+      "entropy_total": 1327.3046425160335,
+      "mi_total": 28.861900778126696,
+      "fisher_total": 9.159469604492188,
+      "entropy_per_token": [
+        {
+          "token_idx": 0,
+          "entropy": 30.370533593390324
+        },
+        {
+          "token_idx": 1,
+          "entropy": 112.21856647247048
+        },
+        {
+          "token_idx": 2,
+          "entropy": -430.6732070613474
+        },
+        {
+          "token_idx": 3,
+          "entropy": -436.4032655508952
+        },
+        {
+          "token_idx": 4,
+          "entropy": -441.72761527753795
+        },
+        {
+          "token_idx": 5,
+          "entropy": -445.2806307659616
+        },
+        {
+          "token_idx": 6,
+          "entropy": -449.09804842954986
+        }
+      ],
+      "mi_per_token": [
+        {
+          "token_idx": 0,
+          "mi": 5.704704629701398
+        },
+        {
+          "token_idx": 1,
+          "mi": 6.265338991740631
+        },
+        {
+          "token_idx": 2,
+          "mi": 3.4998934566608098
+        },
+        {
+          "token_idx": 3,
+          "mi": 3.4516272733849362
+        },
+        {
+          "token_idx": 4,
+          "mi": 3.4552429105732108
+        },
+        {
+          "token_idx": 5,
+          "mi": 3.29303748179682
+        },
+        {
+          "token_idx": 6,
+          "mi": 3.1934643019825715
+        }
+      ],
+      "fisher_per_token": [
+        {
+          "token_idx": 0,
+          "fisher": 6.6757378578186035
+        },
+        {
+          "token_idx": 1,
+          "fisher": 1.7154533863067627
+        },
+        {
+          "token_idx": 2,
+          "fisher": 0.13814494013786316
+        },
+        {
+          "token_idx": 3,
+          "fisher": 0.1967117041349411
+        },
+        {
+          "token_idx": 4,
+          "fisher": 0.1369844377040863
+        },
+        {
+          "token_idx": 5,
+          "fisher": 0.16783297061920166
+        },
+        {
+          "token_idx": 6,
+          "fisher": 0.12860523164272308
+        }
+      ]
+    }
+  }
+}

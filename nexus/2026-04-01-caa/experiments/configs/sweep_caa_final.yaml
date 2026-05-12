@@ -1,0 +1,34 @@
+# Sweep 3: 5-seed Final Validation
+# Using best config from sweep1 and sweep2
+# Runs = 5
+# Time = 5 × 10 min = 50 min
+
+program: run_caa.py
+method: grid
+name: caa_final_sweep
+metric:
+  name: AUC.max
+  goal: maximize
+
+parameters:
+  dataset:
+    value: photo
+  epochs:
+    value: 200
+  # Best config from Sweep 1 & 2
+  lr:
+    value: 0.0005
+  hidden_dim:
+    value: 64
+  num_heads:
+    value: 4
+  num_layers:
+    value: 3
+  ffn_dim:
+    value: 256
+  K:
+    value: 6
+  batch_size:
+    value: 64
+  seed:
+    values: [0, 1, 2, 3, 4]

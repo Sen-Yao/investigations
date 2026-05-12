@@ -1,0 +1,19 @@
+{
+  "status": "pending",
+  "note": "5-seed sweep pending. Only Seed 0 has results from Phase 4 validation.",
+  "expected_runs": 5,
+  "parameters": {
+    "seeds": [0, 1, 2, 3, 4],
+    "dataset": "photo",
+    "epochs": 200,
+    "lr": 0.0005,
+    "hidden_dim": 64,
+    "num_heads": 4
+  },
+  "seed_0_results": {
+    "val_auc_peak": 0.9850,
+    "test_auc": 0.9708,
+    "test_f1": 0.8947
+  },
+  "placeholder_results": []
+}

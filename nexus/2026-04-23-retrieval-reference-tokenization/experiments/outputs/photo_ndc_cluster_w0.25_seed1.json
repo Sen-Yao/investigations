@@ -1,0 +1,16 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "k": 6,
+  "topk": 32,
+  "self_weight": 0.25,
+  "metrics": {
+    "auc": 0.6139985826320882,
+    "ap": 0.12367471236927971,
+    "normal_mean": 0.5009012818336487,
+    "anomaly_mean": 0.5452612638473511,
+    "difference": 0.04435998201370239,
+    "ks_stat": 0.1950389608539076,
+    "ks_pvalue": 1.429810595625898e-21,
+    "topk_anomaly_ratio": 0.0
+  }
+}

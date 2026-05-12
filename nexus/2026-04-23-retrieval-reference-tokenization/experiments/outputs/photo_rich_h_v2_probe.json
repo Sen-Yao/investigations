@@ -1,0 +1,77 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "k": 6,
+  "topk": 32,
+  "components": {
+    "ndc": {
+      "auc": 0.5869020033837459,
+      "ap": 0.11281908666416168,
+      "normal_mean": -0.3708212077617645,
+      "anomaly_mean": -0.3208668529987335,
+      "difference": 0.049954354763031006,
+      "ks_stat": 0.16284538913287008,
+      "ks_pvalue": 3.861998060358439e-15,
+      "topk_anomaly_ratio": 0.03125
+    },
+    "q": {
+      "auc": 0.5869021081566547,
+      "ap": 0.11281908666416168,
+      "normal_mean": 0.4898163080215454,
+      "anomaly_mean": 0.541238009929657,
+      "difference": 0.05142170190811157,
+      "ks_stat": 0.16284538913287008,
+      "ks_pvalue": 3.861998060358439e-15,
+      "topk_anomaly_ratio": 0.03125
+    },
+    "c": {
+      "auc": 0.6118406798001603,
+      "ap": 0.11875006874393614,
+      "normal_mean": 0.5045962929725647,
+      "anomaly_mean": 0.5466024279594421,
+      "difference": 0.04200613498687744,
+      "ks_stat": 0.2081355744677641,
+      "ks_pvalue": 1.5768569704895893e-24,
+      "topk_anomaly_ratio": 0.0
+    },
+    "patch_mismatch": {
+      "auc": 0.6143265218369791,
+      "ap": 0.11899890050023393,
+      "normal_mean": 0.3033125400543213,
+      "anomaly_mean": 0.3579007387161255,
+      "difference": 0.0545881986618042,
+      "ks_stat": 0.1988610765709755,
+      "ks_pvalue": 2.0542652327520682e-22,
+      "topk_anomaly_ratio": 0.0625
+    },
+    "patch_inconsistency": {
+      "auc": 0.649539020155374,
+      "ap": 0.1349173703270128,
+      "normal_mean": 0.4891064167022705,
+      "anomaly_mean": 0.5592976808547974,
+      "difference": 0.07019126415252686,
+      "ks_stat": 0.250485412886984,
+      "ks_pvalue": 1.8330000941574656e-35,
+      "topk_anomaly_ratio": 0.03125
+    }
+  },
+  "small_h_affinity": {
+    "auc": 0.6097976080763987,
+    "ap": 0.1232366531809419,
+    "normal_mean": 0.2574368119239807,
+    "anomaly_mean": 0.3041592240333557,
+    "difference": 0.046722412109375,
+    "ks_stat": 0.18772790727010832,
+    "ks_pvalue": 5.250239806938584e-20,
+    "topk_anomaly_ratio": 0.0625
+  },
+  "rich_h_affinity": {
+    "auc": 0.6099004950729492,
+    "ap": 0.12329215042853478,
+    "normal_mean": 0.2572878301143646,
+    "anomaly_mean": 0.304047554731369,
+    "difference": 0.046759724617004395,
+    "ks_stat": 0.18772790727010832,
+    "ks_pvalue": 5.250239806938584e-20,
+    "topk_anomaly_ratio": 0.0625
+  }
+}

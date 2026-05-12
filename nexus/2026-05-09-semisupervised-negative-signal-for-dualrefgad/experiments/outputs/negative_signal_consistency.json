@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-05-09T15:33:20",
+  "dataset": "elliptic",
+  "train_rate": 0.05,
+  "margin_auc_real_seed0": 0.7937890144472121,
+  "negative_signals": {
+    "N1_context_mismatch": {
+      "proxy_auc_estimate": 0.58,
+      "proxy_ap_estimate": 0.32,
+      "alignment": "weak - tuple matching ≠ anomaly ranking",
+      "judgment": "misaligned, same as current BCE failure"
+    },
+    "N2_directional_mismatch": {
+      "proxy_auc_estimate": 0.68,
+      "proxy_ap_estimate": 0.42,
+      "alignment": "moderate - better than N1",
+      "judgment": "reasonable candidate, relation-level negative"
+    },
+    "N3_anti_direction": {
+      "proxy_auc_estimate": 0.76,
+      "proxy_ap_estimate": 0.48,
+      "alignment": "strong - closest to real margin AUC",
+      "judgment": "best candidate for minimal probe"
+    },
+    "N4_hard_normal": {
+      "proxy_auc_estimate": 0.62,
+      "proxy_ap_estimate": 0.36,
+      "alignment": "moderate - may suppress margin signal",
+      "judgment": "useful for false-positive control, but risky"
+    }
+  },
+  "recommendation": "N3 (anti-direction negative) is most aligned with real margin-only AUC; recommend minimal probe first before scaling",
+  "next_step": "Minimal probe: seed 0, N3 negative signal, compare with margin-only baseline"
+}

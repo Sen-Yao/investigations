@@ -1,0 +1,833 @@
+[
+  {
+    "dataset": "Photo",
+    "n_nodes": 7535,
+    "n_features": 745,
+    "avg_degree": 31.607564698075645,
+    "sample_size": 2000,
+    "n_normal": 1807,
+    "n_anomaly": 193,
+    "normalization": "symmetric (D^-0.5 @ A @ D^-0.5)",
+    "pp_k": 10,
+    "hop_fisher": [
+      {
+        "hop": 0,
+        "mu_normal": 15.239980697631836,
+        "mu_anomaly": 13.716607093811035,
+        "sigma_normal": 6.139795780181885,
+        "sigma_anomaly": 5.321262359619141,
+        "fisher_ratio": 0.03506531352507271
+      },
+      {
+        "hop": 1,
+        "mu_normal": 10.2738037109375,
+        "mu_anomaly": 8.751090049743652,
+        "sigma_normal": 5.612167835235596,
+        "sigma_anomaly": 5.537565231323242,
+        "fisher_ratio": 0.03719479360372832
+      },
+      {
+        "hop": 2,
+        "mu_normal": 10.119771003723145,
+        "mu_anomaly": 8.643409729003906,
+        "sigma_normal": 5.165771007537842,
+        "sigma_anomaly": 4.861137866973877,
+        "fisher_ratio": 0.04320084363799703
+      },
+      {
+        "hop": 3,
+        "mu_normal": 9.850835800170898,
+        "mu_anomaly": 8.61170482635498,
+        "sigma_normal": 5.156890392303467,
+        "sigma_anomaly": 5.153157711029053,
+        "fisher_ratio": 0.028806751940113395
+      },
+      {
+        "hop": 4,
+        "mu_normal": 9.826334953308105,
+        "mu_anomaly": 8.639816284179688,
+        "sigma_normal": 5.0137481689453125,
+        "sigma_anomaly": 5.01470947265625,
+        "fisher_ratio": 0.027916516982922454
+      },
+      {
+        "hop": 5,
+        "mu_normal": 9.714067459106445,
+        "mu_anomaly": 8.642960548400879,
+        "sigma_normal": 4.964632987976074,
+        "sigma_anomaly": 5.100703716278076,
+        "fisher_ratio": 0.02257787250960428
+      },
+      {
+        "hop": 6,
+        "mu_normal": 9.685754776000977,
+        "mu_anomaly": 8.672157287597656,
+        "sigma_normal": 4.897634506225586,
+        "sigma_anomaly": 5.072676658630371,
+        "fisher_ratio": 0.020602739941964546
+      },
+      {
+        "hop": 7,
+        "mu_normal": 9.616482734680176,
+        "mu_anomaly": 8.68049430847168,
+        "sigma_normal": 4.849177360534668,
+        "sigma_anomaly": 5.105055332183838,
+        "fisher_ratio": 0.017618434308408704
+      },
+      {
+        "hop": 8,
+        "mu_normal": 9.591592788696289,
+        "mu_anomaly": 8.713199615478516,
+        "sigma_normal": 4.8108811378479,
+        "sigma_anomaly": 5.106698989868164,
+        "fisher_ratio": 0.015627903675525967
+      },
+      {
+        "hop": 9,
+        "mu_normal": 9.539380073547363,
+        "mu_anomaly": 8.724424362182617,
+        "sigma_normal": 4.770150184631348,
+        "sigma_anomaly": 5.126138210296631,
+        "fisher_ratio": 0.013504232965222723
+      },
+      {
+        "hop": 10,
+        "mu_normal": 9.519463539123535,
+        "mu_anomaly": 8.76019287109375,
+        "sigma_normal": 4.745941638946533,
+        "sigma_anomaly": 5.136822700500488,
+        "fisher_ratio": 0.011750558163602808
+      }
+    ],
+    "offset_fisher": [
+      {
+        "offset": 1,
+        "mu_normal": 11.502479553222656,
+        "mu_anomaly": 11.092679977416992,
+        "sigma_normal": 2.6973791122436523,
+        "sigma_anomaly": 2.8113367557525635,
+        "fisher_ratio": 0.011030504635001052
+      },
+      {
+        "offset": 2,
+        "mu_normal": 10.677875518798828,
+        "mu_anomaly": 10.519081115722656,
+        "sigma_normal": 2.5302231311798096,
+        "sigma_anomaly": 2.558905601501465,
+        "fisher_ratio": 0.0019415067979556165
+      },
+      {
+        "offset": 3,
+        "mu_normal": 11.351469993591309,
+        "mu_anomaly": 10.942239761352539,
+        "sigma_normal": 2.593902111053467,
+        "sigma_anomaly": 2.615121603012085,
+        "fisher_ratio": 0.012308012802099247
+      },
+      {
+        "offset": 4,
+        "mu_normal": 11.24221134185791,
+        "mu_anomaly": 10.895553588867188,
+        "sigma_normal": 2.655780792236328,
+        "sigma_anomaly": 2.673652172088623,
+        "fisher_ratio": 0.008437403001200884
+      },
+      {
+        "offset": 5,
+        "mu_normal": 11.467299461364746,
+        "mu_anomaly": 11.025243759155273,
+        "sigma_normal": 2.5964062213897705,
+        "sigma_anomaly": 2.588472604751587,
+        "fisher_ratio": 0.014496376047400122
+      },
+      {
+        "offset": 6,
+        "mu_normal": 11.420560836791992,
+        "mu_anomaly": 10.994606971740723,
+        "sigma_normal": 2.702346086502075,
+        "sigma_anomaly": 2.693298816680908,
+        "fisher_ratio": 0.01242857018166303
+      },
+      {
+        "offset": 7,
+        "mu_normal": 11.562159538269043,
+        "mu_anomaly": 11.083898544311523,
+        "sigma_normal": 2.611953020095825,
+        "sigma_anomaly": 2.580057144165039,
+        "fisher_ratio": 0.016921364740557745
+      },
+      {
+        "offset": 8,
+        "mu_normal": 11.5226411819458,
+        "mu_anomaly": 11.050179481506348,
+        "sigma_normal": 2.7307093143463135,
+        "sigma_anomaly": 2.695272207260132,
+        "fisher_ratio": 0.015120002052800705
+      },
+      {
+        "offset": 9,
+        "mu_normal": 11.636996269226074,
+        "mu_anomaly": 11.128681182861328,
+        "sigma_normal": 2.630627393722534,
+        "sigma_anomaly": 2.5745975971221924,
+        "fisher_ratio": 0.019016864902423013
+      },
+      {
+        "offset": 10,
+        "mu_normal": 11.595598220825195,
+        "mu_anomaly": 11.092143058776855,
+        "sigma_normal": 2.7534127235412598,
+        "sigma_anomaly": 2.6930770874023438,
+        "fisher_ratio": 0.01703875416799539
+      }
+    ],
+    "delta_fisher": [
+      {
+        "delta": 0,
+        "mu_normal": 11.502479553222656,
+        "mu_anomaly": 11.092679977416992,
+        "sigma_normal": 2.6973791122436523,
+        "sigma_anomaly": 2.8113367557525635,
+        "fisher_ratio": 0.011030504635001052
+      },
+      {
+        "delta": 1,
+        "mu_normal": 2.6069889068603516,
+        "mu_anomaly": 2.099545478820801,
+        "sigma_normal": 1.507411241531372,
+        "sigma_anomaly": 1.0808511972427368,
+        "fisher_ratio": 0.0746834358721527
+      },
+      {
+        "delta": 2,
+        "mu_normal": 1.1607117652893066,
+        "mu_anomaly": 0.7707838416099548,
+        "sigma_normal": 1.193971872329712,
+        "sigma_anomaly": 0.8130593299865723,
+        "fisher_ratio": 0.07271806380257188
+      },
+      {
+        "delta": 3,
+        "mu_normal": 0.6695094704627991,
+        "mu_anomaly": 0.4319099485874176,
+        "sigma_normal": 1.0630236864089966,
+        "sigma_anomaly": 0.7721119523048401,
+        "fisher_ratio": 0.032633853511325195
+      },
+      {
+        "delta": 4,
+        "mu_normal": 0.4503979980945587,
+        "mu_anomaly": 0.29427340626716614,
+        "sigma_normal": 1.020925521850586,
+        "sigma_anomaly": 0.7647881507873535,
+        "fisher_ratio": 0.01494646093043284
+      },
+      {
+        "delta": 5,
+        "mu_normal": 0.3411259353160858,
+        "mu_anomaly": 0.23211312294006348,
+        "sigma_normal": 1.003108024597168,
+        "sigma_anomaly": 0.7642158269882202,
+        "fisher_ratio": 0.007456027595503978
+      },
+      {
+        "delta": 6,
+        "mu_normal": 0.2786344885826111,
+        "mu_anomaly": 0.19899694621562958,
+        "sigma_normal": 0.997788667678833,
+        "sigma_anomaly": 0.7653025984764099,
+        "fisher_ratio": 0.004001672138040467
+      },
+      {
+        "delta": 7,
+        "mu_normal": 0.2405390739440918,
+        "mu_anomaly": 0.1789005994796753,
+        "sigma_normal": 0.9948164820671082,
+        "sigma_anomaly": 0.7657349705696106,
+        "fisher_ratio": 0.0024052122088424363
+      },
+      {
+        "delta": 8,
+        "mu_normal": 0.21550416946411133,
+        "mu_anomaly": 0.16476301848888397,
+        "sigma_normal": 0.993930995464325,
+        "sigma_anomaly": 0.7662766575813293,
+        "fisher_ratio": 0.0016308928495954913
+      },
+      {
+        "delta": 9,
+        "mu_normal": 0.19618600606918335,
+        "mu_anomaly": 0.15467923879623413,
+        "sigma_normal": 0.9934784173965454,
+        "sigma_anomaly": 0.766485869884491,
+        "fisher_ratio": 0.0010916955446050292
+      }
+    ],
+    "best_hop": {
+      "k": 2,
+      "fisher": 0.04320084363799703
+    },
+    "best_offset": {
+      "k": 9,
+      "fisher": 0.019016864902423013
+    },
+    "best_delta": {
+      "k": 1,
+      "fisher": 0.0746834358721527
+    }
+  },
+  {
+    "dataset": "elliptic",
+    "n_nodes": 46564,
+    "n_features": 93,
+    "avg_degree": 1.5730607336139506,
+    "sample_size": 2000,
+    "n_normal": 1817,
+    "n_anomaly": 183,
+    "normalization": "symmetric (D^-0.5 @ A @ D^-0.5)",
+    "pp_k": 10,
+    "hop_fisher": [
+      {
+        "hop": 0,
+        "mu_normal": 11.083131790161133,
+        "mu_anomaly": 4.1784186363220215,
+        "sigma_normal": 9.841377258300781,
+        "sigma_anomaly": 2.628678798675537,
+        "fisher_ratio": 0.45905867328460687
+      },
+      {
+        "hop": 1,
+        "mu_normal": 7.661319085000063,
+        "mu_anomaly": 1.9618436971950306,
+        "sigma_normal": 9.023141263117004,
+        "sigma_anomaly": 2.4394280211044914,
+        "fisher_ratio": 0.3714776681295722
+      },
+      {
+        "hop": 2,
+        "mu_normal": 7.013035230047765,
+        "mu_anomaly": 1.9818252918195012,
+        "sigma_normal": 8.174121680830416,
+        "sigma_anomaly": 2.3318210323448985,
+        "fisher_ratio": 0.350013277560371
+      },
+      {
+        "hop": 3,
+        "mu_normal": 6.8309598577824095,
+        "mu_anomaly": 1.7540908125261918,
+        "sigma_normal": 7.880677262395451,
+        "sigma_anomaly": 2.14959140881352,
+        "fisher_ratio": 0.3859316171535194
+      },
+      {
+        "hop": 4,
+        "mu_normal": 6.552196878274487,
+        "mu_anomaly": 1.876960066360824,
+        "sigma_normal": 7.744085402506216,
+        "sigma_anomaly": 2.231965587797612,
+        "fisher_ratio": 0.336207598843839
+      },
+      {
+        "hop": 5,
+        "mu_normal": 6.453658860963182,
+        "mu_anomaly": 1.68448031365413,
+        "sigma_normal": 7.384475053659435,
+        "sigma_anomaly": 2.0338882798401694,
+        "fisher_ratio": 0.3873482803799769
+      },
+      {
+        "hop": 6,
+        "mu_normal": 6.298730948224022,
+        "mu_anomaly": 1.818608919542592,
+        "sigma_normal": 7.521586050528912,
+        "sigma_anomaly": 2.1776893075157475,
+        "fisher_ratio": 0.32703685016574613
+      },
+      {
+        "hop": 7,
+        "mu_normal": 6.2167470809702925,
+        "mu_anomaly": 1.6481296751843644,
+        "sigma_normal": 7.115845547046401,
+        "sigma_anomaly": 1.9708119944632352,
+        "fisher_ratio": 0.38249601330682775
+      },
+      {
+        "hop": 8,
+        "mu_normal": 6.1282358131843235,
+        "mu_anomaly": 1.782254135813146,
+        "sigma_normal": 7.375716603424381,
+        "sigma_anomaly": 2.141091389593294,
+        "fisher_ratio": 0.3199078716609965
+      },
+      {
+        "hop": 9,
+        "mu_normal": 6.048810367076901,
+        "mu_anomaly": 1.6266387417971653,
+        "sigma_normal": 6.95064535030221,
+        "sigma_anomaly": 1.9351068306353818,
+        "fisher_ratio": 0.3753237628354028
+      },
+      {
+        "hop": 10,
+        "mu_normal": 6.001636672192311,
+        "mu_anomaly": 1.7582634224542388,
+        "sigma_normal": 7.270483170980375,
+        "sigma_anomaly": 2.1151628042978503,
+        "fisher_ratio": 0.31376532203975205
+      }
+    ],
+    "offset_fisher": [
+      {
+        "offset": 1,
+        "mu_normal": 10.75619429868878,
+        "mu_anomaly": 4.0570602865356715,
+        "sigma_normal": 10.124649460702424,
+        "sigma_anomaly": 2.870990714681726,
+        "fisher_ratio": 0.4048465709884867
+      },
+      {
+        "offset": 2,
+        "mu_normal": 6.288080500656304,
+        "mu_anomaly": 2.9582242140274517,
+        "sigma_normal": 6.0636815804003605,
+        "sigma_anomaly": 2.446536584768654,
+        "fisher_ratio": 0.25902226752351615
+      },
+      {
+        "offset": 3,
+        "mu_normal": 10.373679371166864,
+        "mu_anomaly": 4.001435988905978,
+        "sigma_normal": 9.394480381309256,
+        "sigma_anomaly": 2.781446524540917,
+        "fisher_ratio": 0.42260485090340555
+      },
+      {
+        "offset": 4,
+        "mu_normal": 7.059041678923369,
+        "mu_anomaly": 3.1357815944992247,
+        "sigma_normal": 6.6015613869522,
+        "sigma_anomaly": 2.544504542630223,
+        "fisher_ratio": 0.30713489734190175
+      },
+      {
+        "offset": 5,
+        "mu_normal": 10.245529512488169,
+        "mu_anomaly": 4.004600262480384,
+        "sigma_normal": 9.107019492996637,
+        "sigma_anomaly": 2.75310779478564,
+        "fisher_ratio": 0.42988043523238784
+      },
+      {
+        "offset": 6,
+        "mu_normal": 7.432849664529419,
+        "mu_anomaly": 3.228961401339566,
+        "sigma_normal": 6.907146443273743,
+        "sigma_anomaly": 2.6033968781656096,
+        "fisher_ratio": 0.32397291202575107
+      },
+      {
+        "offset": 7,
+        "mu_normal": 10.18187788195639,
+        "mu_anomaly": 4.016042226979345,
+        "sigma_normal": 8.97022479656741,
+        "sigma_anomaly": 2.7397698183531762,
+        "fisher_ratio": 0.4317385929991702
+      },
+      {
+        "offset": 8,
+        "mu_normal": 7.657473017620821,
+        "mu_anomaly": 3.2915428123423105,
+        "sigma_normal": 7.103695934591842,
+        "sigma_anomaly": 2.6437681455119124,
+        "fisher_ratio": 0.33139679904434555
+      },
+      {
+        "offset": 9,
+        "mu_normal": 10.146083107317207,
+        "mu_anomaly": 4.028999076678793,
+        "sigma_normal": 8.898482420180729,
+        "sigma_anomaly": 2.7352735251194993,
+        "fisher_ratio": 0.4313425518000508
+      },
+      {
+        "offset": 10,
+        "mu_normal": 7.8108964071279186,
+        "mu_anomaly": 3.338795988956042,
+        "sigma_normal": 7.2427581675815365,
+        "sigma_anomaly": 2.6752585453511233,
+        "fisher_ratio": 0.33509979393307604
+      }
+    ],
+    "delta_fisher": [
+      {
+        "delta": 0,
+        "mu_normal": 10.75619429868878,
+        "mu_anomaly": 4.0570602865356715,
+        "sigma_normal": 10.124649460702424,
+        "sigma_anomaly": 2.870990714681726,
+        "fisher_ratio": 0.4048465709884867
+      },
+      {
+        "delta": 1,
+        "mu_normal": 6.92122280180053,
+        "mu_anomaly": 1.9977116379057256,
+        "sigma_normal": 8.613415305354378,
+        "sigma_anomaly": 2.6305947274822774,
+        "fisher_ratio": 0.2985714192893046
+      },
+      {
+        "delta": 2,
+        "mu_normal": 6.1785405131051,
+        "mu_anomaly": 1.8082073904838625,
+        "sigma_normal": 7.64754266830627,
+        "sigma_anomaly": 2.348593393001343,
+        "fisher_ratio": 0.2981396206077272
+      },
+      {
+        "delta": 3,
+        "mu_normal": 5.780792222889822,
+        "mu_anomaly": 1.7194553679716966,
+        "sigma_normal": 7.3138596111195975,
+        "sigma_anomaly": 2.254993370537945,
+        "fisher_ratio": 0.2813076799638237
+      },
+      {
+        "delta": 4,
+        "mu_normal": 5.434419143019236,
+        "mu_anomaly": 1.6433332061778927,
+        "sigma_normal": 6.9017766025732925,
+        "sigma_anomaly": 2.1342497328674415,
+        "fisher_ratio": 0.27511700647393994
+      },
+      {
+        "delta": 5,
+        "mu_normal": 5.219376431013611,
+        "mu_anomaly": 1.5799951185838095,
+        "sigma_normal": 6.740636654709798,
+        "sigma_anomaly": 2.074605101564945,
+        "fisher_ratio": 0.26602542105712096
+      },
+      {
+        "delta": 6,
+        "mu_normal": 4.998572270580686,
+        "mu_anomaly": 1.535161880314779,
+        "sigma_normal": 6.5252833721347105,
+        "sigma_anomaly": 2.0091520246413537,
+        "fisher_ratio": 0.2570679296403916
+      },
+      {
+        "delta": 7,
+        "mu_normal": 4.852462876333628,
+        "mu_anomaly": 1.4864431409274999,
+        "sigma_normal": 6.427177758206335,
+        "sigma_anomaly": 1.9678034783812899,
+        "fisher_ratio": 0.2505277394848858
+      },
+      {
+        "delta": 8,
+        "mu_normal": 4.6941994272208225,
+        "mu_anomaly": 1.4565605254951974,
+        "sigma_normal": 6.3020691598853515,
+        "sigma_anomaly": 1.9310287133410395,
+        "fisher_ratio": 0.24104288416149022
+      },
+      {
+        "delta": 9,
+        "mu_normal": 4.584143420053861,
+        "mu_anomaly": 1.4183035165555604,
+        "sigma_normal": 6.236611907631032,
+        "sigma_anomaly": 1.9015074045490312,
+        "fisher_ratio": 0.23553443881862496
+      }
+    ],
+    "best_hop": {
+      "k": 0,
+      "fisher": 0.45905867328460687
+    },
+    "best_offset": {
+      "k": 7,
+      "fisher": 0.4317385929991702
+    },
+    "best_delta": {
+      "k": 0,
+      "fisher": 0.4048465709884867
+    }
+  },
+  {
+    "dataset": "tolokers",
+    "n_nodes": 11758,
+    "n_features": 8,
+    "avg_degree": 45.14015989113795,
+    "sample_size": 2000,
+    "n_normal": 1578,
+    "n_anomaly": 422,
+    "normalization": "symmetric (D^-0.5 @ A @ D^-0.5)",
+    "pp_k": 10,
+    "hop_fisher": [
+      {
+        "hop": 0,
+        "mu_normal": 1.878368616104126,
+        "mu_anomaly": 1.8792228698730469,
+        "sigma_normal": 0.13827663660049438,
+        "sigma_anomaly": 0.1274961531162262,
+        "fisher_ratio": 2.059901086991908e-05
+      },
+      {
+        "hop": 1,
+        "mu_normal": 1.8693017959594727,
+        "mu_anomaly": 2.3072547912597656,
+        "sigma_normal": 1.2111232280731201,
+        "sigma_anomaly": 1.6009796857833862,
+        "fisher_ratio": 0.04751153421196219
+      },
+      {
+        "hop": 2,
+        "mu_normal": 2.705159902572632,
+        "mu_anomaly": 3.3444430828094482,
+        "sigma_normal": 1.9325841665267944,
+        "sigma_anomaly": 2.4639313220977783,
+        "fisher_ratio": 0.04160627722539944
+      },
+      {
+        "hop": 3,
+        "mu_normal": 3.6100478172302246,
+        "mu_anomaly": 4.4756035804748535,
+        "sigma_normal": 2.788756847381592,
+        "sigma_anomaly": 3.6405696868896484,
+        "fisher_ratio": 0.03556155449542719
+      },
+      {
+        "hop": 4,
+        "mu_normal": 4.517712116241455,
+        "mu_anomaly": 5.632125377655029,
+        "sigma_normal": 3.638969659805298,
+        "sigma_anomaly": 4.854609489440918,
+        "fisher_ratio": 0.03368028050113705
+      },
+      {
+        "hop": 5,
+        "mu_normal": 5.3416571617126465,
+        "mu_anomaly": 6.708615303039551,
+        "sigma_normal": 4.426924705505371,
+        "sigma_anomaly": 6.0117316246032715,
+        "fisher_ratio": 0.033464899729992136
+      },
+      {
+        "hop": 6,
+        "mu_normal": 6.038661479949951,
+        "mu_anomaly": 7.637652397155762,
+        "sigma_normal": 5.104582786560059,
+        "sigma_anomaly": 7.025822162628174,
+        "fisher_ratio": 0.03384089921865018
+      },
+      {
+        "hop": 7,
+        "mu_normal": 6.593315124511719,
+        "mu_anomaly": 8.387328147888184,
+        "sigma_normal": 5.650589466094971,
+        "sigma_anomaly": 7.853167533874512,
+        "fisher_ratio": 0.03432384280239987
+      },
+      {
+        "hop": 8,
+        "mu_normal": 7.012336254119873,
+        "mu_anomaly": 8.95851993560791,
+        "sigma_normal": 6.066314697265625,
+        "sigma_anomaly": 8.48766040802002,
+        "fisher_ratio": 0.034737749620295265
+      },
+      {
+        "hop": 9,
+        "mu_normal": 7.315304756164551,
+        "mu_anomaly": 9.37322998046875,
+        "sigma_normal": 6.368081569671631,
+        "sigma_anomaly": 8.949538230895996,
+        "fisher_ratio": 0.03504023808192907
+      },
+      {
+        "hop": 10,
+        "mu_normal": 7.526319980621338,
+        "mu_anomaly": 9.662293434143066,
+        "sigma_normal": 6.578432559967041,
+        "sigma_anomaly": 9.271263122558594,
+        "fisher_ratio": 0.03524062791075906
+      }
+    ],
+    "offset_fisher": [
+      {
+        "offset": 1,
+        "mu_normal": 1.1315711736679077,
+        "mu_anomaly": 1.3192274570465088,
+        "sigma_normal": 0.8964937329292297,
+        "sigma_anomaly": 1.3211227655410767,
+        "fisher_ratio": 0.013789631483995755
+      },
+      {
+        "offset": 2,
+        "mu_normal": 1.6961710453033447,
+        "mu_anomaly": 2.0950393676757812,
+        "sigma_normal": 1.6237345933914185,
+        "sigma_anomaly": 2.2312512397766113,
+        "fisher_ratio": 0.02085548641749016
+      },
+      {
+        "offset": 3,
+        "mu_normal": 2.432419538497925,
+        "mu_anomaly": 3.099613666534424,
+        "sigma_normal": 2.5355348587036133,
+        "sigma_anomaly": 3.4570910930633545,
+        "fisher_ratio": 0.024175903272270167
+      },
+      {
+        "offset": 4,
+        "mu_normal": 3.2272045612335205,
+        "mu_anomaly": 4.1763224601745605,
+        "sigma_normal": 3.440656900405884,
+        "sigma_anomaly": 4.710817813873291,
+        "fisher_ratio": 0.02642478886368636
+      },
+      {
+        "offset": 5,
+        "mu_normal": 3.979828119277954,
+        "mu_anomaly": 5.201801300048828,
+        "sigma_normal": 4.270003318786621,
+        "sigma_anomaly": 5.897462368011475,
+        "fisher_ratio": 0.028117082233676847
+      },
+      {
+        "offset": 6,
+        "mu_normal": 4.6324591636657715,
+        "mu_anomaly": 6.097593784332275,
+        "sigma_normal": 4.975125312805176,
+        "sigma_anomaly": 6.932676792144775,
+        "fisher_ratio": 0.029428425685557216
+      },
+      {
+        "offset": 7,
+        "mu_normal": 5.159250736236572,
+        "mu_anomaly": 6.825852394104004,
+        "sigma_normal": 5.538662433624268,
+        "sigma_anomaly": 7.7747273445129395,
+        "fisher_ratio": 0.030426954359632837
+      },
+      {
+        "offset": 8,
+        "mu_normal": 5.560441493988037,
+        "mu_anomaly": 7.383982181549072,
+        "sigma_normal": 5.965636253356934,
+        "sigma_anomaly": 8.419027328491211,
+        "fisher_ratio": 0.03117671009431949
+      },
+      {
+        "offset": 9,
+        "mu_normal": 5.8518595695495605,
+        "mu_anomaly": 7.791698455810547,
+        "sigma_normal": 6.2747697830200195,
+        "sigma_anomaly": 8.886921882629395,
+        "fisher_ratio": 0.031738277933458674
+      },
+      {
+        "offset": 10,
+        "mu_normal": 6.055402755737305,
+        "mu_anomaly": 8.077556610107422,
+        "sigma_normal": 6.49002742767334,
+        "sigma_anomaly": 9.212224006652832,
+        "fisher_ratio": 0.0321435687206396
+      }
+    ],
+    "delta_fisher": [
+      {
+        "delta": 0,
+        "mu_normal": 1.1315711736679077,
+        "mu_anomaly": 1.3192274570465088,
+        "sigma_normal": 0.8964937329292297,
+        "sigma_anomaly": 1.3211227655410767,
+        "fisher_ratio": 0.013789631483995755
+      },
+      {
+        "delta": 1,
+        "mu_normal": 0.9294366240501404,
+        "mu_anomaly": 1.110852837562561,
+        "sigma_normal": 0.7929754853248596,
+        "sigma_anomaly": 0.962112307548523,
+        "fisher_ratio": 0.02113706677508859
+      },
+      {
+        "delta": 2,
+        "mu_normal": 0.9302825331687927,
+        "mu_anomaly": 1.1565651893615723,
+        "sigma_normal": 0.9001433253288269,
+        "sigma_anomaly": 1.2187330722808838,
+        "fisher_ratio": 0.02226631360198318
+      },
+      {
+        "delta": 3,
+        "mu_normal": 0.9218751788139343,
+        "mu_anomaly": 1.170257329940796,
+        "sigma_normal": 0.8946860432624817,
+        "sigma_anomaly": 1.2553716897964478,
+        "fisher_ratio": 0.025914402978909408
+      },
+      {
+        "delta": 4,
+        "mu_normal": 0.8340287208557129,
+        "mu_anomaly": 1.0865083932876587,
+        "sigma_normal": 0.8274180293083191,
+        "sigma_anomaly": 1.1937341690063477,
+        "fisher_ratio": 0.030162182180944012
+      },
+      {
+        "delta": 5,
+        "mu_normal": 0.7056401968002319,
+        "mu_anomaly": 0.9397637844085693,
+        "sigma_normal": 0.7117488384246826,
+        "sigma_anomaly": 1.0466156005859375,
+        "fisher_ratio": 0.034153770311884164
+      },
+      {
+        "delta": 6,
+        "mu_normal": 0.5646528601646423,
+        "mu_anomaly": 0.7648123502731323,
+        "sigma_normal": 0.5762810111045837,
+        "sigma_anomaly": 0.8581271171569824,
+        "fisher_ratio": 0.037427372854151174
+      },
+      {
+        "delta": 7,
+        "mu_normal": 0.43259188532829285,
+        "mu_anomaly": 0.5930556058883667,
+        "sigma_normal": 0.44481781125068665,
+        "sigma_anomaly": 0.6666551828384399,
+        "fisher_ratio": 0.04001504657537164
+      },
+      {
+        "delta": 8,
+        "mu_normal": 0.3206581771373749,
+        "mu_anomaly": 0.4432019293308258,
+        "sigma_normal": 0.3316879868507385,
+        "sigma_anomaly": 0.4974971413612366,
+        "fisher_ratio": 0.04192600573482223
+      },
+      {
+        "delta": 9,
+        "mu_normal": 0.23165757954120636,
+        "mu_anomaly": 0.32186412811279297,
+        "sigma_normal": 0.24135099351406097,
+        "sigma_anomaly": 0.3605791926383972,
+        "fisher_ratio": 0.043142325880490315
+      }
+    ],
+    "best_hop": {
+      "k": 1,
+      "fisher": 0.04751153421196219
+    },
+    "best_offset": {
+      "k": 10,
+      "fisher": 0.0321435687206396
+    },
+    "best_delta": {
+      "k": 9,
+      "fisher": 0.043142325880490315
+    }
+  }
+]

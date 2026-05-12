@@ -1,0 +1,92 @@
+{
+  "meta": {
+    "dataset": "photo",
+    "n": 7535,
+    "feature_dim": 745,
+    "hop_token_dim": 2235,
+    "normal_train": 341,
+    "anomaly_rate": 0.09263437292634373
+  },
+  "scores": {
+    "hop_pca_rec": {
+      "metrics": {
+        "auc": 0.5744749934307386,
+        "ap": 0.11960743599775676,
+        "top16_density": 0.0,
+        "top32_density": 0.03125,
+        "top64_density": 0.0625,
+        "top128_density": 0.0703125,
+        "top256_density": 0.1484375,
+        "top512_density": 0.1640625
+      },
+      "meta": {
+        "components": 64,
+        "explained_variance_ratio_sum": 0.8466532826423645
+      }
+    },
+    "hop_diag_mahal": {
+      "metrics": {
+        "auc": 0.441426810046297,
+        "ap": 0.0779578471440268,
+        "top16_density": 0.1875,
+        "top32_density": 0.15625,
+        "top64_density": 0.09375,
+        "top128_density": 0.0625,
+        "top256_density": 0.03515625,
+        "top512_density": 0.03125
+      },
+      "meta": {}
+    },
+    "ego_struct_dev": {
+      "metrics": {
+        "auc": 0.4867831070867138,
+        "ap": 0.08660631505837077,
+        "top16_density": 0.125,
+        "top32_density": 0.0625,
+        "top64_density": 0.0625,
+        "top128_density": 0.0703125,
+        "top256_density": 0.05078125,
+        "top512_density": 0.048828125
+      },
+      "meta": {
+        "stats": [
+          "log_degree",
+          "log_2hop_degree",
+          "neighbor_residual",
+          "neighbor_variance"
+        ]
+      }
+    },
+    "min_hop_pca_ego": {
+      "metrics": {
+        "auc": 0.5372221474842138,
+        "ap": 0.10183227033414825,
+        "top16_density": 0.0,
+        "top32_density": 0.0625,
+        "top64_density": 0.03125,
+        "top128_density": 0.0234375,
+        "top256_density": 0.07421875,
+        "top512_density": 0.125
+      },
+      "meta": {
+        "combine": "min(percentile(hop_pca), percentile(ego_struct))"
+      }
+    },
+    "prod_hop_pca_ego": {
+      "metrics": {
+        "auc": 0.5424487440452317,
+        "ap": 0.10315875659380107,
+        "top16_density": 0.0,
+        "top32_density": 0.0625,
+        "top64_density": 0.03125,
+        "top128_density": 0.0234375,
+        "top256_density": 0.08203125,
+        "top512_density": 0.115234375
+      },
+      "meta": {
+        "combine": "product(percentile(hop_pca), percentile(ego_struct))"
+      }
+    }
+  },
+  "elapsed_sec": 1.8494608402252197
+}

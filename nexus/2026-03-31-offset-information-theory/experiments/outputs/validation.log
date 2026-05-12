@@ -1,0 +1,58 @@
+============================================================
+Phase 4: Mechanism Validation Experiment
+============================================================
+Dataset: Photo
+Epochs: 10
+Hidden dim: 128
+Device: cuda:0
+============================================================
+Using device: cuda:0
+
+[1] Loading Photo dataset...
+Photo dataset loaded:
+  - Features: (7535, 745)
+  - Labels: (7535,) (normal=698, anomaly=6837)
+  - Adjacency: (7535, 7535)
+
+[2] Computing Hop, Offset, and Delta tokens...
+  - Hop tokens: (7535, 7, 745)
+  - Offset tokens: (7535, 7, 745)
+  - Delta tokens: (7535, 6, 745)
+
+[3] Preparing data splits...
+  - Train: 5274 samples
+  - Val: 754 samples
+  - Test: 1507 samples
+
+============================================================
+[A] Testing Convergence-Aware Attention (CAA)
+============================================================
+Model created: 518449 parameters
+
+Training CAA model...
+Traceback (most recent call last):
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-03-31-offset-information-theory/experiments/mechanisms/validate_mechanisms.py", line 780, in <module>
+    results = run_validation_experiment(
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-03-31-offset-information-theory/experiments/mechanisms/validate_mechanisms.py", line 537, in run_validation_experiment
+    train_loss = train_epoch(
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-03-31-offset-information-theory/experiments/mechanisms/validate_mechanisms.py", line 291, in train_epoch
+    outputs, _ = model(x)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1536, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-03-31-offset-information-theory/experiments/mechanisms/convergence_aware_attention.py", line 424, in forward
+    x, attn = layer(x, return_attention=True)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1536, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-03-31-offset-information-theory/experiments/mechanisms/convergence_aware_attention.py", line 331, in forward
+    attn_out, attention_weights = self.attention(normed, attn_mask, return_attention)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1536, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-03-31-offset-information-theory/experiments/mechanisms/convergence_aware_attention.py", line 180, in forward
+    attn_scores = attn_scores + convergence_bias.unsqueeze(1)  # Broadcast across heads
+RuntimeError: The size of tensor a (4) must match the size of tensor b (64) at non-singleton dimension 1

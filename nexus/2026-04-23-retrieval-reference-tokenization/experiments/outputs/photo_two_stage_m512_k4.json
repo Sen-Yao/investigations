@@ -1,0 +1,26 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "k": 6,
+  "topm": 512,
+  "topk": 4,
+  "self_weight": 0.25,
+  "single_stage": {
+    "topk_anomaly_ratio": 0.0,
+    "indices": [
+      747,
+      7190,
+      1173,
+      4765
+    ]
+  },
+  "two_stage": {
+    "topk_anomaly_ratio": 0.0,
+    "indices": [
+      4722,
+      1173,
+      6686,
+      1226
+    ]
+  },
+  "delta": 0.0
+}

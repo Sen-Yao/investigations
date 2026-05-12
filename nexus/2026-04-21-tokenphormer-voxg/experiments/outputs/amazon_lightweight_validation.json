@@ -1,0 +1,88 @@
+{
+  "data": "Amazon.mat",
+  "k": 6,
+  "feature_stats": {
+    "delta_corr_to_proto": {
+      "normal_mean": -0.1903703690822245,
+      "anomaly_mean": 0.18873057323415557,
+      "difference": 0.37910094231638003,
+      "ks_stat": 0.24262079769530887,
+      "ks_p": 3.970819447711828e-40
+    },
+    "delta_cos_to_proto": {
+      "normal_mean": -0.18846990393531454,
+      "anomaly_mean": 0.19029816628193091,
+      "difference": 0.37876807021724546,
+      "ks_stat": 0.24267007505379717,
+      "ks_p": 3.82422507089837e-40
+    },
+    "delta_l2_to_proto": {
+      "normal_mean": 488.38975903662316,
+      "anomaly_mean": 265.5668786084947,
+      "difference": -222.82288042812849,
+      "ks_stat": 0.3894607556759578,
+      "ks_p": 5.283857907050866e-105
+    },
+    "proto_delta_norm": {
+      "normal_mean": 135.5456804503573,
+      "anomaly_mean": 122.43159665619817,
+      "difference": -13.114083794159143,
+      "ks_stat": 0.0621611976281603,
+      "ks_p": 0.0051763964224569485
+    },
+    "neigh_delta_var": {
+      "normal_mean": 4373.279944811832,
+      "anomaly_mean": 3390.712886054855,
+      "difference": -982.5670587569771,
+      "ks_stat": 0.37020031684246457,
+      "ks_p": 1.4301592422480663e-94
+    },
+    "neigh_delta_mean_pairwise_cos": {
+      "normal_mean": 0.1162647499529537,
+      "anomaly_mean": 0.26239492705828377,
+      "difference": 0.14613017710533005,
+      "ks_stat": 0.3107442271848294,
+      "ks_p": 4.097848952313662e-66
+    },
+    "node_to_proto_l2": {
+      "normal_mean": 488.38975903662316,
+      "anomaly_mean": 265.5668786084947,
+      "difference": -222.82288042812849,
+      "ks_stat": 0.3894607556759578,
+      "ks_p": 5.283857907050866e-105
+    },
+    "node_to_proto_cos": {
+      "normal_mean": -0.18846990393531454,
+      "anomaly_mean": 0.19029816628193091,
+      "difference": 0.37876807021724546,
+      "ks_stat": 0.24267007505379717,
+      "ks_p": 3.82422507089837e-40
+    }
+  },
+  "probes": {
+    "delta_flatten": {
+      "auc": 0.9807066242183456,
+      "ap": 0.8652290209552739
+    },
+    "prototype_only": {
+      "auc": 0.7402118907920471,
+      "ap": 0.15415372699344046
+    },
+    "consistency_only": {
+      "auc": 0.7274138097368028,
+      "ap": 0.23010751043860478
+    },
+    "delta_plus_prototype": {
+      "auc": 0.9806351461572868,
+      "ap": 0.8645345586372661
+    },
+    "delta_plus_consistency": {
+      "auc": 0.980686891011305,
+      "ap": 0.8640257250915174
+    },
+    "delta_plus_prototype_plus_consistency": {
+      "auc": 0.9806680348356882,
+      "ap": 0.8637200115049
+    }
+  }
+}

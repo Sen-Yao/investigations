@@ -1,0 +1,30 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "seed": 1,
+  "train_rate": 0.05,
+  "alpha": 0.05,
+  "center_only": {
+    "auc_neg_score": 0.41166344594744675,
+    "ap_neg_score": 0.072382954466342,
+    "normal_mean": -0.2371693104505539,
+    "anomaly_mean": -0.08483752608299255,
+    "ks_stat": 0.13464031250825087,
+    "ks_pvalue": 1.7882164654453035e-10
+  },
+  "residual_only": {
+    "auc_neg_score": 0.3016901337028045,
+    "ap_neg_score": 0.06125196010217736,
+    "normal_mean": 0.2260623574256897,
+    "anomaly_mean": 0.3733139634132385,
+    "ks_stat": 0.2861314615024519,
+    "ks_pvalue": 2.540960183871611e-46
+  },
+  "hybrid": {
+    "auc_neg_score": 0.6521535233243354,
+    "ap_neg_score": 0.17548410047762691,
+    "normal_mean": 0.00555347790941596,
+    "anomaly_mean": -0.14423821866512299,
+    "ks_stat": 0.24670813997492994,
+    "ks_pvalue": 2.110297074106506e-34
+  }
+}

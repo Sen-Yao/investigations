@@ -1,0 +1,90 @@
+{
+  "created_at": "2026-04-30 15:20:00",
+  "status": "phase1_manual_exploratory_recorded",
+  "note": "Manual-run exploratory results retained by user approval on 2026-04-30. Formal sweeps/training must use skill workflow.",
+  "results": [
+    {
+      "label": "photo_self_residual",
+      "dataset": "photo",
+      "objective": "self_residual",
+      "test_auc": 0.5799348484605645,
+      "test_ap": 0.1208995940998783,
+      "best_epoch": 0,
+      "val_auc": 0.6077286135693215,
+      "val_ap": 0.13112889845108902,
+      "time_sec": 32.29088354110718,
+      "source": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/objective_ablation/photo__self_residual.json",
+      "run_type": "manual_exploratory"
+    },
+    {
+      "label": "photo_global_ref_guided",
+      "dataset": "photo",
+      "objective": "global_ref_guided",
+      "test_auc": 0.764630762150516,
+      "test_ap": 0.39673732229540704,
+      "best_epoch": 200,
+      "val_auc": 0.7662733529990167,
+      "val_ap": 0.42873787898936044,
+      "time_sec": 37.67702579498291,
+      "source": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/objective_ablation/photo__ref_guided.json",
+      "run_type": "manual_exploratory"
+    },
+    {
+      "label": "photo_target_ref_guided",
+      "dataset": "photo",
+      "objective": "target_ref_guided",
+      "test_auc": 0.764925409443825,
+      "test_ap": 0.3585198488762497,
+      "best_epoch": 70,
+      "val_auc": 0.7358702064896757,
+      "val_ap": 0.34545312448313653,
+      "time_sec": 37.82229709625244,
+      "source": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-30-reference-guided-pseudo-anomaly/experiments/outputs/phase1/photo__target_ref_guided.json",
+      "run_type": "manual_exploratory"
+    },
+    {
+      "label": "elliptic_self_residual",
+      "dataset": "elliptic",
+      "objective": "self_residual",
+      "test_auc": 0.6899612590402835,
+      "test_ap": 0.15177310542286082,
+      "best_epoch": 0,
+      "val_auc": 0.6972084321610729,
+      "val_ap": 0.14771607591252306,
+      "time_sec": 174.59867358207703,
+      "source": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/objective_ablation/elliptic__self_residual.json",
+      "run_type": "manual_exploratory"
+    },
+    {
+      "label": "elliptic_global_ref_guided",
+      "dataset": "elliptic",
+      "objective": "global_ref_guided",
+      "test_auc": 0.535966873876618,
+      "test_ap": 0.09842238467203294,
+      "best_epoch": 160,
+      "val_auc": 0.5466727003602383,
+      "val_ap": 0.09311439555603587,
+      "time_sec": 528.8921885490417,
+      "source": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/objective_ablation/elliptic__ref_guided.json",
+      "run_type": "manual_exploratory"
+    },
+    {
+      "label": "elliptic_target_ref_guided",
+      "dataset": "elliptic",
+      "objective": "target_ref_guided",
+      "test_auc": 0.7197088484743084,
+      "test_ap": 0.18527435326836836,
+      "best_epoch": 0,
+      "val_auc": 0.7195419222812711,
+      "val_ap": 0.1785498828506331,
+      "time_sec": 830.5909414291382,
+      "source": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-30-reference-guided-pseudo-anomaly/experiments/outputs/phase1/elliptic__target_ref_guided.json",
+      "run_type": "manual_exploratory"
+    }
+  ],
+  "key_findings": [
+    "Photo target_ref_guided matches global_ref_guided AUC and greatly improves over self_residual.",
+    "Elliptic target_ref_guided improves over self_residual and fixes global_ref_guided degradation, but best_epoch remains 0.",
+    "Current code does not contain VecGAD-style reconstruction residual; any VecGAD residual ablation requires either a proxy or adding a minimal decoder/reconstruction path."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "sweep": "s9u6hm9g",
+  "runs": [
+    {
+      "seed": 0,
+      "margin_auc": 0.7937890144472121,
+      "margin_ap": 0.5509969938431467,
+      "run_id": "8059bwmu",
+      "state": "finished"
+    },
+    {
+      "seed": 1,
+      "margin_auc": 0.7960211070604832,
+      "margin_ap": 0.5195935747665974,
+      "run_id": "7b56bns3",
+      "state": "finished"
+    },
+    {
+      "seed": 2,
+      "margin_auc": 0.7990646598184996,
+      "margin_ap": 0.5110423400764228,
+      "run_id": "bthfnpku",
+      "state": "finished"
+    },
+    {
+      "seed": 3,
+      "margin_auc": 0.7840436607691752,
+      "margin_ap": 0.4904185762510793,
+      "run_id": "nchqcjox",
+      "state": "finished"
+    },
+    {
+      "seed": 4,
+      "margin_auc": 0.8030314878349993,
+      "margin_ap": 0.5110012301907658,
+      "run_id": "ux37jiv7",
+      "state": "finished"
+    }
+  ],
+  "auc_mean": 0.7951899859860739,
+  "auc_std": 0.007130853698686534,
+  "ap_mean": 0.5166105430256024,
+  "ap_std": 0.0220216647660617
+}

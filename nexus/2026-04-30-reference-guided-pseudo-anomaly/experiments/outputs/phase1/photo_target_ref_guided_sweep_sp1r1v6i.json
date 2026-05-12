@@ -1,0 +1,205 @@
+{
+  "created_at": "2026-04-30 16:22:25",
+  "sweep_id": "sp1r1v6i",
+  "wandb_url": "https://wandb.ai/HCCS/VoxG/sweeps/sp1r1v6i",
+  "dataset": "photo",
+  "objective_mode": "target_ref_guided",
+  "method": "grid",
+  "run_count": 15,
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "pseudo_beta_values": [
+    0.1,
+    0.2,
+    0.3
+  ],
+  "run_type": "formal_sweep_via_sweep_monitor_skill",
+  "groups": [
+    {
+      "pseudo_beta": 0.1,
+      "n": 5,
+      "auc_mean": 0.6394599509651423,
+      "auc_std": 0.08221518965926487,
+      "ap_mean": 0.21919302538897906,
+      "ap_std": 0.07751425656236616,
+      "runs": [
+        {
+          "run_id": "cqet3hmy",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.1,
+          "seed": 0,
+          "auc": 0.7311130941886796,
+          "ap": 0.2981208323972149,
+          "runtime": 37.418136141
+        },
+        {
+          "run_id": "xxep5cmn",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.1,
+          "seed": 1,
+          "auc": 0.620203216478039,
+          "ap": 0.1747480210448738,
+          "runtime": 37.673679204
+        },
+        {
+          "run_id": "m8xtj0nn",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.1,
+          "seed": 2,
+          "auc": 0.51218227593953,
+          "ap": 0.09117152386301257,
+          "runtime": 37.801955853
+        },
+        {
+          "run_id": "592tng1p",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.1,
+          "seed": 3,
+          "auc": 0.6064027192176287,
+          "ap": 0.24279889303866314,
+          "runtime": 37.406268358
+        },
+        {
+          "run_id": "smkqrmt0",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.1,
+          "seed": 4,
+          "auc": 0.727398449001834,
+          "ap": 0.289125856601131,
+          "runtime": 37.740973141
+        }
+      ]
+    },
+    {
+      "pseudo_beta": 0.2,
+      "n": 5,
+      "auc_mean": 0.6215333361913958,
+      "auc_std": 0.04814465188638968,
+      "ap_mean": 0.2007099796934467,
+      "ap_std": 0.07162056122178097,
+      "runs": [
+        {
+          "run_id": "uryv142b",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.2,
+          "seed": 0,
+          "auc": 0.6468531268388624,
+          "ap": 0.3114468014777371,
+          "runtime": 37.315327964
+        },
+        {
+          "run_id": "1olxqiu4",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.2,
+          "seed": 1,
+          "auc": 0.5864817710777994,
+          "ap": 0.12420344613310201,
+          "runtime": 37.333509218
+        },
+        {
+          "run_id": "rnqd5vu3",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.2,
+          "seed": 2,
+          "auc": 0.6108373107294107,
+          "ap": 0.14525521010490067,
+          "runtime": 37.378003175
+        },
+        {
+          "run_id": "wx87pxmz",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.2,
+          "seed": 3,
+          "auc": 0.5632024294764313,
+          "ap": 0.16532678691985,
+          "runtime": 37.686214966
+        },
+        {
+          "run_id": "ez0i7a4a",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.2,
+          "seed": 4,
+          "auc": 0.7002920428344754,
+          "ap": 0.25731765383164373,
+          "runtime": 37.430030087
+        }
+      ]
+    },
+    {
+      "pseudo_beta": 0.3,
+      "n": 5,
+      "auc_mean": 0.6474021785251909,
+      "auc_std": 0.034954609948490714,
+      "ap_mean": 0.17524632814014054,
+      "ap_std": 0.0436509326662457,
+      "runs": [
+        {
+          "run_id": "z5vu6yx0",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.3,
+          "seed": 0,
+          "auc": 0.6827425695648093,
+          "ap": 0.17932710261424734,
+          "runtime": 37.622689643
+        },
+        {
+          "run_id": "5fjv0lhr",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.3,
+          "seed": 1,
+          "auc": 0.5906732325741669,
+          "ap": 0.13292761140505283,
+          "runtime": 37.370316841
+        },
+        {
+          "run_id": "45m4y9x6",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.3,
+          "seed": 2,
+          "auc": 0.6467465474493559,
+          "ap": 0.12964663678798344,
+          "runtime": 37.87008908
+        },
+        {
+          "run_id": "as1lw1ek",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.3,
+          "seed": 3,
+          "auc": 0.6848685933637807,
+          "ap": 0.24976719128137304,
+          "runtime": 37.967158275
+        },
+        {
+          "run_id": "jrgpfs60",
+          "dataset": "photo",
+          "objective_mode": "target_ref_guided",
+          "pseudo_beta": 0.3,
+          "seed": 4,
+          "auc": 0.6319799496738416,
+          "ap": 0.184563098612046,
+          "runtime": 37.625409036
+        }
+      ]
+    }
+  ],
+  "note": "Grouped explicitly by pseudo_beta because current sweep-monitor default grouping does not include pseudo_beta/objective_mode."
+}

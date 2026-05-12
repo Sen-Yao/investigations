@@ -1,0 +1,47 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/elliptic.mat",
+  "seed": 0,
+  "train_rate": 0.05,
+  "alpha": 0.1,
+  "k": 6,
+  "center_only": {
+    "auc": 0.20925816182846302,
+    "ap": 0.058071369979542674,
+    "normal_mean": 0.36420379209057113,
+    "anomaly_mean": 0.5927291457544774,
+    "difference": 0.2285253536639063,
+    "ks_stat": 0.5323593331750416,
+    "ks_pvalue": 0.0,
+    "anomaly_high": false
+  },
+  "delta_ndc_only_assume_anomaly_high": {
+    "auc": 0.5481484474871248,
+    "ap": 0.11579794275618288,
+    "normal_mean": -0.2505556344985962,
+    "anomaly_mean": -0.19909456372261047,
+    "difference": 0.05146107077598572,
+    "ks_stat": 0.1857359409755202,
+    "ks_pvalue": 2.5672362844445005e-124,
+    "anomaly_high": true
+  },
+  "delta_ndc_only_assume_anomaly_low": {
+    "auc": 0.45185155251287523,
+    "ap": 0.10338287593428039,
+    "normal_mean": -0.2505556344985962,
+    "anomaly_mean": -0.19909456372261047,
+    "difference": 0.05146107077598572,
+    "ks_stat": 0.1857359409755202,
+    "ks_pvalue": 2.5672362844445005e-124,
+    "anomaly_high": false
+  },
+  "center_plus_delta_ndc": {
+    "auc": 0.3927107730169004,
+    "ap": 0.07378261656623591,
+    "normal_mean": 0.30737972041195727,
+    "anomaly_mean": 0.39591185379702065,
+    "difference": 0.08853213338506338,
+    "ks_stat": 0.29701953940842574,
+    "ks_pvalue": 3.22e-321,
+    "anomaly_high": false
+  }
+}

@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>方案 C: Composite Offset Token 详细报告</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.7; }
+    h1 { color: #2c3e50; border-bottom: 3px solid #9b59b6; padding-bottom: 10px; }
+    h2 { color: #2980b9; margin-top: 30px; }
+    h3 { color: #34495e; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background-color: #9b59b6; color: white; }
+    tr:hover { background-color: #f5f5f5; }
+    .highlight { background-color: #f3e5f5; padding: 15px; border-left: 4px solid #9b59b6; margin: 15px 0; }
+    .paper-box { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin: 12px 0; border-radius: 5px; }
+    code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+    pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    .insight-box { background-color: #fff3e0; border-left: 4px solid #e67e22; padding: 15px; margin: 15px 0; }
+    .conclusion-box { background-color: #e8f5e9; border-left: 4px solid #27ae60; padding: 15px; margin: 15px 0; }
+    .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<h1>🔮 方案 C: Composite Offset Token 详细报告</h1>
+
+<p><strong>优先级</strong>：P3</p>
+<p><strong>工作量</strong>：中（3-5 天）</p>
+<p><strong>类型</strong>：架构改进，借鉴 NTFormer 的 Node2Par 思想</p>
+
+<hr>
+
+<h2>📋 核心思想</h2>
+
+<div class="highlight">
+  <strong>借鉴 NTFormer 的 Node2Par，将 Offset 作为多种 token 类型之一。</strong>
+  
+  <p>目标：</p>
+  <ul>
+    <li>从多个视角表达节点特征</li>
+    <li>Offset 与其他特征类型互补</li>
+    <li>无需针对不同图类型修改模型</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📐 NTFormer 的 Node2Par 思想</h2>
+
+<div class="paper-box">
+  <h4>核心问题</h4>
+  <p>现有方法只使用<strong>单一类型</strong>的 token 生成，只能表达部分图信息。</p>
+  
+  <h4>Node2Par 解决方案</h4>
+  <pre>
+对于每个节点，使用多种 token 元素构建 token 序列：
+
+Token 类型 A: 节点自身特征
+Token 类型 B: 邻居特征聚合
+Token 类型 C: 属性特征
+Token 类型 D: 结构特征
+
+→ 组合生成多种 token 序列
+→ 全面表达节点特征
+→ 无需图特定修改
+  </pre>
+  
+  <h4>关键优势</h4>
+  <ul>
+    <li><strong>多视角</strong>：从不同角度表达节点</li>
+    <li><strong>通用性</strong>：适配各种图类型</li>
+    <li><strong>灵活性</strong>：可选择合适的 token 类型</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>🔬 Composite Offset Token 设计</h2>
+
+<h3>Token 类型设计</h3>
+
+<table>
+  <tr><th>Token 类型</th><th>内容</th><th>维度</th><th>作用</th></tr>
+  <tr><td><strong>Original</strong></td><td>原始 hop 特征</td><td>[K+1, D]</td><td>保留原始信息</td></tr>
+  <tr><td><strong>Offset</strong></td><td>hop_k - hop_0</td><td>[K, D]</td><td>捕获变化方向</td></tr>
+  <tr><td><strong>Delta</strong></td><td>hop_k - hop_{k-1}</td><td>[K, D]</td><td>捕获增量变化</td></tr>
+  <tr><td><strong>Degree</strong></td><td>节点度特征</td><td>[1, D']</td><td>结构信息</td></tr>
+  <tr><td><strong>Position</strong></td><td>位置编码</td><td>[K+1, D]</td><td>位置信息</td></tr>
+</table>
+
+<h3>方案 C1: Concatenation（拼接）</h3>
+
+<div class="paper-box">
+  <h4>思路</h4>
+  <p>将多种 token 类型拼接成更长的序列。</p>
+  
+  <h4>实现</h4>
+  <pre>
+def composite_token_concatenation(node, features, adj):
+    """
+    拼接式组合 token
+    """
+    # 1. 原始 hop 特征
+    original_tokens = sample_hop_features(node, features, adj)  # [K+1, D]
+    
+    # 2. Offset token
+    offset_tokens = original_tokens[1:] - original_tokens[0:1]  # [K, D]
+    
+    # 3. Delta token
+    delta_tokens = original_tokens[1:] - original_tokens[:-1]  # [K, D]
+    
+    # 4. 度特征
+    degree_token = compute_degree_features(node, adj)  # [1, D']
+    
+    # 5. 拼接
+    composite_tokens = torch.cat([
+        original_tokens,      # [K+1, D]
+        offset_tokens,        # [K, D]
+        delta_tokens,         # [K, D]
+        degree_token.expand(K, -1)  # [K, D']
+    ], dim=0)  # 总长度: (K+1) + K + K + K = 3K + 1
+    
+    return composite_tokens
+  </pre>
+  
+  <h4>特点</h4>
+  <ul>
+    <li><strong>简单直接</strong>：易于实现</li>
+    <li><strong>信息完整</strong>：保留所有信息</li>
+    <li><strong>缺点</strong>：序列变长，计算量增加</li>
+  </ul>
+</div>
+
+<h3>方案 C2: Multi-Channel（多通道）</h3>
+
+<div class="paper-box">
+  <h4>思路</h4>
+  <p>每种 token 类型作为独立通道，分别处理后再融合。</p>
+  
+  <h4>实现</h4>
+  <pre>
+class MultiChannelTokenEncoder(nn.Module):
+    def __init__(self, d_model, num_types=3):
+        super().__init__()
+        self.num_types = num_types
+        
+        # 每个 token 类型有独立的编码器
+        self.original_encoder = TransformerEncoder(d_model)
+        self.offset_encoder = TransformerEncoder(d_model)
+        self.delta_encoder = TransformerEncoder(d_model)
+        
+        # 融合层
+        self.fusion = nn.Linear(d_model * num_types, d_model)
+    
+    def forward(self, original_tokens, offset_tokens, delta_tokens):
+        """
+        多通道处理
+        """
+        # 独立编码
+        original_repr = self.original_encoder(original_tokens)  # [B, K+1, D]
+        offset_repr = self.offset_encoder(offset_tokens)         # [B, K, D]
+        delta_repr = self.delta_encoder(delta_tokens)            # [B, K, D]
+        
+        # 池化为节点表示
+        original_node = original_repr.mean(dim=1)  # [B, D]
+        offset_node = offset_repr.mean(dim=1)      # [B, D]
+        delta_node = delta_repr.mean(dim=1)        # [B, D]
+        
+        # 融合
+        concat_repr = torch.cat([original_node, offset_node, delta_node], dim=-1)
+        node_repr = self.fusion(concat_repr)
+        
+        return node_repr
+  </pre>
+  
+  <h4>特点</h4>
+  <ul>
+    <li><strong>独立建模</strong>：每种类型有专门编码器</li>
+    <li><strong>灵活融合</strong>：可学习的融合权重</li>
+    <li><strong>缺点</strong>：参数量增加</li>
+  </ul>
+</div>
+
+<h3>方案 C3: Gated Combination（门控组合）</h3>
+
+<div class="paper-box">
+  <h4>思路</h4>
+  <p>使用门控机制自适应选择不同 token 类型的重要性。</p>
+  
+  <h4>实现</h4>
+  <pre>
+class GatedTokenCombination(nn.Module):
+    def __init__(self, d_model, num_types=3):
+        super().__init__()
+        self.gate = nn.Sequential(
+            nn.Linear(d_model * num_types, d_model),
+            nn.Sigmoid()
+        )
+        self.projection = nn.Linear(d_model * num_types, d_model)
+    
+    def forward(self, original_repr, offset_repr, delta_repr):
+        """
+        门控组合
+        """
+        # 拼接所有表示
+        concat = torch.cat([original_repr, offset_repr, delta_repr], dim=-1)
+        
+        # 计算门控权重
+        gate_weights = self.gate(concat)  # [B, D]
+        
+        # 加权投影
+        combined = self.projection(concat) * gate_weights
+        
+        return combined
+  </pre>
+  
+  <h4>特点</h4>
+  <ul>
+    <li><strong>自适应</strong>：自动学习重要性</li>
+    <li><strong>可解释</strong>：门控权重反映类型重要性</li>
+    <li><strong>适合异常检测</strong>：不同数据集可能偏好不同类型</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📊 与现有代码的集成</h2>
+
+<h3>修改点分析</h3>
+
+<table>
+  <tr><th>文件</th><th>修改内容</th><th>工作量</th></tr>
+  <tr><td><code>utils.py</code></td><td>添加复合 token 生成函数</td><td>中</td></tr>
+  <tr><td><code>VoxGFormer.py</code></td><td>修改输入处理，支持多 token 类型</td><td>中</td></tr>
+  <tr><td><code>run.py</code></td><td>添加 token_type 参数</td><td>低</td></tr>
+</table>
+
+<h3>配置示例</h3>
+
+<pre>
+# sweep_composite_token.yaml
+
+parameters:
+  # 复合 token 配置
+  token_type:
+    values: 
+      - original           # 原始 token
+      - offset             # 仅 Offset
+      - delta              # 仅 Delta
+      - original_offset    # 原始 + Offset
+      - original_delta     # 原始 + Delta
+      - all_concat         # 拼接所有
+      - all_multichannel   # 多通道
+      - all_gated          # 门控组合
+</pre>
+
+<hr>
+
+<h2>📈 预期效果</h2>
+
+<table>
+  <tr><th>Token 组合</th><th>预期优势</th><th>适用场景</th></tr>
+  <tr><td><strong>Original + Offset</strong></td><td>保留原始信息 + 捕获变化</td><td>通用</td></tr>
+  <tr><td><strong>Offset + Delta</strong></td><td>双重差分视角</td><td>变化敏感场景</td></tr>
+  <tr><td><strong>Offset + Degree</strong></td><td>变化 + 结构</td><td>结构重要场景</td></tr>
+  <tr><td><strong>多通道</strong></td><td>独立建模各类型</td><td>复杂图</td></tr>
+</table>
+
+<hr>
+
+<h2>📅 实施计划</h2>
+
+<table>
+  <tr><th>阶段</th><th>任务</th><th>时间</th></tr>
+  <tr><td>第1天</td><td>实现拼接和多通道方案</td><td>3小时</td></tr>
+  <tr><td>第2天</td><td>实现门控组合方案</td><td>3小时</td></tr>
+  <tr><td>第3天</td><td>集成到 VoxGFormer</td><td>3小时</td></tr>
+  <tr><td>第4-5天</td><td>实验对比不同组合</td><td>6小时</td></tr>
+</table>
+
+<hr>
+
+<div class="footer">
+  <p><strong>报告类型</strong>：方案详细设计文档</p>
+  <p><strong>生成时间</strong>：2026-03-31</p>
+  <p><strong>作者</strong>：Nexus</p>
+</div>
+
+</body>
+</html>

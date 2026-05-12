@@ -1,0 +1,63 @@
+<html><body style="background:#f3efe7;color:#2b2a27;font-family:Georgia,'Times New Roman','Noto Serif SC',serif;font-size:17px;line-height:1.82;margin:0;padding:0;">
+<div style="max-width:980px;margin:0 auto;padding:32px 22px;"><div style="background:#fffaf0;border:1px solid #ded3bd;border-radius:18px;padding:34px 38px;box-shadow:0 10px 30px rgba(74,63,45,.08);">
+<div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#7a6a47;margin-bottom:8px;">SenyaoLab · Paper-style Research Memo</div>
+<h1 style="font-size:30px;line-height:1.28;margin:0 0 8px;color:#243528;">Reference-Conditioned Directional Margin：当前 AUC=0.79 方案的完整复盘</h1>
+<p style="color:#71685d;margin:0 0 22px;">Nexus ｜ 2026-05-11 ｜ DualRefGAD / Elliptic / Stage-1 mechanism note</p>
+<div style="background:#eef4ea;border-left:5px solid #5f7f5f;border-radius:12px;padding:18px 20px;margin:24px 0;"><strong>摘要：</strong>当前能在 Elliptic seed0 上达到 AUC 0.7938 / AP 0.5510 的方案，不是一个训练得到的 MLP head，而是一个基于旧 sweep reference construction 的 closed-form directional margin。它的核心思想是：先为每个目标节点构造一个 normal-side reference set 与一个 anomaly-side reference set，经过 DualRef tokenization 和 TransformerEncoder 得到节点级 embedding，然后比较 target-to-normal displacement 与 normal-to-anomaly displacement 的方向一致性。异常分数定义为 <code><code>cos(h_v - r_n(v), r_a(v) - r_n(v))</code></code>。这个分数具有明确几何含义：节点越像是从 normal reference 朝 anomaly-side reference 方向偏移，异常分数越高。</div>
+
+<h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">一、Problem Formulation：为什么需要 Reference-Conditioned Readout</h2>
+<p>在半监督图异常检测中，训练集只允许包含正常节点。这个限制使得传统二分类 head 不再自然，因为异常类别没有真实监督信号。DualRefGAD 当前最有价值的观察是：即使没有异常标签参与训练，reference construction 本身也可能构造出一个与异常方向相关的几何坐标系。这个坐标系不是全局中心距离，而是对每个节点局部定义的 normal reference 与 anomaly-side reference。</p>
+<p>具体地，对每个节点 v，我们不直接判断 h_v 是否远离正常中心，而是问一个更结构化的问题：相对于它自己的 normal references，v 的偏移方向是否朝向 anomaly-side references？这个问题把异常检测从“离正常有多远”改写为“偏离正常的方向是否与 anomaly-side direction 一致”。当前 AUC=0.79 的方案正是这个 directional question 的 closed-form 实现。</p>
+
+<h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">二、Tokenization：从原始图到 DualRef token sequence</h2>
+<p>Tokenization 分两步。第一步是在原始属性和图结构上构造 descriptor，用于选择 references。当前成功配置使用 <code><code>descriptor_mode=hop_attr</code></code>，即基于 2-hop 聚合属性构造节点描述符。这里没有使用 <code><code>hop_attr_rwse</code></code>；后者在另一组错误/不同 reference 构造中对应过约 0.64 AUC，因此当前 0.79 方案必须明确锁定为旧 sweep 构造。</p>
+<p>第二步是为每个节点拼接 token sequence。代码中的 <code><code>build_tokens</code></code> 对每个节点 i 构造：</p>
+<pre style="background:#2d3748;color:#e2e8f0;padding:14px 16px;border-radius:10px;overflow:auto;"><code>[ x_i ; x_normal_ref_1 ; ... ; x_normal_ref_4 ; x_anom_ref_1 ; ... ; x_anom_ref_16 ]</code></pre>
+<p>也就是说，每个样本的 token 序列长度是 1 + 4 + 16 = 21。第一个 token 是 target node attribute，接着是 4 个 normal references，最后是 16 个 anomaly-side references。这个序列被输入 VecGAD 的 TransformerEncoder，输出 target-conditioned embedding。重要的是：Transformer 不是在这里学习最终 anomaly classifier，而是在 reference-conditioned token context 中生成节点表示。</p>
+
+<h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">三、Reference Selection：正常参考与异常侧参考如何选取</h2>
+<p>正常参考的候选池由真实正常训练节点给出，即 <code><code>normal_for_train_idx</code></code>。这一步使用 <code><code>gn_mode=label_gate</code></code>，含义是 normal reference 只能来自已知正常池，其他节点不进入 normal pool。随后对目标节点 descriptor 与 normal pool descriptor 计算 cosine similarity，即 <code><code>ln_mode=descriptor_similarity</code></code>，选择得分最高的 4 个正常节点作为 normal references。</p>
+<p>异常侧参考不是使用真实异常标签。当前配置为 <code><code>ga_mode=normal_soft_or</code></code> 与 <code><code>la_mode=descriptor_similarity</code></code>。其中 normal_soft_or 会分别在 hop-attribute descriptor 与 RWSE descriptor 上拟合正常分布，并计算每个节点偏离正常分布的 rank percentile，再以 soft-or 组合成一个全局 anomaly-side prior。随后，目标节点与所有候选节点之间仍通过 descriptor similarity 计算局部相似性，最终 anomaly-side reference score 是局部相似性加上 global anomaly-side prior。代码形式上是 <code><code>a_scores = l_a + ga[None, :]</code></code>，并排除自身，然后选择 top-16。</p>
+<p>这个 reference design 的关键在于它不是拿真实 anomaly label 选异常参考，而是使用 normal distribution rejection 构造 anomaly-side candidates。它在理论上符合半监督设定：真实 anomaly labels 只用于最终评估与诊断，不进入训练或 reference selection 的监督目标。</p>
+
+<table style="width:100%;border-collapse:collapse;margin:22px 0;font-size:15px;"><thead><tr style="background:#ede3cf;"><th style="padding:9px;border:1px solid #d8ccb8;text-align:left;">项目</th><th style="padding:9px;border:1px solid #d8ccb8;text-align:left;">当前 AUC=0.79 配置</th></tr></thead><tbody>
+<tr><td>Dataset</td><td>Elliptic</td></tr>
+<tr><td>Train setting</td><td>5% semi-supervised normal-only training pool; assert train labels contain no anomalies</td></tr>
+<tr><td>Seed</td><td>0</td></tr>
+<tr><td>Descriptor</td><td>hop_attr, hops=2</td></tr>
+<tr><td>Normal refs</td><td>label_gate + descriptor_similarity, normal_k=4</td></tr>
+<tr><td>Anomaly-side refs</td><td>normal_soft_or global score + descriptor_similarity, anom_k=16</td></tr>
+<tr><td>Encoder</td><td>VecGAD TransformerEncoder, embedding_dim=256, GT layers=3, heads=2, dropout=0.4</td></tr>
+<tr><td>Readout</td><td>margin = cos(h_v - r_n(v), r_a(v) - r_n(v))</td></tr>
+<tr><td>Result</td><td>AUC 0.793789 / AP 0.551031; top1 ratio 0.995475; top5 ratio 0.767978</td></tr>
+</tbody></table>
+<p><strong>Insight：</strong>这个配置的成败高度依赖 reference construction。正常侧必须是 label-gated normal pool，异常侧必须是 normal_soft_or prior 与 descriptor similarity 的组合。它不是任意 DualRef tokenization 都能得到 0.79；错误地换成 hop_attr_rwse + label_gate_density 后，闭式得分会落到另一组较低结果。</p>
+
+<h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">四、Encoder 与 Readout：AUC=0.79 实际来自哪个环节</h2>
+<p>Encoder 使用 VecGAD 的 TransformerEncoder。主要参数包括 embedding_dim=256、GT_ffn_dim=256、GT_num_layers=3、GT_num_heads=2、GT_dropout=0.4、GT_attention_dropout=0.4。当前 readout 诊断中 encoder 是 frozen/eval 的；我们没有把真实异常标签用于训练一个 classifier head。</p>
+<p>给定 encoder 输出的节点 embedding h_v，以及 normal references 和 anomaly-side references 对应 embedding 的均值：</p>
+<pre style="background:#2d3748;color:#e2e8f0;padding:14px 16px;border-radius:10px;overflow:auto;"><code>r_n(v) = mean( h_j : j in R_n(v) )
+r_a(v) = mean( h_j : j in R_a(v) )
+u(v) = h_v - r_n(v)
+d(v) = r_a(v) - r_n(v)
+score(v) = cos(u(v), d(v))</code></pre>
+<p>这个 readout 的物理意义是明确的。u(v) 表示目标节点从其正常参考中心出发的偏移；d(v) 表示从正常参考中心指向 anomaly-side reference center 的方向。若二者方向一致，说明目标节点相对于正常局部基准的偏移正在朝 anomaly-side region 移动，因此异常分数高。若二者方向相反或无关，则目标节点虽可能远离正常参考，但不是沿着 anomaly-side direction 偏移，异常分数不高。</p>
+
+<h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">五、实验结果与对照</h2>
+<p>在 Elliptic seed0、5% normal-only training pool 下，closed-form margin 结果为 AUC 0.793789 / AP 0.551031。top1% anomaly ratio 达到 0.995475，top5% anomaly ratio 为 0.767978。这说明这个 score 不只是整体 AUC 较高，最靠前的高风险节点也高度集中真实异常。</p>
+<p>后续多个 MLP probe 反而强化了这个结论。scalar MLP + pairwise ranking 最好只有 AUC 0.7261 / AP 0.2193，高维 Relation MLP + pairwise ranking 最好只有 AUC 0.5805 / AP 0.1119，直接 margin-regression MLP 的 anomaly AP 也只有约 0.11。也就是说，当前最强信号并不是“普通 MLP 学出的分类边界”，而是这个 reference-conditioned directional margin 本身。</p>
+<table style="width:100%;border-collapse:collapse;margin:22px 0;font-size:15px;"><thead><tr style="background:#ede3cf;"><th style="padding:9px;border:1px solid #d8ccb8;text-align:left;">方案</th><th style="padding:9px;border:1px solid #d8ccb8;">AUC</th><th style="padding:9px;border:1px solid #d8ccb8;">AP</th><th style="padding:9px;border:1px solid #d8ccb8;text-align:left;">含义</th></tr></thead><tbody>
+<tr><td style="padding:9px;border:1px solid #d8ccb8;">Closed-form margin</td><td style="padding:9px;border:1px solid #d8ccb8;">0.7938</td><td style="padding:9px;border:1px solid #d8ccb8;">0.5510</td><td style="padding:9px;border:1px solid #d8ccb8;">当前最强真实异常排序信号</td></tr>
+<tr><td style="padding:9px;border:1px solid #d8ccb8;">Scalar MLP pairwise</td><td style="padding:9px;border:1px solid #d8ccb8;">0.7261</td><td style="padding:9px;border:1px solid #d8ccb8;">0.2193</td><td style="padding:9px;border:1px solid #d8ccb8;">能学到部分 proxy，但破坏 top-k</td></tr>
+<tr><td style="padding:9px;border:1px solid #d8ccb8;">High-dimensional MLP pairwise</td><td style="padding:9px;border:1px solid #d8ccb8;">0.5805</td><td style="padding:9px;border:1px solid #d8ccb8;">0.1119</td><td style="padding:9px;border:1px solid #d8ccb8;">输入更丰富但 objective/inductive bias 不匹配</td></tr>
+<tr><td style="padding:9px;border:1px solid #d8ccb8;">MLP margin regression</td><td style="padding:9px;border:1px solid #d8ccb8;">0.5732</td><td style="padding:9px;border:1px solid #d8ccb8;">0.1087</td><td style="padding:9px;border:1px solid #d8ccb8;">普通 MLP 没自然恢复 margin 排序</td></tr>
+</tbody></table>
+<p><strong>Insight：</strong>这些结果提示我们，AUC=0.79 不是一个可以轻易被普通 neural head 替代的数值结果，而是一个几何结构结果。它的有效性来自 reference-conditioned direction，而不是来自任意学习器对 relation vector 的自由拟合。</p>
+
+<div style="background:#fff3d6;border-left:5px solid #c6973f;border-radius:12px;padding:16px 18px;margin:24px 0;"><strong>Key Finding：</strong>当前方案最像一个 reference-conditioned anomaly coordinate system：normal references 定义局部原点，anomaly-side references 定义异常方向，target displacement 与异常方向的夹角定义异常分数。这个解释比“MLP 分类头”更清晰，也更接近顶会论文中可被审稿人理解的方法贡献。</div>
+
+<h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">六、局限与下一步思考</h2>
+<p>当前结果仍然只是 seed0 probe，不应直接等同于最终 5-seed 结论。下一步必须补 margin-only 的 5-seed 稳定性，以及跨数据集的 readout 验证。若这个 directional margin 在多个 seed 上稳定，研究主线可以从“如何训练 MLP head”转为“如何构造可靠的 DualRef anomaly coordinate system”。</p>
+<p>同时，正在运行的 MSE probe 会回答一个更底层的问题：普通 MLP 是否至少能在 MSE 意义上学会 margin 本身。若 normalized 输入后 MSE 仍然不能足够低，那说明 margin 的函数结构对普通 MLP/优化并不友好；若 MSE 很低但 anomaly ranking 仍不稳，则说明训练域到异常域的外推存在问题。</p>
+<div style="background:#eef4ea;border-left:5px solid #5f7f5f;border-radius:12px;padding:16px 18px;margin:24px 0;"><strong>Recommendation：</strong>短期内应把 AUC=0.79 方案写成“Reference-Conditioned Directional Margin”而不是临时 diagnostic trick。它有明确 tokenization、reference selection、几何 readout 和实验证据。后续学习模块如果继续探索，也应服务于这个 coordinate system，而不是替换掉它的物理语义。</div>
+</div></div></body></html>

@@ -1,0 +1,85 @@
+{
+  "dataset": "photo",
+  "n_nodes": 1000,
+  "n_features": 745,
+  "n_normal": 899,
+  "n_anomaly": 101,
+  "pp_k": 5,
+  "alpha": 0.5,
+  "hop_analysis": [
+    {
+      "hop": 1,
+      "type": "Offset_1",
+      "normal_similarity_mean": 0.044508472084999084,
+      "normal_similarity_std": 0.11483480781316757,
+      "anomaly_similarity_mean": 0.03109257109463215,
+      "anomaly_similarity_std": 0.08642368763685226,
+      "mann_whitney_u": 52900.0,
+      "mann_whitney_p": 0.006426751253817628,
+      "spearman_rho": -0.08622645328149457,
+      "spearman_p": 0.006364385476461152
+    },
+    {
+      "hop": 2,
+      "type": "Offset_2",
+      "normal_similarity_mean": 0.03822311386466026,
+      "normal_similarity_std": 0.12216053903102875,
+      "anomaly_similarity_mean": 0.01580032892525196,
+      "anomaly_similarity_std": 0.08588060736656189,
+      "mann_whitney_u": 56090.0,
+      "mann_whitney_p": 0.00010263243937996967,
+      "spearman_rho": -0.12289901388828299,
+      "spearman_p": 9.76627014414156e-05
+    },
+    {
+      "hop": 3,
+      "type": "Offset_3",
+      "normal_similarity_mean": 0.04229148477315903,
+      "normal_similarity_std": 0.10746798664331436,
+      "anomaly_similarity_mean": 0.020913828164339066,
+      "anomaly_similarity_std": 0.07446423918008804,
+      "mann_whitney_u": 55926.0,
+      "mann_whitney_p": 0.00013093590782619363,
+      "spearman_rho": -0.121013633820099,
+      "spearman_p": 0.0001250000746117847
+    },
+    {
+      "hop": 4,
+      "type": "Offset_4",
+      "normal_similarity_mean": 0.041186194866895676,
+      "normal_similarity_std": 0.10235903412103653,
+      "anomaly_similarity_mean": 0.01703687198460102,
+      "anomaly_similarity_std": 0.07064560800790787,
+      "mann_whitney_u": 56777.0,
+      "mann_whitney_p": 3.5664517361985476e-05,
+      "spearman_rho": -0.1307968318145961,
+      "spearman_p": 3.341920204246838e-05
+    },
+    {
+      "hop": 5,
+      "type": "Offset_5",
+      "normal_similarity_mean": 0.04300268739461899,
+      "normal_similarity_std": 0.10417444258928299,
+      "anomaly_similarity_mean": 0.016373489052057266,
+      "anomaly_similarity_std": 0.08028171956539154,
+      "mann_whitney_u": 55205.0,
+      "mann_whitney_p": 0.00036704405255278,
+      "spearman_rho": -0.11272495002355774,
+      "spearman_p": 0.00035479778599020354
+    }
+  ],
+  "summary": {
+    "avg_normal_similarity": 0.041842390596866605,
+    "avg_anomaly_similarity": 0.02024341784417629,
+    "avg_spearman_rho": -0.11473217656560608,
+    "avg_spearman_p": 0.001395053048109405,
+    "best_hop": 4,
+    "best_spearman_rho": 0.1307968318145961,
+    "best_spearman_p": 3.341920204246838e-05
+  },
+  "conclusion": {
+    "h1a_supported": false,
+    "h1b_supported": true,
+    "overall_supported": false
+  }
+}

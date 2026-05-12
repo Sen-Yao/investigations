@@ -1,0 +1,37 @@
+# Phase 1 mini objective variants
+# 仅用于机制验证，seed=0；正式结论需 seeds=[0,1,2,3,4]
+
+datasets: [photo, elliptic]
+train_rate: 0.05
+val_rate: 0.10
+seed: 0
+num_epoch: 200
+
+common_reference:
+  descriptor_mode: hop_attr
+  pn_estimator: pca_residual
+  gn_mode: label_gate
+  ln_mode: descriptor_similarity
+  normal_k: 4
+  anom_k: 16
+  pp_k: 6
+
+dataset_specific:
+  photo:
+    ga_mode: normal_rejection
+    la_mode: residual_cosine
+  elliptic:
+    ga_mode: normal_soft_or
+    la_mode: descriptor_similarity
+
+objective_variants:
+  - self_residual
+  - global_ref_guided
+  - target_ref_guided
+  - vecgad_rec_residual
+
+audit:
+  train_normal_only_assert: true
+  single_bce_loss: true
+  cuda_deterministic: true
+  wandb_log_once_per_epoch: true

@@ -1,0 +1,152 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/Amazon.mat",
+  "patch_feature_stats": {
+    "patch_size": {
+      "normal_mean": 772.1070754292906,
+      "anomaly_mean": 268.673568818514,
+      "difference": -503.4335066107766,
+      "ks_stat": 0.35510436232743753,
+      "ks_p": 8.125392687468663e-87
+    },
+    "patch_density": {
+      "normal_mean": 0.5208734412940524,
+      "anomaly_mean": 0.503429599647698,
+      "difference": -0.017443841646354485,
+      "ks_stat": 0.13993455747782269,
+      "ks_p": 1.5682791503781017e-13
+    },
+    "patch_feature_mean_norm": {
+      "normal_mean": 769.6556600817554,
+      "anomaly_mean": 530.8224812441675,
+      "difference": -238.83317883758787,
+      "ks_stat": 0.406615846744349,
+      "ks_p": 8.150264542492685e-115
+    },
+    "patch_feature_var": {
+      "normal_mean": 37278.97540534597,
+      "anomaly_mean": 29510.562193656475,
+      "difference": -7768.413211689494,
+      "ks_stat": 0.37859674070790533,
+      "ks_p": 4.81321465166088e-99
+    },
+    "patch_internal_mean_pairwise_cos": {
+      "normal_mean": 0.5707574818773081,
+      "anomaly_mean": 0.5434817975233973,
+      "difference": -0.027275684353910812,
+      "ks_stat": 0.1565731123240155,
+      "ks_p": 7.596971617463873e-17
+    },
+    "target_to_patch_center_cos": {
+      "normal_mean": 0.38272265105495035,
+      "anomaly_mean": 0.21861240786309752,
+      "difference": -0.16411024319185283,
+      "ks_stat": 0.19078495875430335,
+      "ks_p": 7.358925985213467e-25
+    },
+    "target_to_patch_center_l2": {
+      "normal_mean": 713.7478062729696,
+      "anomaly_mean": 499.2886846485711,
+      "difference": -214.45912162439845,
+      "ks_stat": 0.31483610952845625,
+      "ks_p": 6.769582025371637e-68
+    },
+    "patch_boundary_contrast": {
+      "normal_mean": 454.3861435257742,
+      "anomaly_mean": 277.6965333296297,
+      "difference": -176.68961019614449,
+      "ks_stat": 0.3891669531141264,
+      "ks_p": 7.703541782884793e-105
+    },
+    "patch_internal_external_gap": {
+      "normal_mean": -453.81538604389686,
+      "anomaly_mean": -277.1530515321063,
+      "difference": 176.66233451179056,
+      "ks_stat": 0.38939603807847645,
+      "ks_p": 5.7415781541110715e-105
+    }
+  },
+  "relation_feature_stats": {
+    "node_to_neigh_cos": {
+      "normal_mean": 0.38248792105427176,
+      "anomaly_mean": 0.21697406492664856,
+      "difference": -0.1655138561276232,
+      "ks_stat": 0.19124312868300353,
+      "ks_p": 5.603568307567111e-25
+    },
+    "node_to_neigh_l2": {
+      "normal_mean": 717.2728413952734,
+      "anomaly_mean": 505.87836183160556,
+      "difference": -211.39447956366786,
+      "ks_stat": 0.3116808255118302,
+      "ks_p": 1.610382023330673e-66
+    },
+    "node_to_neigh_corr": {
+      "normal_mean": 0.3167221566426922,
+      "anomaly_mean": 0.1393714727704119,
+      "difference": -0.1773506838722803,
+      "ks_stat": 0.1920029855508929,
+      "ks_p": 3.560736476763679e-25
+    },
+    "node_to_patch_cos": {
+      "normal_mean": 0.38272265105495035,
+      "anomaly_mean": 0.21861240786309752,
+      "difference": -0.16411024319185283,
+      "ks_stat": 0.19078495875430335,
+      "ks_p": 7.358925985213467e-25
+    },
+    "node_to_patch_l2": {
+      "normal_mean": 713.7478062729696,
+      "anomaly_mean": 499.2886846485711,
+      "difference": -214.45912162439845,
+      "ks_stat": 0.31483610952845625,
+      "ks_p": 6.769582025371637e-68
+    },
+    "neigh_internal_mean_pairwise_cos": {
+      "normal_mean": 0.5717467349017729,
+      "anomaly_mean": 0.5497197796959078,
+      "difference": -0.022026955205865062,
+      "ks_stat": 0.14417952814848645,
+      "ks_p": 2.4305974718252782e-14
+    },
+    "patch_internal_mean_pairwise_cos": {
+      "normal_mean": 0.5707574818773081,
+      "anomaly_mean": 0.5434817975233973,
+      "difference": -0.027275684353910812,
+      "ks_stat": 0.1565731123240155,
+      "ks_p": 7.596971617463873e-17
+    },
+    "node_context_contrast_gap": {
+      "normal_mean": -0.18803483082235775,
+      "anomaly_mean": -0.3248693896602998,
+      "difference": -0.13683455883794207,
+      "ks_stat": 0.19273086688838548,
+      "ks_p": 2.302211535586216e-25
+    }
+  },
+  "probes": {
+    "node_only": {
+      "auc": 0.9757163154155815,
+      "ap": 0.8559072701416867
+    },
+    "patch_only": {
+      "auc": 0.7936217889686988,
+      "ap": 0.24239634995492357
+    },
+    "relation_only": {
+      "auc": 0.7604059778461861,
+      "ap": 0.28708182365149426
+    },
+    "node_plus_patch": {
+      "auc": 0.9776887590882383,
+      "ap": 0.8585915786337995
+    },
+    "node_plus_relation": {
+      "auc": 0.9753716420659353,
+      "ap": 0.8558298954936999
+    },
+    "node_plus_patch_plus_relation": {
+      "auc": 0.9775576428903447,
+      "ap": 0.85847408810236
+    }
+  }
+}

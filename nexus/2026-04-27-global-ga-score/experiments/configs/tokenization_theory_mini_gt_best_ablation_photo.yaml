@@ -1,0 +1,42 @@
+# Mini GT validation after tokenization probe grid
+# Dataset: Photo. Goal: verify whether target-specific anomaly references help GT.
+program: nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt.py
+method: grid
+metric:
+  name: best_val_auc
+  goal: maximize
+parameters:
+  dataset:
+    value: photo
+  seed:
+    value: 0
+  train_rate:
+    value: 0.05
+  num_epoch:
+    value: 200
+  wandb:
+    value: true
+  reference_mode:
+    value: dual_reference
+  descriptor_mode:
+    value: hop_attr
+  pn_estimator:
+    value: pca_residual
+  gn_mode:
+    value: label_gate
+  ln_mode:
+    value: descriptor_similarity
+  ga_mode:
+    value: normal_rejection
+  la_mode:
+    value: residual_cosine
+  ablation_mode:
+    values: [full, no_ra, shuffled_ra, fixed_labeled_normal]
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  pp_k:
+    value: 6
+  encode_batch_size:
+    value: 1024

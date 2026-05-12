@@ -1,0 +1,88 @@
+{
+  "data": "photo.mat",
+  "k": 6,
+  "feature_stats": {
+    "delta_corr_to_proto": {
+      "normal_mean": -0.3529226511389929,
+      "anomaly_mean": -0.28243304740338027,
+      "difference": 0.07048960373561264,
+      "ks_stat": 0.15758914183863043,
+      "ks_p": 3.34635123553363e-14
+    },
+    "delta_cos_to_proto": {
+      "normal_mean": -0.3147874121696003,
+      "anomaly_mean": -0.25155743315124646,
+      "difference": 0.06322997901835387,
+      "ks_stat": 0.13367053446337201,
+      "ks_p": 2.494724802120594e-10
+    },
+    "delta_l2_to_proto": {
+      "normal_mean": 14.789759190733502,
+      "anomaly_mean": 13.308687426084802,
+      "difference": -1.4810717646487,
+      "ks_stat": 0.14318621959647343,
+      "ks_p": 8.585493429335582e-12
+    },
+    "proto_delta_norm": {
+      "normal_mean": 5.092444492063448,
+      "anomaly_mean": 4.204209891142586,
+      "difference": -0.8882346009208621,
+      "ks_stat": 0.19638864546649717,
+      "ks_p": 7.238111555147502e-22
+    },
+    "neigh_delta_var": {
+      "normal_mean": 0.03464303924539263,
+      "anomaly_mean": 0.03400747298628267,
+      "difference": -0.0006355662591099598,
+      "ks_stat": 0.16992363731306942,
+      "ks_p": 1.880481034758178e-16
+    },
+    "neigh_delta_mean_pairwise_cos": {
+      "normal_mean": 0.05131494530806443,
+      "anomaly_mean": 0.038292678468694115,
+      "difference": -0.013022266839370314,
+      "ks_stat": 0.1489147831640832,
+      "ks_p": 1.008281206216573e-12
+    },
+    "node_to_proto_l2": {
+      "normal_mean": 14.789759190733502,
+      "anomaly_mean": 13.308687426084802,
+      "difference": -1.4810717646487,
+      "ks_stat": 0.14318621959647343,
+      "ks_p": 8.585493429335582e-12
+    },
+    "node_to_proto_cos": {
+      "normal_mean": -0.3147874121696003,
+      "anomaly_mean": -0.25155743315124646,
+      "difference": 0.06322997901835387,
+      "ks_stat": 0.13367053446337201,
+      "ks_p": 2.494724802120594e-10
+    }
+  },
+  "probes": {
+    "delta_flatten": {
+      "auc": 0.9602239633398731,
+      "ap": 0.822529327505127
+    },
+    "prototype_only": {
+      "auc": 0.6271836718958861,
+      "ap": 0.1420533133211662
+    },
+    "consistency_only": {
+      "auc": 0.6035637692952999,
+      "ap": 0.13519329613572512
+    },
+    "delta_plus_prototype": {
+      "auc": 0.9624037592050492,
+      "ap": 0.8274039483771408
+    },
+    "delta_plus_consistency": {
+      "auc": 0.9618204689620031,
+      "ap": 0.8267277323915213
+    },
+    "delta_plus_prototype_plus_consistency": {
+      "auc": 0.9632711520233719,
+      "ap": 0.8299847261945492
+    }
+  }
+}

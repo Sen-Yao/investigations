@@ -1,0 +1,20 @@
+{
+  "dataset": "elliptic",
+  "seed": 0,
+  "ga_mode": "baseline_qc",
+  "gl_combine": "add",
+  "encode_batch_size": 2048,
+  "best": {
+    "val_auc": 0.607857752701787,
+    "val_ap": 0.11688662829345209,
+    "test_auc": 0.6263854588039258,
+    "test_ap": 0.1304633437476515,
+    "epoch": 50
+  },
+  "purity": {
+    "normal_ref_normal_ratio": 1.0,
+    "anom_ref_anom_ratio": 0.0,
+    "anom_ref_anom_ratio_on_anom_nodes": 0.0
+  },
+  "time_sec": 134.61903429031372
+}

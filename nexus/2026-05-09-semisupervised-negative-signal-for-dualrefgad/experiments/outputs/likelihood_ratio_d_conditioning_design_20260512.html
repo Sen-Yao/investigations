@@ -1,0 +1,135 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>Likelihood-Ratio with d-Conditioning Design</title>
+<style>
+body{background:#f3efe7;color:#2b2a27;font-family:Georgia,'Times New Roman','Noto Serif SC',serif;font-size:17px;line-height:1.82;margin:0;padding:0}
+.paper{max-width:920px;margin:32px auto;background:#fffaf0;border:1px solid #ded3bd;border-radius:18px;padding:42px 48px;box-shadow:0 12px 36px rgba(79,60,31,.10)}
+.hero{border-bottom:2px solid #d7c6a3;padding-bottom:22px;margin-bottom:26px}
+.eyebrow{color:#7b6a45;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:28px;line-height:1.25;margin:10px 0 8px;color:#25352b}
+h2.chapter{margin-top:34px;border-left:5px solid #6f8f72;padding-left:14px;color:#25352b}
+h3{color:#465a3f;margin-top:24px}
+.meta{color:#796f60;font-size:14px}
+.summary{background:#eef4e8;border:1px solid #cbdcbc;border-radius:14px;padding:18px 20px;margin:24px 0}
+.key-finding{background:#26392c;color:#fff8e8;padding:18px 22px;border-radius:14px;margin:26px 0}
+.recommendation{background:#f8efd8;border-left:5px solid #b08a3c;padding:18px 22px;border-radius:12px;margin:24px 0}
+table{border-collapse:collapse;width:100%;margin:18px 0;font-size:15.5px}
+th,td{border:1px solid #d8cfbd;padding:10px 12px;vertical-align:top}
+th{background:#36513f;color:#fff8e8;font-weight:600}
+tr:nth-child(even){background:#faf3e5}
+code{background:#efe6d3;padding:2px 6px;border-radius:5px;color:#74431f;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:14px}
+pre{background:#2d3748;color:#e2e8f0;padding:16px;border-radius:10px;overflow-x:auto;font-size:14px;line-height:1.55;font-family:'SF Mono',Monaco,Consolas,monospace}
+.formula{background:#fff;border:1px solid #e1d7c4;border-radius:12px;padding:12px 16px;margin:18px 0;text-align:center;font-family:'SF Mono',Monaco,Consolas,monospace;font-size:16px;color:#25352b}
+</style></head><body><div class="paper">
+<div class="hero"><div class="eyebrow">SenyaoLab - Nexus Research Memo</div><h1>Likelihood-Ratio with d-Conditioning: 如何在不生成伪异常的情况下利用 anomaly direction</h1><p class="meta">Sender: Nexus | Scenario: DualRefGAD learnable head / semi-supervised normal-only objective | Date: 2026-05-12</p></div>
+
+<div class="summary"><strong>Summary:</strong> The previous density probe failed because it treated anomaly direction <code>d=r_a-r_n</code> as a latent variable, discarding DualRef's core prior. This email proposes a more elegant approach: <strong>Likelihood-Ratio with d-Conditioning</strong>. The core idea is to still train only on normal nodes, but let anomaly direction <code>d</code> serve as conditioning variable; anomaly score becomes likelihood ratio <code>log p(phi|d-like-context) - log p(phi|normal-context)</code>. This does not require explicit pseudo-anomaly generation nor stitching margin, instead using conditioning to let the model implicitly learn that "phi along d direction should have lower probability".</div>
+
+<h2 class="chapter">I. Core Idea: From Unconditional Density to Conditional Density + Ratio</h2>
+<p>The previous density probe objective was:</p>
+<div class="formula"><code>max_theta sum_{i in normal} log p_theta(phi_i)</code></div>
+<p>This only requires normal relation features to have high probability under the model, but completely ignores anomaly direction <code>d</code>. Result: AUC only 0.667, far below margin 0.7938.</p>
+
+<p>The key problem: <code>d</code> itself is constructed from anomaly-side reference, carrying information about "where anomalies should deviate". Treating it as ordinary latent variable means trying to infer anomaly direction from normal samples, which is the wrong information source.</p>
+
+<p>Likelihood-ratio with d-conditioning corrects this:</p>
+<div class="formula"><code>s_i = log p_theta(phi_i | c_normal) - log p_theta(phi_i | c_anom)</code></div>
+<p>Both conditioning contexts are constructed from anomaly direction <code>d</code> statistics, representing "normal-side" and "anomaly-side" assumptions. Model still trains on normal-only density, but anomaly score comes from likelihood ratio under two conditions.</p>
+
+<div class="key-finding"><strong>Key Judgment:</strong> Likelihood-ratio approach does not generate pseudo-anomalies, does not stitch margin, still trains only on normal nodes, but lets anomaly direction <code>d</code> enter scoring through "hypothesis testing" via conditioning. This respects DualRef geometry better than pure density, and is more elegant than margin calibration.</div>
+
+<h2 class="chapter">II. Why Likelihood Ratio is More Reasonable Than Pure Density</h2>
+<p>Statistically, likelihood ratio test is the classic framework for "which hypothesis fits data better". In normal-only semi-supervised GAD, our information boundary is: only know which nodes are normal, not the true anomaly distribution. Likelihood ratio formulation:</p>
+<ul>
+<li><strong>Hypothesis H0 (normal assumption)</strong>: Node's relation feature phi comes from normal context: phi ~ p(phi | c_normal).</li>
+<li><strong>Hypothesis H1 (anomaly assumption)</strong>: Node's relation feature phi comes from anomaly-side context: phi ~ p(phi | c_anom).</li>
+</ul>
+<p>Training uses only labeled normal nodes, so we only learn density function p(phi | context); during inference, compute likelihood under both hypotheses for each node, high ratio means more consistent with anomaly hypothesis.</p>
+
+<p>Comparison table:</p>
+<table>
+<tr><th>Approach</th><th>Explicit Anomaly Samples?</th><th>Anomaly Score Source</th><th>How d is Used</th></tr>
+<tr><td>Pseudo-anomaly shell</td><td>Yes - constructs pseudo samples</td><td>normal vs pseudo-anomaly classifier</td><td>Explicitly generates along d direction</td></tr>
+<tr><td>Pure density</td><td>No</td><td>-log p(phi)</td><td>d absorbed into latent variable</td></tr>
+<tr><td>Likelihood-ratio</td><td>No</td><td>log p(phi|c_anom) - log p(phi|c_normal)</td><td>d as conditioning variable</td></tr>
+</table>
+
+<h2 class="chapter">III. How to Design Conditioning Variable</h2>
+<h3>Option A: Use ||d|| as scalar conditioning</h3>
+<p>Simplest approach - use d's length as scalar conditioning:</p>
+<div class="formula"><code>c_i = ||d_i|| = ||r_a(i) - r_n(i)||</code></div>
+<p>Train conditional density p(phi | ||d||). Inference:</p>
+<div class="formula"><code>s_i = log p(phi_i | ||d||_large) - log p(phi_i | ||d||_small)</code></div>
+<p>||d||_large and ||d||_small can be fixed thresholds or quantiles from labeled normal nodes.</p>
+
+<p>Pros: Simple, only scalar conditioning. Cons: ||d|| only captures length, not direction.</p>
+
+<h3>Option B: Use normalized d as conditioning vector</h3>
+<div class="formula"><code>c_i = normalize(d_i)</code></div>
+<p>Train p(phi | d_norm). Inference:</p>
+<div class="formula"><code>s_i = log p(phi_i | d_i_norm) - log p(phi_i | d_avg_norm)</code></div>
+
+<p>Pros: Full direction information. Cons: 256-dim conditioning, need complex model.</p>
+
+<h3>Option C: Use anomaly-side rejection score</h3>
+<p>DualRef's existing anomaly-side rejection gives a scalar score:</p>
+<div class="formula"><code>c_i = g_a(i) from ga_mode=normal_soft_or</code></div>
+
+<p>Pros: Already computed in DualRef pipeline. Cons: Coupled with other modules.</p>
+
+<h3>Recommendation for First Experiment</h3>
+<p>Use <strong>Option A: ||d|| as scalar conditioning</strong> for first diagnostic:</p>
+<ul>
+<li>Simplest, avoids high-dim conditioning complexity.</li>
+<li>||d|| has physical interpretation: anomaly reference distance from normal reference.</li>
+<li>Easy to implement: scalar feature into conditional flow.</li>
+<li>After validation, can extend to vector conditioning.</li>
+</ul>
+
+<h2 class="chapter">IV. Concrete Experiment Design</h2>
+<h3>Input Features</h3>
+<p>Use same relation features as previous density probe:</p>
+<pre><code>phi_i = concat(
+    normalize(u_i),
+    normalize(d_i),
+    normalize(u_i) * normalize(d_i),
+    |normalize(u_i) - normalize(d_i)|
+)
+c_i = ||d_i||</code></pre>
+
+<h3>Model</h3>
+<p>Conditional RealNVP flow, input phi, conditioning c=||d||:</p>
+<div class="formula"><code>p_theta(phi_i | c_i) where c_i = ||d_i||</code></div>
+<p>Train on labeled normal nodes only:</p>
+<div class="formula"><code>max_theta sum_{i in normal} log p_theta(phi_i | ||d_i||)</code></div>
+
+<h3>Inference Likelihood Ratio</h3>
+<p>For each node compute likelihood under two conditions:</p>
+<div class="formula"><code>s_i = log p_theta(phi_i | c_high) - log p_theta(phi_i | c_low)</code></div>
+<p>Recommended strategy: <strong>per-node c vs normal mean</strong></p>
+<div class="formula"><code>s_i = log p(phi_i | ||d_i||) - log p(phi_i | ||d||_normal_mean)</code></div>
+<p>This tests: "my anomaly direction length represents anomaly degree" vs "I am like typical normal node's anomaly direction length".</p>
+
+<h3>Hyperparameters</h3>
+<table>
+<tr><th>Parameter</th><th>Values</th><th>Note</th></tr>
+<tr><td>flow_layers</td><td>4, 8</td><td>RealNVP layers</td></tr>
+<tr><td>hidden</td><td>128, 256</td><td>Hidden dimension</td></tr>
+<tr><td>conditioning_mode</td><td>||d||</td><td>Option A</td></tr>
+<tr><td>lr_strategy</td><td>per-node-c-vs-normal-mean</td><td>Strategy 3</td></tr>
+<tr><td>num_epoch</td><td>80</td><td>Training epochs</td></tr>
+<tr><td>seed</td><td>0</td><td>Single seed for diagnostic</td></tr>
+</table>
+
+<h2 class="chapter">V. Comparison with Previous Density Probe</h2>
+<table>
+<tr><th>Aspect</th><th>Previous Density Probe</th><th>This Likelihood-Ratio Probe</th></tr>
+<tr><td>Training objective</td><td>-log p(phi), unconditional</td><td>-log p(phi | ||d||), conditional</td></tr>
+<tr><td>Anomaly score</td><td>s = -log p(phi)</td><td>s = log p(phi|c_anom) - log p(phi|c_normal)</td></tr>
+<tr><td>How d is used</td><td>absorbed as latent</td><td>explicit conditioning variable</td></tr>
+<tr><td>Information source</td><td>Only normal samples</td><td>Normal samples + anomaly direction geometry</td></tr>
+<tr><td>Expected AUC</td><td>~0.667 (failed)</td><td>Close to or above 0.7938</td></tr>
+</table>
+
+<div class="recommendation"><strong>Recommendation:</strong> First likelihood-ratio probe uses scalar conditioning ||d|| and Strategy 3 likelihood ratio. If AUC/AP/top-k significantly beats previous density probe and approaches margin baseline, conditioning direction is correct; later can extend to vector conditioning. If still fails, need to reconsider VICReg-style consistency or re-examine DualRef relation geometry definition.</div>
+
+<div class="key-finding"><strong>If you approve this design, I will implement stage1_likelihood_ratio_probe.py using existing density probe architecture, adding conditioning variable to RealNVP and computing per-node likelihood ratio during inference. Before formal launch, I will request your confirmation following experiment-runner/experiment-audit rules.</strong></div>
+</div></body></html>

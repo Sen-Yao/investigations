@@ -1,0 +1,68 @@
+# Tokenization theory validation - offline probe profile
+# Purpose: validate reference-selection geometry before GT training.
+# No WandB required. No model training.
+
+program: nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/probe_tokenization_theory.py
+method: grid
+
+parameters:
+  dataset:
+    values: [photo, elliptic]
+  seed:
+    value: 0
+  train_rate:
+    value: 0.05
+
+  # Non-learned descriptor Phi(v)
+  descriptor_mode:
+    values:
+      - hop_attr
+      - rwse
+      - hop_attr_rwse
+
+  # p_n(Phi): normal support estimator induced by 5% labeled normal nodes
+  pn_estimator:
+    values:
+      - diag_gaussian
+      - pca_residual
+
+  # Normal reference side: does candidate u reliably lie in normal support?
+  gn_mode:
+    values:
+      - label_gate
+      - normal_density
+      - label_gate_density
+
+  # Normal local relevance: can candidate u approximate/explain target v?
+  ln_mode:
+    values:
+      - descriptor_similarity
+      - reconstruction_gain
+
+  # Anomaly reference side: candidate u is rejected by normal support
+  ga_mode:
+    values:
+      - normal_rejection
+      - residual_norm
+      - normal_soft_or
+
+  # Anomaly local relevance: u and v deviate from normality in similar ways
+  la_mode:
+    values:
+      - residual_cosine
+      - descriptor_similarity
+
+  reference_mode:
+    value: dual_reference
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+
+  metrics:
+    values:
+      - gn_normal_purity
+      - ga_auc_ap_topk
+      - rn_explanation_error
+      - ra_residual_alignment
+      - contrast_margin

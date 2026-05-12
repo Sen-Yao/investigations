@@ -1,0 +1,91 @@
+{
+  "config": {
+    "dataset": "elliptic",
+    "seed": 0,
+    "train_rate": 0.05,
+    "descriptor_mode": "rwse",
+    "pn_estimator": "diag_gaussian",
+    "gn_mode": "normal_density",
+    "ln_mode": "reconstruction_gain",
+    "ga_mode": "residual_norm",
+    "la_mode": "descriptor_similarity",
+    "reference_mode": "dual_reference",
+    "normal_k": 4,
+    "anom_k": 16,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/tokenization_theory_probe/grid/elliptic__rwse__diag_gaussian__normal_density__reconstruction_gain__residual_norm__descriptor_similarity.json"
+  },
+  "meta": {
+    "dataset": "elliptic",
+    "n": 46564,
+    "normal_train": 2086,
+    "anomaly_rate": 0.09760759384932566,
+    "descriptor_dim": 8
+  },
+  "scores": {
+    "ga": {
+      "auc": 0.6039716487415419,
+      "ap": 0.12350112384232934,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.0078125,
+      "top512_density": 0.02734375
+    },
+    "residual_norm": {
+      "auc": 0.5932812520167745,
+      "ap": 0.1320042949170575,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.0078125,
+      "top512_density": 0.03125
+    },
+    "rn_explanation_error": {
+      "auc": 0.6209619693495564,
+      "ap": 0.14339272470808204,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.0,
+      "top512_density": 0.056640625
+    },
+    "ra_residual_alignment": {
+      "auc": 0.4915362297075992,
+      "ap": 0.10807114200061879,
+      "top16_density": 0.1875,
+      "top32_density": 0.25,
+      "top64_density": 0.203125,
+      "top128_density": 0.1953125,
+      "top256_density": 0.2109375,
+      "top512_density": 0.169921875
+    },
+    "contrast_margin": {
+      "auc": 0.5940745334677688,
+      "ap": 0.13709776352549535,
+      "top16_density": 0.0,
+      "top32_density": 0.0,
+      "top64_density": 0.0,
+      "top128_density": 0.0,
+      "top256_density": 0.0078125,
+      "top512_density": 0.083984375
+    }
+  },
+  "reference": {
+    "normal_ref_normal_ratio": 0.9821535950519715,
+    "anom_ref_anom_ratio": 0.006852128253586462,
+    "anom_ref_anom_ratio_on_anom_nodes": 0.0037816281628162817,
+    "rn_err_mean_normal": 0.21727815036337325,
+    "rn_err_mean_anom": 0.2160945585883797,
+    "align_mean_normal": -0.016669463366270065,
+    "align_mean_anom": -0.02068096026778221,
+    "contrast_mean_normal": -0.8052626848220825,
+    "contrast_mean_anom": -0.5636803507804871
+  },
+  "elapsed_sec": 343.1551790237427
+}

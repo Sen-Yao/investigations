@@ -1,0 +1,98 @@
+{
+  "runs": [
+    {
+      "name": "01_photo_baseline_qc_add_seed0",
+      "dataset": "photo",
+      "ga_mode": "baseline_qc",
+      "returncode": 0,
+      "time_sec": 48.679492473602295,
+      "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/01_photo_baseline_qc_add_seed0.json",
+      "log": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/logs/01_photo_baseline_qc_add_seed0.log",
+      "best": {
+        "val_auc": 0.567748279252704,
+        "val_ap": 0.1219507018656125,
+        "test_auc": 0.575297194511289,
+        "test_ap": 0.10590009150229701,
+        "epoch": 20
+      },
+      "purity": {
+        "normal_ref_normal_ratio": 1.0,
+        "anom_ref_anom_ratio": 0.09330623755806237,
+        "anom_ref_anom_ratio_on_anom_nodes": 0.09330229226361031
+      }
+    },
+    {
+      "name": "02_photo_normal_attr_add_seed0",
+      "dataset": "photo",
+      "ga_mode": "normal_attr",
+      "returncode": 0,
+      "time_sec": 42.49425935745239,
+      "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/02_photo_normal_attr_add_seed0.json",
+      "log": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/logs/02_photo_normal_attr_add_seed0.log",
+      "best": {
+        "val_auc": 0.5840904621435595,
+        "val_ap": 0.1401381700969368,
+        "test_auc": 0.5110769637619605,
+        "test_ap": 0.10293840424171406,
+        "epoch": 20
+      },
+      "purity": {
+        "normal_ref_normal_ratio": 1.0,
+        "anom_ref_anom_ratio": 0.1513271400132714,
+        "anom_ref_anom_ratio_on_anom_nodes": 0.15571275071633237
+      }
+    },
+    {
+      "name": "03_photo_normal_soft_or_add_seed0",
+      "dataset": "photo",
+      "ga_mode": "normal_soft_or",
+      "returncode": 0,
+      "time_sec": 42.29237937927246,
+      "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/03_photo_normal_soft_or_add_seed0.json",
+      "log": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/logs/03_photo_normal_soft_or_add_seed0.log",
+      "best": {
+        "val_auc": 0.5649164208456244,
+        "val_ap": 0.12564346714068653,
+        "test_auc": 0.5527953857003189,
+        "test_ap": 0.10773130690850899,
+        "epoch": 80
+      },
+      "purity": {
+        "normal_ref_normal_ratio": 1.0,
+        "anom_ref_anom_ratio": 0.10987889847378898,
+        "anom_ref_anom_ratio_on_anom_nodes": 0.10565902578796561
+      }
+    },
+    {
+      "name": "04_elliptic_baseline_qc_add_seed0",
+      "dataset": "elliptic",
+      "ga_mode": "baseline_qc",
+      "returncode": 1,
+      "time_sec": 3.4898557662963867,
+      "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/04_elliptic_baseline_qc_add_seed0.json",
+      "log": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/logs/04_elliptic_baseline_qc_add_seed0.log",
+      "error": "missing output json"
+    },
+    {
+      "name": "05_elliptic_normal_max_dev_add_seed0",
+      "dataset": "elliptic",
+      "ga_mode": "normal_max_dev",
+      "returncode": 1,
+      "time_sec": 4.319319248199463,
+      "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/05_elliptic_normal_max_dev_add_seed0.json",
+      "log": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/logs/05_elliptic_normal_max_dev_add_seed0.log",
+      "error": "missing output json"
+    },
+    {
+      "name": "06_elliptic_normal_soft_or_add_seed0",
+      "dataset": "elliptic",
+      "ga_mode": "normal_soft_or",
+      "returncode": 1,
+      "time_sec": 4.133629560470581,
+      "out": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/06_elliptic_normal_soft_or_add_seed0.json",
+      "log": "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/outputs/clean_gt_mini/logs/06_elliptic_normal_soft_or_add_seed0.log",
+      "error": "missing output json"
+    }
+  ],
+  "elapsed_sec": 145.41216111183167
+}

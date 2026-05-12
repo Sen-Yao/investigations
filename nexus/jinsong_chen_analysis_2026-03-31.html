@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Jinsong Chen Graph Transformer 系列深度分析报告</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 950px; margin: 0 auto; padding: 20px; line-height: 1.7; }
+    h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; font-size: 24px; }
+    h2 { color: #2980b9; margin-top: 35px; font-size: 20px; }
+    h3 { color: #34495e; font-size: 16px; }
+    h4 { color: #7f8c8d; font-size: 14px; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 14px; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background-color: #3498db; color: white; }
+    tr:hover { background-color: #f5f5f5; }
+    .highlight { background-color: #e8f4f8; padding: 15px; border-left: 4px solid #3498db; margin: 15px 0; }
+    .paper-box { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin: 12px 0; border-radius: 5px; }
+    .tag { display: inline-block; background-color: #3498db; color: white; padding: 3px 8px; border-radius: 3px; font-size: 11px; margin-right: 5px; }
+    .tag-green { background-color: #27ae60; }
+    .tag-orange { background-color: #e67e22; }
+    .tag-purple { background-color: #9b59b6; }
+    code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; font-size: 13px; }
+    pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 5px; overflow-x: auto; font-size: 13px; }
+    .insight-box { background-color: #fff3e0; border-left: 4px solid #e67e22; padding: 15px; margin: 15px 0; }
+    .conclusion-box { background-color: #e8f5e9; border-left: 4px solid #27ae60; padding: 15px; margin: 15px 0; }
+    .warning-box { background-color: #ffebee; border-left: 4px solid #e53935; padding: 15px; margin: 15px 0; }
+    .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 13px; }
+    .timeline { position: relative; padding-left: 30px; }
+    .timeline::before { content: ''; position: absolute; left: 10px; top: 0; bottom: 0; width: 2px; background-color: #3498db; }
+    .timeline-item { position: relative; margin-bottom: 20px; }
+    .timeline-item::before { content: ''; position: absolute; left: -24px; top: 5px; width: 10px; height: 10px; border-radius: 50%; background-color: #3498db; }
+    .comparison-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
+    .comparison-item { background-color: #f9f9f9; padding: 15px; border-radius: 5px; }
+  </style>
+</head>
+<body>
+
+<h1>📚 Jinsong Chen Graph Transformer 系列深度分析报告</h1>
+
+<p><strong>调研时间</strong>：2026-03-31 13:27-13:31</p>
+<p><strong>调研目的</strong>：分析 Jinsong Chen 在 Graph Transformer 方面的工作，探索与 Hop-Offset 结合的可能性</p>
+<p><strong>核心问题</strong>：Hop-Offset 信息挖掘是否到位？是否有改进空间？</p>
+
+<hr>
+
+<h2>📋 研究者背景</h2>
+
+<div class="paper-box">
+  <p><strong>Jinsong Chen (陈劲松)</strong></p>
+  <p><strong>单位</strong>：华中师范大学 人工智能教育学部 副研究员</p>
+  <p><strong>教育背景</strong>：华中科技大学 博士（导师：何琨教授、John Hopcroft 教授）</p>
+  <p><strong>研究方向</strong>：图表示学习、图数据挖掘、AI for Education</p>
+  <p><strong>Google Scholar</strong>：<a href="https://scholar.google.com/citations?user=F470g5wAAAAJ">400+ 引用</a></p>
+  <p><strong>服务</strong>：ICLR, NeurIPS, ICML, KDD, WWW, TKDE, TPAMI, TNNLS 审稿人</p>
+</div>
+
+<hr>
+
+<h2>📅 论文发表时间线</h2>
+
+<div class="timeline">
+  <div class="timeline-item">
+    <p><span class="tag">ICLR 2023</span> <strong>NAGphormer</strong>: A Tokenized Graph Transformer for Node Classification in Large Graphs</p>
+    <p><em>开创性工作：提出 Hop2Token 模块，将多 hop 邻居转换为 token 序列</em></p>
+  </div>
+  <div class="timeline-item">
+    <p><span class="tag tag-green">IEEE TBD 2024</span> <strong>NAGphormer+</strong>: A Tokenized Graph Transformer with Neighborhood Augmentation</p>
+    <p><em>扩展版本：增加邻域增强策略</em></p>
+  </div>
+  <div class="timeline-item">
+    <p><span class="tag tag-purple">NeurIPS 2024</span> <strong>Leveraging Contrastive Learning for Enhanced Node Representations in Tokenized Graph Transformers</strong></p>
+    <p><em>对比学习增强 tokenized graph transformer 的节点表示</em></p>
+  </div>
+  <div class="timeline-item">
+    <p><span class="tag tag-green">IEEE TBD 2025</span> <strong>NTFormer</strong>: A Composite Node Tokenized Graph Transformer for Node Classification</p>
+    <p><em>多种 token 类型组合，无需图特定修改</em></p>
+  </div>
+  <div class="timeline-item">
+    <p><span class="tag tag-purple">NeurIPS 2025</span> <strong>SwapGT</strong>: Rethinking Tokenized Graph Transformers for Node Classification</p>
+    <p><em>Token Swapping 操作，利用语义相关性增强 token 序列多样性</em></p>
+  </div>
+</div>
+
+<hr>
+
+<h2>📖 核心方法详解</h2>
+
+<h3>1. NAGphormer (ICLR 2023)</h3>
+
+<div class="paper-box">
+  <h4>核心问题</h4>
+  <p>传统 Graph Transformer 将所有节点作为 token，导致 O(N²) 复杂度，无法扩展到大图。</p>
+  
+  <h4>核心创新：Hop2Token</h4>
+  <pre>
+对于每个节点 v:
+  Token_0 = Feature(v)           # 自身特征
+  Token_1 = Aggregate(Hop_1(v))  # 1-hop 邻居聚合
+  Token_2 = Aggregate(Hop_2(v))  # 2-hop 邻居聚合
+  ...
+  Token_K = Aggregate(Hop_K(v))  # K-hop 邻居聚合
+  
+输入序列 = [Token_0, Token_1, ..., Token_K]  # 长度 K+1
+  </pre>
+  
+  <h4>关键特点</h4>
+  <table>
+    <tr><th>特点</th><th>说明</th></tr>
+    <tr><td><strong>可扩展性</strong></td><td>每个节点独立处理，支持 mini-batch 训练</td></tr>
+    <tr><td><strong>线性复杂度</strong></td><td>O(N × K) 而非 O(N²)</td></tr>
+    <tr><td><strong>多 hop 信息</strong></td><td>捕获不同距离的邻居信息</td></tr>
+    <tr><td><strong>Attention Readout</strong></td><td>自适应聚合不同 hop 的信息</td></tr>
+  </table>
+  
+  <h4>局限性</h4>
+  <ul>
+    <li>每个 hop 的邻居<strong>聚合</strong>成单个 token，丢失了邻居的多样性信息</li>
+    <li>不同 hop 之间<strong>独立</strong>，没有捕获 hop 间的变化趋势</li>
+    <li>没有考虑<strong>差分信息</strong>（如 Delta、Offset）</li>
+  </ul>
+</div>
+
+<h3>2. NTFormer (IEEE TBD 2025)</h3>
+
+<div class="paper-box">
+  <h4>核心问题</h4>
+  <p>现有方法只使用<strong>单一类型</strong>的 token 生成，只能表达部分图信息，需要针对不同图设计特定策略。</p>
+  
+  <h4>核心创新：Node2Par</h4>
+  <pre>
+对于每个节点 v，生成多种 token 类型：
+
+Token 类型 A: 节点自身特征
+Token 类型 B: 邻居特征聚合
+Token 类型 C: 属性特征
+Token 类型 D: 结构特征 (度、PageRank 等)
+
+组合生成多种 token 序列 → 全面表达图特征
+  </pre>
+  
+  <h4>关键特点</h4>
+  <table>
+    <tr><th>特点</th><th>说明</th></tr>
+    <tr><td><strong>多视角</strong></td><td>从不同角度表达节点特征</td></tr>
+    <tr><td><strong>通用性</strong></td><td>无需针对不同图类型修改模型</td></tr>
+    <tr><td><strong>灵活组合</strong></td><td>可根据任务选择合适的 token 类型</td></tr>
+  </table>
+  
+  <h4>与 Hop-Offset 的关系</h4>
+  <div class="insight-box">
+    <strong>Offset 可作为 Node2Par 的一种 token 类型！</strong>
+    <ul>
+      <li>Token 类型 X: <strong>Offset 向量</strong> (hop_k - hop_0)</li>
+      <li>与其他 token 类型组合，提供差分视角</li>
+    </ul>
+  </div>
+</div>
+
+<h3>3. SwapGT (NeurIPS 2025)</h3>
+
+<div class="paper-box">
+  <h4>核心问题</h4>
+  <p>现有 tokenized GT 只关注<strong>一阶邻居</strong>，生成的 token 序列多样性不足。</p>
+  
+  <h4>核心创新：Token Swapping</h4>
+  <pre>
+利用节点间的语义相关性：
+
+如果 node_i 和 node_j 语义相似（如在同一类中）：
+  可以交换它们某些位置的 token
+  例如：swap(node_i.hop_2, node_j.hop_2)
+  
+效果：
+  - 生成更多样化的 token 序列
+  - 增强模型泛化能力
+  - 利用全局语义信息
+  </pre>
+  
+  <h4>关键特点</h4>
+  <table>
+    <tr><th>特点</th><th>说明</th></tr>
+    <tr><td><strong>语义驱动</strong></td><td>基于节点语义相似性进行 swapping</td></tr>
+    <tr><td><strong>数据增强</strong></td><td>Token swapping 作为一种数据增强</td></tr>
+    <tr><td><strong>Center Alignment Loss</strong></td><td>约束多个 token 序列的表示学习</td></tr>
+  </table>
+</div>
+
+<h3>4. Contrastive Learning for Tokenized GT (NeurIPS 2024)</h3>
+
+<div class="paper-box">
+  <h4>核心思想</h4>
+  <p>使用对比学习增强 tokenized graph transformer 的节点表示。</p>
+  
+  <h4>关键贡献</h4>
+  <ul>
+    <li>设计 tokenized GT 专用的对比学习目标</li>
+    <li>增强 token 序列的表示能力</li>
+    <li>提升节点分类性能</li>
+  </ul>
+  
+  <h4>与 Hop-Offset 的关系</h4>
+  <div class="insight-box">
+    <strong>Offset 可设计专用的对比学习目标！</strong>
+    <ul>
+      <li>正样本：同一节点不同邻居采样的 Offset</li>
+      <li>负样本：不同节点的 Offset</li>
+      <li>目标：增强 Offset 表示的一致性和可分性</li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<h2>📊 NAGphormer vs VoxGFormer 对比</h2>
+
+<h3>核心差异</h3>
+
+<div class="comparison-grid">
+  <div class="comparison-item">
+    <h4>NAGphormer</h4>
+    <pre>
+Hop2Token 过程：
+
+对于节点 v:
+  Token_0 = AGG(特征(v))
+  Token_1 = AGG(Hop_1(v)的所有邻居)
+  Token_2 = AGG(Hop_2(v)的所有邻居)
+  
+每个 hop → 1 个 token
+总 token 数 = K + 1
+    </pre>
+  </div>
+  
+  <div class="comparison-item">
+    <h4>VoxGFormer (当前)</h4>
+    <pre>
+Hop Sampling 过程：
+
+对于节点 v:
+  Token_0 = 特征(v)
+  Token_1 = [特征(邻居_1), 特征(邻居_2), ...]
+  Token_2 = [特征(邻居_1), 特征(邻居_2), ...]
+  
+每个 hop → 多个 token (采样)
+总 token 数 = 1 + K × samples_per_hop
+    </pre>
+  </div>
+</div>
+
+<h3>详细对比表</h3>
+
+<table>
+  <tr>
+    <th>维度</th>
+    <th>NAGphormer</th>
+    <th>VoxGFormer</th>
+  </tr>
+  <tr>
+    <td><strong>Token 来源</strong></td>
+    <td>每个 hop 邻居聚合</td>
+    <td>每个 hop 邻居采样</td>
+  </tr>
+  <tr>
+    <td><strong>Token 数量</strong></td>
+    <td>K+1 个 (固定)</td>
+    <td>1 + K × S 个 (可变)</td>
+  </tr>
+  <tr>
+    <td><strong>邻居信息保留</strong></td>
+    <td>聚合后丢失多样性</td>
+    <td>采样保留多样性</td>
+  </tr>
+  <tr>
+    <td><strong>差分信息</strong></td>
+    <td>❌ 无</td>
+    <td>✅ Delta / Offset</td>
+  </tr>
+  <tr>
+    <td><strong>Positional Encoding</strong></td>
+    <td>可学习 PE</td>
+    <td>Cosine PE</td>
+  </tr>
+  <tr>
+    <td><strong>任务适配</strong></td>
+    <td>通用节点分类</td>
+    <td>图异常检测 (GAD)</td>
+  </tr>
+</table>
+
+<hr>
+
+<h2>🎯 Hop-Offset 独特价值分析</h2>
+
+<h3>Hop-Offset 与现有方法的对比</h3>
+
+<table>
+  <tr>
+    <th>特性</th>
+    <th>NAGphormer</th>
+    <th>NTFormer</th>
+    <th>SwapGT</th>
+    <th><strong>Hop-Offset</strong></th>
+  </tr>
+  <tr>
+    <td>多 hop 表示</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+    <td>✅</td>
+  </tr>
+  <tr>
+    <td>差分信息</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✅ <strong>独特</strong></td>
+  </tr>
+  <tr>
+    <td>语义增强</td>
+    <td>—</td>
+    <td>多 token 类型</td>
+    <td>Token Swapping</td>
+    <td><strong>Offset 语义</strong></td>
+  </tr>
+  <tr>
+    <td>异常检测适配</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>❌</td>
+    <td>✅ <strong>专为 GAD</strong></td>
+  </tr>
+</table>
+
+<h3>Hop-Offset 的语义</h3>
+
+<div class="highlight">
+  <h4>Offset 向量定义</h4>
+  <pre>
+Offset_k = Hop_k - Hop_0
+
+含义：从中心节点到 k-hop 邻居的"变化向量"
+  </pre>
+  
+  <h4>Offset 的物理意义</h4>
+  <table>
+    <tr><th>含义</th><th>解释</th></tr>
+    <tr><td><strong>距离感知</strong></td><td>Offset 的范数反映与中心节点的距离</td></tr>
+    <tr><td><strong>方向信息</strong></td><td>Offset 的方向可能指向"异常方向"</td></tr>
+    <tr><td><strong>变化趋势</strong></td><td>不同 k 的 Offset 序列反映特征变化趋势</td></tr>
+  </table>
+</div>
+
+<hr>
+
+<h2>💡 Hop-Offset 信息挖掘程度评估</h2>
+
+<h3>已挖掘的信息</h3>
+
+<table>
+  <tr><th>信息类型</th><th>实现方式</th><th>效果</th><th>挖掘程度</th></tr>
+  <tr><td><strong>Hop 位置信息</strong></td><td>Cosine Positional Encoding</td><td>区分不同 hop</td><td>✅ 充分</td></tr>
+  <tr><td><strong>差分向量</strong></td><td>Delta / Offset 计算</td><td>捕获变化信息</td><td>✅ 基础实现</td></tr>
+  <tr><td><strong>注意力权重</strong></td><td>Self-attention layers</td><td>自适应聚合</td><td>✅ 充分</td></tr>
+  <tr><td><strong>聚合表示</strong></td><td>Attention pooling</td><td>生成节点表示</td><td>✅ 充分</td></tr>
+</table>
+
+<h3>尚未充分挖掘的信息</h3>
+
+<table>
+  <tr><th>信息类型</th><th>潜在价值</th><th>挖掘程度</th><th>改进方向</th></tr>
+  <tr><td><strong>Offset 方向语义</strong></td><td>Offset 方向与异常的相关性</td><td>⚠️ 未分析</td><td>方向分布分析</td></tr>
+  <tr><td><strong>Hop 间语义关系</strong></td><td>不同 hop 的语义差异</td><td>⚠️ 仅 attention</td><td>Token Swapping</td></tr>
+  <tr><td><strong>多 token 类型组合</strong></td><td>多视角表示</td><td>❌ 未实现</td><td>类 NTFormer</td></tr>
+  <tr><td><strong>对比学习增强</strong></td><td>表示一致性</td><td>❌ 未实现</td><td>Offset 对比目标</td></tr>
+</table>
+
+<hr>
+
+<h2>🚀 建议改进方向</h2>
+
+<h3>方向 A: Offset 方向语义分析</h3>
+
+<div class="paper-box">
+  <h4>核心问题</h4>
+  <p>Offset 向量的方向是否携带与异常检测相关的语义信息？</p>
+  
+  <h4>分析方法</h4>
+  <pre>
+1. 可视化分析：
+   - 正常节点 vs 异常节点的 Offset 方向分布
+   - 使用 t-SNE / PCA 降维可视化
+   
+2. 统计分析：
+   - 计算 Offset 方向与异常标签的相关性
+   - 分析不同数据集上的方向一致性
+   
+3. 理论分析：
+   - Offset 方向是否指向"异常方向"？
+   - 正常节点的 Offset 方向是否聚集？
+  </pre>
+  
+  <h4>预期发现</h4>
+  <ul>
+    <li>如果 Offset 方向与异常相关 → 可以设计方向感知的异常分数</li>
+    <li>如果正常节点 Offset 聚集 → 可以用方向偏离度作为异常指标</li>
+  </ul>
+</div>
+
+<h3>方向 B: Contrastive Offset Learning</h3>
+
+<div class="paper-box">
+  <h4>核心思想</h4>
+  <p>借鉴 Jinsong Chen NeurIPS 2024 论文，设计 Offset 专用的对比学习目标。</p>
+  
+  <h4>实现方式</h4>
+  <pre>
+def contrastive_offset_loss(node_i, node_j, temperature=0.2):
+    """
+    Offset 对比学习损失
+    
+    正样本：同一节点不同邻居采样的 Offset
+    负样本：不同节点的 Offset
+    """
+    offset_i = compute_offset(node_i)  # [K, D]
+    offset_i_aug = compute_offset(node_i, different_sampling)  # 增强版本
+    offset_j = compute_offset(node_j)
+    
+    # 正样本相似度
+    pos_sim = cosine_similarity(offset_i, offset_i_aug)
+    
+    # 负样本相似度
+    neg_sim = cosine_similarity(offset_i, offset_j)
+    
+    # InfoNCE Loss
+    loss = -log(exp(pos_sim/τ) / (exp(pos_sim/τ) + exp(neg_sim/τ)))
+    return loss
+  </pre>
+  
+  <h4>预期效果</h4>
+  <ul>
+    <li>增强 Offset 表示的一致性（同一节点不同采样）</li>
+    <li>增强 Offset 表示的可分性（不同节点）</li>
+    <li>提升异常检测性能</li>
+  </ul>
+</div>
+
+<h3>方向 C: Composite Offset Token</h3>
+
+<div class="paper-box">
+  <h4>核心思想</h4>
+  <p>借鉴 NTFormer 的 Node2Par，将 Offset 作为多种 token 类型之一。</p>
+  
+  <h4>Token 类型设计</h4>
+  <pre>
+tokens = {
+    'original': hop_features,           # 原始 hop 特征
+    'offset': hop_k - hop_0,           # Hop-Offset
+    'delta': hop_k - hop_{k-1},        # Delta
+    'degree': node_degree,              # 度特征
+    'structure': pagerank, betweenness, # 结构特征
+}
+
+# 输入 Transformer
+input_sequence = concat(
+    tokens['offset'],
+    tokens['structure'],
+    tokens['degree']
+)
+  </pre>
+  
+  <h4>预期效果</h4>
+  <ul>
+    <li>多视角表示，更全面的节点特征</li>
+    <li>Offset 与结构特征互补</li>
+    <li>无需针对不同图类型修改模型</li>
+  </ul>
+</div>
+
+<h3>方向 D: Offset Token Swapping</h3>
+
+<div class="paper-box">
+  <h4>核心思想</h4>
+  <p>借鉴 SwapGT，利用 Offset 方向的语义相关性进行 token swapping。</p>
+  
+  <h4>实现方式</h4>
+  <pre>
+def offset_based_swapping(node_i, node_j, threshold=0.8):
+    """
+    基于 Offset 相似性的 Token Swapping
+    """
+    offset_i = compute_offset(node_i)
+    offset_j = compute_offset(node_j)
+    
+    # 计算 Offset 方向相似度
+    similarity = cosine_similarity(offset_i, offset_j)
+    
+    if similarity > threshold:
+        # Offset 方向相似 → 可以交换某些 hop token
+        # 增强表示多样性
+        swap_token(node_i, node_j, hop_k)
+  </pre>
+  
+  <h4>预期效果</h4>
+  <ul>
+    <li>增强 Offset 表示的多样性</li>
+    <li>利用全局语义信息</li>
+    <li>提升模型泛化能力</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📊 优先级排序</h2>
+
+<table>
+  <tr>
+    <th>优先级</th>
+    <th>方向</th>
+    <th>工作量</th>
+    <th>预期收益</th>
+    <th>依赖</th>
+  </tr>
+  <tr>
+    <td><strong>P1</strong></td>
+    <td>Offset 方向语义分析</td>
+    <td>低（分析为主）</td>
+    <td>理论洞察</td>
+    <td>无</td>
+  </tr>
+  <tr>
+    <td><strong>P2</strong></td>
+    <td>Contrastive Offset Learning</td>
+    <td>中</td>
+    <td>表示增强</td>
+    <td>P1 的分析结果</td>
+  </tr>
+  <tr>
+    <td><strong>P3</strong></td>
+    <td>Composite Offset Token</td>
+    <td>中</td>
+    <td>多视角表示</td>
+    <td>无</td>
+  </tr>
+  <tr>
+    <td><strong>P4</strong></td>
+    <td>Offset Token Swapping</td>
+    <td>高</td>
+    <td>创新方法</td>
+    <td>P1 + P2</td>
+  </tr>
+</table>
+
+<hr>
+
+<h2>🎯 结论与建议</h2>
+
+<div class="conclusion-box">
+  <h3>核心发现</h3>
+  
+  <h4>1. Hop-Offset 是 VoxGFormer 独特的差分表示</h4>
+  <p>Jinsong Chen 的 NAGphormer、NTFormer、SwapGT 都<strong>没有</strong>使用差分信息。Hop-Offset 是 VoxGFormer 的独特优势。</p>
+  
+  <h4>2. 当前对 Hop-Offset 的挖掘还不够深入</h4>
+  <p>特别是以下方面：</p>
+  <ul>
+    <li><strong>Offset 方向语义</strong>：方向是否指向"异常"？</li>
+    <li><strong>对比学习增强</strong>：增强 Offset 表示的一致性</li>
+    <li><strong>多 token 类型组合</strong>：Offset 与其他特征的互补</li>
+  </ul>
+  
+  <h4>3. Jinsong Chen 的工作提供了很好的参考</h4>
+  <ul>
+    <li><strong>SwapGT</strong> 的 token swapping 思想 → 可用于 Offset</li>
+    <li><strong>NTFormer</strong> 的多 token 类型组合 → Offset 作为其中一种</li>
+    <li><strong>Contrastive Learning</strong> 的表示增强 → Offset 对比目标</li>
+  </ul>
+</div>
+
+<div class="warning-box">
+  <h3>注意事项</h3>
+  <ul>
+    <li><strong>不要简单照搬</strong>：Jinsong Chen 的工作针对节点分类，需要适配异常检测任务</li>
+    <li><strong>保持 Hop-Offset 的独特性</strong>：差分信息是优势，不要丢失</li>
+    <li><strong>先分析后改进</strong>：P1 的 Offset 方向语义分析是基础</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📚 参考文献</h2>
+
+<ol>
+  <li>Chen, J., et al. (2023). NAGphormer: A Tokenized Graph Transformer for Node Classification in Large Graphs. <em>ICLR 2023</em>. <a href="https://arxiv.org/abs/2206.04910">[arXiv]</a></li>
+  
+  <li>Chen, J., et al. (2024). NAGphormer+: A Tokenized Graph Transformer with Neighborhood Augmentation. <em>IEEE Transactions on Big Data</em>. <a href="https://ieeexplore.ieee.org/abstract/document/10818575">[IEEE]</a></li>
+  
+  <li>Chen, J., et al. (2024). Leveraging Contrastive Learning for Enhanced Node Representations in Tokenized Graph Transformers. <em>NeurIPS 2024</em>. <a href="https://arxiv.org/abs/2406.19258">[arXiv]</a></li>
+  
+  <li>Chen, J., et al. (2025). NTFormer: A Composite Node Tokenized Graph Transformer for Node Classification. <em>IEEE Transactions on Big Data</em>. <a href="https://arxiv.org/abs/2406.19249">[arXiv]</a></li>
+  
+  <li>Chen, J., et al. (2025). Rethinking Tokenized Graph Transformers for Node Classification. <em>NeurIPS 2025</em>. <a href="https://arxiv.org/abs/2502.08101">[arXiv]</a></li>
+</ol>
+
+<hr>
+
+<div class="footer">
+  <p><strong>报告生成</strong>：Nexus (OpenClaw Agent)</p>
+  <p><strong>调研时间</strong>：2026-03-31 13:27-13:31</p>
+  <p><strong>调研工具</strong>：Web Search, SearXNG, Web Fetch, arXiv</p>
+  <p><strong>总耗时</strong>：约 4 分钟</p>
+</div>
+
+</body>
+</html>

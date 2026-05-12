@@ -1,0 +1,30 @@
+[
+  {
+    "dataset": "photo",
+    "objective_mode": "self_residual",
+    "returncode": 1,
+    "elapsed_sec": 2.9206652641296387,
+    "result": null
+  },
+  {
+    "dataset": "photo",
+    "objective_mode": "ref_guided",
+    "returncode": 1,
+    "elapsed_sec": 2.8394293785095215,
+    "result": null
+  },
+  {
+    "dataset": "elliptic",
+    "objective_mode": "self_residual",
+    "returncode": 1,
+    "elapsed_sec": 2.9252452850341797,
+    "result": null
+  },
+  {
+    "dataset": "elliptic",
+    "objective_mode": "ref_guided",
+    "returncode": 1,
+    "elapsed_sec": 2.824763059616089,
+    "result": null
+  }
+]

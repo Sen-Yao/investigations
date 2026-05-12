@@ -1,0 +1,60 @@
+{
+  "dataset": "Photo",
+  "timestamp": "2026-04-01T15:32:13.299086",
+  "direction_statistics": {
+    "hop_1": {
+      "normal_cosine_mean": 0.034379906952381134,
+      "normal_cosine_std": 0.340442419052124,
+      "anomaly_cosine_mean": -0.005202298052608967,
+      "anomaly_cosine_std": 0.3268592059612274,
+      "cosine_ks": 0.07199596163299894,
+      "normal_variance": 0.1863529086112976,
+      "anomaly_variance": 0.17087240517139435
+    },
+    "hop_2": {
+      "normal_cosine_mean": 0.023599885404109955,
+      "normal_cosine_std": 0.35337185859680176,
+      "anomaly_cosine_mean": -0.020883845165371895,
+      "anomaly_cosine_std": 0.3394228518009186,
+      "cosine_ks": 0.07385107075817449,
+      "normal_variance": 0.16004641354084015,
+      "anomaly_variance": 0.15381084382534027
+    },
+    "hop_3": {
+      "normal_cosine_mean": 0.030099276453256607,
+      "normal_cosine_std": 0.3650397062301636,
+      "anomaly_cosine_mean": -0.018558857962489128,
+      "anomaly_cosine_std": 0.3492738902568817,
+      "cosine_ks": 0.07176986169556931,
+      "normal_variance": 0.18017059564590454,
+      "anomaly_variance": 0.16637085378170013
+    },
+    "hop_4": {
+      "normal_cosine_mean": 0.029422011226415634,
+      "normal_cosine_std": 0.3707498013973236,
+      "anomaly_cosine_mean": -0.022654715925455093,
+      "anomaly_cosine_std": 0.3550041913986206,
+      "cosine_ks": 0.07875339516611325,
+      "normal_variance": 0.1772175282239914,
+      "anomaly_variance": 0.16597174108028412
+    },
+    "hop_5": {
+      "normal_cosine_mean": 0.03175916150212288,
+      "normal_cosine_std": 0.37773898243904114,
+      "anomaly_cosine_mean": -0.02366597205400467,
+      "anomaly_cosine_std": 0.3599105775356293,
+      "cosine_ks": 0.07714806465578118,
+      "normal_variance": 0.18357259035110474,
+      "anomaly_variance": 0.1687687784433365
+    },
+    "hop_6": {
+      "normal_cosine_mean": 0.03253737464547157,
+      "normal_cosine_std": 0.38219934701919556,
+      "anomaly_cosine_mean": -0.026233520358800888,
+      "anomaly_cosine_std": 0.363871693611145,
+      "cosine_ks": 0.07773311657913938,
+      "normal_variance": 0.18292927742004395,
+      "anomaly_variance": 0.16900065541267395
+    }
+  }
+}

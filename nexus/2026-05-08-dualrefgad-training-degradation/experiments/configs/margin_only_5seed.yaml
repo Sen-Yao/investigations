@@ -1,0 +1,29 @@
+program: scripts/fixed_dual_reference_gt_structured_head_train_dualref.py
+method: grid
+metric:
+  name: margin_auc
+  goal: maximize
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args}
+parameters:
+  dataset:
+    values: [elliptic]
+  seed:
+    values: [0, 1, 2, 3, 4]
+  train_rate:
+    values: [0.05]
+  val_rate:
+    values: [0.0]
+  num_epoch:
+    values: [0]
+  head_mode:
+    values: [dual_margin_two_score]
+  wandb:
+    values: [true]
+  device:
+    values: [0]
+  encode_batch_size:
+    values: [128]

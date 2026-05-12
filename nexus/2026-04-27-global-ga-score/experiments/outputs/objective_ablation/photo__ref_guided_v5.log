@@ -1,0 +1,31 @@
+Training Counter({0: 355, 1: 21})
+Test Counter({0: 5804, 1: 602})
+Training rate 1
+Traceback (most recent call last):
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_v5_refguided.py", line 199, in <module>
+    if __name__=='__main__': main()
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_v5_refguided.py", line 173, in main
+    model.train(); opt.zero_grad(); emb=encode_tokens_batched(model,token_tensor,device,args.encode_batch_size); normal_emb=emb[normal_t]
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_v5_refguided.py", line 139, in encode_tokens_batched
+    for st in range(0,n,batch_size): chunks.append(model.TransformerEncoder(token_tensor_cpu[st:st+batch_size].to(device,non_blocking=True)).squeeze(0))
+  File "/root/gpufree-data/linziyao/VoxG/VecGAD.py", line 256, in TransformerEncoder
+    emb, current_attention_weights = self.layers[i](emb)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1536, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/gpufree-data/linziyao/VoxG/VecGAD.py", line 100, in forward
+    y, attention_weights = self.self_attention(y, y, y, attn_bias)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1536, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/root/gpufree-data/linziyao/VoxG/VecGAD.py", line 49, in forward
+    k = self.linear_k(k).view(batch_size, -1, self.num_heads, d_k)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1527, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/module.py", line 1536, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/usr/local/lib/python3.10/dist-packages/torch/nn/modules/linear.py", line 116, in forward
+    return F.linear(input, self.weight, self.bias)
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 22.00 MiB. GPU  has a total capacity of 44.39 GiB of which 9.94 MiB is free. Process 2524549 has 42.66 GiB memory in use. Process 2684872 has 1.71 GiB memory in use. Of the allocated memory 1.19 GiB is allocated by PyTorch, and 30.49 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://pytorch.org/docs/stable/notes/cuda.html#environment-variables)

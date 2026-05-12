@@ -1,0 +1,14 @@
+{
+  "status": "pending",
+  "note": "WandB sweep failed due to dataset path issue. Results to be filled after fixing run_caa.py data loading.",
+  "expected_runs": 10,
+  "parameters": {
+    "lr_values": [0.0001, 0.0003, 0.0005, 0.001, 0.002],
+    "seeds": [0, 1],
+    "dataset": "photo",
+    "epochs": 100,
+    "hidden_dim": 128,
+    "num_heads": 4
+  },
+  "placeholder_results": []
+}

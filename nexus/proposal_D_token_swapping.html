@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>方案 D: Offset Token Swapping 详细报告</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.7; }
+    h1 { color: #2c3e50; border-bottom: 3px solid #e67e22; padding-bottom: 10px; }
+    h2 { color: #2980b9; margin-top: 30px; }
+    h3 { color: #34495e; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background-color: #e67e22; color: white; }
+    tr:hover { background-color: #f5f5f5; }
+    .highlight { background-color: #fff3e0; padding: 15px; border-left: 4px solid #e67e22; margin: 15px 0; }
+    .paper-box { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin: 12px 0; border-radius: 5px; }
+    code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+    pre { background-color: #2d3436; color: #dfe6e9; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    .insight-box { background-color: #e3f2fd; border-left: 4px solid #2196f3; padding: 15px; margin: 15px 0; }
+    .conclusion-box { background-color: #e8f5e9; border-left: 4px solid #27ae60; padding: 15px; margin: 15px 0; }
+    .warning-box { background-color: #ffebee; border-left: 4px solid #e53935; padding: 15px; margin: 15px 0; }
+    .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<h1>🔄 方案 D: Offset Token Swapping 详细报告</h1>
+
+<p><strong>优先级</strong>：P4</p>
+<p><strong>工作量</strong>：高（5-7 天）</p>
+<p><strong>类型</strong>：创新方法，借鉴 SwapGT 的 token swapping 思想</p>
+
+<hr>
+
+<h2>📋 核心思想</h2>
+
+<div class="highlight">
+  <strong>借鉴 SwapGT，利用 Offset 方向的语义相关性进行 token swapping。</strong>
+  
+  <p>目标：</p>
+  <ul>
+    <li>增强 Offset 表示的多样性</li>
+    <li>利用全局语义信息</li>
+    <li>提升模型泛化能力</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📐 SwapGT 的 Token Swapping 思想</h2>
+
+<div class="paper-box">
+  <h4>核心问题</h4>
+  <p>现有 tokenized GT 只关注一阶邻居，生成的 token 序列多样性不足。</p>
+  
+  <h4>SwapGT 解决方案</h4>
+  <pre>
+Token Swapping 操作：
+
+如果 node_i 和 node_j 语义相似（如在同一类别中）：
+  可以交换它们某些位置的 token
+  例如：swap(node_i.hop_2, node_j.hop_2)
+
+效果：
+  - 生成更多样化的 token 序列
+  - 增强模型泛化能力
+  - 利用全局语义信息
+  </pre>
+  
+  <h4>关键创新</h4>
+  <ul>
+    <li><strong>语义驱动</strong>：基于语义相似性而非随机交换</li>
+    <li><strong>数据增强</strong>：Token swapping 作为数据增强</li>
+    <li><strong>Center Alignment Loss</strong>：约束多个 token 序列的表示学习</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>🔬 Offset-based Token Swapping 设计</h2>
+
+<h3>核心问题</h3>
+
+<p><strong>如何定义节点间的"Offset 语义相似性"？</strong></p>
+
+<h3>Offset 相似性定义</h3>
+
+<div class="paper-box">
+  <h4>定义 1: 方向相似性</h4>
+  <pre>
+def direction_similarity(offset_i, offset_j):
+    """
+    基于 Offset 方向的相似性
+    """
+    # 归一化为方向向量
+    dir_i = offset_i / (||offset_i|| + eps)
+    dir_j = offset_j / (||offset_j|| + eps)
+    
+    # 平均方向相似度（跨所有 hop）
+    sim = mean(cosine_similarity(dir_i, dir_j, dim=-1))
+    
+    return sim
+  </pre>
+  
+  <h4>定义 2: 变化模式相似性</h4>
+  <pre>
+def pattern_similarity(offset_i, offset_j):
+    """
+    基于 Offset 变化模式的相似性
+    """
+    # Offset 的变化趋势
+    trend_i = offset_i[1:] - offset_i[:-1]  # Offset 的差分
+    trend_j = offset_j[1:] - offset_j[:-1]
+    
+    # 趋势相似度
+    sim = cosine_similarity(trend_i.flatten(), trend_j.flatten())
+    
+    return sim
+  </pre>
+  
+  <h4>定义 3: 结构感知相似性</h4>
+  <pre>
+def structure_aware_similarity(node_i, node_j, adj):
+    """
+    结合结构信息的相似性
+    """
+    # Offset 相似性
+    offset_sim = direction_similarity(node_i.offset, node_j.offset)
+    
+    # 结构相似性（如共同邻居比例）
+    neighbors_i = set(adj[node_i].nonzero())
+    neighbors_j = set(adj[node_j].nonzero())
+    jaccard = len(neighbors_i & neighbors_j) / len(neighbors_i | neighbors_j)
+    
+    # 加权组合
+    combined_sim = 0.7 * offset_sim + 0.3 * jaccard
+    
+    return combined_sim
+  </pre>
+</div>
+
+<hr>
+
+<h2>🔬 Token Swapping 策略</h2>
+
+<h3>策略 D1: 随机 Swapping（基线）</h3>
+
+<div class="paper-box">
+  <h4>思路</h4>
+  <p>随机选择节点对进行 token swapping。</p>
+  
+  <h4>实现</h4>
+  <pre>
+def random_swapping(tokens, swap_prob=0.1):
+    """
+    随机 token swapping
+    """
+    N, K, D = tokens.shape
+    swapped_tokens = tokens.clone()
+    
+    for i in range(N):
+        if random.random() < swap_prob:
+            # 随机选择另一个节点
+            j = random.randint(0, N-1)
+            while j == i:
+                j = random.randint(0, N-1)
+            
+            # 随机选择一个 hop 位置
+            hop = random.randint(0, K-1)
+            
+            # 交换
+            swapped_tokens[i, hop], swapped_tokens[j, hop] = \
+                swapped_tokens[j, hop].clone(), swapped_tokens[i, hop].clone()
+    
+    return swapped_tokens
+  </pre>
+  
+  <h4>特点</h4>
+  <ul>
+    <li><strong>简单</strong>：无需计算相似性</li>
+    <li><strong>缺点</strong>：可能交换语义不相关的节点</li>
+  </ul>
+</div>
+
+<h3>策略 D2: Offset-similarity Swapping（推荐）</h3>
+
+<div class="paper-box">
+  <h4>思路</h4>
+  <p>只交换 Offset 方向相似的节点。</p>
+  
+  <h4>实现</h4>
+  <pre>
+class OffsetSimilaritySwapping:
+    def __init__(self, similarity_threshold=0.8):
+        self.threshold = similarity_threshold
+    
+    def compute_similarity_matrix(self, offsets):
+        """
+        计算所有节点对的 Offset 相似性
+        """
+        N = len(offsets)
+        sim_matrix = torch.zeros(N, N)
+        
+        for i in range(N):
+            for j in range(i+1, N):
+                sim = direction_similarity(offsets[i], offsets[j])
+                sim_matrix[i, j] = sim
+                sim_matrix[j, i] = sim
+        
+        return sim_matrix
+    
+    def swap(self, tokens, offsets, hop_indices):
+        """
+        基于 Offset 相似性的 token swapping
+        """
+        sim_matrix = self.compute_similarity_matrix(offsets)
+        swapped_tokens = tokens.clone()
+        
+        N, K, D = tokens.shape
+        
+        for i in range(N):
+            # 找到与 i 相似的节点
+            similar_nodes = (sim_matrix[i] > self.threshold).nonzero().squeeze()
+            
+            if len(similar_nodes) > 0:
+                # 随机选择一个相似节点
+                j = similar_nodes[random.randint(0, len(similar_nodes)-1)]
+                
+                # 随机选择一个 hop 位置
+                hop = random.choice(hop_indices)
+                
+                # 交换
+                swapped_tokens[i, hop], swapped_tokens[j, hop] = \
+                    swapped_tokens[j, hop].clone(), swapped_tokens[i, hop].clone()
+        
+        return swapped_tokens
+  </pre>
+  
+  <h4>特点</h4>
+  <ul>
+    <li><strong>语义保持</strong>：交换语义相似的节点</li>
+    <li><strong>多样性</strong>：增强表示多样性</li>
+    <li><strong>缺点</strong>：需要计算相似性矩阵</li>
+  </ul>
+</div>
+
+<h3>策略 D3: Class-aware Swapping</h3>
+
+<div class="paper-box">
+  <h4>思路</h4>
+  <p>利用标签信息，只在同类别节点间进行 swapping。</p>
+  
+  <h4>实现</h4>
+  <pre>
+class ClassAwareSwapping:
+    def __init__(self):
+        pass
+    
+    def swap(self, tokens, labels, hop_indices):
+        """
+        类别感知的 token swapping
+        """
+        swapped_tokens = tokens.clone()
+        N, K, D = tokens.shape
+        
+        # 按类别分组
+        unique_labels = labels.unique()
+        
+        for label in unique_labels:
+            # 同一类别的节点
+            same_class = (labels == label).nonzero().squeeze()
+            
+            if len(same_class) > 1:
+                # 随机配对
+                perm = torch.randperm(len(same_class))
+                
+                for idx in range(0, len(perm)-1, 2):
+                    i = same_class[perm[idx]]
+                    j = same_class[perm[idx+1]]
+                    
+                    # 随机选择 hop
+                    hop = random.choice(hop_indices)
+                    
+                    # 交换
+                    swapped_tokens[i, hop], swapped_tokens[j, hop] = \
+                        swapped_tokens[j, hop].clone(), swapped_tokens[i, hop].clone()
+        
+        return swapped_tokens
+  </pre>
+  
+  <h4>特点</h4>
+  <ul>
+    <li><strong>类别保持</strong>：交换后标签不变</li>
+    <li><strong>适合监督/半监督</strong>：利用标签信息</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📊 Center Alignment Loss</h2>
+
+<div class="paper-box">
+  <h4>问题</h4>
+  <p>Token swapping 后，同一个节点有多种 token 序列表示，如何保证表示一致性？</p>
+  
+  <h4>SwapGT 的解决方案：Center Alignment Loss</h4>
+  <pre>
+def center_alignment_loss(repr_original, repr_swapped):
+    """
+    中心对齐损失
+    
+    目标：原始序列和交换序列的表示应该接近
+    """
+    # 计算中心表示
+    center = (repr_original + repr_swapped) / 2
+    
+    # 两个表示都应该接近中心
+    loss = F.mse_loss(repr_original, center) + F.mse_loss(repr_swapped, center)
+    
+    return loss
+  </pre>
+  
+  <h4>作用</h4>
+  <ul>
+    <li><strong>一致性</strong>：保证 swapping 不破坏表示</li>
+    <li><strong>稳定性</strong>：稳定训练过程</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>🔬 与 VoxGFormer 的集成</h2>
+
+<h3>训练流程</h3>
+
+<pre>
+# 训练循环
+for epoch in range(num_epochs):
+    for batch in dataloader:
+        # 1. 计算原始 Offset
+        offsets = compute_offsets(batch)
+        
+        # 2. Token swapping
+        swapped_offsets = swapper.swap(offsets, similarity_threshold=0.8)
+        
+        # 3. Transformer 前向
+        repr_original = transformer(offsets)
+        repr_swapped = transformer(swapped_offsets)
+        
+        # 4. 异常检测损失
+        anomaly_loss = compute_anomaly_loss(repr_original, labels)
+        
+        # 5. Center alignment 损失
+        alignment_loss = center_alignment_loss(repr_original, repr_swapped)
+        
+        # 6. 总损失
+        total_loss = anomaly_loss + λ * alignment_loss
+        
+        # 7. 反向传播
+        optimizer.zero_grad()
+        total_loss.backward()
+        optimizer.step()
+</pre>
+
+<hr>
+
+<h2>📈 预期效果</h2>
+
+<table>
+  <tr><th>效果</th><th>预期改进</th><th>原因</th></tr>
+  <tr><td>表示多样性</td><td>提升</td><td>Token swapping 增加多样性</td></tr>
+  <tr><td>泛化能力</td><td>提升</td><td>等价于数据增强</td></tr>
+  <tr><td>AUC</td><td>+1-2%</td><td>更好的表示学习</td></tr>
+  <tr><td>鲁棒性</td><td>提升</td><td>语义保持的增强</td></tr>
+</table>
+
+<hr>
+
+<h2>⚠️ 潜在问题</h2>
+
+<div class="warning-box">
+  <h3>问题 1: 计算开销</h3>
+  <p>计算 Offset 相似性矩阵需要 O(N²) 复杂度。</p>
+  <p><strong>解决方案</strong>：采样部分节点计算相似性，或使用近似方法。</p>
+  
+  <h3>问题 2: Swapping 破坏信息</h3>
+  <p>不当的 swapping 可能破坏有用的信息。</p>
+  <p><strong>解决方案</strong>：只交换语义相似的节点，并使用 alignment loss 约束。</p>
+  
+  <h3>问题 3: 与异常检测任务的适配</h3>
+  <p>SwapGT 针对节点分类，异常检测可能需要不同策略。</p>
+  <p><strong>解决方案</strong>：可能需要在正常节点内部 swapping，避免正常-异常间的 swapping。</p>
+</div>
+
+<hr>
+
+<h2>📅 实施计划</h2>
+
+<table>
+  <tr><th>阶段</th><th>任务</th><th>时间</th></tr>
+  <tr><td>第1天</td><td>实现相似性计算和基本 swapping</td><td>3小时</td></tr>
+  <tr><td>第2天</td><td>实现三种 swapping 策略</td><td>3小时</td></tr>
+  <tr><td>第3天</td><td>实现 center alignment loss</td><td>2小时</td></tr>
+  <tr><td>第4天</td><td>集成到 VoxGFormer</td><td>3小时</td></tr>
+  <tr><td>第5-6天</td><td>实验和调参</td><td>6小时</td></tr>
+  <tr><td>第7天</td><td>分析和报告</td><td>3小时</td></tr>
+</table>
+
+<hr>
+
+<h2>🎯 与其他方案的关系</h2>
+
+<div class="insight-box">
+  <h3>依赖关系</h3>
+  
+  <p><strong>方案 D 依赖方案 A 和 B</strong>：</p>
+  <ul>
+    <li>方案 A（方向语义分析）：定义 Offset 相似性的基础</li>
+    <li>方案 B（对比学习）：可能替代或互补 swapping</li>
+  </ul>
+  
+  <h3>建议执行顺序</h3>
+  
+  <pre>
+  方案 A (方向语义分析)
+       ↓
+  方案 B (对比学习) 或 方案 C (复合 Token)
+       ↓
+  方案 D (Token Swapping)
+  </pre>
+</div>
+
+<hr>
+
+<div class="footer">
+  <p><strong>报告类型</strong>：方案详细设计文档</p>
+  <p><strong>生成时间</strong>：2026-03-31</p>
+  <p><strong>作者</strong>：Nexus</p>
+</div>
+
+</body>
+</html>

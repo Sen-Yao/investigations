@@ -1,0 +1,56 @@
+# DualRefGAD theory-aligned two-score head sweep, Elliptic 5/95 no-validation protocol
+program: /root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-05-06-dualrefgad-two-sided-score-head/experiments/scripts/fixed_dual_reference_gt_structured_head_train.py
+method: grid
+metric:
+  name: final_test_auc
+  goal: maximize
+parameters:
+  dataset:
+    value: elliptic
+  train_rate:
+    value: 0.05
+  descriptor_mode:
+    value: hop_attr
+  pn_estimator:
+    value: pca_residual
+  gn_mode:
+    value: label_gate
+  ln_mode:
+    value: descriptor_similarity
+  ga_mode:
+    value: normal_soft_or
+  la_mode:
+    value: descriptor_similarity
+  reference_mode:
+    value: dual_reference
+  ablation_mode:
+    value: full
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  pp_k:
+    value: 6
+  encode_batch_size:
+    value: 256
+  wandb:
+    value: true
+  seed:
+    values: [0, 1, 2, 3, 4]
+  num_epoch:
+    value: 50
+  head_mode:
+    values:
+      - contrastive_two_score
+      - decomposition_head
+      - structured_readout
+  lr:
+    value: 0.001
+  weight_decay:
+    value: 0.0001
+  head_hidden:
+    value: 256
+  head_dropout:
+    value: 0.2
+  aux_weight:
+    value: 0.25

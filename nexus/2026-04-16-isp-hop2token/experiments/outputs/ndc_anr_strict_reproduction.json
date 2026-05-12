@@ -1,0 +1,158 @@
+{
+  "photo": {
+    "path": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+    "n_nodes": 7535,
+    "anomaly_rate": 0.09263437292634373,
+    "ndc": {
+      "normal_mean": -0.352922648191452,
+      "normal_var": 0.060481779277324677,
+      "anomaly_mean": -0.28243306279182434,
+      "anomaly_var": 0.044934820383787155,
+      "difference": 0.07048958539962769,
+      "support_expected_direction": true,
+      "ks_stat": 0.15758914183863043,
+      "ks_pvalue": 3.34635123553363e-14
+    },
+    "anr": {
+      "normal_mean": 0.035776473581790924,
+      "normal_var": 0.006544134113937616,
+      "anomaly_mean": 0.7370341420173645,
+      "anomaly_var": 0.08468025177717209,
+      "difference": 0.7012576460838318,
+      "support_expected_direction": true,
+      "ks_stat": 0.9000110221100174,
+      "ks_pvalue": 4.4e-322
+    },
+    "anr_leakage_warning": true
+  },
+  "Amazon": {
+    "path": "/root/gpufree-data/linziyao/VecGAD/dataset/Amazon.mat",
+    "n_nodes": 11944,
+    "anomaly_rate": 0.06873744139316812,
+    "ndc": {
+      "normal_mean": -0.1903703659772873,
+      "normal_var": 0.722137451171875,
+      "anomaly_mean": 0.18873059749603271,
+      "anomaly_var": 0.6480886936187744,
+      "difference": 0.3791009783744812,
+      "support_expected_direction": true,
+      "ks_stat": 0.24262079769530887,
+      "ks_pvalue": 3.970819447711828e-40
+    },
+    "anr": {
+      "normal_mean": 0.032522547990083694,
+      "normal_var": 0.0015254729660227895,
+      "anomaly_mean": 0.10320214182138443,
+      "anomaly_var": 0.0067479670979082584,
+      "difference": 0.07067959010601044,
+      "support_expected_direction": true,
+      "ks_stat": 0.5514986175510839,
+      "ks_pvalue": 3.910225725645198e-219
+    },
+    "anr_leakage_warning": true
+  },
+  "tolokers": {
+    "path": "/root/gpufree-data/linziyao/VecGAD/dataset/tolokers.mat",
+    "n_nodes": 11758,
+    "anomaly_rate": 0.21823439360435448,
+    "ndc": {
+      "normal_mean": 0.546402633190155,
+      "normal_var": 0.1194659098982811,
+      "anomaly_mean": 0.6118696928024292,
+      "anomaly_var": 0.11624159663915634,
+      "difference": 0.06546705961227417,
+      "support_expected_direction": true,
+      "ks_stat": 0.09573169118559838,
+      "ks_pvalue": 1.8819699130569068e-16
+    },
+    "anr": {
+      "normal_mean": 0.24347595870494843,
+      "normal_var": 0.04174153879284859,
+      "anomaly_mean": 0.5495851635932922,
+      "anomaly_var": 0.05957859009504318,
+      "difference": 0.3061091899871826,
+      "support_expected_direction": true,
+      "ks_stat": 0.4891481935221722,
+      "ks_pvalue": 5.7e-321
+    },
+    "anr_leakage_warning": true
+  },
+  "elliptic": {
+    "path": "/root/gpufree-data/linziyao/VecGAD/dataset/elliptic.mat",
+    "n_nodes": 46564,
+    "anomaly_rate": 0.09760759384932566,
+    "ndc": {
+      "normal_mean": -0.6918720602989197,
+      "normal_var": 0.14053045213222504,
+      "anomaly_mean": -0.49405479431152344,
+      "anomaly_var": 0.20975032448768616,
+      "difference": 0.19781726598739624,
+      "support_expected_direction": true,
+      "ks_stat": 0.24629716071395324,
+      "ks_pvalue": 1.3962776607352132e-219
+    },
+    "anr": {
+      "normal_mean": 0.014390907250344753,
+      "normal_var": 0.010969656519591808,
+      "anomaly_mean": 0.27854785323143005,
+      "anomaly_var": 0.18944492936134338,
+      "difference": 0.26415693759918213,
+      "support_expected_direction": true,
+      "ks_stat": 0.28493853597739893,
+      "ks_pvalue": 3.713722202396242e-295
+    },
+    "anr_leakage_warning": true
+  },
+  "reddit": {
+    "path": "/root/gpufree-data/linziyao/VecGAD/dataset/reddit.mat",
+    "n_nodes": 10984,
+    "anomaly_rate": 0.03332119446467589,
+    "ndc": {
+      "normal_mean": -0.944525957107544,
+      "normal_var": 0.009777548722922802,
+      "anomaly_mean": -0.9432533383369446,
+      "anomaly_var": 0.007229933515191078,
+      "difference": 0.0012726187705993652,
+      "support_expected_direction": true,
+      "ks_stat": 0.10886658082419069,
+      "ks_pvalue": 0.00041477037974249707
+    },
+    "anr": {
+      "normal_mean": 0.005475536920130253,
+      "normal_var": 0.0005877301446162164,
+      "anomaly_mean": 0.18465867638587952,
+      "anomaly_var": 0.025119969621300697,
+      "difference": 0.17918314039707184,
+      "support_expected_direction": true,
+      "ks_stat": 0.9280467131286495,
+      "ks_pvalue": 0.0
+    },
+    "anr_leakage_warning": true
+  },
+  "t_finance": {
+    "path": "/root/gpufree-data/linziyao/VecGAD/dataset/t_finance.mat",
+    "n_nodes": 39357,
+    "anomaly_rate": 0.04581141855324339,
+    "ndc": {
+      "normal_mean": 0.11748997122049332,
+      "normal_var": 0.21324454247951508,
+      "anomaly_mean": 0.24321341514587402,
+      "anomaly_var": 0.1807599663734436,
+      "difference": 0.1257234513759613,
+      "support_expected_direction": true,
+      "ks_stat": 0.13360505741394063,
+      "ks_pvalue": 3.0968788902506714e-27
+    },
+    "anr": {
+      "normal_mean": 0.023545753210783005,
+      "normal_var": 0.003310865256935358,
+      "anomaly_mean": 0.5434494614601135,
+      "anomaly_var": 0.08642081916332245,
+      "difference": 0.5199037194252014,
+      "support_expected_direction": true,
+      "ks_stat": 0.8149184087836422,
+      "ks_pvalue": 0.0
+    },
+    "anr_leakage_warning": true
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "dataset": "elliptic",
+  "seed": 0,
+  "real_test_margin_auc": 0.7937893927243307,
+  "real_test_margin_ap": 0.5510314415205053,
+  "train_pos_mean": 0.30437353253364563,
+  "N1_context_mismatch": {
+    "proxy_auc": 0.6637929528822475,
+    "proxy_ap": 0.7326196682903602,
+    "neg_mean": 0.06664025038480759
+  },
+  "N2_directional_mismatch": {
+    "proxy_auc": 0.716557628862094,
+    "proxy_ap": 0.7899189854852888,
+    "neg_mean": -0.04738194867968559
+  },
+  "N3_anti_direction": {
+    "proxy_auc": 0.7796957574075079,
+    "proxy_ap": 0.7618814498462729,
+    "neg_mean": -0.30437353253364563,
+    "note": "tautological because neg=-pos"
+  },
+  "N4_hard_normal": {
+    "q25": -0.08920891582965851,
+    "q75": 0.775460958480835,
+    "note": "circular if converted to proxy AUC by margin-defined labels"
+  }
+}

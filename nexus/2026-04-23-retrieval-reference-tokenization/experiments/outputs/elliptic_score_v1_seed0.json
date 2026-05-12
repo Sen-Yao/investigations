@@ -1,0 +1,66 @@
+{
+  "data": "/root/gpufree-data/linziyao/VecGAD/dataset/elliptic.mat",
+  "seed": 0,
+  "train_rate": 0.05,
+  "alpha": 0.05,
+  "components": {
+    "center_term": {
+      "auc_neg_score": 0.20009279159192248,
+      "ap_neg_score": 0.057502147293995706,
+      "normal_mean": 0.3633359204280511,
+      "anomaly_mean": 0.5969250078459434,
+      "ks_stat": 0.5467771861076729,
+      "ks_pvalue": 0.0
+    },
+    "ndc_term": {
+      "auc_neg_score": 0.42252667352458373,
+      "ap_neg_score": 0.08616324200554494,
+      "normal_mean": 0.5853000283241272,
+      "anomaly_mean": 0.6786541938781738,
+      "ks_stat": 0.19605263175119236,
+      "ks_pvalue": 1.388609147880826e-138
+    },
+    "anr_term": {
+      "auc_neg_score": 0.6698017013676902,
+      "ap_neg_score": 0.16873017132527302,
+      "normal_mean": 0.2920670211315155,
+      "anomaly_mean": 0.15890122950077057,
+      "ks_stat": 0.26191287397856133,
+      "ks_pvalue": 1.0378567979349392e-248
+    }
+  },
+  "scores": {
+    "center_only": {
+      "auc_neg_score": 0.20009279159192248,
+      "ap_neg_score": 0.057502147293995706,
+      "normal_mean": 0.3633359204280511,
+      "anomaly_mean": 0.5969250078459434,
+      "ks_stat": 0.5467771861076729,
+      "ks_pvalue": 0.0
+    },
+    "center_plus_ndc": {
+      "auc_neg_score": 0.41845549937320775,
+      "ap_neg_score": 0.07699852721708142,
+      "normal_mean": -0.11098204040607773,
+      "anomaly_mean": -0.040864605797681496,
+      "ks_stat": 0.26899515911276034,
+      "ks_pvalue": 1.5006492342386384e-262
+    },
+    "center_plus_anr": {
+      "auc_neg_score": 0.21413574994663603,
+      "ap_neg_score": 0.05799609895198215,
+      "normal_mean": 0.03563445232486346,
+      "anomaly_mean": 0.21901189507095442,
+      "ks_stat": 0.44183520520118846,
+      "ks_pvalue": 0.0
+    },
+    "center_plus_ndc_plus_anr": {
+      "auc_neg_score": 0.29646595255208424,
+      "ap_neg_score": 0.06424536878668387,
+      "normal_mean": -0.037673794040607125,
+      "anomaly_mean": 0.08907364463663645,
+      "ks_stat": 0.43403363206926854,
+      "ks_pvalue": 0.0
+    }
+  }
+}

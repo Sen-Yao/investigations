@@ -1,0 +1,100 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="UTF-8"><title>🧪 Relation Density Probe 结果总结与下一步：normal-only density 不足以替代 DualRef margin</title>
+<style>
+body{background:#f3efe7;color:#2b2a27;font-family:Georgia,'Times New Roman','Noto Serif SC',serif;font-size:17px;line-height:1.82;margin:0;padding:0}
+.paper{max-width:920px;margin:32px auto;background:#fffaf0;border:1px solid #ded3bd;border-radius:18px;padding:42px 48px;box-shadow:0 12px 36px rgba(79,60,31,.10)}
+.hero{border-bottom:2px solid #d7c6a3;padding-bottom:22px;margin-bottom:26px}
+.eyebrow{color:#7b6a45;font-size:13px;letter-spacing:.12em;text-transform:uppercase}
+h1{font-size:30px;line-height:1.25;margin:10px 0 8px;color:#25352b}
+h2.chapter{margin-top:34px;border-left:5px solid #6f8f72;padding-left:14px;color:#25352b}
+h3{color:#465a3f;margin-top:24px}
+.meta{color:#796f60;font-size:14px}
+.summary{background:#eef4e8;border:1px solid #cbdcbc;border-radius:14px;padding:18px 20px;margin:24px 0}
+.key-finding{background:#26392c;color:#fff8e8;padding:18px 22px;border-radius:14px;margin:26px 0}
+.recommendation{background:#f8efd8;border-left:5px solid #b08a3c;padding:18px 22px;border-radius:12px;margin:24px 0}
+.next-actions{background:#edf2f7;border-left:5px solid #617b9b;padding:18px 22px;border-radius:12px;margin:24px 0}
+table{border-collapse:collapse;width:100%;margin:18px 0;font-family:Georgia,'Times New Roman','Noto Serif SC',serif;font-size:15.5px}
+th,td{border:1px solid #d8cfbd;padding:10px 12px;vertical-align:top}
+th{background:#36513f;color:#fff8e8;font-weight:600}
+tr:nth-child(even){background:#faf3e5}
+code{background:#efe6d3;padding:2px 6px;border-radius:5px;color:#74431f}
+pre{background:#2d3748;color:#e2e8f0;padding:16px;border-radius:10px;overflow-x:auto;font-size:14px;line-height:1.55}
+.formula-box{background:#fff;border:1px solid #e1d7c4;border-radius:12px;padding:10px;margin:16px 0;text-align:center}
+</style></head><body><div class="paper">
+<div class="hero"><div class="eyebrow">SenyaoLab · Nexus Research Memo</div><h1>Relation Density Probe 结果总结与下一步：normal-only density 不足以替代 DualRef margin</h1><p class="meta">发送者：Nexus ｜ 场景：DualRefGAD 可学习 head / semi-supervised normal-only objective ｜ 日期：2026-05-12</p></div>
+
+<div class="summary"><strong>摘要：</strong>昨晚完成的 <code>relation_density_probe</code> 实验给出了一个重要但偏负面的信号：单纯学习 labeled normal nodes 的 relation feature 分布密度，并用 negative log-likelihood 作为异常分数，其 AUC 远低于 DualRef closed-form margin baseline。这说明 <strong>normal-only density modeling 不是我们问题的正确表述</strong>；DualRef 的 anomaly reference direction <code>d=r_a-r_n</code> 不能被简单消解成一个 latent variable，而必须以更直接的 geometry-aware 形式进入 scoring function。下一步建议尝试 likelihood-ratio with anomaly direction conditioning 或 margin + learned correction，而不是继续堆更复杂的 flow。</div>
+
+<h2 class="chapter">一、实验设置回顾</h2>
+<p>这次实验延续了上次邮件提出的 normal-only density modeling 思路，试图回答一个核心问题：在只有 labeled normal nodes 的 semi-supervised GAD 设定下，是否可以通过学习 normal relation distribution <code>p(φ)</code> 来替代 closed-form margin <code>m=cos(u,d)</code>。</p>
+<p>实验对象是 DualRef relation feature <code>φ_i</code>，沿用之前 MSE probe 中证明有效的 <code>ud_prod_absdiff_norm</code> 输入模式，即：</p>
+<pre><code class="language-python">
+phi_i = concat(
+    normalize(u_i),
+    normalize(d_i),
+    normalize(u_i) * normalize(d_i),
+    |normalize(u_i) - normalize(d_i)|
+)
+u_i = h_i - r_n(i)
+d_i = r_a(i) - r_n(i)
+</code></pre>
+<p>训练目标只用 labeled normal nodes 的 negative log-likelihood：</p>
+<p class="formula"><code>s_i = -log p_θ(φ_i | c_i)</code>, φ 是 relation feature</p>
+<p>推理时异常分数为 <code>-log p(φ)</code>。异常标签只在 test set diagnostics 中使用，不进入训练 loss。</p>
+
+<h2 class="chapter">二、实验结果</h2>
+<p>我们在 elliptic 数据集上跑了 8 个配置，包括 diag Gaussian 和 RealNVP flow，hidden/layer 维度分别为 128/256 和 4/8：</p>
+<table>
+<tr><th>方法</th><th>最佳 AUC</th><th>最佳 AP</th><th>对比 margin baseline</th></tr>
+<tr><td>diag Gaussian（所有 hidden/layer）</td><td>0.6674</td><td>0.1453</td><td>远低于 margin (0.7938)</td></tr>
+<tr><td>RealNVP h256 l8</td><td>0.5850</td><td>0.1520</td><td>低于 Gaussian</td></tr>
+<tr><td>RealNVP h128 l8</td><td>0.5223</td><td>0.1370</td><td>偏弱</td></tr>
+<tr><td>RealNVP h256 l4</td><td>0.4616</td><td>0.0997</td><td>弱</td></tr>
+<tr><td>RealNVP h128 l4</td><td>0.4119</td><td>0.0965</td><td>几乎随机</td></tr>
+</table>
+<p><strong>Insight：</strong>无论是简单 diag Gaussian 还是更复杂的 RealNVP flow，其 AUC 都远低于同一 match-ref 构造下的 closed-form margin baseline（约 0.7938 AUC，0.5510 AP）。RealNVP 反而比 Gaussian 更差，说明训练更复杂 density model 并没有帮助，甚至可能因为 normal-only 样本量小、高维 relation feature 空间难以准确估计而引入噪声。</p>
+
+<h2 class="chapter">三、为什么 density approach 失败？</h2>
+<p>这个结果其实不意外，甚至有点启发。我之前邮件里乐观地认为“只要学习 normal relation distribution，偏离该分布的节点自然得到高异常分数”。但实验表明，这个表述对 DualRef 的核心变量 <code>d=r_a-r_n</code> 不够尊重：</p>
+<div class="formula"><code>m_i = cos(u_i, d_i)</code>, where <code>u_i = h_i - r_n(i)</code>, <code>d_i = r_a(i) - r_n(i)</code></div>
+<p>问题在于：<code>d</code> 本身是由 anomaly-side reference 构造的方向，它<strong>已经携带了“偏离正常应该朝哪里”的信息</strong>。如果我们把 <code>d</code> 消解成一个 latent dimension，让它像其他特征一样被 density model 吸收，那我们就丢弃了 DualRef 的一个关键先验：异常的方向不是任意的，而是由 anomaly reference set 预先指向的。</p>
+<p>换句话说，closed-form margin <code>m=cos(u,d)</code> 的成功在于它<strong>显式利用 anomaly direction d</strong>；而 density approach 的失败在于它<strong>把 d 当成一个普通 latent variable</strong>，试图从 normal samples 中推断“异常应该是什么方向”，但 normal-only training 没有这个信息。</p>
+
+<div class="key-finding"><strong>核心判断：</strong>DualRef 的 anomaly reference direction <code>d</code> 不能被简单地 latent-space density modeling 消解；它必须以 conditioning 或 explicit geometry 的形式进入 scoring function。Normal-only density modeling 的失败说明，我们之前把“学习异常检测边界”表述为“学习正常分布密度”是不够精确的；更精确的表述应该是“学习正常分布，但异常分数来自偏离正常分布<strong>沿 anomaly direction</strong>的程度”。</div>
+
+<h2 class="chapter">四、修正后的研究表述</h2>
+<p>基于这次负面结果，我建议把问题表述从“normal-only density modeling”修正为更 geometry-aware 的形式：</p>
+<ol>
+<li><strong>不放弃 anomaly direction d</strong>：density 可以学，但 anomaly score 不应该只是 <code>-log p(φ)</code>，而应该和 <code>d</code> 有更直接的交互。</li>
+<li><strong>likelihood-ratio with anomaly direction conditioning</strong>：训练一个 conditional density <code>p(φ | context)</code>，其中 context 可以是 anomaly direction 相关变量，然后异常分数来自 likelihood ratio：</li>
+</ol>
+<div class="formula"><code>s_i = log p(φ_i | anom-context) - log p(φ_i | normal-context)</code></div>
+<p>这个思路不要求显式生成伪异常，而是用 <code>d</code> 作为 conditioning variable，让模型学会“沿着 d 方向的 φ 更应该被判定为异常”。训练时仍然只用 labeled normal nodes，但 conditioning 信息让模型隐式感知 anomaly direction。</p>
+
+<h3>另一种路线：margin + learned correction</h3>
+<p>如果不想引入复杂的 conditional density，也可以采用更保守的设计：保留 closed-form margin 作为主 score，让 learnable head 只做 calibration：</p>
+<div class="formula"><code>s_i = m_i + β·f_θ(φ_i)</code> or <code>s_i = α·[-log p(φ_i)] + (1-α)·m_i</code></div>
+<p>这样 head 的任务不再是“替代 margin”，而是“修正 margin 的局部偏差”。这和之前 MSE probe 不同：MSE probe 试图让 MLP 直接拟合 margin，结果是学得很好（Spearman≈0.99）但 tail ranking 有损失；而 calibration 模式的目标是<strong>保住 margin 的全局排序，同时修正局部 tail 错误</strong>。</p>
+
+<h2 class="chapter">五、不建议继续的方向</h2>
+<p>基于这次实验，我不建议：</p>
+<ul>
+<li>继续堆更复杂的 flow（如 NSF、MAF、神经 spline）：这次 RealNVP 已经比 Gaussian 更差，说明问题不是模型表达能力，而是 objective 本身和 anomaly detection 的 tail ranking 不对齐。</li>
+<li>在高维 relation feature 上做更精细的 density estimation：normal-only 样本量有限，高维密度估计本质困难；而且即便估计准确，NLL 和 anomaly ranking 的关系也不是我们想要的。</li>
+<li>把 anomaly direction d 完全消解进 latent variable：这丢弃了 DualRef 的核心先验。</li>
+</ul>
+
+<h2 class="chapter">六、建议的下一步实验</h2>
+<div class="recommendation"><strong>建议：</strong>下一步不应该继续做“纯 density”，而是转向 <strong>geometry-aware normality modeling</strong>。最优先的候选是 likelihood-ratio with anomaly direction conditioning，其次是 margin + learned calibration。</div>
+
+<table>
+<tr><th>优先级</th><th>实验</th><th>成功标准</th><th>风险</th></tr>
+<tr><td>1</td><td>Likelihood-ratio with d-conditioning</td><td>AUC/AP 接近或超过 margin</td><td>conditional density 的 condition 变量设计需要小心，避免引入新手工参数</td></tr>
+<tr><td>2</td><td>Margin + learnable calibration MLP</td><td>保住 margin 全局排序，改善 tail</td><td>可能只做微调，不足以写成“novel objective”</td></tr>
+<tr><td>3</td><td>Reference-view consistency (VICReg)</td><td>与 anomaly 有稳定相关性</td><td>实现复杂度较高</td></tr>
+<tr><td>4</td><td>Score matching / energy-based</td><td>诊断用，不作为主方向</td><td>与之前 flow 类似的问题</td></tr>
+</table>
+
+<p><strong>Insight：</strong>这次 density probe 的负面结果其实帮助收敛了研究问题。它说明我们之前“从 margin regression 转向 normal-only density”的转向不够彻底，因为 density 仍然没有充分利用 DualRef 的 anomaly direction 先验。下一步应该做的是<strong>把 anomaly direction 显式引入 normality model</strong>，而不是试图从 normal samples 中隐式推断它。</p>
+
+<div class="next-actions"><strong>下一步：</strong>如果你认可 likelihood-ratio / margin-calibration 方向，我建议先做一个 seed0 diagnostic：训练 conditional density <code>p(φ | d)</code>，异常分数为 likelihood ratio <code>p(φ | normal-context) / p(φ | anom-context)</code>。我会先写一个轻量脚本，参考之前 density probe 的架构，但把 conditioning variable 设计为与 <code>d</code> 相关的统计量（如 <code>||d||</code>、<code>d_norm</code> 或 anomaly-side rejection score）。正式实验前会按 experiment-runner / experiment-audit 规范再请求你确认。</div>
+</div></body></html>

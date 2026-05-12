@@ -1,0 +1,57 @@
+program: outputs/normality_diagnostic/stage1_relation_mlp_pairwise.py
+method: grid
+metric:
+  name: test_ap
+  goal: maximize
+parameters:
+  dataset:
+    value: elliptic
+  seed:
+    value: 0
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  device:
+    value: 0
+  num_epoch:
+    value: 50
+  input_mode:
+    values: [ud, ud_prod_absdiff]
+  neg_mode:
+    values: [N1_context, N2_direction, mixed_N1_N2]
+  hidden:
+    values: [128, 256]
+  dropout:
+    value: 0.2
+  lr:
+    value: 0.001
+  weight_decay:
+    value: 0.0001
+  gamma:
+    value: 0.1
+  wandb:
+    value: true
+  descriptor_mode:
+    value: hop_attr
+  pn_estimator:
+    value: pca_residual
+  gn_mode:
+    value: label_gate
+  ln_mode:
+    value: descriptor_similarity
+  ga_mode:
+    value: normal_soft_or
+  la_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 512
+command:
+  - ${env}
+  - python
+  - ${program}
+  - ${args}

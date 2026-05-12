@@ -1,0 +1,72 @@
+<html><body style="background:#f3efe7;color:#2b2a27;font-family:Georgia,'Times New Roman','Noto Serif SC',serif;font-size:17px;line-height:1.82;margin:0;padding:0;">
+<div style="max-width:920px;margin:0 auto;padding:32px 22px;">
+  <div style="background:#fffaf0;border:1px solid #ded3bd;border-radius:18px;padding:34px 38px;box-shadow:0 10px 30px rgba(74,63,45,.08);">
+    <div style="font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:#7a6a47;margin-bottom:8px;">SenyaoLab · Nexus Research Memo</div>
+    <h1 style="font-size:30px;line-height:1.28;margin:0 0 8px;color:#243528;">DualRefGAD 阶段诊断：Relation MLP 无法恢复 margin，问题不只是 pairwise objective</h1>
+    <p style="color:#71685d;margin:0 0 22px;">Nexus ｜ 2026-05-09 ｜ Elliptic / seed 0 / experiment-runner skill</p>
+
+    <div style="background:#eef4ea;border-left:5px solid #5f7f5f;border-radius:12px;padding:18px 20px;margin:24px 0;">
+      <strong>摘要：</strong>本次邮件汇总两个连续 probe：先前的 high-dimensional Relation MLP + normal-only pairwise ranking 已明显失败；随后我们做了 margin-regression 诊断，直接让 MLP 从 relation vector 回归 closed-form margin，但最好的异常检测结果仍只有 AUC 0.5732 / AP 0.1103，远低于 margin-only 的 AUC 0.7938 / AP 0.5510。因此，当前结论要进一步收紧：失败不只是 pairwise mismatch objective 不对齐，MLP 对高维 relation 输入也没有自然恢复出 cosine margin 的有效排序。下一步不应继续盲目调普通 MLP，而应显式研究 cosine / bilinear / normalized relation 这类几何归纳偏置。
+    </div>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">一、背景：为什么要做 margin-regression 诊断</h2>
+    <p>前一个 probe 的目标是验证一个看起来合理的假设：既然 closed-form margin 表现很好，那么构成它的输入 <code><code>u = h_v - r_n</code></code> 与 <code><code>d = r_a - r_n</code></code> 理论上应当包含足够信息；如果把这些 relation vector 交给一个 MLP，再用 normal-only mismatch pairwise ranking 训练，模型应该至少能接近 margin。</p>
+    <p>但实际结果不支持这个假设。Relation MLP + pairwise ranking 的最佳 AP 只有 0.1119，而 margin-only AP 是 0.5510。这个差距太大，不能归因于普通超参数波动。因此我们拆出一个更基础的诊断问题：如果不再使用 pairwise mismatch objective，而是直接让 MLP 回归 margin，模型能否恢复 margin 的异常排序？</p>
+    <p>这个诊断不使用真实 anomaly labels 作为训练目标；它只把 closed-form margin 当作一个由当前 frozen embedding 和 frozen references 计算出的几何量。若 MLP 能够回归 margin 并恢复 AP，那么前一阶段失败主要是 objective 不对齐。若 MLP 仍然不能恢复 margin，那么问题就更深：普通 MLP 在当前输入、归一化和训练设置下，并不能自然重建 cosine margin 这个几何归纳偏置。</p>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">二、实验设置</h2>
+    <p>实验通过 <code><code>experiment-runner</code></code> skill 启动，job id 为 <code><code>exp_20260509_200913_stage1_relation_mlp_margin_regression_se</code></code>，WandB sweep 为 <a href="https://wandb.ai/HCCS/DualRefGAD/sweeps/vnkuxzgy">HCCS/DualRefGAD/vnkuxzgy</a>。全部 9 个 run 正常完成，无 failed run。</p>
+    <p>核心训练目标是让 MLP 从 relation vector 回归 margin：</p>
+    <pre style="background:#2d3748;color:#e2e8f0;padding:14px 16px;border-radius:10px;overflow:auto;"><code>input = relation vector
+margin = cos(h_v - r_n, r_a - r_n)
+loss = MSE(score, margin)</code></pre>
+    <p>其中 encoder frozen，reference construction 固定为旧 sweep 构造：<code><code>descriptor_mode=hop_attr</code></code>、<code><code>gn_mode=label_gate</code></code>、<code><code>ga_mode=normal_soft_or</code></code>。训练只使用 normal training nodes 的 margin target，不把真实异常标签放进 loss。</p>
+
+    <table style="width:100%;border-collapse:collapse;margin:22px 0;font-size:15px;">
+      <thead><tr style="background:#ede3cf;"><th style="padding:9px;border:1px solid #d8ccb8;text-align:left;">input_mode</th><th style="padding:9px;border:1px solid #d8ccb8;">hidden</th><th style="padding:9px;border:1px solid #d8ccb8;">best AUC</th><th style="padding:9px;border:1px solid #d8ccb8;">best AP</th><th style="padding:9px;border:1px solid #d8ccb8;">final AUC</th><th style="padding:9px;border:1px solid #d8ccb8;">final AP</th></tr></thead>
+      <tbody><tr><td>ud</td><td>128</td><td>0.4814</td><td>0.0870</td><td>0.4814</td><td>0.0870</td></tr>
+<tr><td>ud</td><td>256</td><td>0.5088</td><td>0.0930</td><td>0.5012</td><td>0.0902</td></tr>
+<tr><td>ud</td><td>512</td><td>0.5163</td><td>0.0937</td><td>0.5163</td><td>0.0937</td></tr>
+<tr><td>ud_prod_absdiff</td><td>128</td><td>0.5132</td><td>0.0959</td><td>0.5132</td><td>0.0959</td></tr>
+<tr><td>ud_prod_absdiff</td><td>256</td><td>0.5643</td><td>0.1076</td><td>0.5618</td><td>0.1068</td></tr>
+<tr><td>ud_prod_absdiff</td><td>512</td><td>0.5732</td><td>0.1087</td><td>0.5711</td><td>0.1103</td></tr>
+<tr><td>h_rn_ra_ud</td><td>128</td><td>0.5406</td><td>0.0983</td><td>0.5255</td><td>0.0955</td></tr>
+<tr><td>h_rn_ra_ud</td><td>256</td><td>0.5150</td><td>0.0930</td><td>0.5122</td><td>0.0934</td></tr>
+<tr><td>h_rn_ra_ud</td><td>512</td><td>0.5194</td><td>0.0944</td><td>0.5093</td><td>0.0929</td></tr></tbody>
+    </table>
+    <p><strong>Insight：</strong>最好的配置是 <code><code>ud_prod_absdiff + hidden=512</code></code>，final AUC/AP 为 0.5711 / 0.1103，best AUC/AP 为 0.5732 / 0.1087。这个结果虽然比部分 pairwise MLP 稍好，但仍远离 margin-only 的 0.7938 / 0.5510。也就是说，即使目标已经从“学习 mismatch 排序”放宽为“回归 margin”，普通 MLP 仍然没有恢复出 margin 的有效 anomaly ranking。</p>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">三、主要发现</h2>
+    <p>第一，失败原因不能再简单归结为 pairwise objective 不对齐。pairwise 实验失败时，我们的解释是 normal-only mismatch target 可能没有对应真实异常排序。这个解释仍然成立，但 margin-regression 结果说明它不是唯一瓶颈：即使直接给 MLP 一个更明确的 margin target，最终 score 的异常排序仍然接近随机到弱信号区间，而不是接近 margin baseline。</p>
+    <p>第二，closed-form margin 的强度更像来自几何归纳偏置，而不只是来自输入信息量。margin 是对两个 relation direction 的归一化角度比较，它强制消除了 norm 尺度，并把排序集中在方向一致性上。普通 MLP 虽然有表达能力，但它面对的是未显式归一化的高维向量；在 normal-only target 分布上学习 MSE 时，它并没有被强制学到“先 normalize，再做 direction similarity”的结构。</p>
+    <p>第三，加入更多原始信息不一定有用。<code><code>h_rn_ra_ud</code></code> 并没有超过 <code><code>ud_prod_absdiff</code></code>，说明把 h、r_n、r_a 全部塞进 MLP 不会自动带来更好排序，反而可能增加自由度与无关变化。当前最有效的输入仍是围绕 u、d 及其简单交互项的 relation representation。</p>
+
+    <div style="background:#fff3d6;border-left:5px solid #c6973f;border-radius:12px;padding:16px 18px;margin:24px 0;">
+      <strong>Key Finding：</strong>当前最重要的判断是：<em>普通 MLP head 不是 margin 的自然替代品</em>。margin 的有效性来自明确的 normalized directional similarity。若要做可学习版本，应该学习的是“可参数化的方向相似度 / 双线性角度度量 / normalized relation metric”，而不是继续把原始 relation vector 交给普通 MLP 期待它自行发现 cosine。
+    </div>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">四、对研究路线的影响</h2>
+    <p>这组结果会改变我们对“可学习分类头”的定义。原先的想法是：margin 输入里有信息，所以 MLP 分类头应该能学到并超过 margin。实验现在说明，这个说法需要加一个条件：head 的结构必须保留或显式表达 margin 的几何归纳偏置。如果 head 完全自由，它并不会自动朝这个方向收敛；如果训练信号又只来自 normal-only proxy，这种偏离会更明显。</p>
+    <p>因此，后续不建议继续做普通 MLP 的 hidden、dropout、lr 大规模 sweep。当前最好 AP 只有 0.1103，距离 0.5510 太远。继续扩大普通 MLP 的容量，更可能得到的是更会拟合 normal margin 分布的模型，而不是更好的异常排序器。</p>
+    <p>更合理的方向是把“可学习”放在 metric 层，而不是完全自由的 classifier 层。例如可以学习一个对 u 和 d 的投影，然后计算归一化相似度；也可以学习一个低秩双线性矩阵来替代普通 dot product；还可以学习温度、维度权重或 feature-wise gate，但最终仍保持 normalized directional score 的结构。这类方法保留深度学习可学习性，同时不放弃 margin 已经证明有效的几何核心。</p>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">五、建议的下一步实验</h2>
+    <p>我建议下一步做 <strong>Parameterized Directional Metric Head</strong>，而不是普通 MLP。形式可以从最小版本开始：</p>
+    <pre style="background:#2d3748;color:#e2e8f0;padding:14px 16px;border-radius:10px;overflow:auto;"><code>u = h_v - r_n
+d = r_a - r_n
+u' = W_u u
+d' = W_d d
+score = cos(u', d')</code></pre>
+    <p>这个 head 仍然是可学习的，但它把学习限制在“如何重加权和投影 direction space”上，而不是让模型任意生成 score。它比 residual 更像一个真正的方法模块，也比普通 MLP 更尊重实验已经验证的结构事实。</p>
+    <p>训练策略上，我建议先做两类诊断。第一类是 margin-regression：看 parameterized metric 能否恢复 margin 排序；第二类是 normal-only pairwise：看它是否比普通 MLP 更稳定。如果 metric head 在 margin-regression 中能接近 0.55 AP，而普通 MLP 不能，就可以明确写出一个方法洞察：DualRef anomaly signal is metric-structured rather than classifier-structured。</p>
+
+    <div style="background:#eef4ea;border-left:5px solid #5f7f5f;border-radius:12px;padding:16px 18px;margin:24px 0;">
+      <strong>Recommendation：</strong>停止普通 MLP head 的超参数扩展，转向 normalized / bilinear / projected cosine 形式的可学习方向度量。这个建议的取舍是：我们牺牲一部分自由函数表达能力，但换来与已验证 margin 信号一致的结构约束；这比 residual 更自然，也比自由 MLP 更可控。
+    </div>
+
+    <h2 style="border-bottom:1px solid #d8ccb8;padding-bottom:6px;color:#314632;">六、Next Actions</h2>
+    <p>如果你同意，我建议下一步启动一个小型 probe：<code><code>stage1_parameterized_directional_metric_seed0</code></code>。它只比较三种 head：identity cosine baseline、diagonal weighted cosine、low-rank projected cosine。训练目标先用 margin-regression 做表达能力验证，再用 normal-only pairwise 做目标对齐验证。这个实验能直接回答：是否存在一个“有深度学习味道但不丢失 margin 几何核心”的 head。</p>
+    <p>这封邮件建议作为阶段性记录保存：截至目前，普通 scalar MLP、high-dimensional pairwise MLP、high-dimensional margin-regression MLP 都没有接近 margin-only。研究主线应从“普通分类头能否学到 margin”修正为“如何把 DualRef margin 的方向几何转化为可学习 metric”。</p>
+  </div>
+</div>
+</body></html>

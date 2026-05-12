@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.10/dist-packages/scipy/io/matlab/_mio.py", line 39, in _open_file
+    return open(file_like, mode), True
+FileNotFoundError: [Errno 2] No such file or directory: './dataset/elliptic.mat'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_v2.py", line 191, in <module>
+    if __name__=='__main__': main()
+  File "/root/gpufree-data/linziyao/VoxG/nexus/investigations/2026-04-27-global-ga-score/experiments/scripts/run_tokenization_theory_gt_v2.py", line 157, in main
+    adj, features, labels, all_idx, idx_train, idx_val, idx_test, ano_label, str_ano_label, attr_ano_label, normal_for_train_idx, normal_for_generation_idx=load_mat(args.dataset,args.train_rate,0.1,args=args)
+  File "/root/gpufree-data/linziyao/VoxG/utils.py", line 77, in load_mat
+    data = sio.loadmat("./dataset/{}.mat".format(dataset))
+  File "/usr/local/lib/python3.10/dist-packages/scipy/io/matlab/_mio.py", line 225, in loadmat
+    with _open_file_context(file_name, appendmat) as f:
+  File "/usr/lib/python3.10/contextlib.py", line 135, in __enter__
+    return next(self.gen)
+  File "/usr/local/lib/python3.10/dist-packages/scipy/io/matlab/_mio.py", line 17, in _open_file_context
+    f, opened = _open_file(file_like, appendmat, mode)
+  File "/usr/local/lib/python3.10/dist-packages/scipy/io/matlab/_mio.py", line 45, in _open_file
+    return open(file_like, mode), True
+FileNotFoundError: [Errno 2] No such file or directory: './dataset/elliptic.mat'

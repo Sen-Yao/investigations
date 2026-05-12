@@ -1,0 +1,19 @@
+{
+  "dataset": "photo",
+  "seed": 0,
+  "ga_mode": "normal_attr",
+  "gl_combine": "add",
+  "best": {
+    "val_auc": 0.5840904621435595,
+    "val_ap": 0.1401381700969368,
+    "test_auc": 0.5110769637619605,
+    "test_ap": 0.10293840424171406,
+    "epoch": 20
+  },
+  "purity": {
+    "normal_ref_normal_ratio": 1.0,
+    "anom_ref_anom_ratio": 0.1513271400132714,
+    "anom_ref_anom_ratio_on_anom_nodes": 0.15571275071633237
+  },
+  "time_sec": 23.75789165496826
+}

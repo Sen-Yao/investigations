@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>文献调研报告 - Token-based GAD 方法</title>
+  <style>
+    body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.6; }
+    h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+    h2 { color: #2980b9; margin-top: 30px; }
+    h3 { color: #34495e; }
+    table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+    th, td { padding: 12px; text-align: left; border-bottom: 1px solid #ddd; }
+    th { background-color: #3498db; color: white; }
+    tr:hover { background-color: #f5f5f5; }
+    .highlight { background-color: #e8f4f8; padding: 15px; border-left: 4px solid #3498db; margin: 15px 0; }
+    .paper-box { background-color: #f9f9f9; border: 1px solid #ddd; padding: 15px; margin: 10px 0; border-radius: 5px; }
+    .tag { display: inline-block; background-color: #3498db; color: white; padding: 3px 8px; border-radius: 3px; font-size: 12px; margin-right: 5px; }
+    .tag-green { background-color: #27ae60; }
+    .tag-orange { background-color: #e67e22; }
+    .tag-purple { background-color: #9b59b6; }
+    code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 3px; font-family: monospace; }
+    .section { margin-bottom: 30px; }
+    .insight-box { background-color: #fff3e0; border-left: 4px solid #e67e22; padding: 15px; margin: 15px 0; }
+    .conclusion-box { background-color: #e8f5e9; border-left: 4px solid #27ae60; padding: 15px; margin: 15px 0; }
+    .footer { margin-top: 40px; padding-top: 20px; border-top: 1px solid #ddd; color: #666; font-size: 14px; }
+  </style>
+</head>
+<body>
+
+<h1>🧪 文献调研报告：Token-based Graph Anomaly Detection</h1>
+
+<p><strong>调研时间</strong>：2026-03-31 13:00-13:30 (30 分钟)</p>
+<p><strong>调研方向</strong>：Token-based GAD 方法、Contrastive Learning for GAD、GDN 相关论文</p>
+<p><strong>调研目的</strong>：为 Hop-Offset/Delta Token 研究寻找相关文献支撑和方法参考</p>
+
+<hr>
+
+<h2>📋 调研概览</h2>
+
+<div class="highlight">
+  <strong>调研范围</strong>：
+  <ul>
+    <li>Graph Deviation Network (GDN) — 多变量时间序列异常检测</li>
+    <li>Token-based Graph Anomaly Detection — Transformers + GNN</li>
+    <li>Contrastive Learning for GAD — GLADC, EAGLE, RHO 等</li>
+  </ul>
+  
+  <strong>主要发现</strong>：
+  <ul>
+    <li>GDN 的 Graph Deviation Scoring 与 Hop-Offset 思想高度相似</li>
+    <li>Token-based 方法已广泛应用于图异常检测，Hop Vector 可视为一种特殊 Token</li>
+    <li>对比学习能有效增强图表示，与 Fisher 可分性分析目标一致</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📖 详细文献分析</h2>
+
+<h3>1. GDN: Graph Deviation Network</h3>
+
+<div class="paper-box">
+  <p><span class="tag">AAAI 2021</span></p>
+  <p><strong>论文标题</strong>：Graph Neural Network-Based Anomaly Detection in Multivariate Time Series</p>
+  <p><strong>作者</strong>：Ailin Deng, Bryan Hooi</p>
+  <p><strong>链接</strong>：<a href="https://bhooi.github.io/papers/gdn_aaai2021.pdf">https://bhooi.github.io/papers/gdn_aaai2021.pdf</a></p>
+  
+  <h4>核心问题</h4>
+  <p>如何在多变量时间序列中检测异常事件（如系统故障、攻击）？</p>
+  
+  <h4>方法框架</h4>
+  <table>
+    <tr>
+      <th>组件</th>
+      <th>功能</th>
+      <th>实现方式</th>
+    </tr>
+    <tr>
+      <td><strong>Sensor Embedding</strong></td>
+      <td>捕获每个传感器的独特特征</td>
+      <td>学习每个传感器的嵌入向量</td>
+    </tr>
+    <tr>
+      <td><strong>Graph Structure Learning</strong></td>
+      <td>学习传感器之间的依赖关系</td>
+      <td>注意力机制学习边权重</td>
+    </tr>
+    <tr>
+      <td><strong>Graph Attention Forecasting</strong></td>
+      <td>预测传感器未来行为</td>
+      <td>基于邻居传感器的注意力预测</td>
+    </tr>
+    <tr>
+      <td><strong>Graph Deviation Scoring</strong></td>
+      <td>识别偏离正常模式的异常</td>
+      <td>计算预测值与实际值的偏差</td>
+    </tr>
+  </table>
+  
+  <h4>关键创新</h4>
+  <ul>
+    <li><strong>可解释性</strong>：通过学习到的图结构和嵌入，可以推断异常的根本原因</li>
+    <li><strong>自适应图学习</strong>：自动学习传感器间的依赖关系，无需先验知识</li>
+    <li><strong>预测-偏差范式</strong>：先学习正常行为模式，再通过偏差识别异常</li>
+  </ul>
+  
+  <h4>与 Hop-Offset 的关系</h4>
+  <div class="insight-box">
+    <strong>核心相似性</strong>：
+    <ul>
+      <li><strong>Deviation Scoring</strong> ≈ <strong>Offset 计算</strong>：都是计算偏离"正常"的量</li>
+      <li>GDN 计算的是预测值与实际值的偏差</li>
+      <li>Hop-Offset 计算的是当前 Hop 与基线的偏移</li>
+      <li>两者都通过偏差量来识别异常</li>
+    </ul>
+  </div>
+</div>
+
+<h3>2. Token-based Graph Anomaly Detection</h3>
+
+<div class="paper-box">
+  <p><span class="tag tag-green">Survey</span></p>
+  
+  <h4>核心概念</h4>
+  <p>"Token-based" 指将图的组成部分（节点、边、子图、属性、时序序列）表示为离散单元或 "tokens"，然后输入深度学习模型处理。</p>
+  
+  <h4>Token 类型与用途</h4>
+  <table>
+    <tr>
+      <th>Token 类型</th>
+      <th>表示内容</th>
+      <th>应用场景</th>
+    </tr>
+    <tr>
+      <td><strong>节点级 Tokens</strong></td>
+      <td>节点特征向量</td>
+      <td>节点异常检测</td>
+    </tr>
+    <tr>
+      <td><strong>边级 Tokens</strong></td>
+      <td>边编码、边属性</td>
+      <td>边异常检测、动态图</td>
+    </tr>
+    <tr>
+      <td><strong>子图级 Tokens</strong></td>
+      <td>局部结构表示</td>
+      <td>子图异常、欺诈团伙检测</td>
+    </tr>
+    <tr>
+      <td><strong>时序 Tokens</strong></td>
+      <td>时间步特征</td>
+      <td>动态图异常、时间序列</td>
+    </tr>
+  </table>
+  
+  <h4>代表模型</h4>
+  <table>
+    <tr>
+      <th>模型</th>
+      <th>应用场景</th>
+      <th>Token 化方式</th>
+      <th>核心架构</th>
+    </tr>
+    <tr>
+      <td><strong>GMRT</strong></td>
+      <td>交通异常检测</td>
+      <td>图结构数据 → patches</td>
+      <td>Multi-head Self-Attention</td>
+    </tr>
+    <tr>
+      <td><strong>AET</strong></td>
+      <td>动态图异常检测</td>
+      <td>边编码 → tokens</td>
+      <td>Transformer Module</td>
+    </tr>
+    <tr>
+      <td><strong>DeFi Fraud Detection</strong></td>
+      <td>金融欺诈检测</td>
+      <td>交易序列 → tokens</td>
+      <td>GNN + Transformer</td>
+    </tr>
+    <tr>
+      <td><strong>Log Anomaly</strong></td>
+      <td>日志异常检测</td>
+      <td>日志序列 → tokens (BERT-style)</td>
+      <td>BERT Encoder</td>
+    </tr>
+  </table>
+  
+  <h4>关键技术</h4>
+  <ul>
+    <li><strong>Self-Attention</strong>：捕获 tokens 之间的长程依赖</li>
+    <li><strong>Multi-head Attention</strong>：多分辨率特征提取</li>
+    <li><strong>Positional Encoding</strong>：保留位置/顺序信息</li>
+    <li><strong>Special Tokens</strong>：<code>[CLS]</code>, <code>[SEP]</code>, <code>[PAD]</code> 用于序列级表示</li>
+  </ul>
+  
+  <h4>与 Hop-Offset 的关系</h4>
+  <div class="insight-box">
+    <strong>核心相似性</strong>：
+    <ul>
+      <li><strong>Hop Vector ≈ Token</strong>：每个 Hop 的特征向量可视为一个 token</li>
+      <li><strong>Delta/Offset ≈ Token 差分</strong>：类似于 NLP 中的差分表示</li>
+      <li><strong>多跳聚合 ≈ Multi-head Attention</strong>：都是从多个位置聚合信息</li>
+    </ul>
+    <strong>潜在方向</strong>：
+    <ul>
+      <li>将 Hop-Offset 向量作为特殊 tokens 输入 Transformer</li>
+      <li>探索 Hop-Offset 的 Positional Encoding 效果</li>
+      <li>对比 Hop-Offset 与标准 Token 表示的差异</li>
+    </ul>
+  </div>
+</div>
+
+<h3>3. Contrastive Learning for GAD</h3>
+
+<div class="paper-box">
+  <p><span class="tag tag-purple">arXiv 2022-2025</span></p>
+  
+  <h4>核心思想</h4>
+  <p>通过对比学习增强正常图/节点的表示，使异常样本在表示空间中更加可分。</p>
+  
+  <h4>代表论文详解</h4>
+  
+  <h5>3.1 GLADC (Scientific Reports 2022)</h5>
+  <p><strong>论文标题</strong>：Deep graph level anomaly detection with contrastive learning</p>
+  <p><strong>链接</strong>：<a href="https://www.nature.com/articles/s41598-022-22086-3">https://www.nature.com/articles/s41598-022-22086-3</a></p>
+  
+  <table>
+    <tr>
+      <th>模块</th>
+      <th>功能</th>
+      <th>技术</th>
+    </tr>
+    <tr>
+      <td><strong>Dual-graph Encoder</strong></td>
+      <td>学习节点级和图级表示</td>
+      <td>GCN Autoencoder + 扰动编码器</td>
+    </tr>
+    <tr>
+      <td><strong>Contrastive Learning</strong></td>
+      <td>增强图表示</td>
+      <td>最大化正样本对的相似度</td>
+    </tr>
+    <tr>
+      <td><strong>Graph Anomaly Detection</strong></td>
+      <td>识别异常图</td>
+      <td>重构误差作为异常分数</td>
+    </tr>
+  </table>
+  
+  <p><strong>关键创新</strong>：</p>
+  <ul>
+    <li>无需数据增强，通过扰动编码器构建对比样本</li>
+    <li>联合优化节点级和图级表示</li>
+    <li>端到端框架，优于两阶段方法</li>
+  </ul>
+  
+  <h5>3.2 EAGLE (arXiv 2025)</h5>
+  <p><strong>论文标题</strong>：EAGLE: Contrastive Learning for Efficient Graph Anomaly Detection</p>
+  
+  <p><strong>核心思想</strong>：在异构图上通过对比学习检测异常节点，对比正常节点与异常节点到局部上下文的距离。</p>
+  
+  <h5>3.3 Rethinking Contrastive Learning (arXiv 2025)</h5>
+  <p><strong>论文标题</strong>：Rethinking Contrastive Learning in Graph Anomaly Detection: A Clean-View Perspective</p>
+  
+  <p><strong>核心贡献</strong>：</p>
+  <ul>
+    <li>提出 Clean-View 视角，解决对比学习中异常样本污染问题</li>
+    <li>多尺度异常感知模块</li>
+    <li>Node-Subgraph (NS) Contrast + Node-Node (NN) Contrast</li>
+  </ul>
+  
+  <h4>对比学习的关键技术</h4>
+  <table>
+    <tr>
+      <th>技术</th>
+      <th>作用</th>
+      <th>在 GAD 中的应用</th>
+    </tr>
+    <tr>
+      <td><strong>正样本构建</strong></td>
+      <td>定义相似样本对</td>
+      <td>同节点不同视图、邻居节点</td>
+    </tr>
+    <tr>
+      <td><strong>负样本采样</strong></td>
+      <td>定义不同样本对</td>
+      <td>不同节点、不同图</td>
+    </tr>
+    <tr>
+      <td><strong>InfoNCE Loss</strong></td>
+      <td>优化目标</td>
+      <td>最大化正样本相似度，最小化负样本相似度</td>
+    </tr>
+    <tr>
+      <td><strong>Temperature τ</strong></td>
+      <td>控制分布锐度</td>
+      <td>通常 0.1-0.5</td>
+    </tr>
+  </table>
+  
+  <h4>与当前研究的关系</h4>
+  <div class="insight-box">
+    <strong>与 Fisher 可分性的关系</strong>：
+    <ul>
+      <li>对比学习目标：增大类间距离，减小的类内距离</li>
+      <li>Fisher 可分性目标：最大化类间散度/类内散度</li>
+      <li>两者目标一致，可以结合使用</li>
+    </ul>
+    <strong>潜在方向</strong>：
+    <ul>
+      <li>使用对比学习预训练 Hop-Offset 表示</li>
+      <li>设计 Hop-Offset 特有的对比学习目标</li>
+      <li>结合 Fisher 可分性分析优化对比学习</li>
+    </ul>
+  </div>
+</div>
+
+<hr>
+
+<h2>📊 方法对比总结</h2>
+
+<table>
+  <tr>
+    <th>方法</th>
+    <th>核心思想</th>
+    <th>Token 表示</th>
+    <th>异常检测方式</th>
+    <th>与 Hop-Offset 关系</th>
+  </tr>
+  <tr>
+    <td><strong>GDN</strong></td>
+    <td>学习传感器依赖图，预测行为</td>
+    <td>传感器嵌入</td>
+    <td>Graph Deviation Scoring</td>
+    <td>⭐⭐⭐ Deviation ≈ Offset</td>
+  </tr>
+  <tr>
+    <td><strong>Token-based GAD</strong></td>
+    <td>将图元素表示为 tokens</td>
+    <td>节点/边/子图 tokens</td>
+    <td>Transformer 异常检测</td>
+    <td>⭐⭐ Hop Vector ≈ Token</td>
+  </tr>
+  <tr>
+    <td><strong>GLADC</strong></td>
+    <td>对比学习增强图表示</td>
+    <td>节点/图嵌入</td>
+    <td>重构误差</td>
+    <td>⭐⭐ 表示增强</td>
+  </tr>
+  <tr>
+    <td><strong>EAGLE</strong></td>
+    <td>异构图对比学习</td>
+    <td>节点嵌入</td>
+    <td>距离异常分数</td>
+    <td>⭐ 可扩展到 Hop-Offset</td>
+  </tr>
+</table>
+
+<hr>
+
+<h2>💡 研究建议</h2>
+
+<div class="conclusion-box">
+  <h3>基于文献调研的研究方向建议</h3>
+  
+  <h4>方向 1：GDN 启发的 Deviation Scoring</h4>
+  <ul>
+    <li><strong>研究问题</strong>：Hop-Offset 与 GDN 的 Graph Deviation Scoring 有何数学联系？</li>
+    <li><strong>方法</strong>：分析两种偏差计算的数学形式，寻找等价/相似条件</li>
+    <li><strong>预期成果</strong>：理论分析论文 + 改进的 Offset 计算方法</li>
+  </ul>
+  
+  <h4>方向 2：Token-based Hop-Offset</h4>
+  <ul>
+    <li><strong>研究问题</strong>：将 Hop-Offset 作为 tokens 输入 Transformer 是否能提升性能？</li>
+    <li><strong>方法</strong>：设计 Hop-Offset Tokenizer，结合 Transformer 架构</li>
+    <li><strong>预期成果</strong>：新的 Hop-Offset Transformer 模型</li>
+  </ul>
+  
+  <h4>方向 3：Contrastive Hop-Offset Learning</h4>
+  <ul>
+    <li><strong>研究问题</strong>：对比学习是否能增强 Hop-Offset 的表示能力？</li>
+    <li><strong>方法</strong>：设计 Hop-Offset 特有的对比学习目标，结合 Fisher 可分性分析</li>
+    <li><strong>预期成果</strong>：Hop-Offset Contrastive Learning 框架</li>
+  </ul>
+</div>
+
+<hr>
+
+<h2>📚 参考文献列表</h2>
+
+<ol>
+  <li>Deng, A., & Hooi, B. (2021). Graph Neural Network-Based Anomaly Detection in Multivariate Time Series. <em>AAAI Conference on Artificial Intelligence</em>. <a href="https://bhooi.github.io/papers/gdn_aaai2021.pdf">[PDF]</a></li>
+  
+  <li>Luo, X., et al. (2022). Deep graph level anomaly detection with contrastive learning. <em>Scientific Reports</em>, 12, 20268. <a href="https://www.nature.com/articles/s41598-022-22086-3">[Link]</a></li>
+  
+  <li>Ma, X., et al. (2021). A comprehensive survey on graph anomaly detection with deep learning. <em>IEEE Trans. Knowl. Data Eng.</em></li>
+  
+  <li>Liu, Y., et al. (2021). Anomaly detection on attributed networks via contrastive self-supervised learning. <em>IEEE Trans. Neural Netw. Learn. Syst.</em>, 33, 2378-2392.</li>
+  
+  <li>EAGLE: Contrastive Learning for Efficient Graph Anomaly Detection. <em>arXiv:2505.07508</em>. <a href="https://arxiv.org/html/2505.07508v1">[arXiv]</a></li>
+  
+  <li>Rethinking Contrastive Learning in Graph Anomaly Detection: A Clean-View Perspective. <em>arXiv:2505.18002</em>. <a href="https://arxiv.org/abs/2505.18002">[arXiv]</a></li>
+  
+  <li>Jin, M., et al. (2021). ANEMONE: Graph Anomaly Detection with Multi-scale Contrastive Learning. <em>CIKM</em>, 3122-3126.</li>
+  
+  <li>CoLA: Contrastive Learning for Anomaly Detection on Attributed Networks. <em>IEEE TNNLS</em>, 2021.</li>
+</ol>
+
+<hr>
+
+<div class="footer">
+  <p><strong>报告生成</strong>：Nexus (OpenClaw Agent)</p>
+  <p><strong>调研时间</strong>：2026-03-31 13:00-13:30</p>
+  <p><strong>调研工具</strong>：Web Search (Gemini), SearXNG, Web Fetch</p>
+  <p><strong>总耗时</strong>：约 30 分钟</p>
+</div>
+
+</body>
+</html>

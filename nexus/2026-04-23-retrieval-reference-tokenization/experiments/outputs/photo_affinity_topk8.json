@@ -1,0 +1,45 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "k": 6,
+  "topk": 8,
+  "base_ndc": {
+    "auc": 0.5869020033837459,
+    "ap": 0.11281908666416168,
+    "normal_mean": -0.3708212077617645,
+    "anomaly_mean": -0.3208668529987335,
+    "difference": 0.049954354763031006,
+    "ks_stat": 0.16284538913287008,
+    "ks_pvalue": 3.861998060358439e-15,
+    "topk_anomaly_ratio": 0.125
+  },
+  "anomaly_prior_q": {
+    "auc": 0.5869021081566547,
+    "ap": 0.11281908666416168,
+    "normal_mean": 0.4898163080215454,
+    "anomaly_mean": 0.541238009929657,
+    "difference": 0.05142170190811157,
+    "ks_stat": 0.16284538913287008,
+    "ks_pvalue": 3.861998060358439e-15,
+    "topk_anomaly_ratio": 0.125
+  },
+  "local_concentration_c": {
+    "auc": 0.6118406798001603,
+    "ap": 0.11875006874393614,
+    "normal_mean": 0.5045962929725647,
+    "anomaly_mean": 0.5466024279594421,
+    "difference": 0.04200613498687744,
+    "ks_stat": 0.2081355744677641,
+    "ks_pvalue": 1.5768569704895893e-24,
+    "topk_anomaly_ratio": 0.0
+  },
+  "affinity_score": {
+    "auc": 0.6097976080763987,
+    "ap": 0.1232366531809419,
+    "normal_mean": 0.2574368119239807,
+    "anomaly_mean": 0.3041592240333557,
+    "difference": 0.046722412109375,
+    "ks_stat": 0.18772790727010832,
+    "ks_pvalue": 5.250239806938584e-20,
+    "topk_anomaly_ratio": 0.0
+  }
+}

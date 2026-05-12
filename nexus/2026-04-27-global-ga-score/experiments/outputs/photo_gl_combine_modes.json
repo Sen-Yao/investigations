@@ -1,0 +1,810 @@
+{
+  "data": "/root/gpufree-data/linziyao/VoxG/dataset/photo.mat",
+  "n": 7535,
+  "anom_rate": 0.09263437292634373,
+  "train_rate": 0.05,
+  "ref_k": 16,
+  "seeds": [
+    {
+      "seed": 0,
+      "scores": {
+        "baseline_support_qc": {
+          "multiply": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          },
+          "add": {
+            "avg_ref_purity": 0.04824983410749834,
+            "normal_node_ref_purity": 0.04780057042562527,
+            "anomaly_node_ref_purity": 0.05265042979942693
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.13068181818181818,
+            "normal_node_ref_purity": 0.12878455462922334,
+            "anomaly_node_ref_purity": 0.14926575931232092
+          }
+        },
+        "normal_cal_attr_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.25591406768414066,
+            "normal_node_ref_purity": 0.2552014772561065,
+            "anomaly_node_ref_purity": 0.2628939828080229
+          },
+          "add": {
+            "avg_ref_purity": 0.25377405441274054,
+            "normal_node_ref_purity": 0.25294354248939593,
+            "anomaly_node_ref_purity": 0.2619090257879656
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.1703218314532183,
+            "normal_node_ref_purity": 0.17012212958900103,
+            "anomaly_node_ref_purity": 0.1722779369627507
+          }
+        },
+        "normal_cal_max_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.08139515593895157,
+            "normal_node_ref_purity": 0.08005155770074594,
+            "anomaly_node_ref_purity": 0.09455587392550144
+          },
+          "add": {
+            "avg_ref_purity": 0.07947080291970803,
+            "normal_node_ref_purity": 0.0779855930963873,
+            "anomaly_node_ref_purity": 0.09401862464183382
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.09679827471798275,
+            "normal_node_ref_purity": 0.09657927453561503,
+            "anomaly_node_ref_purity": 0.09894340974212035
+          }
+        },
+        "normal_cal_soft_or": {
+          "multiply": {
+            "avg_ref_purity": 0.1465411413404114,
+            "normal_node_ref_purity": 0.1453305543366974,
+            "anomaly_node_ref_purity": 0.15839899713467048
+          },
+          "add": {
+            "avg_ref_purity": 0.14543795620437955,
+            "normal_node_ref_purity": 0.14423358198040076,
+            "anomaly_node_ref_purity": 0.1572349570200573
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.16406768414067685,
+            "normal_node_ref_purity": 0.16346716396080152,
+            "anomaly_node_ref_purity": 0.16994985673352436
+          }
+        },
+        "normal_cal_support": {
+          "multiply": {
+            "avg_ref_purity": 0.02159090909090909,
+            "normal_node_ref_purity": 0.022469650431475793,
+            "anomaly_node_ref_purity": 0.01298352435530086
+          },
+          "add": {
+            "avg_ref_purity": 0.027762110152621103,
+            "normal_node_ref_purity": 0.02864011993564429,
+            "anomaly_node_ref_purity": 0.01916189111747851
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.12834273390842735,
+            "normal_node_ref_purity": 0.1262706596460436,
+            "anomaly_node_ref_purity": 0.14863896848137537
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "multiply": {
+            "avg_ref_purity": 0.23974784339747843,
+            "normal_node_ref_purity": 0.23849093169518795,
+            "anomaly_node_ref_purity": 0.25205945558739257
+          },
+          "add": {
+            "avg_ref_purity": 0.23866954213669542,
+            "normal_node_ref_purity": 0.2373391107210765,
+            "anomaly_node_ref_purity": 0.2517012893982808
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.1739051094890511,
+            "normal_node_ref_purity": 0.17377870410998977,
+            "anomaly_node_ref_purity": 0.1751432664756447
+          }
+        }
+      }
+    },
+    {
+      "seed": 1,
+      "scores": {
+        "baseline_support_qc": {
+          "multiply": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          },
+          "add": {
+            "avg_ref_purity": 0.04824983410749834,
+            "normal_node_ref_purity": 0.04780057042562527,
+            "anomaly_node_ref_purity": 0.05265042979942693
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.13068181818181818,
+            "normal_node_ref_purity": 0.12878455462922334,
+            "anomaly_node_ref_purity": 0.14926575931232092
+          }
+        },
+        "normal_cal_attr_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.2413735899137359,
+            "normal_node_ref_purity": 0.2411053824776949,
+            "anomaly_node_ref_purity": 0.24400071633237821
+          },
+          "add": {
+            "avg_ref_purity": 0.2425016589250166,
+            "normal_node_ref_purity": 0.24238518356004096,
+            "anomaly_node_ref_purity": 0.24364255014326647
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.17130059721300597,
+            "normal_node_ref_purity": 0.17103627321924822,
+            "anomaly_node_ref_purity": 0.17388968481375358
+          }
+        },
+        "normal_cal_max_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.09046947577969476,
+            "normal_node_ref_purity": 0.08925698405733509,
+            "anomaly_node_ref_purity": 0.10234598853868195
+          },
+          "add": {
+            "avg_ref_purity": 0.08516091572660915,
+            "normal_node_ref_purity": 0.08388181951148165,
+            "anomaly_node_ref_purity": 0.09768982808022923
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.09778533510285335,
+            "normal_node_ref_purity": 0.09766710545560918,
+            "anomaly_node_ref_purity": 0.09894340974212035
+          }
+        },
+        "normal_cal_soft_or": {
+          "multiply": {
+            "avg_ref_purity": 0.12320836098208361,
+            "normal_node_ref_purity": 0.12230327629077081,
+            "anomaly_node_ref_purity": 0.13207378223495703
+          },
+          "add": {
+            "avg_ref_purity": 0.12331619110816192,
+            "normal_node_ref_purity": 0.12248610501682024,
+            "anomaly_node_ref_purity": 0.13144699140401145
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.1337342402123424,
+            "normal_node_ref_purity": 0.13335527278045928,
+            "anomaly_node_ref_purity": 0.13744627507163323
+          }
+        },
+        "normal_cal_support": {
+          "multiply": {
+            "avg_ref_purity": 0.029454213669542137,
+            "normal_node_ref_purity": 0.029819365218663157,
+            "anomaly_node_ref_purity": 0.025877507163323783
+          },
+          "add": {
+            "avg_ref_purity": 0.034430988719309885,
+            "normal_node_ref_purity": 0.03468260933157818,
+            "anomaly_node_ref_purity": 0.031966332378223494
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.1313122096881221,
+            "normal_node_ref_purity": 0.12957071815123591,
+            "anomaly_node_ref_purity": 0.14837034383954154
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "multiply": {
+            "avg_ref_purity": 0.21089084273390843,
+            "normal_node_ref_purity": 0.20991480181366096,
+            "anomaly_node_ref_purity": 0.2204512893982808
+          },
+          "add": {
+            "avg_ref_purity": 0.21493032514930324,
+            "normal_node_ref_purity": 0.2140832967675881,
+            "anomaly_node_ref_purity": 0.22322707736389685
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.18371765096217652,
+            "normal_node_ref_purity": 0.18345034371800498,
+            "anomaly_node_ref_purity": 0.18633595988538681
+          }
+        }
+      }
+    },
+    {
+      "seed": 2,
+      "scores": {
+        "baseline_support_qc": {
+          "multiply": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          },
+          "add": {
+            "avg_ref_purity": 0.04824983410749834,
+            "normal_node_ref_purity": 0.04780057042562527,
+            "anomaly_node_ref_purity": 0.05265042979942693
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.13068181818181818,
+            "normal_node_ref_purity": 0.12878455462922334,
+            "anomaly_node_ref_purity": 0.14926575931232092
+          }
+        },
+        "normal_cal_attr_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.25135202388852024,
+            "normal_node_ref_purity": 0.2502011115986544,
+            "anomaly_node_ref_purity": 0.2626253581661891
+          },
+          "add": {
+            "avg_ref_purity": 0.2505059721300597,
+            "normal_node_ref_purity": 0.24936009945882698,
+            "anomaly_node_ref_purity": 0.26172994269340977
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.1712010617120106,
+            "normal_node_ref_purity": 0.17094485885622349,
+            "anomaly_node_ref_purity": 0.17371060171919772
+          }
+        },
+        "normal_cal_max_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.07457697412076975,
+            "normal_node_ref_purity": 0.07305835892935499,
+            "anomaly_node_ref_purity": 0.08945200573065902
+          },
+          "add": {
+            "avg_ref_purity": 0.06809887193098872,
+            "normal_node_ref_purity": 0.06643081761006289,
+            "anomaly_node_ref_purity": 0.08443767908309456
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.0965743198407432,
+            "normal_node_ref_purity": 0.09643301155477549,
+            "anomaly_node_ref_purity": 0.09795845272206304
+          }
+        },
+        "normal_cal_soft_or": {
+          "multiply": {
+            "avg_ref_purity": 0.14979263437292634,
+            "normal_node_ref_purity": 0.14846606698844522,
+            "anomaly_node_ref_purity": 0.1627865329512894
+          },
+          "add": {
+            "avg_ref_purity": 0.1491041804910418,
+            "normal_node_ref_purity": 0.14780788357466726,
+            "anomaly_node_ref_purity": 0.1618015759312321
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.16356171201061712,
+            "normal_node_ref_purity": 0.1631837794354249,
+            "anomaly_node_ref_purity": 0.16726361031518625
+          }
+        },
+        "normal_cal_support": {
+          "multiply": {
+            "avg_ref_purity": 0.02086098208360982,
+            "normal_node_ref_purity": 0.021253839403247037,
+            "anomaly_node_ref_purity": 0.017012893982808024
+          },
+          "add": {
+            "avg_ref_purity": 0.020014930325149304,
+            "normal_node_ref_purity": 0.020559090244259177,
+            "anomaly_node_ref_purity": 0.014684813753581662
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.12952886529528865,
+            "normal_node_ref_purity": 0.12765101652771685,
+            "anomaly_node_ref_purity": 0.14792263610315187
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "multiply": {
+            "avg_ref_purity": 0.24164731254147312,
+            "normal_node_ref_purity": 0.24019123884744772,
+            "anomaly_node_ref_purity": 0.25590974212034384
+          },
+          "add": {
+            "avg_ref_purity": 0.24100862641008627,
+            "normal_node_ref_purity": 0.23956047974257716,
+            "anomaly_node_ref_purity": 0.25519340974212035
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.17719807564698076,
+            "normal_node_ref_purity": 0.17673138803568816,
+            "anomaly_node_ref_purity": 0.18176934097421205
+          }
+        }
+      }
+    },
+    {
+      "seed": 3,
+      "scores": {
+        "baseline_support_qc": {
+          "multiply": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          },
+          "add": {
+            "avg_ref_purity": 0.04824983410749834,
+            "normal_node_ref_purity": 0.04780057042562527,
+            "anomaly_node_ref_purity": 0.05265042979942693
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.13068181818181818,
+            "normal_node_ref_purity": 0.12878455462922334,
+            "anomaly_node_ref_purity": 0.14926575931232092
+          }
+        },
+        "normal_cal_attr_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.25131884538818844,
+            "normal_node_ref_purity": 0.25074959777680267,
+            "anomaly_node_ref_purity": 0.25689469914040114
+          },
+          "add": {
+            "avg_ref_purity": 0.24481585932315858,
+            "normal_node_ref_purity": 0.24407634927599825,
+            "anomaly_node_ref_purity": 0.25205945558739257
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.1698158593231586,
+            "normal_node_ref_purity": 0.16959192628345765,
+            "anomaly_node_ref_purity": 0.1720093123209169
+          }
+        },
+        "normal_cal_max_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.0822826808228268,
+            "normal_node_ref_purity": 0.08092913558578324,
+            "anomaly_node_ref_purity": 0.09554083094555874
+          },
+          "add": {
+            "avg_ref_purity": 0.07895653616456536,
+            "normal_node_ref_purity": 0.07747367266344889,
+            "anomaly_node_ref_purity": 0.09348137535816618
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.09530524220305242,
+            "normal_node_ref_purity": 0.0949978060552874,
+            "anomaly_node_ref_purity": 0.09831661891117478
+          }
+        },
+        "normal_cal_soft_or": {
+          "multiply": {
+            "avg_ref_purity": 0.13909256801592568,
+            "normal_node_ref_purity": 0.13774316220564575,
+            "anomaly_node_ref_purity": 0.15231017191977078
+          },
+          "add": {
+            "avg_ref_purity": 0.14001327140013273,
+            "normal_node_ref_purity": 0.13875786163522014,
+            "anomaly_node_ref_purity": 0.15231017191977078
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.14661579296615793,
+            "normal_node_ref_purity": 0.14583333333333334,
+            "anomaly_node_ref_purity": 0.15428008595988538
+          }
+        },
+        "normal_cal_support": {
+          "multiply": {
+            "avg_ref_purity": 0.026410086264100862,
+            "normal_node_ref_purity": 0.027296328799180928,
+            "anomaly_node_ref_purity": 0.017729226361031518
+          },
+          "add": {
+            "avg_ref_purity": 0.03295454545454545,
+            "normal_node_ref_purity": 0.03374104139242358,
+            "anomaly_node_ref_purity": 0.025250716332378225
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.12886529528865295,
+            "normal_node_ref_purity": 0.12681000438788942,
+            "anomaly_node_ref_purity": 0.1489971346704871
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "multiply": {
+            "avg_ref_purity": 0.23995520902455209,
+            "normal_node_ref_purity": 0.23913083223636097,
+            "anomaly_node_ref_purity": 0.24803008595988538
+          },
+          "add": {
+            "avg_ref_purity": 0.23224950232249503,
+            "normal_node_ref_purity": 0.23134232850665495,
+            "anomaly_node_ref_purity": 0.24113538681948424
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.18075646980756468,
+            "normal_node_ref_purity": 0.1808450343718005,
+            "anomaly_node_ref_purity": 0.17988896848137537
+          }
+        }
+      }
+    },
+    {
+      "seed": 4,
+      "scores": {
+        "baseline_support_qc": {
+          "multiply": {
+            "avg_ref_purity": 0.054429329794293296,
+            "normal_node_ref_purity": 0.05413558578323826,
+            "anomaly_node_ref_purity": 0.05730659025787966
+          },
+          "add": {
+            "avg_ref_purity": 0.04824983410749834,
+            "normal_node_ref_purity": 0.04780057042562527,
+            "anomaly_node_ref_purity": 0.05265042979942693
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.13068181818181818,
+            "normal_node_ref_purity": 0.12878455462922334,
+            "anomaly_node_ref_purity": 0.14926575931232092
+          }
+        },
+        "normal_cal_attr_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.25437956204379564,
+            "normal_node_ref_purity": 0.2531172297791429,
+            "anomaly_node_ref_purity": 0.2667442693409742
+          },
+          "add": {
+            "avg_ref_purity": 0.25594724618447245,
+            "normal_node_ref_purity": 0.25472612256837796,
+            "anomaly_node_ref_purity": 0.2679083094555874
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.1700149303251493,
+            "normal_node_ref_purity": 0.16969248208278484,
+            "anomaly_node_ref_purity": 0.1731733524355301
+          }
+        },
+        "normal_cal_max_dev": {
+          "multiply": {
+            "avg_ref_purity": 0.08073158593231586,
+            "normal_node_ref_purity": 0.07919226268831359,
+            "anomaly_node_ref_purity": 0.09580945558739255
+          },
+          "add": {
+            "avg_ref_purity": 0.08259787657597877,
+            "normal_node_ref_purity": 0.08102969138511043,
+            "anomaly_node_ref_purity": 0.09795845272206304
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.09739548772395487,
+            "normal_node_ref_purity": 0.09724659938569548,
+            "anomaly_node_ref_purity": 0.0988538681948424
+          }
+        },
+        "normal_cal_soft_or": {
+          "multiply": {
+            "avg_ref_purity": 0.14991705374917053,
+            "normal_node_ref_purity": 0.14870374433230948,
+            "anomaly_node_ref_purity": 0.1618015759312321
+          },
+          "add": {
+            "avg_ref_purity": 0.149228599867286,
+            "normal_node_ref_purity": 0.14800899517332164,
+            "anomaly_node_ref_purity": 0.16117478510028654
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.1629810882548109,
+            "normal_node_ref_purity": 0.16229706011408512,
+            "anomaly_node_ref_purity": 0.16968123209169053
+          }
+        },
+        "normal_cal_support": {
+          "multiply": {
+            "avg_ref_purity": 0.016746848042468482,
+            "normal_node_ref_purity": 0.017524133391838524,
+            "anomaly_node_ref_purity": 0.009133237822349571
+          },
+          "add": {
+            "avg_ref_purity": 0.02006469807564698,
+            "normal_node_ref_purity": 0.02092474769635805,
+            "anomaly_node_ref_purity": 0.011640401146131804
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.12737226277372263,
+            "normal_node_ref_purity": 0.12555762761445077,
+            "anomaly_node_ref_purity": 0.1451468481375358
+          }
+        },
+        "normal_cal_max_support_attr": {
+          "multiply": {
+            "avg_ref_purity": 0.24907100199071003,
+            "normal_node_ref_purity": 0.2476689337428697,
+            "anomaly_node_ref_purity": 0.262804441260745
+          },
+          "add": {
+            "avg_ref_purity": 0.250464499004645,
+            "normal_node_ref_purity": 0.24912242211496272,
+            "anomaly_node_ref_purity": 0.2636103151862464
+          },
+          "rank_add": {
+            "avg_ref_purity": 0.18292136695421368,
+            "normal_node_ref_purity": 0.18260933157817757,
+            "anomaly_node_ref_purity": 0.18597779369627507
+          }
+        }
+      }
+    }
+  ],
+  "aggregate": {
+    "baseline_support_qc": {
+      "multiply": {
+        "avg_ref_purity": {
+          "mean": 0.05442932979429329,
+          "std": 6.938893903907228e-18
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.05413558578323826,
+          "std": 0.0
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.05730659025787967,
+          "std": 6.938893903907228e-18
+        }
+      },
+      "add": {
+        "avg_ref_purity": {
+          "mean": 0.04824983410749834,
+          "std": 0.0
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.04780057042562527,
+          "std": 0.0
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.05265042979942693,
+          "std": 0.0
+        }
+      },
+      "rank_add": {
+        "avg_ref_purity": {
+          "mean": 0.13068181818181818,
+          "std": 0.0
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.12878455462922334,
+          "std": 0.0
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.14926575931232092,
+          "std": 0.0
+        }
+      }
+    },
+    "normal_cal_attr_dev": {
+      "multiply": {
+        "avg_ref_purity": {
+          "mean": 0.25086761778367617,
+          "std": 0.005067054961311766
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.25007495977768024,
+          "std": 0.004826198418436956
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.2586318051575931,
+          "std": 0.007962574917816765
+        }
+      },
+      "add": {
+        "avg_ref_purity": {
+          "mean": 0.24950895819508961,
+          "std": 0.005133498901308195
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.24869825947052798,
+          "std": 0.004816898896690506
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.2574498567335244,
+          "std": 0.008570655723027506
+        }
+      },
+      "rank_add": {
+        "avg_ref_purity": {
+          "mean": 0.17053085600530857,
+          "std": 0.0006103716969901598
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.17027753400614304,
+          "std": 0.0006095083074637427
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.1730121776504298,
+          "std": 0.0007521489971346762
+        }
+      }
+    },
+    "normal_cal_max_dev": {
+      "multiply": {
+        "avg_ref_purity": {
+          "mean": 0.08189117451891174,
+          "std": 0.005075997188588001
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.08049765979230657,
+          "std": 0.005179926620039979
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.09554083094555875,
+          "std": 0.004109166871627423
+        }
+      },
+      "add": {
+        "avg_ref_purity": {
+          "mean": 0.07885700066357001,
+          "std": 0.005828507391544449
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.07736031885329823,
+          "std": 0.005930465074564282
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.09351719197707738,
+          "std": 0.004895425640202331
+        }
+      },
+      "rank_add": {
+        "avg_ref_purity": {
+          "mean": 0.09677173191771733,
+          "std": 0.0008493210057842758
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.09658475939739651,
+          "std": 0.000911151311398962
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.09860315186246418,
+          "std": 0.00039803206967931515
+        }
+      }
+    },
+    "normal_cal_soft_or": {
+      "multiply": {
+        "avg_ref_purity": {
+          "mean": 0.1417103516921035,
+          "std": 0.010051728530171526
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.14050936083077373,
+          "std": 0.009927883659498862
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.15347421203438397,
+          "std": 0.011310625125098943
+        }
+      },
+      "add": {
+        "avg_ref_purity": {
+          "mean": 0.1414200398142004,
+          "std": 0.009652891955311143
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.140258885476086,
+          "std": 0.009497100428415907
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.15279369627507164,
+          "std": 0.011198436921778649
+        }
+      },
+      "rank_add": {
+        "avg_ref_purity": {
+          "mean": 0.154192103516921,
+          "std": 0.01215308653186287
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.15362732192482084,
+          "std": 0.012124479093066787
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.15972421203438394,
+          "std": 0.012541878395221017
+        }
+      }
+    },
+    "normal_cal_support": {
+      "multiply": {
+        "avg_ref_purity": {
+          "mean": 0.023012607830126076,
+          "std": 0.00444854160089602
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.02367266344888109,
+          "std": 0.004382128824298655
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.01654727793696275,
+          "std": 0.005591695775123145
+        }
+      },
+      "add": {
+        "avg_ref_purity": {
+          "mean": 0.027045454545454546,
+          "std": 0.00613410624895637
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.027709521720052654,
+          "std": 0.006050306145604364
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.020540830945558742,
+          "std": 0.0073230753971473515
+        }
+      },
+      "rank_add": {
+        "avg_ref_purity": {
+          "mean": 0.12908427339084275,
+          "std": 0.0013183455292589436
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.12717200526546732,
+          "std": 0.0013807939063334115
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.14781518624641832,
+          "std": 0.0013795211441669634
+        }
+      }
+    },
+    "normal_cal_max_support_attr": {
+      "multiply": {
+        "avg_ref_purity": {
+          "mean": 0.2362624419376244,
+          "std": 0.013134372008606615
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.2350793476671055,
+          "std": 0.01300720500187824
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.2478510028653295,
+          "std": 0.014539848977006336
+        }
+      },
+      "add": {
+        "avg_ref_purity": {
+          "mean": 0.23546449900464497,
+          "std": 0.011815228730360706
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.23428952757057192,
+          "std": 0.011610989624853097
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.24697349570200572,
+          "std": 0.013890130898053275
+        }
+      },
+      "rank_add": {
+        "avg_ref_purity": {
+          "mean": 0.17969973457199734,
+          "std": 0.003673560504789045
+        },
+        "normal_node_ref_purity": {
+          "mean": 0.1794829603627322,
+          "std": 0.0036736701794947745
+        },
+        "anomaly_node_ref_purity": {
+          "mean": 0.18182306590257882,
+          "std": 0.004147078844837166
+        }
+      }
+    }
+  }
+}

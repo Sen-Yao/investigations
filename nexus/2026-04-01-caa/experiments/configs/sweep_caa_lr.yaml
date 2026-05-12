@@ -1,0 +1,32 @@
+# Sweep 1: Learning Rate Sensitivity (2 seeds)
+# Runs = 5 × 2 = 10
+# Time = 10 × 5 min / 2 GPU = 25 min
+
+program: run_caa.py
+method: grid
+name: caa_lr_sweep
+metric:
+  name: AUC.max
+  goal: maximize
+
+parameters:
+  dataset:
+    value: photo
+  epochs:
+    value: 100
+  hidden_dim:
+    value: 128
+  num_heads:
+    value: 4
+  num_layers:
+    value: 3
+  ffn_dim:
+    value: 256
+  K:
+    value: 6
+  batch_size:
+    value: 64
+  lr:
+    values: [0.0001, 0.0003, 0.0005, 0.001, 0.002]
+  seed:
+    values: [0, 1]
