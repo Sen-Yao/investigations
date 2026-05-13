@@ -79,3 +79,43 @@ Diagnostic-only `ra_anom_ratio_diagnostic` is a strong upper-bound/explanatory v
 
 Run seeds 1-4 for this no-training diagnostic before designing a fixed formula. If `mat_mean` remains stable, open a method-validation investigation for no-head response-matrix scoring.
 
+
+## 2026-05-13 — Route 2 stability: seeds 0-4
+
+Artifacts:
+- `experiments/outputs/reference_response_distribution_stability_s0_s4.md`
+- `experiments/outputs/reference_response_distribution_stability_s0_s4.json`
+- `experiments/outputs/reference_response_distribution_s{1,2,3,4}.*`
+
+### Key numbers
+
+| signal | AUC mean±std | AP mean±std | AUC > margin |
+|---|---:|---:|---:|
+| margin | **0.7952±0.0071** | **0.5163±0.0221** | - |
+| `mat_mean` | **0.8009±0.0203** | **0.5335±0.0621** | **3/5** |
+| `mat_entropy` | 0.7777±0.0296 | 0.5024±0.0689 | 1/5 |
+| `mat_high08_ratio` | 0.7878±0.0232 | 0.4708±0.0668 | 2/5 |
+| `ra_anom_ratio_diagnostic` | 0.9328±0.0005 | 0.7722±0.0050 | 5/5 |
+
+### Updated interpretation
+
+The seed0 positive result does not fully survive stability validation. `mat_mean` is still the best deployable route2 candidate and is slightly above margin on mean AUC/AP, but the improvement is unstable: it wins only 3/5 seeds and loses badly on seed2.
+
+This changes the conclusion from "Route2 likely method candidate" to:
+
+> Multi-reference response distribution is a useful explanatory lens and may contain complementary ranking information, but current simple matrix summaries are not stable enough to become a standalone method component.
+
+The label-dependent `ra_anom_ratio_diagnostic` remains very strong and stable, confirming the target-conditioned anomaly-reference purity mechanism, but it is diagnostic-only and cannot be used for scoring.
+
+### Decision table update
+
+| Route | Continue? | Evidence |
+|---|---|---|
+| reference construction / target-conditioned `R_a` purity | Yes, as mechanism | Diagnostic upper bound `ra_anom_ratio_diagnostic` AUC 0.9328±0.0005; Phase 1 anomaly-target `R_a` purity enrichment |
+| multi-reference distributional inconsistency | Cautious / explanation-first | `mat_mean` AUC 0.8009±0.0203 vs margin 0.7952±0.0071, but only 3/5 seed wins |
+| fixed no-head response-matrix score | Not yet | Needs clean runner-managed method-validation with pre-declared formulas; exploratory evidence alone insufficient |
+| learned residual/correction head | No | Prior residual investigation showed compression/calibration, not independent signal |
+
+### Process note
+
+Seeds 1-4 were run manually over SSH with a Hermes cron watchdog after user review, not via `experiment-runner`. This is acceptable as exploratory diagnostic evidence only. Future multi-seed validation runs should be runner-managed or explicitly registered as non-formal watchdog diagnostics before launch.

@@ -98,3 +98,36 @@ Seed0 suggests the margin signal may be driven by target-conditional anomaly-ref
 
 Route 2 passes the seed0 continuation gate: response-matrix summaries contain signal beyond scalar margin. Next step should be seeds 1-4 no-training response diagnostics under a monitored/runner-compatible path, then decide whether to open a method-validation investigation.
 
+
+## Activity: 2026-05-13 — Phase 2 route 2 stability diagnostic (seeds 0-4)
+
+**Status:** completed as exploratory no-training diagnostic.
+
+### Protocol note / deviation
+
+Seeds 1-4 were executed through manual SSH rather than `experiment-runner`. A Hermes `cron` no-agent watchdog was added after user review to monitor progress and was removed after completion. This run is retained as Phase 2 diagnostic evidence, but **must not be treated as formal method-validation evidence**.
+
+### Outputs
+
+- `experiments/outputs/reference_response_distribution_s1.summary.json`
+- `experiments/outputs/reference_response_distribution_s2.summary.json`
+- `experiments/outputs/reference_response_distribution_s3.summary.json`
+- `experiments/outputs/reference_response_distribution_s4.summary.json`
+- `experiments/outputs/reference_response_distribution_stability_s0_s4.md`
+- `experiments/outputs/reference_response_distribution_stability_s0_s4.json`
+
+### 5-seed focus results
+
+| signal | AUC mean±std | AP mean±std | AUC > margin |
+|---|---:|---:|---:|
+| margin | 0.7952±0.0071 | 0.5163±0.0221 | - |
+| mat_mean | 0.8009±0.0203 | 0.5335±0.0621 | 3/5 |
+| mat_entropy | 0.7777±0.0296 | 0.5024±0.0689 | 1/5 |
+| mat_high08_ratio | 0.7878±0.0232 | 0.4708±0.0668 | 2/5 |
+| ra_anom_ratio_diagnostic | 0.9328±0.0005 | 0.7722±0.0050 | 5/5 |
+
+### Interpretation
+
+Seed0 was too optimistic. Across five seeds, `mat_mean` remains slightly better than margin on average and has lower top-k overlap with margin, but it only beats margin on **3/5** seeds and has noticeably higher variance. `mat_entropy` and `mat_high08_ratio` are not stable improvements.
+
+Route2 remains useful as a mechanism/explanation probe: response matrix summaries expose information not rank-identical to scalar margin. However, the evidence is **not stable enough to directly promote a fixed response-matrix score as a method component**. If continued, the next step should be a clean runner-managed method-validation investigation with pre-declared fixed formulas and no label tuning.
