@@ -16,7 +16,8 @@
 | `2026-04-01-caa-diagnosis` | CAA, VecGAD, 方向信息 | Photo | ✅ 完成 | 方向信息丢失是关键问题 |
 | `2026-04-01-offset-anomaly-relation` | Offset, KS检验 | Photo | ✅ 完成 | Offset单独使用效果有限 |
 | `2026-04-01-caa` | CAA, 数据泄漏 | Photo | ✅ 完成 | 发现训练集泄漏bug |
-| `2026-05-13-dualrefgad-normal-only-residual-probe` | DualRefGAD, normal-only, residual probe, margin | Photo / 待定 | 🟡 活跃 | 诊断 margin 之外是否存在协议干净的稳定残差信号 |
+| `2026-05-13-dualrefgad-normal-only-residual-probe` | DualRefGAD, normal-only, residual probe, margin | Elliptic | ✅ 完成 | additive residual route closed；correction 主要是 margin compression |
+| `2026-05-13-dualrefgad-reference-geometry-anatomy` | DualRefGAD, reference geometry, margin anatomy, distributional inconsistency | Elliptic / 待扩展 | 🟡 活跃 | 解剖 margin-only 信号来源与 top-k failure case，判断是否存在 response distribution 信号 |
 
 ---
 
@@ -34,6 +35,13 @@
 |------|------|---------|
 | `2026-04-01-delta-offset-cross-dataset` | ✅ | 非普适！Elliptic上Offset更好 |
 | `2026-04-01-delta-offset-equivalence` | ✅ | Photo: Delta SNR是Offset的18.88倍 |
+
+
+### DualRefGAD / reference geometry
+| 探究 | 状态 | 关键洞见 |
+|------|------|---------|
+| `2026-05-13-dualrefgad-normal-only-residual-probe` | ✅ | additive residual route closed；learned correction 主要是 margin compression / calibration |
+| `2026-05-13-dualrefgad-reference-geometry-anatomy` | 🟡 | 新探究：解剖 margin-only 信号来源、reference response distribution 与 top-k failure case |
 
 ---
 
@@ -64,6 +72,7 @@
 | 如何设计自适应Token策略？ | ⭐⭐⭐ | 2026-04-01-deep-token-information |
 | CAA缺少哪些组件？ | ⭐⭐ | 2026-04-01-deep-token-information |
 | Elliptic为什么反转？ | ⭐⭐ | 2026-04-01-delta-offset-cross-dataset |
+| DualRefGAD margin-only 的信号来源与失败机制是什么？ | ⭐⭐⭐ | 2026-05-13-dualrefgad-reference-geometry-anatomy |
 
 ---
 
@@ -74,8 +83,9 @@
 | **CAA理论不普适** | 深层不一定更优 | 2026-04-01-deep-token-information |
 | **Photo SNR比值** | Delta = Offset × 18.88 | 2026-04-01-delta-offset-equivalence |
 | **Elliptic SNR比值** | Offset = Delta × 1.27 | 2026-04-01-delta-offset-cross-dataset |
+| **DualRefGAD residual head 关闭** | `margin+correction` 无稳定收益，correction≈margin compression | 2026-05-13-dualrefgad-normal-only-residual-probe |
 
 ---
 
 _创建时间: 2026-04-01_
-_最后更新: 2026-05-13 (添加 DualRefGAD normal-only residual probe)_
+_最后更新: 2026-05-13 (添加 DualRefGAD reference geometry anatomy)_
