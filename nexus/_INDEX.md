@@ -16,6 +16,7 @@
 | `2026-04-01-caa-diagnosis` | CAA, VecGAD, 方向信息 | Photo | ✅ 完成 | 方向信息丢失是关键问题 |
 | `2026-04-01-offset-anomaly-relation` | Offset, KS检验 | Photo | ✅ 完成 | Offset单独使用效果有限 |
 | `2026-04-01-caa` | CAA, 数据泄漏 | Photo | ✅ 完成 | 发现训练集泄漏bug |
+| `2026-05-13-dualrefgad-normal-only-residual-probe` | DualRefGAD, normal-only, residual probe, margin | Photo / 待定 | 🟡 活跃 | 诊断 margin 之外是否存在协议干净的稳定残差信号 |
 
 ---
 
@@ -77,4 +78,4 @@
 ---
 
 _创建时间: 2026-04-01_
-_最后更新: 2026-04-01 (添加 2026-04-01-deep-token-information)_
+_最后更新: 2026-05-13 (添加 DualRefGAD normal-only residual probe)_
