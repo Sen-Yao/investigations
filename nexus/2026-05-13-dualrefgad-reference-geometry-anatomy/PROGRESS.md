@@ -131,3 +131,49 @@ Seeds 1-4 were executed through manual SSH rather than `experiment-runner`. A He
 Seed0 was too optimistic. Across five seeds, `mat_mean` remains slightly better than margin on average and has lower top-k overlap with margin, but it only beats margin on **3/5** seeds and has noticeably higher variance. `mat_entropy` and `mat_high08_ratio` are not stable improvements.
 
 Route2 remains useful as a mechanism/explanation probe: response matrix summaries expose information not rank-identical to scalar margin. However, the evidence is **not stable enough to directly promote a fixed response-matrix score as a method component**. If continued, the next step should be a clean runner-managed method-validation investigation with pre-declared fixed formulas and no label tuning.
+
+
+## Activity: 2026-05-13 — Priority 1 seed2 failure autopsy
+
+**Status:** completed as an `experiment-runner` registered `probe`.
+
+### Runner record
+
+- Job ID: `exp_20260513_200528_seed2_failure_autopsy_margin_vs_mat_mean`
+- Profile/kind: `probe` / `probe`
+- Status: `finished`
+- Remote: HCCS-88 GPU0
+- Log: `/data/linziyao/DualRefGAD/logs/seed2_failure_autopsy.log`
+
+### Protocol
+
+- No training; labels used only for diagnostic case selection and post-hoc autopsy.
+- Script reconstructed seed2 references/embeddings and compared:
+  - margin-high but `mat_mean`-low true-anomaly cases;
+  - `mat_mean` false positives;
+  - true anomalies where margin outranks `mat_mean`.
+
+### Outputs
+
+- `experiments/configs/seed2_failure_autopsy_probe.yaml`
+- `experiments/scripts/seed2_failure_autopsy.py`
+- `experiments/outputs/seed2_failure_autopsy.json`
+- `experiments/outputs/seed2_failure_autopsy.md`
+- `experiments/outputs/seed2_failure_autopsy.log`
+
+### Case summary
+
+| case | n | anomaly ratio | mean margin | mean mat_mean | mean R_a purity | mean 1-hop anomaly ratio | mean mat std |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| margin_high_mat_low | 25 | 1.000 | 0.9944 | 0.4868 | 0.880 | 0.000 | 0.6057 |
+| mat_mean_false_positive | 25 | 0.000 | 0.9980 | 0.9997 | 0.150 | 0.040 | 0.0003 |
+| anomaly_margin_wins_mat_loses | 25 | 1.000 | 1.0000 | 0.9942 | 1.000 | 0.000 | 0.0324 |
+
+### Interpretation
+
+Seed2 has two distinct failure modes:
+
+1. **`mat_mean` false positives are reference-selection/geometry degeneracy, not useful anomaly evidence.** The sampled false positives are all normal nodes, but have almost perfectly high `margin` and `mat_mean` (~1.0), extremely low matrix variance (`mat_std≈0.00026`), and low diagnostic `R_a` anomaly purity (`≈0.15`). Top matrix-column references are mostly normal. This means the response matrix can become uniformly high for benign nodes when selected references/anchors are geometrically aligned in a degenerate way.
+2. **Margin-high / `mat_mean`-low true anomalies are partly a coarse-summary problem.** These nodes are all true anomalies with high diagnostic `R_a` purity (`≈0.88`), but `mat_mean` collapses to `≈0.49` with very high matrix variance (`mat_std≈0.606`). The full matrix has a mixed shape: median response is high but a negative/low tail drags the mean down. A plain mean over all normal-anchor × anomaly-ref pairs is too brittle.
+
+Therefore the seed2 loss is **not** explained by only one cause. `mat_mean` is too coarse for heterogeneous anomaly nodes, while reference/anchor geometry is also unstable enough to create uniform-high false positives on normal nodes.

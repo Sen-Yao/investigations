@@ -1,0 +1,56 @@
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{
+  "json": "experiments/outputs/seed2_failure_autopsy.json",
+  "md": "experiments/outputs/seed2_failure_autopsy.md",
+  "runtime_sec": 222.50768446922302,
+  "case_summaries": {
+    "margin_high_mat_low": {
+      "n": 25,
+      "label_anom_ratio_diagnostic": 1.0,
+      "mean_margin": 0.9943556308746337,
+      "mean_mat_mean": 0.4868012177944183,
+      "mean_ra_anom_ratio_diagnostic": 0.88,
+      "mean_degree_1hop": 0.0,
+      "mean_anom_ratio_1hop_diagnostic": 0.0,
+      "mean_ra_resp_std": 0.027670342752059655,
+      "mean_mat_std": 0.6056680756926633
+    },
+    "mat_mean_false_positive": {
+      "n": 25,
+      "label_anom_ratio_diagnostic": 0.0,
+      "mean_margin": 0.9980142617225647,
+      "mean_mat_mean": 0.9996718788146972,
+      "mean_ra_anom_ratio_diagnostic": 0.15,
+      "mean_degree_1hop": 0.04,
+      "mean_anom_ratio_1hop_diagnostic": 0.04,
+      "mean_ra_resp_std": 0.014523826321160947,
+      "mean_mat_std": 0.0002592629979589029
+    },
+    "anomaly_margin_wins_mat_loses": {
+      "n": 25,
+      "label_anom_ratio_diagnostic": 1.0,
+      "mean_margin": 0.9999997282028198,
+      "mean_mat_mean": 0.9941794538497924,
+      "mean_ra_anom_ratio_diagnostic": 1.0,
+      "mean_degree_1hop": 0.8,
+      "mean_anom_ratio_1hop_diagnostic": 0.0,
+      "mean_ra_resp_std": 1.9914225215308746e-05,
+      "mean_mat_std": 0.03236398357224304
+    }
+  }
+}
+/data/linziyao/miniconda3/envs/DualRefGAD/lib/python3.8/site-packages/torchdata/datapipes/__init__.py:18: UserWarning: 
+################################################################################
+WARNING!
+The 'datapipes', 'dataloader2' modules are deprecated and will be removed in a
+future torchdata release! Please see https://github.com/pytorch/data/issues/1196
+to learn more and leave feedback.
+################################################################################
+
+  deprecation_warning()
+/data/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/data/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()

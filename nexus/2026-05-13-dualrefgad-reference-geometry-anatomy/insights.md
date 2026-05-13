@@ -119,3 +119,29 @@ The label-dependent `ra_anom_ratio_diagnostic` remains very strong and stable, c
 ### Process note
 
 Seeds 1-4 were run manually over SSH with a Hermes cron watchdog after user review, not via `experiment-runner`. This is acceptable as exploratory diagnostic evidence only. Future multi-seed validation runs should be runner-managed or explicitly registered as non-formal watchdog diagnostics before launch.
+
+
+## 2026-05-13 — Priority 1 seed2 failure autopsy
+
+Artifacts:
+- `experiments/configs/seed2_failure_autopsy_probe.yaml`
+- `experiments/scripts/seed2_failure_autopsy.py`
+- `experiments/outputs/seed2_failure_autopsy.json`
+- `experiments/outputs/seed2_failure_autopsy.md`
+- Runner job: `exp_20260513_200528_seed2_failure_autopsy_margin_vs_mat_mean` (`probe`, finished)
+
+### What failed in seed2?
+
+The failure is **mixed**, not a clean single diagnosis:
+
+1. **Matrix summary too coarse for heterogeneous true anomalies.** In `margin_high_mat_low` cases, all sampled nodes are true anomalies. Their diagnostic `R_a` purity is high (`0.88` mean), so reference selection is often pointing at anomaly-side references. But the full response matrix has very high spread (`mat_std≈0.606`), with a high median but a low/negative tail. Mean pooling over every normal-anchor × anomaly-ref response suppresses these anomalies.
+2. **Reference/anchor geometry unstable for false positives.** In `mat_mean_false_positive` cases, all sampled nodes are normal, diagnostic `R_a` purity is low (`0.15`), and top references by matrix column mean are mostly normal. Yet `mat_mean≈1.0` with near-zero spread (`mat_std≈0.00026`). This is a degeneracy: the geometry can produce uniformly high responses even when the selected anomaly-reference set is not anomaly-pure.
+
+### Consequence for route 2
+
+`mat_mean` should **not** be promoted as-is. A better route would need both:
+
+- a robust distributional statistic that does not average away high-purity heterogeneous anomaly evidence; and
+- a reference/anchor reliability gate that rejects uniform-high, low-purity/low-local-evidence normal-node degeneracies.
+
+This keeps `multi-reference distributional inconsistency` alive as an explanatory/mechanism route, but weakens the case for a simple fixed no-head score.

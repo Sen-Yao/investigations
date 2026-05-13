@@ -1,0 +1,33 @@
+# Experiment Runner probe config: seed2 failure autopsy
+program: experiments/scripts/seed2_failure_autopsy.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seed:
+    value: 2
+  train_rate:
+    value: 0.05
+  descriptor_mode:
+    value: hop_attr
+  pn_estimator:
+    value: pca_residual
+  gn_mode:
+    value: label_gate
+  ln_mode:
+    value: descriptor_similarity
+  ga_mode:
+    value: normal_soft_or
+  la_mode:
+    value: descriptor_similarity
+  ablation_mode:
+    value: full
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  select_n:
+    value: 25
+notes:
+  protocol: no-training diagnostic; labels diagnostic-only; runner registered probe
+  objective: compare margin-high/mat_mean-low nodes and mat_mean false positives by R_a purity, response distribution shape, top-k references, and local graph context
