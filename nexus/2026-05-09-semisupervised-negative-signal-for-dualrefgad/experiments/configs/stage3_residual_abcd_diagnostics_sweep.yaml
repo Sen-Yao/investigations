@@ -1,0 +1,100 @@
+program: experiments/scripts/stage3_residual_abcd_diagnostics.py
+method: grid
+metric:
+  name: best.ap_margin
+  goal: maximize
+parameters:
+  project_root:
+    value: /data/linziyao/DualRefGAD
+  dataset:
+    value: elliptic
+  seed:
+    values: [0, 1, 2, 3, 4]
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  descriptor_mode:
+    value: hop_attr
+  pn_estimator:
+    value: pca_residual
+  gn_mode:
+    value: label_gate
+  ln_mode:
+    value: descriptor_similarity
+  ga_mode:
+    value: normal_soft_or
+  la_mode:
+    value: descriptor_similarity
+  ablation_mode:
+    value: full
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  pp_k:
+    value: 6
+  hops:
+    value: 2
+  rw_steps:
+    value: 8
+  pca_components:
+    value: 32
+  embedding_dim:
+    value: 256
+  GT_ffn_dim:
+    value: 256
+  GT_dropout:
+    value: 0.4
+  GT_attention_dropout:
+    value: 0.4
+  GT_num_heads:
+    value: 2
+  GT_num_layers:
+    value: 3
+  sample_rate:
+    value: 0.15
+  mean:
+    value: 0.02
+  var:
+    value: 0.01
+  outlier_beta:
+    value: 0.3
+  ring_R_max:
+    value: 1.0
+  ring_R_min:
+    value: 0.3
+  lambda_rec_tok:
+    value: 1.0
+  lambda_rec_emb:
+    value: 0.1
+  encode_batch_size:
+    value: 512
+  input_mode:
+    value: ud_prod_absdiff_norm
+  hidden:
+    value: 64
+  dropout:
+    value: 0.1
+  corr_scale:
+    value: 0.25
+  beta:
+    value: 1.0
+  normal_val_frac:
+    value: 0.2
+  tau_quantile:
+    value: 0.75
+  temp:
+    value: 0.08
+  corr_l2:
+    value: 0.05
+  corr_center:
+    value: 0.01
+  lr:
+    value: 0.0005
+  weight_decay:
+    value: 0.001
+  num_epoch:
+    value: 80
+  wandb:
+    value: true

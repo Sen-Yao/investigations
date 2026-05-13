@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<style>
+body { background:#f3efe7; color:#2b2a27; font-family:Georgia,'Times New Roman','Noto Serif SC',serif; font-size:17px; line-height:1.82; margin:0; padding:28px; }
+.paper { max-width:900px; margin:0 auto; background:#fffaf0; border:1px solid #ded4bf; border-radius:18px; padding:34px 42px; box-shadow:0 12px 35px rgba(78,59,29,0.10); }
+.eyebrow { color:#7b6a43; letter-spacing:.08em; text-transform:uppercase; font-size:12px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+h1 { font-size:30px; line-height:1.25; margin:8px 0 8px; color:#23382d; }
+.meta { color:#7a7468; font-size:14px; margin-top:0; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+.summary { background:#eef4eb; border:1px solid #cfddc8; border-left:5px solid #587d54; border-radius:12px; padding:18px 20px; margin:24px 0; }
+h2 { color:#23382d; margin-top:34px; padding-top:8px; border-top:1px solid #e6decf; font-size:22px; }
+h3 { color:#3d5645; margin-top:24px; font-size:18px; }
+p { margin:15px 0; }
+table { width:100%; border-collapse:collapse; margin:20px 0; font-size:15.5px; font-family:Georgia,'Times New Roman','Noto Serif SC',serif; }
+th, td { border:1px solid #d9cfba; padding:10px 12px; text-align:left; vertical-align:top; }
+th { background:#2f4b3a; color:#fffaf0; font-weight:600; }
+tr:nth-child(even) td { background:#f7f1e6; }
+code { background:#efe7d8; color:#9b3f2e; padding:2px 6px; border-radius:5px; font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; font-size:0.92em; }
+.key-finding { background:#2f4b3a; color:#fffaf0; padding:18px 20px; border-radius:12px; margin:26px 0; }
+.recommendation { background:#f2f7ef; border-left:5px solid #5c8a55; padding:18px 20px; border-radius:10px; margin:22px 0; }
+.note { color:#6d665b; font-size:14px; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif; }
+</style>
+</head>
+<body>
+<div class="paper">
+  <div class="eyebrow">SenyaoLab · DualRefGAD Investigation</div>
+  <h1>Vector-conditioned Likelihood-Ratio 诊断结果：方向信息有用，但 density-ratio 仍不能替代 margin</h1>
+  <p class="meta">发送者：Nexus ｜ 场景：DualRefGAD 半监督负信号探索 ｜ 时间：2026-05-12 22:12 CST</p>
+
+  <div class="summary"><strong>摘要：</strong>正式 5-seed / 80-epoch vector-conditioned likelihood-ratio 诊断已经完成。把 conditioning 从标量 <code>||d||</code> 改成向量 <code>normalize(d)</code> 后，模型从 scalar LR 的 AUC <code>0.4272±0.0473</code> 提升到 <code>0.6880±0.0335</code>，说明方向信息确实是 DualRef anomaly direction 的核心。但它仍显著低于 margin baseline 的 AUC <code>0.7938</code>、AP <code>0.5510</code>，因此下一步不建议继续把 likelihood-ratio 当主 scoring，而应转向 margin-backed calibration。</div>
+
+  <h2>一、实验目的：区分“丢失方向”与“目标函数不对”</h2>
+  <p>上一轮 scalar <code>||d||</code> conditioning 的失败很彻底：5 个 seed 的 AUC 只有 <code>0.4272±0.0473</code>，不仅没有超过 margin baseline，甚至低到接近反向信号。这给出了一个清楚但还不完整的诊断：只用 <code>||d||</code> 作为条件变量会丢掉方向几何，但尚不能判断 likelihood-ratio 本身是否仍有希望。</p>
+  <p>因此这次 vector-conditioned 诊断的目标不是“冲 SOTA”，而是做一次判别性实验：如果使用 <code>normalize(d)</code> 后结果大幅恢复，就说明失败主要来自方向信息被压扁；如果仍然失败，则说明即使方向进入了模型，conditional density-ratio 也不天然等价于 anomaly ranking。</p>
+
+  <h2>二、正式结果：vector 明显救回信号，但没有救回 ranking geometry</h2>
+  <table>
+    <tr><th>Method</th><th>AUC</th><th>AP</th><th>Top-1% Ratio</th><th>Top-5% Ratio</th><th>Spearman vs Margin</th></tr>
+    <tr><td>Scalar <code>||d||</code> LR</td><td><code>0.4272±0.0473</code></td><td><code>0.0821±0.0047</code></td><td><code>0.0471±0.0240</code></td><td><code>0.0661±0.0193</code></td><td><code>0.1091±0.0259</code></td></tr>
+    <tr><td>Vector <code>normalize(d)</code> LR</td><td><code>0.6880±0.0335</code></td><td><code>0.2839±0.0644</code></td><td><code>0.3489±0.3098</code></td><td><code>0.5051±0.1284</code></td><td><code>0.2974±0.0543</code></td></tr>
+    <tr><td>Margin baseline</td><td><code>0.7938</code></td><td><code>0.5510</code></td><td><code>0.9955</code></td><td><code>0.7680</code></td><td><code>1.0000</code></td></tr>
+  </table>
+  <p><strong>Insight：</strong>vector conditioning 相比 scalar conditioning 的 AUC 提升约 <code>+0.2608</code>，AP 提升约 <code>+0.2018</code>，这是一个很大的恢复幅度，足以证明 <code>d</code> 的方向不是噪声，而是有效 anomaly prior。问题在于，这个恢复没有把排序结构恢复到 margin baseline：vector LR 仍比 margin 低 <code>0.1058</code> AUC、低 <code>0.2671</code> AP，Spearman 也只有 <code>0.2974±0.0543</code>。这意味着它捕获了一部分与异常相关的统计信号，但没有学成 margin 的排序同构。</p>
+
+  <h3>Seed-level 观察</h3>
+  <table>
+    <tr><th>Seed</th><th>AUC</th><th>AP</th><th>Top-1%</th><th>Top-5%</th><th>Spearman</th><th>Best Epoch</th></tr>
+    <tr><td>0</td><td>0.6396</td><td>0.2385</td><td>0.0068</td><td>0.5418</td><td>0.2327</td><td>80</td></tr>
+    <tr><td>1</td><td>0.6945</td><td>0.3575</td><td>0.7873</td><td>0.6300</td><td>0.2754</td><td>80</td></tr>
+    <tr><td>2</td><td>0.7336</td><td>0.3394</td><td>0.4434</td><td>0.6043</td><td>0.3776</td><td>79</td></tr>
+    <tr><td>3</td><td>0.6827</td><td>0.2773</td><td>0.4072</td><td>0.4256</td><td>0.2828</td><td>80</td></tr>
+    <tr><td>4</td><td>0.6895</td><td>0.2067</td><td>0.0995</td><td>0.3238</td><td>0.3185</td><td>78</td></tr>
+  </table>
+  <p><strong>Insight：</strong>AUC 的 seed 方差不算夸张，说明 vector LR 的中等性能不是单个 seed 偶然拉高。但 Top-1% Ratio 的方差很大，尤其 seed 0 几乎没有抓到最尖端异常，而 seed 1 可以抓到较多。这提示 density-ratio 在全局排序上有稳定弱信号，但在极高风险节点的前排排序上不可靠；这恰好是 anomaly detection 最不能妥协的位置。</p>
+
+  <h2>三、解释：conditional density 不是 explicit geometric compatibility</h2>
+  <p>DualRef margin 成功的原因非常直接：它显式计算节点偏移 <code>u</code> 与 anomaly direction <code>d</code> 的几何兼容性，也就是类似 <code>cos(u,d)</code> 的交互。这个打分函数把“这个节点是否沿着异常方向偏移”作为第一性问题，因此它天然对 anomaly ranking 友好。</p>
+  <p>Vector LR 做的是另一件事：估计在给定 <code>normalize(d)</code> 的上下文下，节点表示 <code>φ</code> 更像 anomaly-context 还是 normal-context。这个目标可以吸收一部分方向信息，所以它比 scalar 版本好得多；但“上下文下的密度差异”并不等于“沿异常方向的投影大小”。换句话说，模型可以学到一些 distributional plausibility，却不保证把最高风险节点排到最前。</p>
+
+  <div class="key-finding"><strong>核心判断：</strong>vector-conditioned LR 是一个有价值的诊断实验，但不是当前主线的好 scoring function。它证明方向信息必须保留，也同时证明 density-ratio 仍然没有替代 explicit margin geometry。</div>
+
+  <h2>四、建议：转向 margin + learned correction</h2>
+  <div class="recommendation"><strong>建议：</strong>下一步优先做 margin-backed calibration，而不是继续堆 conditional flow。形式上可以从 <code>s_i = m_i + β·f_θ(φ_i)</code> 开始，其中 <code>m_i</code> 保留 closed-form margin 作为全局排序骨架，learnable head 只做局部校准或 residual correction。这样可以避免把已经有效的几何先验交给 density model 重新“悟道”——它悟得挺努力，但目前像在用显微镜开瓶盖。</div>
+  <p>这条路径的风险是 margin baseline 已经很强，learned correction 未必能稳定提升 AUC；但它的失败成本低，而且协议上仍然干净：不需要生成 pseudo-anomaly，不需要让模型凭空学习异常方向，只是在保留原始几何打分的基础上测试是否存在可学习的局部修正项。</p>
+
+  <h2>五、记录与证据文件</h2>
+  <p>本次结果已经同步更新到 investigation 记录中：<code>PROGRESS.md</code> 增加了 Night vector-conditioned LR 诊断；<code>insights.md</code> 增加了“Vector-Conditioned Likelihood-Ratio Partially Recovers Signal”章节，并更新了 Summary Table 与 Next Actions。</p>
+  <table>
+    <tr><th>File</th><th>Content</th></tr>
+    <tr><td><code>outputs/stage2_probe/stage2_vector_lr_probe_s*_e80.json</code></td><td>5-seed / 80-epoch 正式结果</td></tr>
+    <tr><td><code>outputs/stage2_probe/logs/stage2_vector_lr_s*.log</code></td><td>每个 seed 的训练日志</td></tr>
+    <tr><td><code>scripts/stage2_vector_likelihood_ratio_probe.py</code></td><td>vector-conditioned LR 诊断脚本</td></tr>
+    <tr><td><code>investigations/.../PROGRESS.md</code></td><td>进度记录与 open questions</td></tr>
+    <tr><td><code>investigations/.../insights.md</code></td><td>研究洞察与策略更新</td></tr>
+  </table>
+
+  <p class="note">结论短版：方向保住了，LR 还是没上桌；下一步让 margin 当主角，learned head 当校准器。</p>
+</div>
+</body>
+</html>
