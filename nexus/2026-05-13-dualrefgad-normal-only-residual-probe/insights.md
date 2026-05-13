@@ -15,3 +15,28 @@ A successful result requires stable improvement and evidence of ranking-geometry
 ## Relation to prior investigation
 
 `2026-05-09-semisupervised-negative-signal-for-dualrefgad` established that pseudo-negative or contrastive signals need a theoretical basis. This investigation narrows that lesson into a concrete diagnostic route: residual signal must be grounded in normal-manifold deviation or reference inconsistency, not in arbitrary proxy compatibility.
+
+
+## Final result — additive residual route closed
+
+The 5-seed Stage-3 ABCD diagnostic on `elliptic` finished under sweep `vtkl5ykv`. The learned correction does not provide stable improvement over margin-only:
+
+| Metric | margin-only | score = margin + corr | delta |
+|---|---:|---:|---:|
+| AUC | `0.7952±0.0071` | `0.7953±0.0071` | `6.29e-05±2.72e-04` |
+| AP | `0.5165±0.0220` | `0.5161±0.0221` | `-4.46e-04±2.50e-03` |
+
+The important result is not only “no gain”; it is the geometry of the failure:
+
+- `spearman(score, margin)=0.9985±0.0002`: final ranking is almost identical to margin.
+- `top5_jaccard=0.9996±0.0005`: top candidate set is essentially unchanged.
+- `spearman(corr, margin)=-0.9957±0.0010`, `R²(corr~margin)=0.8455±0.0060`: correction is mostly a function of margin.
+- Linear decomposition gives `score ≈ a + 0.788 * margin + small_residual`; the residual component is too small to rescue ranking.
+
+### Scientific interpretation
+
+The normal-only objective can learn to suppress high normal scores, but the easiest solution is margin compression / calibration. This is not a new anomaly detection principle. It matches the broader pattern from the earlier investigation: the useful signal is already in dual-reference margin geometry, while learned heads tend to reparameterize or degrade it.
+
+### Decision
+
+Close the additive residual route. Do not present `margin + correction` as the method. If we continue DualRefGAD, the next mechanism should target reference construction, normal-manifold deviation, or multi-reference distributional inconsistency directly.

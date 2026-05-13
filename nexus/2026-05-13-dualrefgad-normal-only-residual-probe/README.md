@@ -16,15 +16,17 @@ DualRefGAD 当前已经有一个很强但仍不够稳定的几何基线：`margi
 
 ## 关键发现
 
-本探究刚创建，尚未运行 HCCS-88 5-seed 诊断。已有前置证据来自 `2026-05-09-semisupervised-negative-signal-for-dualrefgad`：
+HCCS-88 5-seed 诊断已完成，结论是 **negative finding / route closed**：normal-only residual correction 可以被训练出来，但没有发现稳定、baseline-independent 的异常排序信号。
 
-| 前置观察 | 数值或结论 | 对本探究的含义 |
+| 观察 | 5-seed 数值或结论 | 对本探究的含义 |
 |---|---:|---|
-| margin-only 强于 learned head | `0.7952±0.0071` vs `0.7455±0.0188` | 学习头可能破坏几何排序，不能默认“多学一点就更好”。 |
-| N1/N2/N3/N4 proxy 不足以作为主证据 | proxy AUC 只证明规则与 hand-crafted score 兼容 | 本探究必须避免把人工 proxy 当作真实异常检测证据。 |
-| VecGAD / GGAD / RHO 的共同启发 | negative/contrastive 信号需要理论来源 | residual 需要 grounded in normal-manifold deviation 或 reference inconsistency。 |
+| margin-only 与 residual score 几乎相同 | AUC `0.7952±0.0071` → `0.7953±0.0071`; ΔAUC `6.29e-05±2.72e-04` | 没有实质提升。 |
+| AP 不稳定且平均下降 | AP `0.5165±0.0220` → `0.5161±0.0221`; ΔAP `-4.46e-04±2.50e-03` | residual 不具备稳定收益。 |
+| final score 与 margin 几乎同序 | `spearman(score, margin)=0.9985±0.0002`; `top5_jaccard=0.9996±0.0005` | correction 没有改变候选集合。 |
+| correction 主要是 margin compression | `corr ≈ a - 0.212 * margin + residual`; `score ≈ a + 0.788 * margin + small_residual` | 学到的是 calibration / compression，不是新异常几何。 |
+| ABCD flags | A: global shift, B: margin-linked, C: too weak all raised; D 不是主失败项 | additive residual patch 应关闭。 |
 
-**Insight：** 当前最重要的不是追求一个好看的新分数，而是判断“margin 之外是否有稳定、协议干净、可解释的剩余信号”。如果答案是否定的，这也是有效科研结论：停止在 margin 上堆 head，转向 reference 机制本身。
+**Insight：** 这个结果支持之前的怀疑：在 margin 上叠 learnable correction/head 多半只是表面修饰。DualRefGAD 的有效信号仍然来自 reference geometry / margin 本身；继续堆 head 不值得。后续若推进，应从 reference 构造、normal-manifold deviation 或 multi-reference distributional inconsistency 重构异常信号，而不是保留 `margin + correction`。
 
 ## 诊断协议
 
@@ -51,11 +53,16 @@ DualRefGAD 当前已经有一个很强但仍不够稳定的几何基线：`margi
 
 | 日期 | 实验 | 结果 | 备注 |
 |------|------|------|------|
-| 2026-05-13 | 创建 investigation | 待跑 HCCS-88 5-seed | 当前只完成归档与诊断设计。 |
+| 2026-05-13 | 创建 investigation | 完成归档与诊断设计 | additive residual 仅作为 probe，不作为最终方法。 |
+| 2026-05-13 | Stage-3 residual ABCD diagnostics, 5 seeds, elliptic | **Route closed** | Sweep `vtkl5ykv`; 详见 `experiments/outputs/stage3_residual_abcd_analysis.md`。 |
 
 ## 下一步
 
-等待用户确认后，在 HCCS-88 上运行 5-seed normal-only residual diagnostic probe。若结果无稳定提升，直接关闭这条 additive residual 路线，并记录为 negative finding；若结果稳定提升，则分析 residual 学到的结构，再将其重写为统一的 reference-inconsistency / normal-manifold scoring 机制。
+本路线已关闭。不要继续调参 `margin + correction` 作为主方法。下一步应回到更根本的机制选择：
+
+1. reference construction：是否能让 normal/anomaly reference 分布本身更有解释力；
+2. normal-manifold deviation：是否能定义协议干净的 normal-only 偏离量；
+3. multi-reference distributional inconsistency：是否能用多个 reference 视角的不一致性替代 additive head。
 
 ---
 *Created: 2026-05-13 | Nexus Agent*
