@@ -50,3 +50,32 @@ Seed0 supports a target-conditional reference-purity story: `R_a` is not globall
 
 This was a manual no-training diagnostic probe, not a runner-compliant formal experiment. It is acceptable only as Phase-1 debugging/anatomy evidence. Future multi-seed diagnostics should either be registered through `experiment-runner` (`probe`/`single-run` path if available) or paired with an explicit Hermes watchdog so completion/failure is reported promptly.
 
+## 2026-05-13 — Route 2 seed0: multi-reference response distribution
+
+Artifacts:
+- `experiments/scripts/reference_response_distribution.py`
+- `experiments/outputs/reference_response_distribution_s0.summary.json`
+- `experiments/outputs/reference_response_distribution_s0.per_node.csv`
+- `experiments/outputs/reference_response_distribution_s0.arrays.npz`
+- `experiments/outputs/reference_response_distribution_seed0_analysis.md`
+
+### Key result
+
+Route 2 is positive on seed0. `mat_mean`, the mean of the full normal-anchor × anomaly-ref response matrix, improves over scalar margin:
+
+- Margin AUC/AP: **0.7938 / 0.5510**.
+- `mat_mean` AUC/AP: **0.8200 / 0.5963**.
+- `mat_mean` Spearman vs margin: **0.708**.
+- `mat_mean` top5 Jaccard vs margin: **0.705**.
+- `mat_mean` top5 anomaly ratio: **0.839** vs margin **0.768**.
+
+### Interpretation
+
+Scalar mean-pooled margin is not sufficient: the full response matrix contains ranking signal that is both stronger on seed0 and not rank-identical to margin. This supports continuing `multi-reference distributional inconsistency` as Phase 2.
+
+Diagnostic-only `ra_anom_ratio_diagnostic` is a strong upper-bound/explanatory variable (AUC **0.9322**) but is not deployable because it uses labels. It confirms that target-conditioned `R_a` purity explains much of the mechanism.
+
+### Decision
+
+Run seeds 1-4 for this no-training diagnostic before designing a fixed formula. If `mat_mean` remains stable, open a method-validation investigation for no-head response-matrix scoring.
+

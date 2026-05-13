@@ -66,3 +66,35 @@ Do not train another correction head. First dissect the existing margin/referenc
 ### Immediate interpretation
 
 Seed0 suggests the margin signal may be driven by target-conditional anomaly-reference enrichment: anomaly refs are globally noisy, but become substantially anomaly-enriched for true anomaly targets. Next step is to inspect false positives/missed anomalies and decide whether to run seeds 1-4 under a monitored/runner-compatible path.
+
+## Activity: 2026-05-13 — Phase 2 route 2 seed0 response distribution diagnostic
+
+**Status:** completed foreground with immediate feedback.
+
+### Protocol
+
+- No training, no WandB, no formal sweep.
+- Foreground run on HCCS-88 using `/data/linziyao/miniconda3/envs/DualRefGAD/bin/python` to avoid missing-env failures.
+- Runtime: **230.5s**.
+- Outputs pulled back to investigation archive.
+
+### Outputs
+
+- `experiments/scripts/reference_response_distribution.py`
+- `experiments/outputs/reference_response_distribution_s0.summary.json`
+- `experiments/outputs/reference_response_distribution_s0.per_node.csv`
+- `experiments/outputs/reference_response_distribution_s0.arrays.npz`
+- `experiments/outputs/reference_response_distribution_seed0_analysis.md`
+
+### Key results
+
+- Margin AUC/AP: **0.7938 / 0.5510**.
+- `mat_mean` AUC/AP: **0.8200 / 0.5963**.
+- `mat_mean` Spearman vs margin: **0.708**.
+- `mat_mean` top5 Jaccard vs margin: **0.705**.
+- `mat_mean` top5 anomaly ratio: **0.839** vs margin **0.768**.
+
+### Interpretation
+
+Route 2 passes the seed0 continuation gate: response-matrix summaries contain signal beyond scalar margin. Next step should be seeds 1-4 no-training response diagnostics under a monitored/runner-compatible path, then decide whether to open a method-validation investigation.
+
