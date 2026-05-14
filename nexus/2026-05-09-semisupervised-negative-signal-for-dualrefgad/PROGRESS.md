@@ -444,3 +444,43 @@ score = ||z_n - center_n|| + ||z_d - center_d||
 ---
 
 _Investigation tracking started by Nexus, updated 2026-05-14._
+
+---
+
+## Day 8-evening: 2026-05-14 (Stage4 RHO-style Normality Alignment Smoke Probe)
+
+**Activity**: 在 HCCS-80 上启动并完成 Stage4 最小 smoke probe，用真实 `photo.mat` 验证脚本、环境和目标函数链路。
+
+**Infrastructure**:
+- DualRefGAD 已迁移为 GitHub 管理仓库：`Sen-Yao/DualRefGAD`
+- HCCS-80 目录：`~/DualRefGAD`，由 GitHub clone 管理
+- 数据集：`~/DualRefGAD/dataset/*.mat` symlink 到 `~/GGADFormer/dataset/*.mat`
+- 环境：`source /opt/anaconda/etc/profile.d/conda.sh && conda activate GGADFormer`
+
+**Probe**:
+- Script: `scripts/diagnostics/stage4_rho_normality_alignment_probe.py`
+- Config: `configs/stage4_rho_photo_s0_smoke.yaml`
+- Job ID: `exp_20260514_180451_stage4_rho_photo_s0_smoke`
+- Dataset: `photo`, seed 0, 20 epochs, GT_num_layers=1, frozen encoder (`train_encoder=false`)
+- Runtime: ~40s on HCCS-80 GPU 3
+
+**Smoke Result**:
+
+| Metric | Value |
+|--------|-------|
+| Stage4 score AUC | `0.5682` |
+| Stage4 score AP | `0.1165` |
+| Margin AUC (same script baseline) | `0.4237` |
+| Margin AP | `0.0749` |
+| Delta AUC | `+0.1445` |
+| Spearman(score, margin) | `-0.3305` |
+| Top-1% Jaccard(score, margin) | `0.0000` |
+| Top-5% Jaccard(score, margin) | `0.0027` |
+
+**Interpretation**:
+- Smoke probe confirms the Stage4 pipeline runs end-to-end on real HCCS-80 data.
+- The score is strongly non-overlapping with margin on this smoke configuration (`Spearman=-0.33`, almost zero top-k overlap), which is exactly the kind of orthogonal signal diagnostic we wanted to test.
+- However, this is **not formal evidence**: single seed, photo dataset, 20 epochs, and margin baseline inside this script appears weak on photo. Next step should be a runner-managed 5-seed probe, preferably starting with Elliptic after optimizing reference selection runtime.
+
+**Important runtime note**:
+- Elliptic dry-run with current full pairwise reference selection exceeded 120s and was stopped. Need optimize/block reference selection or start formal probe on photo first, then port to Elliptic.
