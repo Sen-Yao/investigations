@@ -2,22 +2,23 @@
 
 **Investigation**: `2026-05-09-semisupervised-negative-signal-for-dualrefgad`
 **Phase**: Phase 1 → Phase 2 (transitioning)
-**Last Updated**: 2026-05-13
+**Last Updated**: 2026-05-14
 
 ---
 
 ## Current Status
 
-|| Component | Status |
-|-----------|--------|
-| Literature Survey (RESEARCH_SURVEY.md) | ✅ Complete |
-| Candidate Designs (hypothesis.md) | ✅ Complete |
-| Density Probe Experiment | ✅ Complete (negative result) |
-| Likelihood-Ratio Probe (||d|| conditioning) | ✅ Complete (failed) |
-| Vector-conditioned LR Probe | ✅ Complete (below margin) |
-| Stage 3 Residual Probe | ✅ Complete (no stable improvement) |
-| Stage 3 ABCD Diagnostics | ✅ Complete (WandB 4u8dzp5v) |
-| insights.md | ✅ Complete (2026-05-12) |
+||| Component | Status |
+||-----------|--------|
+|| Literature Survey (RESEARCH_SURVEY.md) | ✅ Complete |
+|| Candidate Designs (hypothesis.md) | ✅ Complete |
+|| Density Probe Experiment | ✅ Complete (negative result) |
+|| Likelihood-Ratio Probe (||d|| conditioning) | ✅ Complete (failed) |
+|| Vector-conditioned LR Probe | ✅ Complete (below margin) |
+|| Stage 3 Residual Probe | ✅ Complete (no stable improvement) |
+|| Stage 3 ABCD Diagnostics | ✅ Complete (WandB 4u8dzp5v) |
+|| Response Matrix Diagnostic (Route2) | ✅ Complete (mat_mean unstable) |
+|| insights.md | ✅ Complete (2026-05-12) |
 
 ---
 
@@ -176,27 +177,31 @@
 
 ## Key Findings Summary
 
-|| Finding | Date | Implication |
-|---------|------|-------------|
-| Proxy AUC ≠ real anomaly ranking validity | 2026-05-09 | Cannot optimize proxy metrics directly |
-| Normal-only density modeling fails | 2026-05-12 | `d` must be geometry-aware, not latent |
-| Scalar `||d||` Likelihood-Ratio fails | 2026-05-12 | Scalar conditioning loses direction; do not pursue as-is |
-| Vector-conditioned LR partially recovers signal | 2026-05-12 | Direction helps, but density-ratio still below margin |
-| Additive residual correction is diagnostic only | 2026-05-13 | Useful as a probe; not elegant enough as final method narrative |
-| MLP can recover margin with normalized features | 2026-05-11 | Input design matters, not MLP capacity |
-| **ABCD diagnostics confirm no residual signal** | 2026-05-13 | All flags A,B,C raised; normal-only correction cannot improve margin |
+||| Finding | Date | Implication |
+||---------|------|-------------||
+|| Proxy AUC ≠ real anomaly ranking validity | 2026-05-09 | Cannot optimize proxy metrics directly |
+|| Normal-only density modeling fails | 2026-05-12 | `d` must be geometry-aware, not latent |
+|| Scalar `||d||` Likelihood-Ratio fails | 2026-05-12 | Scalar conditioning loses direction; do not pursue as-is |
+|| Vector-conditioned LR partially recovers signal | 2026-05-12 | Direction helps, but density-ratio still below margin |
+|| Additive residual correction is diagnostic only | 2026-05-13 | Useful as a probe; not elegant enough as final method narrative |
+|| MLP can recover margin with normalized features | 2026-05-11 | Input design matters, not MLP capacity |
+|| ABCD diagnostics confirm no residual signal | 2026-05-13 | All flags A,B,C raised; normal-only correction cannot improve margin |
+|| **Response matrix has extra info but mat_mean unstable** | 2026-05-14 | mat_mean 3/5 wins, Spearman 0.708; R_a purity is key mechanism |
 
 ---
 
 ## Next Actions
 
-| Priority | Action | Status |
-|----------|--------|--------|
-| 1 | Implement Likelihood-Ratio minimal probe (scalar `||d||` conditioning) | Complete |
-| 2 | Compare Likelihood-Ratio AUC vs margin baseline | Complete: failed |
-| 3 | Diagnose whether vector conditioning is worth trying | Complete: partial recovery, below margin |
-| 4 | Run bounded normal-only residual probe | ✅ Complete: no stable improvement |
-| 5 | Run Stage 3 ABCD Diagnostics sweep | ✅ Complete (WandB 4u8dzp5v) |
+|| Priority | Action | Status ||
+||----------|--------|--------||
+|| 1 | Implement Likelihood-Ratio minimal probe (scalar `||d||` conditioning) | Complete ||
+|| 2 | Compare Likelihood-Ratio AUC vs margin baseline | Complete: failed ||
+|| 3 | Diagnose whether vector conditioning is worth trying | Complete: partial recovery, below margin ||
+|| 4 | Run bounded normal-only residual probe | ✅ Complete: no stable improvement ||
+|| 5 | Run Stage 3 ABCD Diagnostics sweep | ✅ Complete (WandB 4u8dzp5v) ||
+|| 6 | Response Matrix Diagnostic (Route2) | ✅ Complete: mat_mean unstable ||
+|| 7 | Design more robust matrix summary (quantile/mode/weighted) | Pending ||
+|| 8 | Investigate R_a purity improvement mechanism | Pending ||
 
 ---
 
@@ -206,6 +211,8 @@
 2. **Residual signal**: Does margin leave stable, learnable residual structure under a normal-only protocol? → **Answered: No, ABCD diagnostics confirm no residual signal**
 3. **Unified geometry**: If residual signal exists, how can it be rewritten as a clean geometry-aware score instead of additive patching? → **Closed: residual probe route dropped**
 4. **Reference-view consistency**: Can protocol-clean consistency produce a complementary score to margin?
+5. **Response Matrix**: Can more robust summary (quantile/mode/weighted mean) stabilize Route2 signal?
+6. **R_a purity mechanism**: How to improve target-conditioned R_a purity without label supervision?
 
 ---
 
@@ -239,6 +246,52 @@
 
 **Final Conclusion**:
 > The bounded normal-only residual probe does NOT produce stable improvement beyond the explicit margin backbone. ABCD diagnostics confirm: the learned correction is dominated by global calibration (A), is linearly explained by margin (B), and produces insufficient ranking perturbation (C). This route should be dropped as a method candidate.
+
+---
+
+## Day 7: 2026-05-14 (Response Matrix Diagnostic - Route2)
+
+**Activity**: No-training diagnostic on multi-reference response distribution.
+
+**Motivation**: Scalar margin 把每个 reference set 求均值 centroid，可能丢失 response distribution 信息。Route2 检查压缩前的 matrix 是否有额外信号。
+
+**Method**:
+- Response Matrix: `M_ij(v) = cos(h_v - r_{n,i}, r_{a,j} - r_{n,i})`
+- 维度: `K_n × K_a = 4 × 16 = 64`
+- 诊断分数: `mat_mean` (全均值), `mat_entropy`, `mat_high08_ratio`
+
+**Results (5-seed Elliptic)**:
+
+|| Signal | AUC mean±std | vs margin |
+||--------|--------------|-----------|
+|| margin (baseline) | 0.7952±0.0071 | — |
+|| mat_mean | 0.8009±0.0203 | **3/5 wins** |
+|| mat_entropy | 0.7777±0.0296 | 1/5 wins |
+|| mat_high08_ratio | 0.7878±0.0232 | 2/5 wins |
+|| ra_anom_ratio_diagnostic | 0.9328±0.0005 | 5/5 (label-dep) |
+
+**Per-seed AUC**:
+
+|| seed | margin | mat_mean | mat_entropy |
+||------|--------|----------|-------------|
+|| 0 | 0.7938 | **0.8200** | 0.8058 |
+|| 1 | 0.7960 | 0.7901 | 0.7763 |
+|| 2 | **0.7991** | 0.7711 ❌ | 0.7299 |
+|| 3 | 0.7840 | **0.8060** | 0.7780 |
+|| 4 | 0.8030 | **0.8170** | 0.7986 |
+
+**Key Mechanism Insights**:
+- `Spearman(mat_mean, margin) = 0.708` — 两者不完全重叠，matrix 有额外信息
+- `ra_anom_ratio_diagnostic` AUC 0.93 — **Target-conditioned R_a purity 是关键机制**
+- Seed2 失败原因：response matrix variance 极大 (mat_std≈0.606)，均值被低/负尾巴拖低
+- False positive 问题：geometry degeneracy 可产生均匀高响应（即使 R_a 不纯）
+
+**Conclusion**:
+> Route2 (multi-reference distributional inconsistency) 是有用的解释性视角，**但 mat_mean 不稳定 (3/5 wins, seed2 损失严重)**。简单均值过于粗糙，无法处理 heterogeneous anomalies 和 geometry degeneracy。建议作为 complementary signal 或后续 investigation 起点，而非直接部署。
+
+**Anchor**: `~/anchors/2026-05-14-dualrefgad-mat-mean-route2/report.html`
+
+⚠️ **Protocol Deviation**: Seeds 1-4 通过手动 SSH + Hermes cron watchdog 执行，而非 experiment-runner。本诊断不作为 formal method-validation evidence。
 
 ---
 
