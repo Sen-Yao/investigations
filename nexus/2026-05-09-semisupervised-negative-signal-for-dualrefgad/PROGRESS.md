@@ -368,4 +368,79 @@ DualRefGAD 可借鉴：
 
 ---
 
+## Day 8-afternoon: 2026-05-14 (方案 C vs A 诊断设计)
+
+**用户决策**：
+- 方案 C (Matrix Summary Learning) 优先尝试
+- 允许训练 GT Encoder，师兄建议从 1 层开始
+- 方案 A (RHO-style) 作为干净备选
+- 需要先做诊断确定 C vs A 优先级
+
+**诊断设计**：
+
+### 方案 C 诊断：Matrix Summary 聚合方式对比
+
+| 聚合方式 | 公式 | 预期效果 |
+|---------|------|---------|
+| **Trimmed mean** | `mean(M | M > Q10 and M < Q90)` | 去除极端值，稳定 seed2 |
+| **Weighted mean** | `sum(w_ij * M_ij)`，`w_ij = ||d_j||` | 倾向可靠 R_a |
+| **Quantile (Q50)** | `median(M.flatten())` | 保留分布形态 |
+| **Max + mean hybrid** | `0.3*max + 0.7*mean` | 边界 + 平均 |
+
+**判断标准**：5/5 wins 或 AUC > margin + 2σ
+
+**时间成本**：30 分钟（使用现有 frozen encoder 输出）
+
+### 方案 A 诊断：RHO-style Normality Alignment Probe
+
+```python
+z_n = MLP(concat(h, r_n))      # target-normal relation
+z_d = MLP(concat(h, r_n, r_a))  # deviation-reference relation
+loss = ||z_n[normal] - center_n||² + ||z_d[normal] - center_d||²
+score = ||z_n - center_n|| + ||z_d - center_d||
+```
+
+**判断标准**：AUC > margin 或 Spearman vs margin < 0.5（正交）
+
+**时间成本**：2-3 小时
+
+### 师兄建议：从 1 层开始训练 GT Encoder
+
+| 配置 | 当前值 | 建议起点 |
+|------|--------|---------|
+| GT_num_layers | 3 | **1** |
+| GT_num_heads | 2 | 2 |
+| embedding_dim | 256 | 256 |
+
+**好处**：更快训练、更容易诊断、逐步扩展
+
+### 决策树
+
+```
+方案 C 诊断
+├─ 稳定 (5/5 wins)
+│   └─ → 实现 learnable attention pool（训练 1 层 encoder）
+│
+└─ 不稳定
+    └─ → 方案 A 诊断
+        ├─ 有正交 signal (Spearman < 0.5)
+        │   └─ → Normality alignment 主方向
+        │
+        └─ 无 signal
+            └─ → 方案 B (VecGAD-style residual)
+```
+
+### 执行约束
+
+**⚠️ HCCS-88 不可用**，需在本地执行：
+- OpenClawVM (192.168.1.9) 应有 GPU
+- 或降级到 CPU（诊断脚本较轻）
+
+**Next Actions**：
+1. 确认本地 GPU 可用性
+2. 执行方案 C 诊断（Matrix Summary 聚合对比）
+3. 根据结果决定后续方向
+
+---
+
 _Investigation tracking started by Nexus, updated 2026-05-14._
