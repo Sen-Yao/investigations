@@ -308,4 +308,64 @@
 
 ---
 
-_Investigation tracking started by Nexus, updated 2026-05-12._
+## Day 8: 2026-05-14 (Deep Dive: R_a Selection Mechanism + VecGAD Analysis)
+
+**Activity**: 用户提出三个深度问题，深入分析 DualRefGAD 核心机制。
+
+**Questions**:
+1. 当前代码如何挑选 R_a？真的与当前节点无关吗？
+2. VecGAD（不是 DualRefGAD）能帮上我们吗？
+3. 我们至今没有采用机器学习的训练，应该加在哪里？Matrix 还有什么可以操作？
+
+**Findings**:
+
+### R_a 选择机制（select_refs 函数）
+
+关键代码位于 `run_training_degradation_diagnosis.py:92-111`：
+
+```python
+# R_a 选择公式
+a_scores = l_a + ga[None,:]  # similarity + anomaly score
+anom_refs = np.argsort(-a_scores, axis=1)[:,:args.anom_k]
+```
+
+**结论**：R_a 选择**确实与当前节点有关**
+- `l_a[i,j]` = 节点 i 与节点 j 的 cosine similarity（当前节点视角）
+- `ga[j]` = 节点 j 的 rejection score（来自 PCA residual，不依赖真实标签）
+- 选择标准：**高相似 + 高异常度** 的节点
+
+**Bootstrap Trap 解释**：
+- ra_anom_ratio_diagnostic AUC 0.93 是因为 PCA residual 确实能识别真实异常
+- 但这正是 bootstrap trap 的根源：要获得高纯度 R_a → 需要准确 anomaly score → 但要获得 anomaly score → 需要知道异常 → 这是我们要解决的问题
+
+### VecGAD 核心洞察
+
+> **重构误差的方向信息比标量分数更重要**
+
+DualRefGAD 可借鉴：
+- 保留 residual 的向量形式而非压缩为标量
+- 用 reference residual 指导伪异常生成
+- HSC 球壳约束确保伪异常质量
+
+### 训练位置建议
+
+| 方案 | 科学干净度 | 实现难度 | 预期收益 |
+|------|-----------|---------|---------|
+| **A: RHO-style Alignment** | 最高 | 中 | 中高 |
+| **B: VecGAD-style Residual** | 中 | 高 | 高 |
+| **C: Matrix Summary Learning** | 高 | 低 | 中 |
+
+**Matrix 操作建议**：
+- 避免 simple mean（易受极端值干扰）
+- 考虑 trimmed mean、weighted mean、quantile summary、attention pool
+
+**推荐顺序**：
+1. 先尝试方案 C（Matrix Summary）：低成本，直接改进已验证 signal
+2. 如果 C 效果有限，尝试方案 A（RHO-style）：最干净
+3. 如果 A 效果有限，再考虑方案 B（VecGAD-style）：最复杂
+
+**Email**: `dualrefgad_analysis.md` sent to ziyao.lin@senyao.cloud
+
+---
+
+_Investigation tracking started by Nexus, updated 2026-05-14._
