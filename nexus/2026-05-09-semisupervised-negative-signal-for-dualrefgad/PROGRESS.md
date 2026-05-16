@@ -663,3 +663,109 @@ For each space, it computed center-distance AUC/AP, diagonal Mahalanobis AUC, PC
   2. **R_a purity / reference selection repair**: current R_a is mostly normal;
   3. **VecGAD-style residual vector route**: preserve residual direction instead of scalar rejection/center distance.
 
+---
+
+## Day 9-followup-2: 2026-05-16 (Direction 1 Orientation / Sign Diagnostic)
+
+**Activity**: 用户指示执行方向一诊断：分析 Elliptic 上 margin/rejection 方向反转的根因，并检查是否存在无标签 orientation rule 能决定使用 `score` 还是 `-score`。
+
+**Runner Compliance**:
+- Skill: `experiment-runner`
+- Job ID: `exp_20260516_155640_elliptic_orientation_sign_probe`
+- Profile/kind: `probe` / `probe`
+- Launch: Hermes-tracked background process, not manual SSH loop
+- Status: `finished`
+- Runtime: ~64s on HCCS-88 GPU 0
+
+**Artifacts**:
+- Script: `experiments/scripts/elliptic_orientation_sign_probe.py`
+- Config: `experiments/configs/elliptic_orientation_sign_probe.yaml`
+- Output: `experiments/outputs/elliptic_orientation_sign_probe.json`
+
+**Diagnostic Questions**:
+1. Which scores are inverted on Elliptic?
+2. Is the inversion tied to normal rejection, degree, R_a purity, or transaction/time-like grouping?
+3. Can a label-free rule infer the correct orientation?
+
+**Top Score Orientation Results**:
+
+| Score | AUC | -Score AUC | Correct Orientation | Key Correlation |
+|-------|-----|------------|--------------------|----------------|
+| `margin_cos_u_d` | 0.3404 | **0.6596** | negative | Spearman(rejection)=+0.256, degree=+0.374 |
+| `ga_score` | 0.3489 | **0.6511** | negative | Spearman(rejection)=+1.000 |
+| `normal_rejection` | 0.3489 | **0.6511** | negative | itself inverted |
+| `residual_norm` | 0.3489 | **0.6511** | negative | same as rejection |
+| `raw_dot_u_d` | 0.3503 | **0.6497** | negative | Spearman(rejection)=+0.220 |
+| `rn_dist/u_norm` | 0.3659 | **0.6341** | negative | Spearman(degree)=+0.339 |
+| `ra_dist` | **0.6138** | 0.3862 | positive | Spearman(rejection)=-0.200 |
+| `d_norm` | **0.5452** | 0.4548 | positive | weak |
+
+**Core Finding 1 — Rejection is inverted**:
+
+> The normal-model rejection signal itself is inverted on Elliptic: `rejection AUC=0.3489`, while `-rejection AUC=0.6511`.
+
+This means the current bootstrap assumption “higher rejection = more anomalous” is wrong for this Elliptic configuration. Since R_a selection depends on `ga/rejection`, the selected anomaly references are pulled toward the wrong side.
+
+**Core Finding 2 — Margin inversion follows rejection/degree**:
+
+`margin_cos_u_d` has:
+- Spearman(rejection)=`+0.256`
+- Spearman(ga)=`+0.256`
+- Spearman(log_degree)=`+0.374`
+- AUC=`0.3404`, but `-margin` AUC=`0.6596`
+
+Interpretation:
+> Margin is not independently inverted for mysterious reasons; it inherits orientation from the wrong-side rejection / structural-degree axis. High margin corresponds to high rejection/high degree, but Elliptic anomalies are concentrated in lower-degree / lower-rejection regions.
+
+**Core Finding 3 — Degree stratification explains much of the flip**:
+
+By log-degree bins:
+- Lowest-degree bin (`log_degree 0~0.69`) has anomaly rate `19.2%` and `-margin AUC=0.8051`.
+- Medium degree (`1.10~1.39`) has anomaly rate `5.7%` and `margin AUC=0.6265`.
+- Highest degree has anomaly rate only `2.1%`.
+
+This shows sign is **not globally stable**: Elliptic anomaly distribution is degree-regime dependent. A single anomaly-high convention can be misleading.
+
+**Core Finding 4 — R_a purity remains broken**:
+
+| Metric | Value |
+|--------|-------|
+| Global anomaly-ref anomaly ratio | `0.0235` |
+| Anom-ref ratio AUC | `0.4448` |
+| Mean normal-ref log-degree | `0.6431` |
+| Mean anomaly-ref log-degree | `1.0404` |
+
+R_a references are not actually anomalous; they are structurally higher-degree / high-rejection nodes. On Elliptic, that is often the normal side.
+
+**Core Finding 5 — Naive label-free orientation rules fail**:
+
+Tested label-free rules:
+1. Use positive sign if unlabeled mean > train-normal mean.
+2. Use positive sign if score aligns with rejection.
+3. Use positive sign if score aligns with ga.
+4. Majority vote of the above.
+
+For key scores, this predicts the **wrong orientation**:
+- `margin_cos_u_d`: predicted positive, true best is negative.
+- `normal_rejection`: predicted positive, true best is negative.
+- `ga_score`: predicted positive, true best is negative.
+
+Why: these rules assume train normals define the low-anomaly baseline, but Elliptic labeled train normals are not representative of test normals/anomalies across degree regimes. Unlabeled-vs-train shift is dominated by structural distribution shift, not anomaly direction.
+
+**Time-like Feature Check**:
+- The heuristic search found no reliable low-cardinality timestep-like feature in the preprocessed feature matrix.
+- Therefore the current probe cannot confirm time-slice causality from features alone.
+- Degree/regime analysis is currently the stronger explanation.
+
+**Mechanistic Conclusion**:
+
+> Elliptic’s failure mode is not just “score sign flipped.” It is **regime-dependent orientation collapse**: normal rejection and margin align with a structural-degree/rejection axis, but anomalies are concentrated in low-degree/low-rejection regions for a large part of the test distribution. This makes high-rejection R_a selection actively harmful.
+
+**Research Implication**:
+
+Do **not** solve this by globally flipping margin. Global flip gives moderate AUC (`0.6596`) but is a dataset-specific diagnostic hack and fails the scientific goal. The real route should address regime-conditioned reference selection / orientation:
+
+1. **Degree/regime-conditioned orientation diagnostic**: select orientation per structural regime without labels.
+2. **Repair R_a selection**: avoid assuming high rejection = anomaly; include low-rejection suspicious regimes or bidirectional references.
+3. **VecGAD-style residual direction**: preserve residual vector direction and condition scoring on regime, rather than scalar rejection magnitude.
+
