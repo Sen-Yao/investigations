@@ -1,0 +1,454 @@
+{
+  "timestamp": "2026-05-16 15:47:58",
+  "protocol": "no-training embedding structure diagnostic; labels diagnostic-only for metrics/autopsy",
+  "dataset": "elliptic",
+  "seed": 0,
+  "device": "cuda:0",
+  "n_nodes": 46564,
+  "n_train_normal": 2086,
+  "n_test": 44236,
+  "test_anom_rate": 0.0972737137173343,
+  "config": {
+    "dataset": "elliptic",
+    "device": 0,
+    "seed": 0,
+    "train_rate": 0.05,
+    "val_rate": 0.0,
+    "descriptor_mode": "hop_attr_rwse",
+    "pn_estimator": "diag_gaussian",
+    "gn_mode": "label_gate_density",
+    "ln_mode": "descriptor_similarity",
+    "ga_mode": "normal_rejection",
+    "la_mode": "residual_cosine",
+    "normal_k": 4,
+    "anom_k": 16,
+    "pp_k": 6,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "embedding_dim": 256,
+    "GT_ffn_dim": 256,
+    "GT_dropout": 0.4,
+    "GT_attention_dropout": 0.4,
+    "GT_num_heads": 2,
+    "GT_num_layers": 1,
+    "sample_rate": 0.15,
+    "mean": 0.02,
+    "var": 0.01,
+    "outlier_beta": 0.3,
+    "ring_R_max": 1.0,
+    "ring_R_min": 0.3,
+    "lambda_rec_tok": 1.0,
+    "lambda_rec_emb": 0.1,
+    "encode_batch_size": 2048,
+    "ref_block_size": 1024,
+    "use_approx_anom_refs": true,
+    "anom_approx_k": 500,
+    "out": "experiments/outputs/elliptic_embedding_structure_probe.json"
+  },
+  "margin": {
+    "auc": 0.3403989010200033,
+    "ap": 0.07221738228184932,
+    "neg_auc": 0.6596010989799966,
+    "neg_ap": 0.2531903593239443
+  },
+  "reference_autopsy": {
+    "global_anom_ref_anom_ratio": 0.02350259857400567,
+    "global_normal_ref_anom_ratio": 0.0,
+    "anom_ref_ratio_auc": 0.44480884170271756,
+    "anom_ref_ratio_ap": 0.09075048027174776,
+    "spearman_anom_ref_ratio_margin": 0.1696725717140336,
+    "ga_auc": 0.3489022360187453,
+    "rejection_auc": 0.3489022476580413
+  },
+  "spaces_by_center_auc": [
+    {
+      "space": "rn_normal_ref_centroid",
+      "shape": [
+        46564,
+        256
+      ],
+      "center_distance_auc": 0.5267232182811624,
+      "center_distance_ap": 0.10752797156298016,
+      "diag_mahal_auc": 0.5048593129490037,
+      "diag_mahal_ap": 0.1005422517023065,
+      "pca_residual_auc": 0.3972702207873764,
+      "pca_residual_ap": 0.08094244287443847,
+      "spearman_center_margin": -0.2315686545930956,
+      "train_normal_radius_mean": 6.291035175323486,
+      "train_normal_radius_std": 1.9062697887420654,
+      "test_normal_radius_mean": 6.220273017883301,
+      "test_normal_radius_std": 1.884557843208313,
+      "test_anom_radius_mean": 6.239100456237793,
+      "test_anom_radius_std": 1.5739866495132446,
+      "anom_minus_normal_radius": 0.018827438354492188,
+      "cohen_d_anom_vs_normal": 0.010843859251328494,
+      "ks_train_normal_vs_test_normal": 0.02023157484856164,
+      "ks_test_normal_vs_anom": 0.13338737924019484,
+      "normal_pairwise_dist": {
+        "mean": 8.943282127380371,
+        "std": 2.8119678497314453
+      },
+      "test_normal_pairwise_dist": {
+        "mean": 8.682080268859863,
+        "std": 2.7452776432037354
+      },
+      "test_anom_pairwise_dist": {
+        "mean": 7.552600860595703,
+        "std": 3.5721778869628906
+      },
+      "effective_rank_train_normal": {
+        "ncomp": 64,
+        "participation_ratio": 7.775917436830036,
+        "top1_var": 0.2382899820804596,
+        "top5_var": 0.6905403733253479,
+        "top10_var": 0.8669361751526594
+      }
+    },
+    {
+      "space": "d_ra_minus_rn",
+      "shape": [
+        46564,
+        256
+      ],
+      "center_distance_auc": 0.4953054209165446,
+      "center_distance_ap": 0.09471192081606952,
+      "diag_mahal_auc": 0.4893444835227987,
+      "diag_mahal_ap": 0.09303160897739733,
+      "pca_residual_auc": 0.33145421264792363,
+      "pca_residual_ap": 0.0713667302828553,
+      "spearman_center_margin": 0.30275256184998556,
+      "train_normal_radius_mean": 7.151857852935791,
+      "train_normal_radius_std": 2.350435495376587,
+      "test_normal_radius_mean": 7.394376277923584,
+      "test_normal_radius_std": 2.448319673538208,
+      "test_anom_radius_mean": 7.278533458709717,
+      "test_anom_radius_std": 2.186821937561035,
+      "anom_minus_normal_radius": -0.11584281921386719,
+      "cohen_d_anom_vs_normal": -0.04990523111655151,
+      "ks_train_normal_vs_test_normal": 0.04806730564203188,
+      "ks_test_normal_vs_anom": 0.07780609793074322,
+      "normal_pairwise_dist": {
+        "mean": 10.166887283325195,
+        "std": 3.1501965522766113
+      },
+      "test_normal_pairwise_dist": {
+        "mean": 10.566908836364746,
+        "std": 3.3676323890686035
+      },
+      "test_anom_pairwise_dist": {
+        "mean": 9.350144386291504,
+        "std": 4.269248008728027
+      },
+      "effective_rank_train_normal": {
+        "ncomp": 64,
+        "participation_ratio": 8.208206604897832,
+        "top1_var": 0.25333693623542786,
+        "top5_var": 0.6625553444027901,
+        "top10_var": 0.8477842677384615
+      }
+    },
+    {
+      "space": "gt_emb_h",
+      "shape": [
+        46564,
+        256
+      ],
+      "center_distance_auc": 0.4646211261636888,
+      "center_distance_ap": 0.08219906268535675,
+      "diag_mahal_auc": 0.4459351123566554,
+      "diag_mahal_ap": 0.07943958339265095,
+      "pca_residual_auc": 0.3125274312744821,
+      "pca_residual_ap": 0.0663379719533977,
+      "spearman_center_margin": -0.08425385375830786,
+      "train_normal_radius_mean": 9.188695907592773,
+      "train_normal_radius_std": 1.9961422681808472,
+      "test_normal_radius_mean": 9.218304634094238,
+      "test_normal_radius_std": 2.024853467941284,
+      "test_anom_radius_mean": 8.798891067504883,
+      "test_anom_radius_std": 1.3308720588684082,
+      "anom_minus_normal_radius": -0.41941356658935547,
+      "cohen_d_anom_vs_normal": -0.24478912648278253,
+      "ks_train_normal_vs_test_normal": 0.0189285293518609,
+      "ks_test_normal_vs_anom": 0.1905808136134416,
+      "normal_pairwise_dist": {
+        "mean": 12.790130615234375,
+        "std": 3.5810914039611816
+      },
+      "test_normal_pairwise_dist": {
+        "mean": 12.726984977722168,
+        "std": 3.720388412475586
+      },
+      "test_anom_pairwise_dist": {
+        "mean": 10.29166030883789,
+        "std": 5.208315372467041
+      },
+      "effective_rank_train_normal": {
+        "ncomp": 64,
+        "participation_ratio": 9.730712626945666,
+        "top1_var": 0.21460048854351044,
+        "top5_var": 0.6066513061523438,
+        "top10_var": 0.7838088646531105
+      }
+    },
+    {
+      "space": "interaction_u_d",
+      "shape": [
+        46564,
+        1024
+      ],
+      "center_distance_auc": 0.42104901145160645,
+      "center_distance_ap": 0.08084818834013975,
+      "diag_mahal_auc": 0.4371136288421382,
+      "diag_mahal_ap": 0.08255053127403099,
+      "pca_residual_auc": 0.37901798026218664,
+      "pca_residual_ap": 0.07639671114950838,
+      "spearman_center_margin": 0.444606935110495,
+      "train_normal_radius_mean": 12.777192115783691,
+      "train_normal_radius_std": 4.405140399932861,
+      "test_normal_radius_mean": 13.534889221191406,
+      "test_normal_radius_std": 4.6106953620910645,
+      "test_anom_radius_mean": 12.496588706970215,
+      "test_anom_radius_std": 4.199277400970459,
+      "anom_minus_normal_radius": -1.0383005142211914,
+      "cohen_d_anom_vs_normal": -0.23545366593036304,
+      "ks_train_normal_vs_test_normal": 0.08818256917825362,
+      "ks_test_normal_vs_anom": 0.20133176940769237,
+      "normal_pairwise_dist": {
+        "mean": 18.214431762695312,
+        "std": 5.352154731750488
+      },
+      "test_normal_pairwise_dist": {
+        "mean": 19.454294204711914,
+        "std": 5.491927146911621
+      },
+      "test_anom_pairwise_dist": {
+        "mean": 16.459449768066406,
+        "std": 7.164277076721191
+      },
+      "effective_rank_train_normal": {
+        "ncomp": 64,
+        "participation_ratio": 17.103821762975684,
+        "top1_var": 0.1366344690322876,
+        "top5_var": 0.36169636994600296,
+        "top10_var": 0.4944892134517431
+      }
+    },
+    {
+      "space": "zd_feat_stage4_input",
+      "shape": [
+        46564,
+        1792
+      ],
+      "center_distance_auc": 0.41045030928781073,
+      "center_distance_ap": 0.07736091076789979,
+      "diag_mahal_auc": 0.4110338628497179,
+      "diag_mahal_ap": 0.07704237243110512,
+      "pca_residual_auc": 0.3734849935924803,
+      "pca_residual_ap": 0.07560162331094798,
+      "spearman_center_margin": 0.32428003375566866,
+      "train_normal_radius_mean": 18.5432186126709,
+      "train_normal_radius_std": 4.522321701049805,
+      "test_normal_radius_mean": 19.120607376098633,
+      "test_normal_radius_std": 4.671322345733643,
+      "test_anom_radius_mean": 17.75218963623047,
+      "test_anom_radius_std": 3.916294574737549,
+      "anom_minus_normal_radius": -1.368417739868164,
+      "cohen_d_anom_vs_normal": -0.3174709158156442,
+      "ks_train_normal_vs_test_normal": 0.056744387693106024,
+      "ks_test_normal_vs_anom": 0.2387228796474858,
+      "normal_pairwise_dist": {
+        "mean": 26.23893165588379,
+        "std": 6.095852851867676
+      },
+      "test_normal_pairwise_dist": {
+        "mean": 27.03769302368164,
+        "std": 6.355292797088623
+      },
+      "test_anom_pairwise_dist": {
+        "mean": 22.44547462463379,
+        "std": 9.228232383728027
+      },
+      "effective_rank_train_normal": {
+        "ncomp": 64,
+        "participation_ratio": 16.72764965169121,
+        "top1_var": 0.12927024066448212,
+        "top5_var": 0.39915430173277855,
+        "top10_var": 0.5498422961682081
+      }
+    },
+    {
+      "space": "zn_feat_stage4_input",
+      "shape": [
+        46564,
+        1024
+      ],
+      "center_distance_auc": 0.3888370183664424,
+      "center_distance_ap": 0.07424396375981242,
+      "diag_mahal_auc": 0.3840405459763277,
+      "diag_mahal_ap": 0.07369703278839579,
+      "pca_residual_auc": 0.35187129820557733,
+      "pca_residual_ap": 0.07106321723773061,
+      "spearman_center_margin": 0.3053810418064467,
+      "train_normal_radius_mean": 14.680511474609375,
+      "train_normal_radius_std": 3.0684189796447754,
+      "test_normal_radius_mean": 15.121528625488281,
+      "test_normal_radius_std": 3.205923318862915,
+      "test_anom_radius_mean": 14.008684158325195,
+      "test_anom_radius_std": 2.6681880950927734,
+      "anom_minus_normal_radius": -1.112844467163086,
+      "cohen_d_anom_vs_normal": -0.37732028375615684,
+      "ks_train_normal_vs_test_normal": 0.06926586452249989,
+      "ks_test_normal_vs_anom": 0.268679668935823,
+      "normal_pairwise_dist": {
+        "mean": 20.657548904418945,
+        "std": 4.486641883850098
+      },
+      "test_normal_pairwise_dist": {
+        "mean": 21.248477935791016,
+        "std": 4.6043219566345215
+      },
+      "test_anom_pairwise_dist": {
+        "mean": 17.513450622558594,
+        "std": 7.35640811920166
+      },
+      "effective_rank_train_normal": {
+        "ncomp": 64,
+        "participation_ratio": 17.595145569552727,
+        "top1_var": 0.12082000076770782,
+        "top5_var": 0.4041776694357395,
+        "top10_var": 0.5627433806657791
+      }
+    },
+    {
+      "space": "ra_anom_ref_centroid",
+      "shape": [
+        46564,
+        256
+      ],
+      "center_distance_auc": 0.3800090255756593,
+      "center_distance_ap": 0.07431048408709193,
+      "diag_mahal_auc": 0.3596112554296515,
+      "diag_mahal_ap": 0.07185877656010564,
+      "pca_residual_auc": 0.34360893155109873,
+      "pca_residual_ap": 0.07123085469973686,
+      "spearman_center_margin": 0.3193901438583,
+      "train_normal_radius_mean": 6.585038185119629,
+      "train_normal_radius_std": 2.5787594318389893,
+      "test_normal_radius_mean": 6.710955619812012,
+      "test_normal_radius_std": 2.570918560028076,
+      "test_anom_radius_mean": 5.6887288093566895,
+      "test_anom_radius_std": 1.9291951656341553,
+      "anom_minus_normal_radius": -1.0222268104553223,
+      "cohen_d_anom_vs_normal": -0.44976156851302307,
+      "ks_train_normal_vs_test_normal": 0.0372808538674283,
+      "ks_test_normal_vs_anom": 0.24400240027889153,
+      "normal_pairwise_dist": {
+        "mean": 9.268572807312012,
+        "std": 3.875810384750366
+      },
+      "test_normal_pairwise_dist": {
+        "mean": 9.374156951904297,
+        "std": 4.023487567901611
+      },
+      "test_anom_pairwise_dist": {
+        "mean": 6.969411373138428,
+        "std": 3.9114620685577393
+      },
+      "effective_rank_train_normal": {
+        "ncomp": 64,
+        "participation_ratio": 5.080874625691137,
+        "top1_var": 0.31227970123291016,
+        "top5_var": 0.8269763551652431,
+        "top10_var": 0.9357891008257866
+      }
+    },
+    {
+      "space": "u_target_minus_rn",
+      "shape": [
+        46564,
+        256
+      ],
+      "center_distance_auc": 0.3680007930317909,
+      "center_distance_ap": 0.07519931018813938,
+      "diag_mahal_auc": 0.3666820287914397,
+      "diag_mahal_ap": 0.07464900713060095,
+      "pca_residual_auc": 0.3338687205787333,
+      "pca_residual_ap": 0.06829067672463378,
+      "spearman_center_margin": 0.5836148659134807,
+      "train_normal_radius_mean": 7.325328350067139,
+      "train_normal_radius_std": 3.2392444610595703,
+      "test_normal_radius_mean": 7.99859619140625,
+      "test_normal_radius_std": 3.2833404541015625,
+      "test_anom_radius_mean": 6.302542209625244,
+      "test_anom_radius_std": 3.7343509197235107,
+      "anom_minus_normal_radius": -1.6960539817810059,
+      "cohen_d_anom_vs_normal": -0.48237006757608675,
+      "ks_train_normal_vs_test_normal": 0.10848704898058031,
+      "ks_test_normal_vs_anom": 0.2699350659391432,
+      "normal_pairwise_dist": {
+        "mean": 10.573860168457031,
+        "std": 3.6876018047332764
+      },
+      "test_normal_pairwise_dist": {
+        "mean": 11.674554824829102,
+        "std": 3.737180233001709
+      },
+      "test_anom_pairwise_dist": {
+        "mean": 9.101225852966309,
+        "std": 4.475402355194092
+      },
+      "effective_rank_train_normal": {
+        "ncomp": 64,
+        "participation_ratio": 10.183892113173068,
+        "top1_var": 0.24087059497833252,
+        "top5_var": 0.5607178807258606,
+        "top10_var": 0.7479469459503889
+      }
+    },
+    {
+      "space": "descriptor_z_pre_encoder",
+      "shape": [
+        46564,
+        287
+      ],
+      "center_distance_auc": 0.35924908418673085,
+      "center_distance_ap": 0.07021633772550544,
+      "diag_mahal_auc": 0.3489024106081847,
+      "diag_mahal_ap": 0.06954888016646811,
+      "pca_residual_auc": 0.25812791678210667,
+      "pca_residual_ap": 0.06150125462862398,
+      "spearman_center_margin": 0.19082318019974462,
+      "train_normal_radius_mean": 2.277533769607544,
+      "train_normal_radius_std": 7.703907012939453,
+      "test_normal_radius_mean": 3.3146934509277344,
+      "test_normal_radius_std": 32.95350646972656,
+      "test_anom_radius_mean": 1.260479211807251,
+      "test_anom_radius_std": 5.451478481292725,
+      "anom_minus_normal_radius": -2.0542142391204834,
+      "cohen_d_anom_vs_normal": -0.08697537662532381,
+      "ks_train_normal_vs_test_normal": 0.02124037148609348,
+      "ks_test_normal_vs_anom": 0.3562573050040086,
+      "normal_pairwise_dist": {
+        "mean": 3.4891419410705566,
+        "std": 7.342681884765625
+      },
+      "test_normal_pairwise_dist": {
+        "mean": 6.729964733123779,
+        "std": 41.09275817871094
+      },
+      "test_anom_pairwise_dist": {
+        "mean": 1.783218264579773,
+        "std": 6.676547050476074
+      },
+      "effective_rank_train_normal": {
+        "ncomp": 64,
+        "participation_ratio": 13.776019966500256,
+        "top1_var": 0.1331704705953598,
+        "top5_var": 0.5417862683534622,
+        "top10_var": 0.7197475731372833
+      }
+    }
+  ],
+  "time_sec": 154.11669778823853
+}

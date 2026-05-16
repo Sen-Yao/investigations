@@ -484,3 +484,182 @@ _Investigation tracking started by Nexus, updated 2026-05-14._
 
 **Important runtime note**:
 - Elliptic dry-run with current full pairwise reference selection exceeded 120s and was stopped. Need optimize/block reference selection or start formal probe on photo first, then port to Elliptic.
+
+**Update after optimization**:
+- Implemented blockwise top-k reference selection in `stage4_rho_normality_alignment_probe.py`, replacing full N×N anomaly-reference matrix materialization.
+- Commit: `1a6deac Optimize Stage4 reference selection with blockwise top-k` in `Sen-Yao/DualRefGAD`.
+- Elliptic dry-run now completes successfully: token shape `[46564, 21, 93]`, normal_train_count=2086, test_count=44236, elapsed `0:44`, max RSS ~2.8GB.
+- Elliptic 2-epoch smoke also completes successfully in `0:44` (job `exp_20260514_182312_stage4_rho_elliptic_s0_smoke2`).
+- Smoke metrics are not formal evidence (`num_epoch=2`), but confirm the bottleneck is resolved enough for real Elliptic probing.
+
+---
+
+## Day 9: 2026-05-16 (Stage4 Elliptic 5-seed Probe - FAILED)
+
+**Activity**: 在 HCCS-88 上运行 Stage4 Elliptic 5-seed probe，验证 RHO-style normality alignment 在真实大规模数据集上的效果。
+
+**Infrastructure**:
+- HCCS-88: 通过反向隧道 `senyao.cloud:8822` 访问
+- SSH alias 已添加到 `~/.ssh/config`: `Host hccs-88-tunnel`
+- experiment-runner 管理（修复了手动 SSH protocol deviation）
+- 数据集: `elliptic.mat` 从 HCCS-66 复制到 HCCS-88
+
+**Probe Config**:
+- Script: `scripts/diagnostics/stage4_rho_normality_alignment_probe.py`
+- Dataset: `elliptic` (46564 nodes, 93 features)
+- Seeds: 5 (s0-s4)
+- Epochs: 50
+- GT encoder: frozen (`train_encoder=false`)
+- Device: GPU 0-4 分配
+- Reference selection: `--use_approx_anom_refs --anom_approx_k 500`
+
+**Results (5-seed)**:
+
+| Seed | Stage4 AUC | Margin AUC | Delta AUC | Spearman(vs margin) |
+|------|------------|------------|-----------|---------------------|
+| 0 | 0.386 | 0.340 | +0.046 | 0.213 |
+| 1 | 0.416 | 0.381 | +0.035 | 0.403 |
+| 2 | 0.449 | 0.395 | +0.054 | 0.409 |
+| 3 | 0.439 | 0.484 | **-0.045** | 0.577 |
+| 4 | 0.360 | 0.487 | **-0.127** | 0.253 |
+| **Mean** | **0.410** | **0.413** | **-0.003** | **0.371** |
+
+**Critical Finding**:
+
+> **Stage4 在 Elliptic 上完全失败。**
+
+1. **AUC 0.41 ≈ random level**：远低于 photo smoke 的 0.57
+2. **Spearman 正相关 (0.37)**：而非 photo 的负相关 (-0.33)
+   - Stage4 score 和 margin **同向变化**，没有独立信号
+   - 这意味着 normality alignment score 只是 margin 的弱 proxy
+3. **Delta AUC 近乎零**：无法超越 margin baseline
+
+**与 Photo Smoke 的对比**:
+
+| Dataset | Stage4 AUC | Margin AUC | Spearman | Interpretation |
+|---------|------------|------------|----------|----------------|
+| photo (smoke) | 0.57 | 0.42 | **-0.33** | 有正交信号 ✅ |
+| elliptic (5-seed) | 0.41 | 0.41 | **+0.37** | 无独立信号 ❌ |
+
+**Root Cause Analysis**:
+
+**不是训练策略问题，而是数据集特性差异**：
+
+1. **异常节点分布差异**
+   - photo: 异常节点可能形成紧密簇（社区结构）
+   - elliptic: 异常节点分散（金融交易图，异常是时间局部性）
+   
+2. **Center deviation scoring 的假设**
+   - Stage4 假设：正常节点在 relation embedding 空间有紧凑的 center
+   - elliptic 的正常节点可能在 relation 空间**本身就分散**
+   - 因此 deviation from center 无法区分异常
+
+3. **Frozen encoder 的局限**
+   - GT encoder 在两个数据集上可能学到不同的 representation geometry
+   - elliptic 的 relation embedding 可能没有清晰的结构
+
+**训练策略问题的反驳**：
+
+- 如果是 epoch 不够 → photo 20 epochs 就有信号，elliptic 50 epochs 应该更好
+- 如果是 MLP head 太简单 → 应该两个数据集都失败
+- 实际情况是 photo 有信号、elliptic 无信号 → **问题不在训练策略**
+
+**Protocol Compliance**:
+- ✅ 使用 experiment-runner 管理（修复了 Day 8 的 deviation）
+- ✅ SSH config 已添加 alias（保护文件需手动确认）
+
+**Conclusion**:
+
+> RHO-style normality alignment **在 Elliptic 上不可行**。数据集特性（异常分散）导致 center deviation scoring 无效。建议放弃此路线，转向：
+> 1. R_a purity improvement（Target-conditioned reference selection）
+> 2. VecGAD-style residual（向量保留而非标量压缩）
+> 3. 数据集自适应（识别 center deviation scoring 的适用条件）
+
+**Next Decision Point**: 用户需决定后续方向
+
+---
+
+## Day 9-followup: 2026-05-16 (Elliptic Embedding Structure Diagnostic)
+
+**Activity**: 用户要求先诊断 Elliptic 的 embedding 结构，并明确提醒实验/诊断需使用 experiment-runner skill。已按 runner-registered probe pattern 执行。
+
+**Runner Compliance**:
+- Skill: `experiment-runner`
+- Job ID: `exp_20260516_154508_elliptic_embedding_structure_probe`
+- Profile/kind: `probe` / `probe`
+- Launch: Hermes-tracked background process, not manual SSH loop
+- Status: `finished`
+- Runtime: ~154s on HCCS-88 GPU 0
+
+**Artifacts**:
+- Script: `experiments/scripts/elliptic_embedding_structure_probe.py`
+- Config: `experiments/configs/elliptic_embedding_structure_probe.yaml`
+- Output: `experiments/outputs/elliptic_embedding_structure_probe.json`
+
+**Diagnostic Goal**:
+
+Test whether Stage4 failed because Elliptic frozen relation embeddings lack a compact normal center. The probe inspected multiple spaces:
+- descriptor before GT encoder
+- GT embedding `h`
+- normal/anomaly reference centroids `r_n`, `r_a`
+- relation vectors `u=h-r_n`, `d=r_a-r_n`
+- Stage4 inputs `z_n` / `z_d`
+- interaction features `[u,d,u*d,|u-d|]`
+
+For each space, it computed center-distance AUC/AP, diagonal Mahalanobis AUC, PCA residual AUC, normal radius statistics, Cohen's d, KS distances, and effective rank. Labels are diagnostic-only.
+
+**Key Results**:
+
+| Space | Center AUC | Spearman(center, margin) | Cohen d (anom-normal radius) | Interpretation |
+|-------|------------|--------------------------|------------------------------|----------------|
+| `rn_normal_ref_centroid` | **0.5267** | -0.232 | +0.011 | only near-random weak positive |
+| `d_ra_minus_rn` | 0.4953 | +0.303 | -0.050 | random |
+| `gt_emb_h` | 0.4646 | -0.084 | -0.245 | anomalies closer to center |
+| `interaction_u_d` | 0.4210 | +0.445 | -0.235 | anomalies closer |
+| `zd_feat_stage4_input` | 0.4105 | +0.324 | -0.317 | anomalies closer |
+| `zn_feat_stage4_input` | 0.3888 | +0.305 | -0.377 | anomalies much closer |
+| `ra_anom_ref_centroid` | 0.3800 | +0.319 | -0.450 | anomaly refs not useful |
+| `u_target_minus_rn` | 0.3680 | +0.584 | -0.482 | strongly inverted |
+| `descriptor_z_pre_encoder` | 0.3592 | +0.191 | -0.087 | inverted/raw descriptor weak |
+
+**Reference Autopsy**:
+
+| Metric | Value | Meaning |
+|--------|-------|---------|
+| Global anomaly-ref anomaly ratio | `0.0235` | selected R_a is mostly normal on Elliptic |
+| Anom-ref ratio AUC | `0.4448` | reference purity does not identify anomalies |
+| ga/rejection AUC | `0.3489` | the normal-rejection score is inverted |
+| Margin AUC | `0.3404` | margin is inverted in this run |
+| -Margin AUC | `0.6596` | flipping margin recovers moderate signal |
+
+**Core Finding**:
+
+> Elliptic does **not** satisfy the Stage4 normal-manifold assumption. In most relation spaces, anomalies are not farther from the normal center; they are often **closer** to it. The best center-distance AUC is only 0.5267 on `r_n`, while Stage4-relevant spaces (`z_n`, `z_d`, `u`, interaction) are below random.
+
+**Mechanistic Interpretation**:
+
+1. **Normal center is not the right object on Elliptic**
+   - Elliptic's normal transaction nodes are heterogeneous.
+   - Center distance measures broadness/typicality, but anomalies are not necessarily peripheral.
+
+2. **R_a bootstrap signal is inverted/weak**
+   - `ga/rejection AUC = 0.3489`, so high rejection selects the wrong side.
+   - Global R_a anomaly ratio is only `2.35%`, so anomaly reference sets are almost entirely normal.
+
+3. **Stage4 failure is structural, not merely training**
+   - The frozen spaces supplied to Stage4 already have inverted center-distance geometry.
+   - A better MLP head cannot fix that without changing the objective from "far from normal center = anomaly".
+
+4. **Potentially useful clue: sign inversion**
+   - `-margin AUC = 0.6596`, suggesting Elliptic may need an orientation/role diagnostic rather than center-deviation scoring.
+   - This aligns with the idea that Elliptic anomalies may be "too normal-looking / central suspicious transactions" rather than outlying graph/product nodes.
+
+**Decision Update**:
+
+- Drop Stage4 center-deviation as a main route for Elliptic.
+- Do not spend more time only increasing epochs or MLP capacity.
+- Next promising directions:
+  1. **Orientation/sign diagnostic**: why margin and rejection invert on Elliptic;
+  2. **R_a purity / reference selection repair**: current R_a is mostly normal;
+  3. **VecGAD-style residual vector route**: preserve residual direction instead of scalar rejection/center distance.
+
