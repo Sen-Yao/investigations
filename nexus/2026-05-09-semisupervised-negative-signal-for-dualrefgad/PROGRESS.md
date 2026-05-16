@@ -769,3 +769,35 @@ Do **not** solve this by globally flipping margin. Global flip gives moderate AU
 2. **Repair R_a selection**: avoid assuming high rejection = anomaly; include low-rejection suspicious regimes or bidirectional references.
 3. **VecGAD-style residual direction**: preserve residual vector direction and condition scoring on regime, rather than scalar rejection magnitude.
 
+---
+
+## Day 9-direction-notes: 2026-05-16 (Candidate Directions Logged)
+
+**Activity**: Consolidated the candidate directions after Stage4 failure, embedding-structure autopsy, and orientation/sign diagnostic.
+
+**Why the direction changed**:
+- Stage4/RHO-style center deviation is structurally mismatched to Elliptic: anomalies are often closer to normal centers in `u`, `z_n`, `z_d`, and interaction spaces.
+- Current `R_a` selection is not merely noisy; it is role-inverted because high rejection/high degree is often normal-side on Elliptic.
+- Route2 matrix signal exists, but scalar summaries such as mean/median are too unstable to serve as a final method.
+
+**Recorded candidate routes**:
+
+1. **Regime-conditioned orientation**
+   - Goal: infer whether a score should be anomaly-high or normal-high per structural regime, instead of using a global sign.
+   - Motivation: lowest-degree bins favor `-margin`, while other bins can differ.
+   - Risk: unsupervised orientation rules tried so far failed because train-normal/unlabeled shift is dominated by structural distribution shift.
+
+2. **R_a selection repair**
+   - Goal: stop assuming high rejection = anomaly-like reference.
+   - Candidate design: bidirectional reference pools (`R_high`, `R_low`) plus regime-conditioned scoring.
+   - Motivation: current anomaly references have global true anomaly ratio only `0.0235` and `ga/rejection` AUC `0.3489`.
+
+3. **Route2.5 / RRDM-style response distribution modeling**
+   - Goal: preserve and model the full `K_n × K_a` response pattern rather than reducing to scalar margin/mat_mean.
+   - Candidate design family: normal-only matrix autoencoder, denoising matrix autoencoder, regime-conditioned matrix autoencoder, bidirectional matrix channels.
+   - Motivation: response matrix contains extra information (`Spearman(mat_mean, margin)≈0.708`) but simple aggregation is unstable.
+   - Main risk: reconstruction error may again measure typicality rather than anomaly ranking, so it must start as a diagnostic probe.
+
+**Current priority for discussion**:
+> Seriously evaluate **方案 A: Normal-only Matrix Autoencoder** as the first Route2.5 diagnostic, because it is low-cost, normal-only, and directly tests whether matrix-pattern typicality contains usable signal beyond scalar summaries.
+
