@@ -60,3 +60,33 @@ All outputs were pulled back into `experiments/outputs/`; logs were pulled into 
 The multi-seed result does **not** support promoting Matrix AE as a stable method component. Although seed1 and seed3 individually cross the probe's PROMOTE rule, seed2 and seed4 drop below threshold and the 5-seed mean underperforms the strongest scalar matrix summaries by ΔAUC=-0.0385. The signal is seed-unstable and weaker than cheap scalar response-matrix statistics.
 
 Conclusion boundary: this is valid runner-registered exploratory evidence for Route2.5 diagnosis, not a full SOTA experiment. It argues against spending a full method sweep on this exact normal-only Matrix AE head without repairing the representation/regime problem first.
+
+## 2026-05-19 — Phase 1 AE instability audit completed
+
+Runner job: `exp_20260519_175609_route25_matrix_ae_phase1_instability_aud`  
+Remote: HCCS-25 GPU0  
+Status: finished, exit code 0  
+Runtime: 114.6s
+
+### Audit protocol
+
+- Reused the Route2.5 frozen-encoder response-matrix construction.
+- For each split seed `{0,1,2,3,4}`, reran AE training with AE init seeds `{0,1,2,3,4}`.
+- Audited latent dimensions `{8,16}`; labels remained diagnostic-only.
+- Output: `experiments/outputs/route25_matrix_ae_phase1_instability_audit.json`.
+
+### Phase 1 aggregate
+
+- Best repeat AE AUC: 0.6143 ± 0.0499
+- Best repeat AE ΔAUC vs scalar: -0.0357 ± 0.0571
+- Scalar AUC: 0.6500 ± 0.0100
+- Mean within-split AE AUC std: 0.0033 ± 0.0019
+- Promote-repeat splits: 2/5
+- Drop-repeat splits: 2/5
+- Decision: `SPLIT_REFERENCE_INSTABILITY_DOMINATES__DO_NOT_PROMOTE`
+
+### Interpretation
+
+Repeating AE initializations does **not** repair Route2.5 Matrix AE. Within a fixed split/reference construction, AE AUC is very stable (mean within-split std ≈ 0.0033), but across split seeds the best-repeat AE remains unstable and underperforms scalar summaries on average. This localizes the failure more to split/reference/representation regime instability than to random AE initialization noise.
+
+Conclusion boundary: Phase 1 strengthens the negative method decision for this exact Matrix AE head. It does not reject response-matrix features globally; it says the next repair should target reference distribution / orientation regime before adding learnable capacity.

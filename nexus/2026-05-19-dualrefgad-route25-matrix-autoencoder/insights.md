@@ -63,3 +63,34 @@ Practical decision:
 Conclusion boundary:
 
 This is a 5-seed probe on Elliptic under the Route2.5 Matrix AE protocol. It is strong enough to reject immediate promotion of this exact AE design, but not broad enough to reject all response-matrix-based anomaly scoring.
+
+## Phase 1 instability audit — AE initialization is not the main culprit
+
+Phase 1 reran AE training multiple times per fixed split/reference construction to test whether the seed instability above was simply caused by AE initialization noise.
+
+Per-split best repeat outcome:
+
+- seed0: best-repeat AE AUC/AP 0.6055 / 0.1147; scalar 0.6377 / 0.1405; ΔAUC -0.0322
+- seed1: best-repeat AE AUC/AP 0.6696 / 0.2855; scalar 0.6410 / 0.1785; ΔAUC +0.0286
+- seed2: best-repeat AE AUC/AP 0.5489 / 0.1010; scalar 0.6641 / 0.2374; ΔAUC -0.1151
+- seed3: best-repeat AE AUC/AP 0.6730 / 0.1706; scalar 0.6491 / 0.1537; ΔAUC +0.0239
+- seed4: best-repeat AE AUC/AP 0.5744 / 0.1149; scalar 0.6581 / 0.2386; ΔAUC -0.0837
+
+Aggregate:
+
+- best-repeat AE AUC: 0.6143 ± 0.0499
+- best-repeat AE ΔAUC vs scalar: -0.0357 ± 0.0571
+- scalar AUC: 0.6500 ± 0.0100
+- mean within-split AE AUC std: 0.0033 ± 0.0019
+- decision: `SPLIT_REFERENCE_INSTABILITY_DOMINATES__DO_NOT_PROMOTE`
+
+Interpretation:
+
+- Within a fixed split, repeated AE initializations are highly stable; the typical AE AUC fluctuation is only ~0.003.
+- Across splits, the success/failure pattern remains: seeds 1/3 can promote slightly, while seeds 2/4 fail badly.
+- Therefore the instability is not primarily “AE optimizer randomness”. It is more likely caused by split/reference/representation regime differences that change whether the response matrix contains usable normal-only structure.
+- This reinforces the practical decision: do **not** promote the Matrix AE head as-is; if Route2.5 continues, repair reference distribution/orientation regime before adding learnable capacity.
+
+Conclusion boundary:
+
+This Phase 1 audit is still a registered diagnostic, not a SOTA sweep. It is sufficient to reject “just rerun/tune the AE” as the next step, but not sufficient to reject all response-matrix scoring families.

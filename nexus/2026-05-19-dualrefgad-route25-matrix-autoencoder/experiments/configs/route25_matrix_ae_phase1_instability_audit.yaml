@@ -1,0 +1,25 @@
+program: experiments/scripts/route25_matrix_ae_phase1_instability_audit.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  split_seeds:
+    value: "0,1,2,3,4"
+  ae_seeds:
+    value: "0,1,2,3,4"
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  latent_dims:
+    value: "8,16"
+  num_epoch:
+    value: 80
+notes:
+  protocol: normal-only Matrix AE Phase 1 instability audit; repeated AE initializations per split; labels evaluation/autopsy only
+  objective: distinguish split/reference instability from AE initialization instability for Route2.5 Matrix AE
+  decision_rules: promote only if repeated AE initializations recover stable >0.02 AUC over scalar on most splits; otherwise do not promote as method component
