@@ -1,0 +1,13 @@
+program: experiments/scripts/route25_matrix_ae_phase2_learning_strategy_posthoc.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  source_phase1:
+    value: experiments/outputs/route25_matrix_ae_phase1_instability_audit.json
+  training_cost:
+    value: zero_new_training
+notes:
+  protocol: posthoc low-cost diagnostic over existing Phase-1 Matrix AE repeated-init output; no GPU/no retraining; labels diagnostic-only
+  objective: test whether cheap learning-strategy choices such as validation-loss selection or fixed latent dimension can repair Route2.5 Matrix AE instability
+  decision_rules: promote repair only if deployable selector has mean ΔAUC > 0.02 and at least 3/5 promote splits; oracle label-selected best is upper bound only

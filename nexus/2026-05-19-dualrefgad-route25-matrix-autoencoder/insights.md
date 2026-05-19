@@ -94,3 +94,28 @@ Interpretation:
 Conclusion boundary:
 
 This Phase 1 audit is still a registered diagnostic, not a SOTA sweep. It is sufficient to reject “just rerun/tune the AE” as the next step, but not sufficient to reject all response-matrix scoring families.
+
+## Phase 2 posthoc learning-strategy audit — cheap selection does not repair AE
+
+Phase 2 asked a narrower, lower-cost question after Phase 1: before spending compute on a new method sweep, can the Matrix AE failure be explained by a cheap learning-strategy issue such as latent choice or validation-loss selection?
+
+Key results:
+
+- Scalar baseline AUC: 0.6500 ± 0.0100
+- Oracle best-AUC AE selector: 0.6143 ± 0.0499; ΔAUC -0.0357 ± 0.0571
+- Validation-loss AE selector: 0.6099 ± 0.0488; ΔAUC -0.0401 ± 0.0556
+- Validation-loss selector promotes only 1/5 splits and drops 2/5 splits.
+- Fixed latent=8 and latent=16 both keep negative mean ΔAUC; neither gives a deployable repair.
+- Validation loss has near-zero rank correlation with AUC across repeated AE runs (`ρ≈-0.062`), so it is not a reliable unsupervised selector for this signal.
+
+Interpretation:
+
+- The apparent seed1/seed3 wins are not recoverable by a clean deployable selection rule.
+- Even a label-oracle selector remains below scalar summaries on average, so “try a better checkpoint selector” is not a promising route.
+- This strengthens the previous conclusion: do **not** promote the normal-only Matrix AE head as-is.
+- The next scientific move, if Route2.5 continues, should not be more AE tuning. It should diagnose or repair reference distribution, orientation regime, or representation construction.
+
+Conclusion boundary:
+
+This is a runner-registered posthoc diagnostic, not a formal SOTA sweep. It is strong enough to reject cheap AE learning-strategy repair for the tested Route2.5 design, but it does not reject all response-matrix methods.
+

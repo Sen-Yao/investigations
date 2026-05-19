@@ -1,0 +1,284 @@
+FINAL {
+  "status": "finished",
+  "probe": "route25_matrix_ae_phase2_learning_strategy_posthoc",
+  "protocol": "Posthoc low-cost audit using existing Phase-1 repeated-AE output; no new training; labels used for diagnosis only.",
+  "source_phase1": "/home/openclawvm/investigations/nexus/2026-05-19-dualrefgad-route25-matrix-autoencoder/experiments/outputs/route25_matrix_ae_phase1_instability_audit.json",
+  "split_summaries": [
+    {
+      "split_seed": 0,
+      "scalar_auc": 0.637688375530757,
+      "scalar_ap": 0.14053021141067026,
+      "scalar_name": "neg_mat_mean",
+      "best_auc_selector": {
+        "auc": 0.6054512910333267,
+        "ap": 0.11474978182095666,
+        "latent_dim": 16,
+        "ae_seed": 3,
+        "delta_auc_vs_scalar": -0.032237084497430235
+      },
+      "best_val_loss_selector": {
+        "auc": 0.5980853858635246,
+        "ap": 0.11274639986967855,
+        "latent_dim": 16,
+        "ae_seed": 0,
+        "delta_auc_vs_scalar": -0.03960298966723241,
+        "best_val_loss": 0.23590710759162903
+      },
+      "latent_best": {
+        "8": {
+          "auc": 0.5989827872213497,
+          "ap": 0.11223055282866784,
+          "delta_auc_vs_scalar": -0.03870558830940729,
+          "ae_seed": 2
+        },
+        "16": {
+          "auc": 0.6054512910333267,
+          "ap": 0.11474978182095666,
+          "delta_auc_vs_scalar": -0.032237084497430235,
+          "ae_seed": 3
+        }
+      },
+      "reference_diagnostics": {
+        "anom_ref_anom_ratio_diagnostic": 0.02593070827248518,
+        "normal_ref_anom_ratio_diagnostic": 0.0
+      }
+    },
+    {
+      "split_seed": 1,
+      "scalar_auc": 0.6410161149429148,
+      "scalar_ap": 0.17848097461332302,
+      "scalar_name": "mat_std",
+      "best_auc_selector": {
+        "auc": 0.669615215943691,
+        "ap": 0.2854867236171017,
+        "latent_dim": 16,
+        "ae_seed": 2,
+        "delta_auc_vs_scalar": 0.028599101000776228
+      },
+      "best_val_loss_selector": {
+        "auc": 0.658656134213687,
+        "ap": 0.26224915954878647,
+        "latent_dim": 16,
+        "ae_seed": 4,
+        "delta_auc_vs_scalar": 0.01764001927077219,
+        "best_val_loss": 0.2520339787006378
+      },
+      "latent_best": {
+        "8": {
+          "auc": 0.6692207808239512,
+          "ap": 0.2768196932292709,
+          "delta_auc_vs_scalar": 0.028204665881036428,
+          "ae_seed": 2
+        },
+        "16": {
+          "auc": 0.669615215943691,
+          "ap": 0.2854867236171017,
+          "delta_auc_vs_scalar": 0.028599101000776228,
+          "ae_seed": 2
+        }
+      },
+      "reference_diagnostics": {
+        "anom_ref_anom_ratio_diagnostic": 0.037753146207370504,
+        "normal_ref_anom_ratio_diagnostic": 0.0
+      }
+    },
+    {
+      "split_seed": 2,
+      "scalar_auc": 0.6640747798218781,
+      "scalar_ap": 0.23736644429460332,
+      "scalar_name": "neg_mat_mean",
+      "best_auc_selector": {
+        "auc": 0.5489285280589554,
+        "ap": 0.10103423299031594,
+        "latent_dim": 16,
+        "ae_seed": 4,
+        "delta_auc_vs_scalar": -0.1151462517629227
+      },
+      "best_val_loss_selector": {
+        "auc": 0.5455673363167909,
+        "ap": 0.10057159404542998,
+        "latent_dim": 16,
+        "ae_seed": 0,
+        "delta_auc_vs_scalar": -0.11850744350508724,
+        "best_val_loss": 0.2631084620952606
+      },
+      "latent_best": {
+        "8": {
+          "auc": 0.5456110896317178,
+          "ap": 0.09981843444174204,
+          "delta_auc_vs_scalar": -0.11846369019016034,
+          "ae_seed": 0
+        },
+        "16": {
+          "auc": 0.5489285280589554,
+          "ap": 0.10103423299031594,
+          "delta_auc_vs_scalar": -0.1151462517629227,
+          "ae_seed": 4
+        }
+      },
+      "reference_diagnostics": {
+        "anom_ref_anom_ratio_diagnostic": 0.021807351172579675,
+        "normal_ref_anom_ratio_diagnostic": 0.0
+      }
+    },
+    {
+      "split_seed": 3,
+      "scalar_auc": 0.649087792707751,
+      "scalar_ap": 0.15366620176271847,
+      "scalar_name": "neg_mat_mean",
+      "best_auc_selector": {
+        "auc": 0.6730165294676471,
+        "ap": 0.17055523149809107,
+        "latent_dim": 16,
+        "ae_seed": 2,
+        "delta_auc_vs_scalar": 0.023928736759896152
+      },
+      "best_val_loss_selector": {
+        "auc": 0.6729540783373977,
+        "ap": 0.1624067862109969,
+        "latent_dim": 16,
+        "ae_seed": 4,
+        "delta_auc_vs_scalar": 0.023866285629646766,
+        "best_val_loss": 0.2437794804573059
+      },
+      "latent_best": {
+        "8": {
+          "auc": 0.6683391922863335,
+          "ap": 0.1643840037344539,
+          "delta_auc_vs_scalar": 0.019251399578582573,
+          "ae_seed": 3
+        },
+        "16": {
+          "auc": 0.6730165294676471,
+          "ap": 0.17055523149809107,
+          "delta_auc_vs_scalar": 0.023928736759896152,
+          "ae_seed": 2
+        }
+      },
+      "reference_diagnostics": {
+        "anom_ref_anom_ratio_diagnostic": 0.016992741173438707,
+        "normal_ref_anom_ratio_diagnostic": 0.0
+      }
+    },
+    {
+      "split_seed": 4,
+      "scalar_auc": 0.6580752666011355,
+      "scalar_ap": 0.23859407509825414,
+      "scalar_name": "neg_mat_mean",
+      "best_auc_selector": {
+        "auc": 0.5743863477740864,
+        "ap": 0.11494346955751582,
+        "latent_dim": 16,
+        "ae_seed": 4,
+        "delta_auc_vs_scalar": -0.0836889188270491
+      },
+      "best_val_loss_selector": {
+        "auc": 0.5743863477740864,
+        "ap": 0.11494346955751582,
+        "latent_dim": 16,
+        "ae_seed": 4,
+        "delta_auc_vs_scalar": -0.0836889188270491,
+        "best_val_loss": 0.21016445755958557
+      },
+      "latent_best": {
+        "8": {
+          "auc": 0.564864595401068,
+          "ap": 0.1117299077506282,
+          "delta_auc_vs_scalar": -0.09321067120006743,
+          "ae_seed": 3
+        },
+        "16": {
+          "auc": 0.5743863477740864,
+          "ap": 0.11494346955751582,
+          "delta_auc_vs_scalar": -0.0836889188270491,
+          "ae_seed": 4
+        }
+      },
+      "reference_diagnostics": {
+        "anom_ref_anom_ratio_diagnostic": 0.030996316897173783,
+        "normal_ref_anom_ratio_diagnostic": 0.0
+      }
+    }
+  ],
+  "aggregate": {
+    "scalar_auc": {
+      "mean": 0.6499884659208873,
+      "std": 0.009964206967676574,
+      "min": 0.637688375530757,
+      "max": 0.6640747798218781
+    },
+    "oracle_best_auc_selector_auc": {
+      "mean": 0.6142795824555414,
+      "std": 0.049904369530870685,
+      "min": 0.5489285280589554,
+      "max": 0.6730165294676471
+    },
+    "oracle_best_auc_selector_delta_auc_vs_scalar": {
+      "mean": -0.03570888346534593,
+      "std": 0.057125467657873887,
+      "min": -0.1151462517629227,
+      "max": 0.028599101000776228
+    },
+    "val_loss_selector_auc": {
+      "mean": 0.6099298565010973,
+      "std": 0.04876980455073056,
+      "min": 0.5455673363167909,
+      "max": 0.6729540783373977
+    },
+    "val_loss_selector_delta_auc_vs_scalar": {
+      "mean": -0.04005860941978996,
+      "std": 0.05563012676154432,
+      "min": -0.11850744350508724,
+      "max": 0.023866285629646766
+    },
+    "val_loss_selector_promote_splits": 1,
+    "val_loss_selector_drop_splits": 2,
+    "by_latent": {
+      "8": {
+        "best_per_split_auc": {
+          "mean": 0.609403689072884,
+          "std": 0.05140680851510878,
+          "min": 0.5456110896317178,
+          "max": 0.6692207808239512
+        },
+        "best_per_split_delta_auc_vs_scalar": {
+          "mean": -0.04058477684800321,
+          "std": 0.05856704993355694,
+          "min": -0.11846369019016034,
+          "max": 0.028204665881036428
+        },
+        "promote_splits": 1,
+        "drop_splits": 2
+      },
+      "16": {
+        "best_per_split_auc": {
+          "mean": 0.6142795824555414,
+          "std": 0.049904369530870685,
+          "min": 0.5489285280589554,
+          "max": 0.6730165294676471
+        },
+        "best_per_split_delta_auc_vs_scalar": {
+          "mean": -0.03570888346534593,
+          "std": 0.057125467657873887,
+          "min": -0.1151462517629227,
+          "max": 0.028599101000776228
+        },
+        "promote_splits": 2,
+        "drop_splits": 2
+      }
+    },
+    "all_run_corr_val_loss_with_auc": -0.06180072028811524,
+    "all_run_corr_val_loss_with_delta_auc": 0.037406962785114045,
+    "all_run_corr_abs_degree_with_auc": 0.28902761104441776,
+    "all_run_corr_abs_margin_with_auc": 0.2882593037214886,
+    "all_run_corr_ref_anom_ratio_with_delta_auc": 0.20509003601440576
+  },
+  "interpretation": {
+    "val_loss_is_reliable_selector": false,
+    "fixed_latent_repair_candidates": [],
+    "oracle_best_auc_is_deployable": false,
+    "oracle_note": "Best-AUC selector uses labels and is only an upper bound/autopsy, not a deployable training strategy."
+  },
+  "decision": "NO_CHEAP_LEARNING_STRATEGY_REPAIR__KEEP_DROP_DECISION",
+  "time_sec": 0.0013349056243896484
+}

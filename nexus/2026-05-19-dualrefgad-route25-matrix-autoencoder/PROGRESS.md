@@ -90,3 +90,35 @@ Runtime: 114.6s
 Repeating AE initializations does **not** repair Route2.5 Matrix AE. Within a fixed split/reference construction, AE AUC is very stable (mean within-split std ≈ 0.0033), but across split seeds the best-repeat AE remains unstable and underperforms scalar summaries on average. This localizes the failure more to split/reference/representation regime instability than to random AE initialization noise.
 
 Conclusion boundary: Phase 1 strengthens the negative method decision for this exact Matrix AE head. It does not reject response-matrix features globally; it says the next repair should target reference distribution / orientation regime before adding learnable capacity.
+
+## 2026-05-19 — Phase 2 learning-strategy posthoc diagnostic completed
+
+Runner job: `exp_20260519_184959_route25_matrix_ae_phase2_learning_strate`  
+Execution: local zero-new-training posthoc probe over existing Phase-1 repeated-AE output  
+Status: finished, exit code 0  
+Output: `experiments/outputs/route25_matrix_ae_phase2_learning_strategy_posthoc.json`.
+
+### Audit protocol
+
+- No new model training and no GPU use; this is a low-cost posthoc diagnostic over Phase-1 results.
+- Tested whether cheap learning-strategy choices could repair Matrix AE instability:
+  - deployable validation-loss selector;
+  - fixed latent dimension `{8,16}`;
+  - label-oracle best-AUC selector as an upper-bound autopsy only.
+- Labels remain diagnostic-only; the label-oracle selector is explicitly **not deployable**.
+
+### Phase 2 aggregate
+
+- Scalar baseline AUC: 0.6500 ± 0.0100
+- Oracle best-AUC selector AE AUC: 0.6143 ± 0.0499; ΔAUC vs scalar: -0.0357 ± 0.0571
+- Validation-loss selector AE AUC: 0.6099 ± 0.0488; ΔAUC vs scalar: -0.0401 ± 0.0556
+- Validation-loss selector promote splits: 1/5; drop splits: 2/5
+- Fixed latent=8 ΔAUC: -0.0406 ± 0.0586; promote 1/5; drop 2/5
+- Fixed latent=16 ΔAUC: -0.0357 ± 0.0571; promote 2/5; drop 2/5
+- Spearman-like rank correlation of validation loss with AUC across all runs: -0.0618
+- Decision: `NO_CHEAP_LEARNING_STRATEGY_REPAIR__KEEP_DROP_DECISION`
+
+### Interpretation
+
+Cheap learning-strategy fixes do **not** repair Route2.5 Matrix AE. Even the label-oracle best-AUC selector remains below scalar response-matrix summaries on average, and the deployable validation-loss selector is worse. Fixed latent capacity also fails. The negative decision is therefore not just “we selected the wrong AE checkpoint/latent”; the failure remains localized to reference/orientation/representation regime rather than AE training policy.
+
