@@ -1,0 +1,27 @@
+program: experiments/scripts/route25_matrix_autoencoder_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seed:
+    value: 0
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  latent_dims:
+    value: "4,8,16"
+  num_epoch:
+    value: 80
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+notes:
+  protocol: normal-only Matrix AE diagnostic; labels evaluation/autopsy only
+  objective: test whether full DualRef response matrix contains anomaly signal beyond scalar margin summaries
+  decision_rules: PROMOTE if best AE AUC beats strongest scalar baseline by >0.02; DROP if best AE AUC <0.58; DROP_OR_REPAIR if degree/rejection correlated
