@@ -122,3 +122,28 @@ Output: `experiments/outputs/route25_matrix_ae_phase2_learning_strategy_posthoc.
 
 Cheap learning-strategy fixes do **not** repair Route2.5 Matrix AE. Even the label-oracle best-AUC selector remains below scalar response-matrix summaries on average, and the deployable validation-loss selector is worse. Fixed latent capacity also fails. The negative decision is therefore not just “we selected the wrong AE checkpoint/latent”; the failure remains localized to reference/orientation/representation regime rather than AE training policy.
 
+## 2026-05-19 — Response matrix information-mining pass completed
+
+This pass did not add new training. It cross-analyzed existing scalar routes and Phase-2 posthoc AE evidence to ask a narrower question: **which pieces of the response matrix remain valuable after repeated negative AE evidence?**
+
+### Cross-analysis summary
+
+- The most stable scalar families across the existing 5-seed Route2 matrix diagnostic are:
+  - `quantile` AUC=0.5134 ± 0.0485
+  - `trimmed` AUC=0.5052 ± 0.0517
+  - `mean` / `weighted` AUC=0.5022 ± 0.0547
+- `max_mean` is the clear loser: AUC=0.4434 ± 0.0434.
+- The useful signal is not “matrix summary in general”; it is the **sign/orientation family** and a mild **distribution-shape family**.
+- In Phase 2, the split-level scalar winners were dominated by `neg_mat_mean` (4/5 splits) with one `mat_std` split.
+- The AE posthoc results did **not** change the route decision: cheap repair by checkpoint/latent selection still fails.
+
+### Interpretation
+
+The response matrix still appears to contain information, but the useful part is more likely to live in:
+
+1. sign/orientation flips (`neg_mat_mean` vs `mat_mean`),
+2. distribution shape (`quantile`, `trimmed`, `mat_std`),
+3. regime partitioning (why some split/reference regimes promote while others drop).
+
+This means the next investigation should be about **what structure the matrix is encoding**, not about forcing the matrix through a larger AE.
+

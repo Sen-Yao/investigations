@@ -119,3 +119,47 @@ Conclusion boundary:
 
 This is a runner-registered posthoc diagnostic, not a formal SOTA sweep. It is strong enough to reject cheap AE learning-strategy repair for the tested Route2.5 design, but it does not reject all response-matrix methods.
 
+## Response-matrix information mining — what remains valuable
+
+After combining the earlier Route2 scalar diagnostic, the Phase 1 AE instability audit, and the Phase 2 learning-strategy posthoc audit, a clearer picture emerges:
+
+- The matrix is **not** useless.
+- The matrix is **not** best exploited by a normal-only AE head.
+- The value that remains is concentrated in a few specific families.
+
+### Families that still look useful
+
+1. **Sign / orientation family**
+   - `neg_mat_mean` often beats `mat_mean` on Elliptic.
+   - In the Phase 2 split-level results, `neg_mat_mean` is the scalar winner in 4/5 splits.
+   - This is a strong hint that the important signal is sensitive to orientation, not just magnitude.
+
+2. **Distribution-shape family**
+   - `quantile` is the best mean AUC among the older scalar aggregations.
+   - `trimmed` is slightly better than raw `mean` on average.
+   - `max_mean` is consistently bad, suggesting extreme-positive emphasis is not the right summary.
+   - So the matrix seems to carry signal in its middle / bulk distribution, not only in outliers.
+
+3. **Regime family**
+   - AE seed1/3 vs seed2/4 instability remains the dominant story.
+   - That points to reference/orientation regime sensitivity, not to a missing AE capacity trick.
+   - The useful next question is why certain split/reference regimes create better matrix signal than others.
+
+### What is probably not worth more time
+
+- Bigger AE.
+- All-node AE as a main route.
+- More checkpoint selection tricks.
+- More capacity without changing reference/orientation construction.
+
+### Practical conclusion
+
+If response matrix remains the core concept, the best next path is **mechanistic decomposition**:
+
+- sign/orientation analysis,
+- per-regime stratification,
+- reference-pool sensitivity,
+- and perhaps a lightweight regime-conditioned score or rank-based summary.
+
+That is the part still worth mining.
+
