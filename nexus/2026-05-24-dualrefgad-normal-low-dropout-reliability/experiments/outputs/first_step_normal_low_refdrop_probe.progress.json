@@ -1,0 +1,54 @@
+{
+  "status": "finished",
+  "done": 41,
+  "total": 41,
+  "current": "finished",
+  "start_time": 1779592470.21351,
+  "config": {
+    "dataset": "elliptic",
+    "device": 0,
+    "seed": 0,
+    "train_rate": 0.05,
+    "num_epoch": 40,
+    "descriptor_mode": "hop_attr_rwse",
+    "pn_estimator": "diag_gaussian",
+    "normal_k": 8,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "embedding_dim": 128,
+    "GT_ffn_dim": 128,
+    "GT_dropout": 0.2,
+    "GT_attention_dropout": 0.2,
+    "GT_num_heads": 2,
+    "GT_num_layers": 1,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "lambda_normal_low": 1.0,
+    "lambda_ref_drop": 1.0,
+    "ref_dropout_rate": 0.5,
+    "encode_batch_size": 2048,
+    "eval_every": 5,
+    "out": "investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/first_step_normal_low_refdrop_probe.json",
+    "progress_out": "investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/first_step_normal_low_refdrop_probe.progress.json",
+    "sample_rate": 0.15,
+    "pp_k": 8,
+    "ablation_mode": "none"
+  },
+  "loss_protocol": {
+    "train_losses": [
+      "L_normal-low",
+      "L_ref-drop"
+    ],
+    "uses_anomaly_labels_in_loss": false,
+    "uses_pseudo_anomalies": false
+  },
+  "elapsed_sec": 34.22368860244751,
+  "best_report_only": {
+    "val_auc": 0.5840474194813996,
+    "val_ap": 0.09965309817904394,
+    "test_auc": 0.5980610283287306,
+    "test_ap": 0.11030957066667942,
+    "epoch": 5
+  }
+}

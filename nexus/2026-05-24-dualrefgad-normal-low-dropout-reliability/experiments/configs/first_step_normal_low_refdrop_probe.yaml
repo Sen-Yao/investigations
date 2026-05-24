@@ -1,0 +1,56 @@
+program: experiments/scripts/first_step_normal_low_refdrop_probe.py
+method: diagnostic
+profile: probe
+project: DualRefGAD
+investigation: 2026-05-24-dualrefgad-normal-low-dropout-reliability
+parameters:
+  dataset:
+    value: elliptic
+  seed:
+    value: 0
+  train_rate:
+    value: 0.05
+  device:
+    value: 0
+  num_epoch:
+    value: 40
+  descriptor_mode:
+    value: hop_attr_rwse
+  pn_estimator:
+    value: diag_gaussian
+  normal_k:
+    value: 8
+  pp_k:
+    value: 8
+  GT_num_layers:
+    value: 1
+  embedding_dim:
+    value: 128
+  GT_ffn_dim:
+    value: 128
+  lambda_normal_low:
+    value: 1.0
+  lambda_ref_drop:
+    value: 1.0
+  ref_dropout_rate:
+    value: 0.5
+  eval_every:
+    value: 5
+  out:
+    value: investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/first_step_normal_low_refdrop_probe.json
+  progress_out:
+    value: investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/first_step_normal_low_refdrop_probe.progress.json
+notes:
+  protocol: >
+    Runner-registered no-training/first-step probe. Training loss contains only
+    L_normal-low over labeled normal nodes and L_ref-drop reference-subset consistency.
+    It does not use anomaly labels or pseudo anomalies in the objective.
+  excluded_from_training_loss:
+    - reference_ranking
+    - entropy_regularization
+    - anti_hub_regularization
+    - residual_guided_hard_negatives
+  diagnostics_only:
+    - validation/test AUC/AP report-only
+    - reference purity report-only
+    - score/reference-density correlation report-only
