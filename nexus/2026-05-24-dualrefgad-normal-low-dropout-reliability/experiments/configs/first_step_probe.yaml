@@ -1,0 +1,48 @@
+# First-step probe placeholder for DualRefGAD normal-low + reference-dropout reliability.
+# Status: design placeholder only; not yet run.
+# Hard rule: any real experiment must be launched through experiment-runner.
+
+investigation: 2026-05-24-dualrefgad-normal-low-dropout-reliability
+project: DualRefGAD
+status: planned
+created: 2026-05-24
+
+objective: >
+  Test whether the minimal two-loss setup, L_normal-low + L_ref-drop,
+  can train a shallow reliability gate that improves reference stability
+  without degenerating into a margin proxy.
+
+losses:
+  include:
+    - name: L_normal-low
+      purpose: Known normal nodes should receive low anomaly scores.
+      supervision: known normal labels only
+      uses_anomaly_labels: false
+      uses_pseudo_anomalies: false
+    - name: L_ref-drop
+      purpose: Enforce consistency under reasonable reference subset dropout.
+      supervision: self-consistency over reference subsets
+      learns: reference reliability
+  exclude_from_training:
+    - reference_ranking
+    - entropy_regularization
+    - anti_hub_regularization
+    - residual_guided_hard_negatives
+
+diagnostics_required:
+  - normal_score_suppression
+  - reference_dropout_sensitivity
+  - reliability_gate_vs_margin_correlation
+  - hub_or_reference_concentration
+  - validation_auc_for_reporting_only
+
+stop_rules:
+  - all_node_scores_collapse_low
+  - dropout_only_smooths_without_reducing_reference_sensitivity
+  - reliability_gate_degenerates_to_margin_proxy
+  - early_validation_catastrophic_degradation
+  - third_training_loss_needed_for_basic_stability
+
+notes:
+  - Do not claim this config has run until experiment-runner output exists.
+  - Do not add anomaly labels, pseudo-anomalies, hard negatives, ranking, entropy, or anti-hub terms to the first-step training objective.
