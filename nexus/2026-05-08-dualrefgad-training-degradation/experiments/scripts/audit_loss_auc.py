@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'outputs'
 OUT.mkdir(parents=True, exist_ok=True)
-SRC = Path('/home/openclawvm/.openclaw/workspace/agents/nexus/investigations/2026-05-08-dualrefgad-elliptic-seed3-failure-analysis/experiments/outputs/wandb_histories.json')
+SRC = Path('/home/openclawvm/investigations/nexus/2026-05-08-dualrefgad-elliptic-seed3-failure-analysis/experiments/outputs/wandb_histories.json')
 
 
 def isnum(x):

@@ -1,0 +1,118 @@
+
+============================================================
+Seed 0
+============================================================
+Training Counter({np.int64(0): 46, np.int64(1): 4})
+Test Counter({np.int64(0): 810, np.int64(1): 40})
+Training rate 1
+Token shape: torch.Size([1000, 21, 50])
+Encoding on CPU (batch_size=256)...
+Encoding time: 0.3s
+Building Response Matrix...
+Matrix build time: 0.2s
+Matrix shape: (1000, 4, 16)
+Margin baseline: AUC=0.5191, AP=0.0461
+  mean: AUC=0.5152, AP=0.0461, Spearman=0.8311, win=False
+  trimmed: AUC=0.5121, AP=0.0458, Spearman=0.8415, win=False
+  weighted: AUC=0.5152, AP=0.0461, Spearman=0.8311, win=False
+  quantile: AUC=0.5076, AP=0.0450, Spearman=0.8331, win=False
+  max_mean: AUC=0.4396, AP=0.0395, Spearman=0.8506, win=False
+Matrix stats: mean=0.5595, std=0.1865
+
+============================================================
+Seed 1
+============================================================
+Training Counter({np.int64(0): 47, np.int64(1): 3})
+Test Counter({np.int64(0): 810, np.int64(1): 40})
+Training rate 1
+Token shape: torch.Size([1000, 21, 50])
+Encoding on CPU (batch_size=256)...
+Encoding time: 0.2s
+Building Response Matrix...
+Matrix build time: 0.2s
+Matrix shape: (1000, 4, 16)
+Margin baseline: AUC=0.5087, AP=0.0454
+  mean: AUC=0.4539, AP=0.0406, Spearman=0.7761, win=False
+  trimmed: AUC=0.4675, AP=0.0416, Spearman=0.7785, win=False
+  weighted: AUC=0.4539, AP=0.0406, Spearman=0.7761, win=False
+  quantile: AUC=0.4946, AP=0.0438, Spearman=0.7659, win=False
+  max_mean: AUC=0.3967, AP=0.0363, Spearman=0.7677, win=False
+Matrix stats: mean=0.5692, std=0.1898
+
+============================================================
+Seed 2
+============================================================
+Training Counter({np.int64(0): 49, np.int64(1): 1})
+Test Counter({np.int64(0): 810, np.int64(1): 40})
+Training rate 1
+Token shape: torch.Size([1000, 21, 50])
+Encoding on CPU (batch_size=256)...
+Encoding time: 0.3s
+Building Response Matrix...
+Matrix build time: 0.2s
+Matrix shape: (1000, 4, 16)
+Margin baseline: AUC=0.5110, AP=0.0448
+  mean: AUC=0.5623, AP=0.0530, Spearman=0.8229, win=True
+  trimmed: AUC=0.5569, AP=0.0544, Spearman=0.8265, win=True
+  weighted: AUC=0.5623, AP=0.0530, Spearman=0.8229, win=True
+  quantile: AUC=0.5533, AP=0.0544, Spearman=0.8120, win=True
+  max_mean: AUC=0.5088, AP=0.0450, Spearman=0.8019, win=False
+Matrix stats: mean=0.5606, std=0.1876
+
+============================================================
+Seed 3
+============================================================
+Training Counter({np.int64(0): 47, np.int64(1): 3})
+Test Counter({np.int64(0): 810, np.int64(1): 40})
+Training rate 1
+Token shape: torch.Size([1000, 21, 50])
+Encoding on CPU (batch_size=256)...
+Encoding time: 0.3s
+Building Response Matrix...
+Matrix build time: 0.2s
+Matrix shape: (1000, 4, 16)
+Margin baseline: AUC=0.4881, AP=0.0438
+  mean: AUC=0.4244, AP=0.0391, Spearman=0.7266, win=False
+  trimmed: AUC=0.4276, AP=0.0394, Spearman=0.7294, win=False
+  weighted: AUC=0.4244, AP=0.0391, Spearman=0.7266, win=False
+  quantile: AUC=0.4362, AP=0.0396, Spearman=0.7192, win=False
+  max_mean: AUC=0.3984, AP=0.0367, Spearman=0.7197, win=False
+Matrix stats: mean=0.5630, std=0.1896
+
+============================================================
+Seed 4
+============================================================
+Training Counter({np.int64(0): 48, np.int64(1): 2})
+Test Counter({np.int64(0): 806, np.int64(1): 44})
+Training rate 1
+Token shape: torch.Size([1000, 21, 50])
+Encoding on CPU (batch_size=256)...
+Encoding time: 0.2s
+Building Response Matrix...
+Matrix build time: 0.2s
+Matrix shape: (1000, 4, 16)
+Margin baseline: AUC=0.4994, AP=0.0483
+  mean: AUC=0.5552, AP=0.0622, Spearman=0.8095, win=True
+  trimmed: AUC=0.5620, AP=0.0593, Spearman=0.8119, win=True
+  weighted: AUC=0.5552, AP=0.0622, Spearman=0.8095, win=True
+  quantile: AUC=0.5753, AP=0.0595, Spearman=0.8031, win=True
+  max_mean: AUC=0.4736, AP=0.0467, Spearman=0.7980, win=False
+Matrix stats: mean=0.5740, std=0.1862
+
+============================================================
+SUMMARY (5 seeds)
+============================================================
+margin: AUC=0.5052±0.0106, wins=0/-
+mean: AUC=0.5022±0.0547, wins=2/5
+trimmed: AUC=0.5052±0.0517, wins=2/5
+weighted: AUC=0.5022±0.0547, wins=2/5
+quantile: AUC=0.5134±0.0485, wins=2/5
+max_mean: AUC=0.4434±0.0434, wins=0/5
+
+Results saved to: /home/openclawvm/investigations/nexus/2026-05-09-semisupervised-negative-signal-for-dualrefgad/experiments/outputs/route2_matrix_summary_diagnostic.json
+
+============================================================
+DECISION
+============================================================
+⚠️ 方案 C 不稳定：mean wins=2/5
+   建议进入方案 A 诊断（RHO-style normality alignment）

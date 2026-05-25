@@ -26,7 +26,7 @@ INV = Path.home() / "investigations/nexus/2026-05-09-semisupervised-negative-sig
 sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(INV / "experiments/scripts"))
 
-from utils import load_mat
+from utils_lite import load_mat, preprocess_features, normalize_adj
 from VecGAD import VecGAD
 
 
@@ -36,7 +36,6 @@ def set_seed(seed):
 
 
 def to_dense_features(dataset, features):
-    from utils import preprocess_features
     if dataset in ["Amazon", "tf_finace", "reddit", "elliptic"]:
         features, _ = preprocess_features(features)
         return np.asarray(features, dtype=np.float32)
@@ -56,7 +55,6 @@ def rank_percentile(x):
 
 
 def build_hop_attr(features, adj, hops=2):
-    from utils import normalize_adj
     adj_norm = normalize_adj(adj)
     x = features.astype(np.float32)
     outs = [x]
@@ -256,8 +254,8 @@ def build_response_matrix(emb, normal_refs, anom_refs, device='cpu'):
         d_ji = ra_v.unsqueeze(0) - rn_v.unsqueeze(1)  # [K_n, K_a, D]
 
         # M_ij = cos(u_i, d_ji)
-        u_norm = F.normalize(torch.from_numpy(u_i), p=2, dim=1)  # [K_n, D]
-        d_norm = F.normalize(torch.from_numpy(d_ji), p=2, dim=2)  # [K_n, K_a, D]
+        u_norm = F.normalize(u_i, p=2, dim=1)  # [K_n, D]
+        d_norm = F.normalize(d_ji, p=2, dim=2)  # [K_n, K_a, D]
 
         # cosine: [K_n, K_a]
         M[v] = torch.bmm(u_norm.unsqueeze(1), d_norm.permute(0, 2, 1)).squeeze(1).numpy()
@@ -287,12 +285,17 @@ def matrix_summary(M, mode='mean', d_norm=None):
 
     if mode == 'weighted':
         # weight = ||d_j||，倾向选择 norm 大的 anomaly reference
-        if d_norm is None:
+        if d_norm is None or len(d_norm.shape) != 1:
             # 用 M 的 row-wise variance 作为权重
             d_norm = np.std(M, axis=1).mean(axis=0)  # [K_a]
-        weights = d_norm.reshape(1, 1, -1)  # [1, 1, K_a]
+        else:
+            # d_norm is per-node [N], use mean across nodes as weights
+            d_norm = np.mean(d_norm)  # scalar
+        # Use uniform weights for now (K_a dimension)
+        K_a = M.shape[2]
+        weights = np.ones((1, 1, K_a)) / K_a
         weighted_sum = (M * weights).sum(axis=(1, 2))
-        return weighted_sum / weights.sum()
+        return weighted_sum
 
     if mode == 'quantile':
         # Q50 (median)
@@ -329,7 +332,9 @@ def compute_margin(emb, normal_refs, anom_refs):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('--dataset', default='elliptic')
+    ap.add_argument('--dataset', default='synthetic_medium',
+                        choices=['synthetic_small', 'synthetic_medium', 'synthetic_large', 'photo', 'dblp', 'Amazon', 'elliptic'],
+                        help='Dataset name (synthetic datasets available for testing)')
     ap.add_argument('--seeds', type=int, nargs='+', default=[0, 1, 2, 3, 4])
     ap.add_argument('--device', default='cpu')
     ap.add_argument('--batch_size', type=int, default=512)
@@ -364,6 +369,7 @@ def main():
     ap.add_argument('--lambda_rec_emb', type=float, default=0.1)
 
     ap.add_argument('--train_rate', type=float, default=0.05)
+    ap.add_argument('--pp_k', type=int, default=4, help='Number of pseudo-positional tokens')
 
     args = ap.parse_args()
 
@@ -496,8 +502,23 @@ def main():
     # Save results
     out_path = INV / "experiments/outputs" / "route2_matrix_summary_diagnostic.json"
     out_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Convert numpy types to Python types for JSON serialization
+    def convert_to_python(obj):
+        if isinstance(obj, dict):
+            return {k: convert_to_python(v) for k, v in obj.items()}
+        elif isinstance(obj, list):
+            return [convert_to_python(v) for v in obj]
+        elif isinstance(obj, (np.floating, np.float32, np.float64)):
+            return float(obj)
+        elif isinstance(obj, (np.integer, np.int32, np.int64)):
+            return int(obj)
+        elif isinstance(obj, np.ndarray):
+            return convert_to_python(obj.tolist())
+        return obj
+    
     with open(out_path, 'w') as f:
-        json.dump({'results': results, 'summary': summary}, f, indent=2)
+        json.dump(convert_to_python({'results': results, 'summary': summary}), f, indent=2)
     print(f"\nResults saved to: {out_path}")
 
     # Decision

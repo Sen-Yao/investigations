@@ -1,0 +1,25 @@
+program: scripts/diagnostics/route25_matrix_ae_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seed:
+    value: 0
+  device:
+    value: 0
+  latent_dims:
+    value: "4,8,16"
+  ae_epochs:
+    value: 150
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  use_approx_anom_refs:
+    value: true
+  anom_approx_k:
+    value: 500
+notes:
+  protocol: no-training/light-training normal-only Matrix Autoencoder diagnostic; labels diagnostic-only for metrics
+  objective: test whether full response matrix reconstruction error improves over Elliptic -margin baseline
+  success_rule: AUC > neg_margin + 0.02 OR comparable AUC with low Spearman to margin
