@@ -1,0 +1,42 @@
+program: experiments/scripts/cleg3_oracle_to_proxy_candidate_signal_map.py
+method: diagnostic
+parameters:
+  project_root:
+    value: /home/linziyao/DualRefGAD
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  ln_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+  out:
+    value: investigations/2026-05-25-dualrefgad-reliability-heterogeneous-proxy-map/experiments/outputs/cleg3_oracle_to_proxy_candidate_signal_map.json
+  progress_out:
+    value: investigations/2026-05-25-dualrefgad-reliability-heterogeneous-proxy-map/experiments/outputs/cleg3_oracle_to_proxy_candidate_signal_map.progress.json
+notes:
+  protocol: runner-registered bundled multi-seed pure probe; frozen C-LEG3 / old_exact response regime; no training
+  critical_fix: force data_split_seed=seed and sequential seed execution to prevent load_mat global random.shuffle cross-thread drift
+  label_boundary: anomaly labels diagnostic-only for AUC/AP and oracle top-K boundary categories; no training, no early stopping, no threshold selection
+  objective: map oracle boundary categories to no-label proxy features and test row/column reliability plus heterogeneous-support no-training readouts
+  controlled_variables: fixed old_exact_080_regime, normal_k=4, anom_k=16, train_rate=0.05, val_rate=0.0
+  continuation_gate: proceed to shallow reliability gate only if a candidate is near/above mat_mean or improves lost-anomaly/removed-FP tradeoff without being a margin/mat_mean/degree/rejection shortcut
