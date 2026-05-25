@@ -1,0 +1,32 @@
+program: /home/openclawvm/investigations/nexus/2026-05-19-dualrefgad-route25-matrix-autoencoder/experiments/scripts/route25_leg3_response_matrix_decomposition_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+notes:
+  protocol: "No-training runner-registered pure probe. Frozen VecGAD encoder. C-LEG3 / old_exact_080_regime fixed. Labels diagnostic-only for AUC/AP/autopsy."
+  objective: "Step-1 gate for constraint-calibrated reference relation: decompose scalar/row/column/entry/PCA-residual families before launching pseudo-anomaly training R1-R3."
+  expected_output: "experiments/outputs/step1_cleg3_decomposition_gate.json"
+  next_gate: "Launch R1-R3 only if R0/R4 leave complementary learnable space beyond margin/mat_mean."

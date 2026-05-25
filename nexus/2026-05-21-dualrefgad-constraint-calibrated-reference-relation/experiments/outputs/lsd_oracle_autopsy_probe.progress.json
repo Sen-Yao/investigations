@@ -1,0 +1,24 @@
+{
+  "status": "finished",
+  "probe": "lsd_oracle_autopsy_probe",
+  "done": 5,
+  "total": 5,
+  "devices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "current": null,
+  "partial": {
+    "old_exact_080_regime": {
+      "done": 5
+    }
+  },
+  "errors": [],
+  "elapsed_sec": 188.15166902542114
+}

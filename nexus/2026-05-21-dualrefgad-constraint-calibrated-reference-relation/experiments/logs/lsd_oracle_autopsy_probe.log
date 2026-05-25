@@ -1,0 +1,41 @@
+[lsd_oracle_autopsy_probe] start 2026-05-25T17:33:47+08:00 host=VM-2-25-ubuntu
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 0, "device": 0}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 1, "device": 1}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 2, "device": 2}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 3, "device": 3}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 4, "device": 4}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:1"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:4"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:3"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:2"}
+Training Counter({0: 2108, 1: 220})
+Training Counter({0: 2093, 1: 235})
+Training Counter({0: 2104, 1: 224})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+Test Counter({0: 39926, 1: 4310})
+Training rate 1
+Test Counter({0: 39915, 1: 4321})
+Training rate 1
+Training Counter({0: 2111, 1: 217})
+Test Counter({0: 39908, 1: 4328})
+Training rate 1
+Training Counter({0: 2107, 1: 221})
+Test Counter({0: 39912, 1: 4324})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 2, "mat_auc": 0.8029559368247524, "margin_auc": 0.792813257923909, "rescued": 300, "removed_fp": 1321}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 1, "mat_auc": 0.8151660618548027, "margin_auc": 0.79180177644187, "rescued": 397, "removed_fp": 1389}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 0, "mat_auc": 0.729804337772932, "margin_auc": 0.7709710608995188, "rescued": 337, "removed_fp": 1541}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 3, "mat_auc": 0.7721144328577448, "margin_auc": 0.7877090874206326, "rescued": 330, "removed_fp": 1337}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 4, "mat_auc": 0.8022596443733144, "margin_auc": 0.7698723041496738, "rescued": 286, "removed_fp": 1323}
+{"stage": "probe_done", "status": "finished", "done": 5, "total": 5, "out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/lsd_oracle_autopsy_probe.json"}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+[lsd_oracle_autopsy_probe] done 2026-05-25T17:36:58+08:00

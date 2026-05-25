@@ -1,0 +1,32 @@
+program: experiments/scripts/route25_robust_matrix_readout_gate.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+notes:
+  protocol: no-training C-LEG3 robust matrix readout gate; labels diagnostic-only for AUC/AP and top-K autopsy
+  objective: test whether predefined label-free matrix readout candidates can beat mat_mean while reducing margin false positives without losing heterogeneous true anomalies
+  controlled_variables: fixed C-LEG3 reference construction, fixed GT-3 frozen encoder, same elliptic split/seeds, no R1-R3 pseudo-anomaly training
+  candidate_readouts: trim/winsor/quantile/top-tail/row-column/soft heterogeneity-gated matrix summaries

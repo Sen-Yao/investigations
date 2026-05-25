@@ -1,0 +1,33 @@
+program: experiments/scripts/route25_mat_mean_margin_failure_autopsy.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+  sample_nodes_per_category:
+    value: 12
+notes:
+  protocol: no-training C-LEG3 mat_mean-vs-margin failure autopsy; labels diagnostic-only for AUC/AP and top-K category explanation
+  objective: explain which margin mistakes are rescued by mat_mean and which mat_mean mistakes are newly introduced, with reference purity and row/column distribution diagnostics
+  topk_definition: K equals number of test anomalies per seed; compare top-K membership under margin and mat_mean

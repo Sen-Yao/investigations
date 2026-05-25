@@ -1,0 +1,137 @@
+{
+  "status": "finished",
+  "probe": "cleg3_strict_reproduction_audit",
+  "done": 5,
+  "total": 5,
+  "variants": [
+    "old_exact_080_regime"
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "sequential": true,
+  "partial": {
+    "old_exact_080_regime": {
+      "n_rows": 5,
+      "margin_auc": {
+        "mean": 0.7951917015406157,
+        "std": 0.006377938162227893,
+        "min": 0.7840437246132672,
+        "max": 0.8030344163161879
+      },
+      "margin_ap": {
+        "mean": 0.5162298512535065,
+        "std": 0.019793736361683332,
+        "min": 0.4904194776891711,
+        "max": 0.5509362475768784
+      },
+      "mat_mean_auc": {
+        "mean": 0.8008572590984041,
+        "std": 0.018186149300815208,
+        "min": 0.771112253448966,
+        "max": 0.8199880192070963
+      },
+      "mat_mean_ap": {
+        "mean": 0.5334971974124912,
+        "std": 0.05549375976166187,
+        "min": 0.4407004237069845,
+        "max": 0.5963290393663079
+      },
+      "mat_minus_margin_auc_delta": {
+        "mean": 0.0056655575577884585,
+        "std": 0.020099905634971875,
+        "min": -0.02795000534388059,
+        "max": 0.026188901850990765
+      },
+      "mat_mean_formula_max_abs_diff": {
+        "mean": 0.0,
+        "std": 0.0,
+        "min": 0.0,
+        "max": 0.0
+      },
+      "split_fingerprints": {
+        "0": {
+          "idx_train_sha1": "0e4e7b08d516ed4cc96db8f03bf6b3adaf8f99e9",
+          "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "idx_test_sha1": "eed1ab04017c810764aaf77782d2a3b4259d9372",
+          "normal_for_train_sha1": "3bf2f1f94758795b73bcb7804e00025bdf52d781",
+          "train_count": 2328,
+          "val_count": 0,
+          "test_count": 44236,
+          "train_anom_count": 242,
+          "train_normal_count": 2086,
+          "test_anom_count": 4303,
+          "test_normal_count": 39933,
+          "normal_for_train_count": 2086,
+          "normal_for_train_anom_count": 0
+        },
+        "1": {
+          "idx_train_sha1": "9c468b5a2470d15798e35c1e94b897cf7fcd9390",
+          "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "idx_test_sha1": "947a7bb5b359a1e171183c52d01fa68f4e6b6e69",
+          "normal_for_train_sha1": "e2ed828355faa5c69dec19dcaeb6d651de893777",
+          "train_count": 2328,
+          "val_count": 0,
+          "test_count": 44236,
+          "train_anom_count": 231,
+          "train_normal_count": 2097,
+          "test_anom_count": 4314,
+          "test_normal_count": 39922,
+          "normal_for_train_count": 2097,
+          "normal_for_train_anom_count": 0
+        },
+        "2": {
+          "idx_train_sha1": "b71507bfbcf4e2935f685097526d405e3e83f95f",
+          "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "idx_test_sha1": "e35985efb9a352de75c88381f2add1f152011354",
+          "normal_for_train_sha1": "743d13dbc53ca6d054cdf8c914cb67f9c678e312",
+          "train_count": 2328,
+          "val_count": 0,
+          "test_count": 44236,
+          "train_anom_count": 237,
+          "train_normal_count": 2091,
+          "test_anom_count": 4308,
+          "test_normal_count": 39928,
+          "normal_for_train_count": 2091,
+          "normal_for_train_anom_count": 0
+        },
+        "3": {
+          "idx_train_sha1": "19bc1cb3be2695016abdfffd1b927b297d87e4ec",
+          "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "idx_test_sha1": "fa82ecb7ad73fb9b568a91282c1d6bcdae3a3023",
+          "normal_for_train_sha1": "6d2e59c7f03c6a83e60e81aa86b87c51a836e33b",
+          "train_count": 2328,
+          "val_count": 0,
+          "test_count": 44236,
+          "train_anom_count": 229,
+          "train_normal_count": 2099,
+          "test_anom_count": 4316,
+          "test_normal_count": 39920,
+          "normal_for_train_count": 2099,
+          "normal_for_train_anom_count": 0
+        },
+        "4": {
+          "idx_train_sha1": "6d5f6f0e02a3aa02eb35609b9ee83bd53bcd33b4",
+          "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+          "idx_test_sha1": "1120d3dd90fd49ee5b1d8070654a72deef5fb45e",
+          "normal_for_train_sha1": "997fb8d21b28780bba77de4584e0fdb5d5a2c69d",
+          "train_count": 2328,
+          "val_count": 0,
+          "test_count": 44236,
+          "train_anom_count": 220,
+          "train_normal_count": 2108,
+          "test_anom_count": 4325,
+          "test_normal_count": 39911,
+          "normal_for_train_count": 2108,
+          "normal_for_train_anom_count": 0
+        }
+      }
+    }
+  },
+  "errors": [],
+  "elapsed_sec": 353.7060327529907
+}

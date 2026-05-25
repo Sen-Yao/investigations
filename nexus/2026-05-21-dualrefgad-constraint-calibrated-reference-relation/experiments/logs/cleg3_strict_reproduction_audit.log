@@ -1,0 +1,47 @@
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0", "data_split_seed": 0}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "seed": 0, "margin_auc": 0.7937991173561055, "mat_mean_auc": 0.8199880192070963, "split": {"idx_train_sha1": "0e4e7b08d516ed4cc96db8f03bf6b3adaf8f99e9", "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709", "idx_test_sha1": "eed1ab04017c810764aaf77782d2a3b4259d9372", "normal_for_train_sha1": "3bf2f1f94758795b73bcb7804e00025bdf52d781", "train_count": 2328, "val_count": 0, "test_count": 44236, "train_anom_count": 242, "train_normal_count": 2086, "test_anom_count": 4303, "test_normal_count": 39933, "normal_for_train_count": 2086, "normal_for_train_anom_count": 0}}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:0", "data_split_seed": 1}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "seed_done", "seed": 1, "margin_auc": 0.7960189906246713, "mat_mean_auc": 0.7901378654997552, "split": {"idx_train_sha1": "9c468b5a2470d15798e35c1e94b897cf7fcd9390", "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709", "idx_test_sha1": "947a7bb5b359a1e171183c52d01fa68f4e6b6e69", "normal_for_train_sha1": "e2ed828355faa5c69dec19dcaeb6d651de893777", "train_count": 2328, "val_count": 0, "test_count": 44236, "train_anom_count": 231, "train_normal_count": 2097, "test_anom_count": 4314, "test_normal_count": 39922, "normal_for_train_count": 2097, "normal_for_train_anom_count": 0}}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:0", "data_split_seed": 2}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "seed": 2, "margin_auc": 0.7990622587928465, "mat_mean_auc": 0.771112253448966, "split": {"idx_train_sha1": "b71507bfbcf4e2935f685097526d405e3e83f95f", "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709", "idx_test_sha1": "e35985efb9a352de75c88381f2add1f152011354", "normal_for_train_sha1": "743d13dbc53ca6d054cdf8c914cb67f9c678e312", "train_count": 2328, "val_count": 0, "test_count": 44236, "train_anom_count": 237, "train_normal_count": 2091, "test_anom_count": 4308, "test_normal_count": 39928, "normal_for_train_count": 2091, "normal_for_train_anom_count": 0}}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:0", "data_split_seed": 3}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "seed": 3, "margin_auc": 0.7840437246132672, "mat_mean_auc": 0.8060258375880585, "split": {"idx_train_sha1": "19bc1cb3be2695016abdfffd1b927b297d87e4ec", "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709", "idx_test_sha1": "fa82ecb7ad73fb9b568a91282c1d6bcdae3a3023", "normal_for_train_sha1": "6d2e59c7f03c6a83e60e81aa86b87c51a836e33b", "train_count": 2328, "val_count": 0, "test_count": 44236, "train_anom_count": 229, "train_normal_count": 2099, "test_anom_count": 4316, "test_normal_count": 39920, "normal_for_train_count": 2099, "normal_for_train_anom_count": 0}}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:0", "data_split_seed": 4}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "seed": 4, "margin_auc": 0.8030344163161879, "mat_mean_auc": 0.8170223197481449, "split": {"idx_train_sha1": "6d5f6f0e02a3aa02eb35609b9ee83bd53bcd33b4", "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709", "idx_test_sha1": "1120d3dd90fd49ee5b1d8070654a72deef5fb45e", "normal_for_train_sha1": "997fb8d21b28780bba77de4584e0fdb5d5a2c69d", "train_count": 2328, "val_count": 0, "test_count": 44236, "train_anom_count": 220, "train_normal_count": 2108, "test_anom_count": 4325, "test_normal_count": 39911, "normal_for_train_count": 2108, "normal_for_train_anom_count": 0}}
+{"stage": "probe_done", "status": "finished", "done": 5, "total": 5, "out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.json"}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+STRICT_REPRO_JSON_OK finished 1

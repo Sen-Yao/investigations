@@ -1,0 +1,35 @@
+program: experiments/scripts/cleg3_strict_reproduction_audit.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  ln_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+notes:
+  protocol: runner-registered strict sequential C-LEG3 reproduction audit; frozen old_exact_080_regime; no training
+  critical_fix: force data_split_seed=seed and sequential seed execution to prevent load_mat global random.shuffle cross-thread drift
+  formula_boundary: margin from response_matrix_from_embeddings; mat_mean = mat.mean(axis=(1,2)); direct equality check saved per seed
+  label_boundary: anomaly labels diagnostic-only for AUC/AP and reference-purity audit
+  expected_output: experiments/outputs/cleg3_strict_reproduction_audit.json

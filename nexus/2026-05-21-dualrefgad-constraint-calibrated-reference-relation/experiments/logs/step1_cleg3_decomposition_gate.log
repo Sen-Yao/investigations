@@ -1,0 +1,143 @@
+[START] 2026-05-22T13:58:06+08:00 host=VM-2-25-ubuntu job=exp_20260521_205308_step1_cleg3_decomposition_gate_prepared
+[GPU]
+0, 0, 11011, 0
+1, 0, 11011, 0
+2, 0, 11011, 0
+3, 0, 11011, 0
+4, 0, 11011, 0
+5, 0, 11011, 0
+6, 0, 11011, 0
+7, 0, 11011, 0
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 0, "device": 0}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 1, "device": 1}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 2, "device": 2}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 3, "device": 3}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 4, "device": 4}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:1"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:4"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:3"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:2"}
+Training Counter({0: 2096, 1: 232})
+Training Counter({0: 2103, 1: 225})
+Test Counter({0: 39923, 1: 4313})
+Training rate 1
+Training Counter({0: 2101, 1: 227})
+Test Counter({0: 39916, 1: 4320})
+Training rate 1
+Test Counter({0: 39918, 1: 4318})
+Training rate 1
+Training Counter({0: 2111, 1: 217})
+Test Counter({0: 39908, 1: 4328})
+Training rate 1
+Training Counter({0: 2104, 1: 224})
+Test Counter({0: 39915, 1: 4321})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 3, "best": "mat_mean", "auc": 0.8197727385012114}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 3, "device": 3, "best": "mat_mean", "auc": 0.8197727385012114}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 0, "best": "mat_mean", "auc": 0.8157518129859589}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 0, "device": 0, "best": "mat_mean", "auc": 0.8157518129859589}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 2, "best": "mat_mean", "auc": 0.8213515508034469}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 2, "device": 2, "best": "mat_mean", "auc": 0.8213515508034469}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 4, "best": "mat_mean", "auc": 0.8204968043785941}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 4, "device": 4, "best": "mat_mean", "auc": 0.8204968043785941}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 1, "best": "mat_mean", "auc": 0.8068147826871616}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 1, "device": 1, "best": "mat_mean", "auc": 0.8068147826871616}
+FINAL {
+  "status": "finished",
+  "results_summary": [
+    {
+      "variant": "old_exact_080_regime",
+      "aggregate": {
+        "n_rows": 5,
+        "best_auc": {
+          "mean": 0.8168375378712746,
+          "std": 0.0053668681159247545,
+          "min": 0.8068147826871616,
+          "max": 0.8213515508034469
+        },
+        "winner_counts": {
+          "mat_mean": 5
+        },
+        "winner_family_counts": {
+          "scalar_matrix_summary": 5
+        },
+        "reference_anom_ratio": {
+          "mean": 0.10886387552615755,
+          "std": 0.001479584763215699,
+          "min": 0.10622208143630273,
+          "max": 0.11039644360450133
+        },
+        "best_spearman_with_margin": {
+          "mean": 0.7074363455224875,
+          "std": 0.0035653935403068076,
+          "min": 0.7035174678614764,
+          "max": 0.7136201936064566
+        },
+        "best_top5_jaccard_with_margin": {
+          "mean": 0.5792038951985756,
+          "std": 0.04245168833426399,
+          "min": 0.5071574642126789,
+          "max": 0.6347504621072089
+        },
+        "best_with_degree_abs": {
+          "mean": 0.08744234354460922,
+          "std": 0.0181567585861359,
+          "min": 0.06630294185284252,
+          "max": 0.11354307860900248
+        },
+        "family_best_auc": {
+          "centroid_margin": {
+            "mean": 0.7927637233750301,
+            "std": 0.005443861661841385,
+            "min": 0.7862856442974692,
+            "max": 0.7989256869903499
+          },
+          "column_anomaly_reference": {
+            "mean": 0.7742940151953832,
+            "std": 0.0027247393394521854,
+            "min": 0.7715604253924507,
+            "max": 0.7793715429133239
+          },
+          "entry_normal_manifold": {
+            "mean": 0.7827189952000996,
+            "std": 0.007554316054994449,
+            "min": 0.7705518945108802,
+            "max": 0.793841148091429
+          },
+          "proxy_diagnostic": {
+            "mean": 0.32957811729569625,
+            "std": 0.0005092257632802929,
+            "min": 0.3290363206019678,
+            "max": 0.330339190172776
+          },
+          "row_normal_anchor": {
+            "mean": 0.80929435201587,
+            "std": 0.0038388763829911793,
+            "min": 0.8044454389910407,
+            "max": 0.8135748699596873
+          },
+          "scalar_matrix_summary": {
+            "mean": 0.8168375378712746,
+            "std": 0.0053668681159247545,
+            "min": 0.8068147826871616,
+            "max": 0.8213515508034469
+          }
+        },
+        "decision": "SIMPLE_SCALAR_SUMMARY_STILL_DOMINATES"
+      }
+    }
+  ],
+  "errors": [],
+  "time_sec": 217.1978521347046
+}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+[JSON_OK] finished results 1
+[DONE] 2026-05-22T14:01:46+08:00

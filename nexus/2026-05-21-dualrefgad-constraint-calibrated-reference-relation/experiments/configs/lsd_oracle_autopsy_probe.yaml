@@ -1,0 +1,38 @@
+program: experiments/scripts/lsd_oracle_autopsy_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  ln_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+  sample_nodes_per_category:
+    value: 12
+notes:
+  protocol: runner-registered bundled multi-seed pure probe; frozen C-LEG3 / old_exact response regime; no training
+  label_boundary: anomaly labels are diagnostic-only for report-only AUC/AP and oracle-autopsy categories; labels never enter final loss, early stopping, checkpoint selection, or method claim
+  objective: reverse-engineer label-free-able learning signals from oracle autopsy of margin-vs-response-matrix boundary cases
+  candidate_signal_families: pair contribution, direction compatibility, row/column reliability, teacher distillation, anti-shortcut/confound
+  design_report_url: https://report.senyao.org/reports/2026/05/25/dualrefgad-learning-signal-discovery-probe-design-2026-05-25.html
+  expected_output: experiments/outputs/lsd_oracle_autopsy_probe.json

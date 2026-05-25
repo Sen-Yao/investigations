@@ -1,0 +1,735 @@
+{
+  "status": "finished",
+  "probe": "cleg3_strict_reproduction_audit",
+  "protocol": {
+    "type": "runner-registered pure probe; sequential strict reproduction audit; no training",
+    "critical_fix": "force data_split_seed=seed and run seeds sequentially to avoid global random.shuffle cross-thread drift in load_mat",
+    "label_boundary": "labels diagnostic-only for AUC/AP and reference-purity audit",
+    "formula_boundary": "margin from response_matrix_from_embeddings; mat_mean = mat.mean(axis=(1,2)) via build_decomposition_arrays and direct equality check"
+  },
+  "dataset": "elliptic",
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4
+  ],
+  "variants": [
+    "old_exact_080_regime"
+  ],
+  "devices": [
+    0
+  ],
+  "config": {
+    "project_root": "/home/linziyao/DualRefGAD",
+    "dataset": "elliptic",
+    "device": 0,
+    "devices": "",
+    "seeds": "0,1,2,3,4",
+    "variants": "old_exact_080_regime",
+    "train_rate": 0.05,
+    "val_rate": 0.0,
+    "ln_mode": "descriptor_similarity",
+    "normal_k": 4,
+    "anom_k": 16,
+    "encode_batch_size": 1024,
+    "ref_block_size": 1024,
+    "top_k": 96,
+    "n_bins": 3,
+    "pca_dims": "2,4,8,12,24",
+    "out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.json",
+    "progress_out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.progress.json"
+  },
+  "variant_summaries": [
+    {
+      "variant": "old_exact_080_regime",
+      "report_codename": "C-LEG3",
+      "definition": "Legacy GT-3 reproduction: hop_attr descriptor, PCA-residual normal model, labeled-normal normal references, normal_soft_or anomaly scoring, descriptor-similarity anomaly references, GT_num_layers=3, full anomaly candidate pool.",
+      "changes_from_base": {
+        "descriptor_mode": "hop_attr",
+        "pn_estimator": "pca_residual",
+        "gn_mode": "label_gate",
+        "ga_mode": "normal_soft_or",
+        "la_mode": "descriptor_similarity",
+        "GT_num_layers": 3,
+        "use_approx_anom_refs": false
+      },
+      "aggregate": {
+        "n_rows": 5,
+        "margin_auc": {
+          "mean": 0.7951917015406157,
+          "std": 0.006377938162227893,
+          "min": 0.7840437246132672,
+          "max": 0.8030344163161879
+        },
+        "margin_ap": {
+          "mean": 0.5162298512535065,
+          "std": 0.019793736361683332,
+          "min": 0.4904194776891711,
+          "max": 0.5509362475768784
+        },
+        "mat_mean_auc": {
+          "mean": 0.8008572590984041,
+          "std": 0.018186149300815208,
+          "min": 0.771112253448966,
+          "max": 0.8199880192070963
+        },
+        "mat_mean_ap": {
+          "mean": 0.5334971974124912,
+          "std": 0.05549375976166187,
+          "min": 0.4407004237069845,
+          "max": 0.5963290393663079
+        },
+        "mat_minus_margin_auc_delta": {
+          "mean": 0.0056655575577884585,
+          "std": 0.020099905634971875,
+          "min": -0.02795000534388059,
+          "max": 0.026188901850990765
+        },
+        "mat_mean_formula_max_abs_diff": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0
+        },
+        "split_fingerprints": {
+          "0": {
+            "idx_train_sha1": "0e4e7b08d516ed4cc96db8f03bf6b3adaf8f99e9",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "eed1ab04017c810764aaf77782d2a3b4259d9372",
+            "normal_for_train_sha1": "3bf2f1f94758795b73bcb7804e00025bdf52d781",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 242,
+            "train_normal_count": 2086,
+            "test_anom_count": 4303,
+            "test_normal_count": 39933,
+            "normal_for_train_count": 2086,
+            "normal_for_train_anom_count": 0
+          },
+          "1": {
+            "idx_train_sha1": "9c468b5a2470d15798e35c1e94b897cf7fcd9390",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "947a7bb5b359a1e171183c52d01fa68f4e6b6e69",
+            "normal_for_train_sha1": "e2ed828355faa5c69dec19dcaeb6d651de893777",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 231,
+            "train_normal_count": 2097,
+            "test_anom_count": 4314,
+            "test_normal_count": 39922,
+            "normal_for_train_count": 2097,
+            "normal_for_train_anom_count": 0
+          },
+          "2": {
+            "idx_train_sha1": "b71507bfbcf4e2935f685097526d405e3e83f95f",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "e35985efb9a352de75c88381f2add1f152011354",
+            "normal_for_train_sha1": "743d13dbc53ca6d054cdf8c914cb67f9c678e312",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 237,
+            "train_normal_count": 2091,
+            "test_anom_count": 4308,
+            "test_normal_count": 39928,
+            "normal_for_train_count": 2091,
+            "normal_for_train_anom_count": 0
+          },
+          "3": {
+            "idx_train_sha1": "19bc1cb3be2695016abdfffd1b927b297d87e4ec",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "fa82ecb7ad73fb9b568a91282c1d6bcdae3a3023",
+            "normal_for_train_sha1": "6d2e59c7f03c6a83e60e81aa86b87c51a836e33b",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 229,
+            "train_normal_count": 2099,
+            "test_anom_count": 4316,
+            "test_normal_count": 39920,
+            "normal_for_train_count": 2099,
+            "normal_for_train_anom_count": 0
+          },
+          "4": {
+            "idx_train_sha1": "6d5f6f0e02a3aa02eb35609b9ee83bd53bcd33b4",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "1120d3dd90fd49ee5b1d8070654a72deef5fb45e",
+            "normal_for_train_sha1": "997fb8d21b28780bba77de4584e0fdb5d5a2c69d",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 220,
+            "train_normal_count": 2108,
+            "test_anom_count": 4325,
+            "test_normal_count": 39911,
+            "normal_for_train_count": 2108,
+            "normal_for_train_anom_count": 0
+          }
+        }
+      },
+      "rows": [
+        {
+          "variant": "old_exact_080_regime",
+          "report_codename": "C-LEG3",
+          "seed": 0,
+          "device": 0,
+          "effective_config": {
+            "dataset": "elliptic",
+            "device": 0,
+            "train_rate": 0.05,
+            "val_rate": 0.0,
+            "descriptor_mode": "hop_attr",
+            "pn_estimator": "pca_residual",
+            "gn_mode": "label_gate",
+            "ln_mode": "descriptor_similarity",
+            "ga_mode": "normal_soft_or",
+            "la_mode": "descriptor_similarity",
+            "normal_k": 4,
+            "anom_k": 16,
+            "hops": 2,
+            "rw_steps": 8,
+            "pca_components": 32,
+            "embedding_dim": 256,
+            "GT_ffn_dim": 256,
+            "GT_dropout": 0.4,
+            "GT_attention_dropout": 0.4,
+            "GT_num_heads": 2,
+            "GT_num_layers": 3,
+            "pp_k": 6,
+            "sample_rate": 0.15,
+            "mean": 0.02,
+            "var": 0.01,
+            "outlier_beta": 0.3,
+            "ring_R_max": 1.0,
+            "ring_R_min": 0.3,
+            "lambda_rec_tok": 1.0,
+            "lambda_rec_emb": 0.1,
+            "encode_batch_size": 1024,
+            "ref_block_size": 1024,
+            "use_approx_anom_refs": false,
+            "anom_approx_k": 1000,
+            "top_k": 96,
+            "n_bins": 3,
+            "pca_dims": "2,4,8,12,24",
+            "project_root": "/home/linziyao/DualRefGAD",
+            "devices": "",
+            "seeds": "0,1,2,3,4",
+            "variants": "old_exact_080_regime",
+            "out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.json",
+            "progress_out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.progress.json",
+            "variant": "old_exact_080_regime",
+            "seed": 0,
+            "data_split_seed": 0,
+            "strict_sequential": true,
+            "audit_formula": {
+              "margin": "response_matrix_from_embeddings(...)[1] evaluated directly on idx_test",
+              "mat_mean": "build_decomposition_arrays(mat, margin, ...)[\"mat_mean\"] = mat.mean(axis=(1,2))"
+            }
+          },
+          "split_fingerprint": {
+            "idx_train_sha1": "0e4e7b08d516ed4cc96db8f03bf6b3adaf8f99e9",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "eed1ab04017c810764aaf77782d2a3b4259d9372",
+            "normal_for_train_sha1": "3bf2f1f94758795b73bcb7804e00025bdf52d781",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 242,
+            "train_normal_count": 2086,
+            "test_anom_count": 4303,
+            "test_normal_count": 39933,
+            "normal_for_train_count": 2086,
+            "normal_for_train_anom_count": 0
+          },
+          "formula_check": {
+            "mat_mean_equals_direct_matrix_mean_max_abs_diff": 0.0,
+            "margin_score_shape": [
+              46564
+            ],
+            "mat_shape": [
+              46564,
+              4,
+              16
+            ]
+          },
+          "metrics": {
+            "margin": {
+              "auc": 0.7937991173561055,
+              "ap": 0.5509362475768784,
+              "spearman_with_margin": 1.0,
+              "top1_jaccard_with_margin": 1.0,
+              "top5_jaccard_with_margin": 1.0,
+              "normal_mean": 0.5358157753944397,
+              "anom_mean": 0.8378997445106506
+            },
+            "mat_mean": {
+              "auc": 0.8199880192070963,
+              "ap": 0.5963290393663079,
+              "spearman_with_margin": 0.7076111028413318,
+              "top1_jaccard_with_margin": 0.7401574803149606,
+              "top5_jaccard_with_margin": 0.7047031611410949,
+              "normal_mean": 0.5354620218276978,
+              "anom_mean": 0.8132641315460205
+            }
+          },
+          "reference_global": {
+            "normal_ref_anom_ratio_diagnostic": 0.0,
+            "anom_ref_anom_ratio_diagnostic": 0.10741130487071557,
+            "normal_ref_dup_rate": 0.0,
+            "anom_ref_dup_rate": 0.0
+          }
+        },
+        {
+          "variant": "old_exact_080_regime",
+          "report_codename": "C-LEG3",
+          "seed": 1,
+          "device": 0,
+          "effective_config": {
+            "dataset": "elliptic",
+            "device": 0,
+            "train_rate": 0.05,
+            "val_rate": 0.0,
+            "descriptor_mode": "hop_attr",
+            "pn_estimator": "pca_residual",
+            "gn_mode": "label_gate",
+            "ln_mode": "descriptor_similarity",
+            "ga_mode": "normal_soft_or",
+            "la_mode": "descriptor_similarity",
+            "normal_k": 4,
+            "anom_k": 16,
+            "hops": 2,
+            "rw_steps": 8,
+            "pca_components": 32,
+            "embedding_dim": 256,
+            "GT_ffn_dim": 256,
+            "GT_dropout": 0.4,
+            "GT_attention_dropout": 0.4,
+            "GT_num_heads": 2,
+            "GT_num_layers": 3,
+            "pp_k": 6,
+            "sample_rate": 0.15,
+            "mean": 0.02,
+            "var": 0.01,
+            "outlier_beta": 0.3,
+            "ring_R_max": 1.0,
+            "ring_R_min": 0.3,
+            "lambda_rec_tok": 1.0,
+            "lambda_rec_emb": 0.1,
+            "encode_batch_size": 1024,
+            "ref_block_size": 1024,
+            "use_approx_anom_refs": false,
+            "anom_approx_k": 1000,
+            "top_k": 96,
+            "n_bins": 3,
+            "pca_dims": "2,4,8,12,24",
+            "project_root": "/home/linziyao/DualRefGAD",
+            "devices": "",
+            "seeds": "0,1,2,3,4",
+            "variants": "old_exact_080_regime",
+            "out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.json",
+            "progress_out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.progress.json",
+            "variant": "old_exact_080_regime",
+            "seed": 1,
+            "data_split_seed": 1,
+            "strict_sequential": true,
+            "audit_formula": {
+              "margin": "response_matrix_from_embeddings(...)[1] evaluated directly on idx_test",
+              "mat_mean": "build_decomposition_arrays(mat, margin, ...)[\"mat_mean\"] = mat.mean(axis=(1,2))"
+            }
+          },
+          "split_fingerprint": {
+            "idx_train_sha1": "9c468b5a2470d15798e35c1e94b897cf7fcd9390",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "947a7bb5b359a1e171183c52d01fa68f4e6b6e69",
+            "normal_for_train_sha1": "e2ed828355faa5c69dec19dcaeb6d651de893777",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 231,
+            "train_normal_count": 2097,
+            "test_anom_count": 4314,
+            "test_normal_count": 39922,
+            "normal_for_train_count": 2097,
+            "normal_for_train_anom_count": 0
+          },
+          "formula_check": {
+            "mat_mean_equals_direct_matrix_mean_max_abs_diff": 0.0,
+            "margin_score_shape": [
+              46564
+            ],
+            "mat_shape": [
+              46564,
+              4,
+              16
+            ]
+          },
+          "metrics": {
+            "margin": {
+              "auc": 0.7960189906246713,
+              "ap": 0.51958638568066,
+              "spearman_with_margin": 1.0,
+              "top1_jaccard_with_margin": 1.0,
+              "top5_jaccard_with_margin": 1.0,
+              "normal_mean": 0.5192205309867859,
+              "anom_mean": 0.8384015560150146
+            },
+            "mat_mean": {
+              "auc": 0.7901378654997552,
+              "ap": 0.5802938741575263,
+              "spearman_with_margin": 0.7019061514793297,
+              "top1_jaccard_with_margin": 0.7504950495049505,
+              "top5_jaccard_with_margin": 0.6039173014145811,
+              "normal_mean": 0.531433641910553,
+              "anom_mean": 0.7884302735328674
+            }
+          },
+          "reference_global": {
+            "normal_ref_anom_ratio_diagnostic": 0.0,
+            "anom_ref_anom_ratio_diagnostic": 0.10827033759986256,
+            "normal_ref_dup_rate": 0.0,
+            "anom_ref_dup_rate": 0.0
+          }
+        },
+        {
+          "variant": "old_exact_080_regime",
+          "report_codename": "C-LEG3",
+          "seed": 2,
+          "device": 0,
+          "effective_config": {
+            "dataset": "elliptic",
+            "device": 0,
+            "train_rate": 0.05,
+            "val_rate": 0.0,
+            "descriptor_mode": "hop_attr",
+            "pn_estimator": "pca_residual",
+            "gn_mode": "label_gate",
+            "ln_mode": "descriptor_similarity",
+            "ga_mode": "normal_soft_or",
+            "la_mode": "descriptor_similarity",
+            "normal_k": 4,
+            "anom_k": 16,
+            "hops": 2,
+            "rw_steps": 8,
+            "pca_components": 32,
+            "embedding_dim": 256,
+            "GT_ffn_dim": 256,
+            "GT_dropout": 0.4,
+            "GT_attention_dropout": 0.4,
+            "GT_num_heads": 2,
+            "GT_num_layers": 3,
+            "pp_k": 6,
+            "sample_rate": 0.15,
+            "mean": 0.02,
+            "var": 0.01,
+            "outlier_beta": 0.3,
+            "ring_R_max": 1.0,
+            "ring_R_min": 0.3,
+            "lambda_rec_tok": 1.0,
+            "lambda_rec_emb": 0.1,
+            "encode_batch_size": 1024,
+            "ref_block_size": 1024,
+            "use_approx_anom_refs": false,
+            "anom_approx_k": 1000,
+            "top_k": 96,
+            "n_bins": 3,
+            "pca_dims": "2,4,8,12,24",
+            "project_root": "/home/linziyao/DualRefGAD",
+            "devices": "",
+            "seeds": "0,1,2,3,4",
+            "variants": "old_exact_080_regime",
+            "out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.json",
+            "progress_out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.progress.json",
+            "variant": "old_exact_080_regime",
+            "seed": 2,
+            "data_split_seed": 2,
+            "strict_sequential": true,
+            "audit_formula": {
+              "margin": "response_matrix_from_embeddings(...)[1] evaluated directly on idx_test",
+              "mat_mean": "build_decomposition_arrays(mat, margin, ...)[\"mat_mean\"] = mat.mean(axis=(1,2))"
+            }
+          },
+          "split_fingerprint": {
+            "idx_train_sha1": "b71507bfbcf4e2935f685097526d405e3e83f95f",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "e35985efb9a352de75c88381f2add1f152011354",
+            "normal_for_train_sha1": "743d13dbc53ca6d054cdf8c914cb67f9c678e312",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 237,
+            "train_normal_count": 2091,
+            "test_anom_count": 4308,
+            "test_normal_count": 39928,
+            "normal_for_train_count": 2091,
+            "normal_for_train_anom_count": 0
+          },
+          "formula_check": {
+            "mat_mean_equals_direct_matrix_mean_max_abs_diff": 0.0,
+            "margin_score_shape": [
+              46564
+            ],
+            "mat_shape": [
+              46564,
+              4,
+              16
+            ]
+          },
+          "metrics": {
+            "margin": {
+              "auc": 0.7990622587928465,
+              "ap": 0.5091233266880852,
+              "spearman_with_margin": 1.0,
+              "top1_jaccard_with_margin": 1.0,
+              "top5_jaccard_with_margin": 1.0,
+              "normal_mean": 0.5611062049865723,
+              "anom_mean": 0.8619465231895447
+            },
+            "mat_mean": {
+              "auc": 0.771112253448966,
+              "ap": 0.4407004237069845,
+              "spearman_with_margin": 0.6751151395200773,
+              "top1_jaccard_with_margin": 0.8571428571428571,
+              "top5_jaccard_with_margin": 0.366079703429101,
+              "normal_mean": 0.5519570112228394,
+              "anom_mean": 0.7693769931793213
+            }
+          },
+          "reference_global": {
+            "normal_ref_anom_ratio_diagnostic": 0.0,
+            "anom_ref_anom_ratio_diagnostic": 0.10853073189588523,
+            "normal_ref_dup_rate": 0.0,
+            "anom_ref_dup_rate": 0.0
+          }
+        },
+        {
+          "variant": "old_exact_080_regime",
+          "report_codename": "C-LEG3",
+          "seed": 3,
+          "device": 0,
+          "effective_config": {
+            "dataset": "elliptic",
+            "device": 0,
+            "train_rate": 0.05,
+            "val_rate": 0.0,
+            "descriptor_mode": "hop_attr",
+            "pn_estimator": "pca_residual",
+            "gn_mode": "label_gate",
+            "ln_mode": "descriptor_similarity",
+            "ga_mode": "normal_soft_or",
+            "la_mode": "descriptor_similarity",
+            "normal_k": 4,
+            "anom_k": 16,
+            "hops": 2,
+            "rw_steps": 8,
+            "pca_components": 32,
+            "embedding_dim": 256,
+            "GT_ffn_dim": 256,
+            "GT_dropout": 0.4,
+            "GT_attention_dropout": 0.4,
+            "GT_num_heads": 2,
+            "GT_num_layers": 3,
+            "pp_k": 6,
+            "sample_rate": 0.15,
+            "mean": 0.02,
+            "var": 0.01,
+            "outlier_beta": 0.3,
+            "ring_R_max": 1.0,
+            "ring_R_min": 0.3,
+            "lambda_rec_tok": 1.0,
+            "lambda_rec_emb": 0.1,
+            "encode_batch_size": 1024,
+            "ref_block_size": 1024,
+            "use_approx_anom_refs": false,
+            "anom_approx_k": 1000,
+            "top_k": 96,
+            "n_bins": 3,
+            "pca_dims": "2,4,8,12,24",
+            "project_root": "/home/linziyao/DualRefGAD",
+            "devices": "",
+            "seeds": "0,1,2,3,4",
+            "variants": "old_exact_080_regime",
+            "out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.json",
+            "progress_out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.progress.json",
+            "variant": "old_exact_080_regime",
+            "seed": 3,
+            "data_split_seed": 3,
+            "strict_sequential": true,
+            "audit_formula": {
+              "margin": "response_matrix_from_embeddings(...)[1] evaluated directly on idx_test",
+              "mat_mean": "build_decomposition_arrays(mat, margin, ...)[\"mat_mean\"] = mat.mean(axis=(1,2))"
+            }
+          },
+          "split_fingerprint": {
+            "idx_train_sha1": "19bc1cb3be2695016abdfffd1b927b297d87e4ec",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "fa82ecb7ad73fb9b568a91282c1d6bcdae3a3023",
+            "normal_for_train_sha1": "6d2e59c7f03c6a83e60e81aa86b87c51a836e33b",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 229,
+            "train_normal_count": 2099,
+            "test_anom_count": 4316,
+            "test_normal_count": 39920,
+            "normal_for_train_count": 2099,
+            "normal_for_train_anom_count": 0
+          },
+          "formula_check": {
+            "mat_mean_equals_direct_matrix_mean_max_abs_diff": 0.0,
+            "margin_score_shape": [
+              46564
+            ],
+            "mat_shape": [
+              46564,
+              4,
+              16
+            ]
+          },
+          "metrics": {
+            "margin": {
+              "auc": 0.7840437246132672,
+              "ap": 0.4904194776891711,
+              "spearman_with_margin": 1.0,
+              "top1_jaccard_with_margin": 1.0,
+              "top5_jaccard_with_margin": 1.0,
+              "normal_mean": 0.5262027382850647,
+              "anom_mean": 0.8363843560218811
+            },
+            "mat_mean": {
+              "auc": 0.8060258375880585,
+              "ap": 0.5091577179936265,
+              "spearman_with_margin": 0.702790522675475,
+              "top1_jaccard_with_margin": 0.9557522123893806,
+              "top5_jaccard_with_margin": 0.40336401142494444,
+              "normal_mean": 0.5288234949111938,
+              "anom_mean": 0.7806846499443054
+            }
+          },
+          "reference_global": {
+            "normal_ref_anom_ratio_diagnostic": 0.0,
+            "anom_ref_anom_ratio_diagnostic": 0.10813342925865475,
+            "normal_ref_dup_rate": 0.0,
+            "anom_ref_dup_rate": 0.0
+          }
+        },
+        {
+          "variant": "old_exact_080_regime",
+          "report_codename": "C-LEG3",
+          "seed": 4,
+          "device": 0,
+          "effective_config": {
+            "dataset": "elliptic",
+            "device": 0,
+            "train_rate": 0.05,
+            "val_rate": 0.0,
+            "descriptor_mode": "hop_attr",
+            "pn_estimator": "pca_residual",
+            "gn_mode": "label_gate",
+            "ln_mode": "descriptor_similarity",
+            "ga_mode": "normal_soft_or",
+            "la_mode": "descriptor_similarity",
+            "normal_k": 4,
+            "anom_k": 16,
+            "hops": 2,
+            "rw_steps": 8,
+            "pca_components": 32,
+            "embedding_dim": 256,
+            "GT_ffn_dim": 256,
+            "GT_dropout": 0.4,
+            "GT_attention_dropout": 0.4,
+            "GT_num_heads": 2,
+            "GT_num_layers": 3,
+            "pp_k": 6,
+            "sample_rate": 0.15,
+            "mean": 0.02,
+            "var": 0.01,
+            "outlier_beta": 0.3,
+            "ring_R_max": 1.0,
+            "ring_R_min": 0.3,
+            "lambda_rec_tok": 1.0,
+            "lambda_rec_emb": 0.1,
+            "encode_batch_size": 1024,
+            "ref_block_size": 1024,
+            "use_approx_anom_refs": false,
+            "anom_approx_k": 1000,
+            "top_k": 96,
+            "n_bins": 3,
+            "pca_dims": "2,4,8,12,24",
+            "project_root": "/home/linziyao/DualRefGAD",
+            "devices": "",
+            "seeds": "0,1,2,3,4",
+            "variants": "old_exact_080_regime",
+            "out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.json",
+            "progress_out": "investigations/2026-05-21-dualrefgad-constraint-calibrated-reference-relation/experiments/outputs/cleg3_strict_reproduction_audit.progress.json",
+            "variant": "old_exact_080_regime",
+            "seed": 4,
+            "data_split_seed": 4,
+            "strict_sequential": true,
+            "audit_formula": {
+              "margin": "response_matrix_from_embeddings(...)[1] evaluated directly on idx_test",
+              "mat_mean": "build_decomposition_arrays(mat, margin, ...)[\"mat_mean\"] = mat.mean(axis=(1,2))"
+            }
+          },
+          "split_fingerprint": {
+            "idx_train_sha1": "6d5f6f0e02a3aa02eb35609b9ee83bd53bcd33b4",
+            "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+            "idx_test_sha1": "1120d3dd90fd49ee5b1d8070654a72deef5fb45e",
+            "normal_for_train_sha1": "997fb8d21b28780bba77de4584e0fdb5d5a2c69d",
+            "train_count": 2328,
+            "val_count": 0,
+            "test_count": 44236,
+            "train_anom_count": 220,
+            "train_normal_count": 2108,
+            "test_anom_count": 4325,
+            "test_normal_count": 39911,
+            "normal_for_train_count": 2108,
+            "normal_for_train_anom_count": 0
+          },
+          "formula_check": {
+            "mat_mean_equals_direct_matrix_mean_max_abs_diff": 0.0,
+            "margin_score_shape": [
+              46564
+            ],
+            "mat_shape": [
+              46564,
+              4,
+              16
+            ]
+          },
+          "metrics": {
+            "margin": {
+              "auc": 0.8030344163161879,
+              "ap": 0.5110838186327379,
+              "spearman_with_margin": 1.0,
+              "top1_jaccard_with_margin": 1.0,
+              "top5_jaccard_with_margin": 1.0,
+              "normal_mean": 0.5332804918289185,
+              "anom_mean": 0.8518401980400085
+            },
+            "mat_mean": {
+              "auc": 0.8170223197481449,
+              "ap": 0.5410049318380113,
+              "spearman_with_margin": 0.7061836958402523,
+              "top1_jaccard_with_margin": 0.8378378378378378,
+              "top5_jaccard_with_margin": 0.5510347246580147,
+              "normal_mean": 0.5317205786705017,
+              "anom_mean": 0.7959002256393433
+            }
+          },
+          "reference_global": {
+            "normal_ref_anom_ratio_diagnostic": 0.0,
+            "anom_ref_anom_ratio_diagnostic": 0.1054731122755777,
+            "normal_ref_dup_rate": 0.0,
+            "anom_ref_dup_rate": 0.0
+          }
+        }
+      ]
+    }
+  ],
+  "errors": [],
+  "elapsed_sec": 353.7043981552124
+}
