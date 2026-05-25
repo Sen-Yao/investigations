@@ -1,0 +1,37 @@
+program: experiments/scripts/pseudo_g2_scale_calibration_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  pseudo_strategies:
+    value: "v0_mixed,dense_soft_shift,dense_hard_shift,sparse_tail_boost,mixed_signed,normal_shell,tail_quantile_match"
+  pseudo_scale_grid:
+    value: "0.20,0.35,0.50,0.75,1.00,1.25,1.50,2.00,2.50,3.00"
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  normal_val_frac:
+    value: 0.25
+  pseudo_noise_scale:
+    value: 1.0
+  pseudo_tail_boost:
+    value: 1.0
+notes:
+  protocol: "Runner-registered pure diagnostic probe. Fixed C-LEG3 / old_exact response matrix. True anomaly labels diagnostic-only."
+  objective: "For each pseudo strategy, sweep perturbation scale and target G2 difficulty: normal_pseudo_over_normal_real in [0.55, 1.80] on key response-matrix readouts."
+  controlled_variables: "same reference construction, fixed C-LEG3 response matrix, no model training, elliptic, seeds 0-4; only pseudo strategy and perturbation scale change."
+  expected_output: "experiments/outputs/pseudo_g2_scale_calibration_probe.json"
+  next_gate: "Choose per-strategy scale candidates that enter the G2 difficulty band, then inspect G1 alignment and G3 direction before trainable D-MiT experiments."

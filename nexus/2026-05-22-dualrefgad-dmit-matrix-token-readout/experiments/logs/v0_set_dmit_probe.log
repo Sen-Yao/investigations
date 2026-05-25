@@ -1,0 +1,31 @@
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:1"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:2"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:3"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:4"}
+Training Counter({0: 2113, 1: 215})
+Test Counter({0: 39906, 1: 4330})
+Training rate 1
+Training Counter({0: 2093, 1: 235})
+Test Counter({0: 39926, 1: 4310})
+Training rate 1
+Training Counter({0: 2117, 1: 211})
+Training Counter({0: 2098, 1: 230})
+Test Counter({0: 39902, 1: 4334})
+Training rate 1
+Test Counter({0: 39921, 1: 4315})
+Training rate 1
+Training Counter({0: 2080, 1: 248})
+Test Counter({0: 39939, 1: 4297})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 1, "best": "mat_mean", "v0_auc": 0.719079622372454, "mat_auc": 0.8125229408639192}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 3, "best": "mean_top16_blend", "v0_auc": 0.3456802258519066, "mat_auc": 0.7879144871710031}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 0, "best": "mean_top16_blend", "v0_auc": 0.744745040052017, "mat_auc": 0.8164989991966463}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 2, "best": "mean_top16_blend", "v0_auc": 0.5443205312659046, "mat_auc": 0.8113718093089384}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 4, "best": "mat_mean", "v0_auc": 0.5187689742951362, "mat_auc": 0.8011429457377262}
+{"stage": "done", "status": "finished", "out": "experiments/outputs/v0_set_dmit_probe.json", "elapsed_sec": 275.84}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+V0_SET_DMIT_DONE

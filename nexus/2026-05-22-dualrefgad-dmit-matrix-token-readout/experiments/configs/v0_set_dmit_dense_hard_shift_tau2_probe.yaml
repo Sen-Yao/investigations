@@ -1,0 +1,61 @@
+program: experiments/scripts/v0_set_dmit_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  epochs:
+    value: 160
+  patience:
+    value: 20
+  batch_size:
+    value: 512
+  d_model:
+    value: 32
+  nhead:
+    value: 4
+  reader_layers:
+    value: 1
+  reader_ffn_dim:
+    value: 64
+  reader_dropout:
+    value: 0.10
+  lr:
+    value: 0.001
+  weight_decay:
+    value: 0.0001
+  lambda_pair:
+    value: 0.5
+  pair_margin:
+    value: 1.0
+  pseudo_strategy:
+    value: dense_hard_shift
+  pseudo_noise_scale:
+    value: 2.0
+  pseudo_tail_boost:
+    value: 1.0
+  pseudo_alpha_low:
+    value: 0.65
+  pseudo_alpha_high:
+    value: 1.25
+notes:
+  protocol: "Runner-registered trainable probe. C-MiT / V0 Set-D-MiT with calibrated dense_hard_shift pseudo anomalies. Frozen C-LEG3 / old_exact response matrix. No row/column/reference/2D position encoding. True anomaly labels diagnostic-only."
+  objective: "Test whether replacing V0 mixed pseudo anomalies with G2-passing dense_hard_shift@tau=2.0 improves trainable Set-D-MiT alignment with real anomalies and mat_mean baseline."
+  controlled_variables: "fixed C-LEG3 reference construction, fixed GT-3 frozen encoder, elliptic, seeds 0-4, no V1/V2 identity or grid position; pseudo alpha interval [0.65,1.25] fixed, not swept."
+  expected_output: "experiments/outputs/v0_set_dmit_dense_hard_shift_tau2_probe.json"
+  next_gate: "Proceed only if dense_hard_shift trainable score improves real AUC/AP or produces complementary top-k signal without merely learning pseudo separation."

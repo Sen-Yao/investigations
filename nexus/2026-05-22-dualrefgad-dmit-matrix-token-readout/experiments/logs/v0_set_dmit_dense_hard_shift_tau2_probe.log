@@ -1,0 +1,33 @@
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:1"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:3"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:4"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:2"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+Training Counter({0: 2101, 1: 227})
+Test Counter({0: 39918, 1: 4318})
+Training rate 1
+Training Counter({0: 2092, 1: 236})
+Training Counter({0: 2089, 1: 239})
+Training Counter({0: 2088, 1: 240})
+Test Counter({0: 39927, 1: 4309})
+Training rate 1
+Test Counter({0: 39930, 1: 4306})
+Training rate 1
+Test Counter({0: 39931, 1: 4305})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 4, "best": "mean_top16_blend", "v0_auc": 0.6518953943588061, "mat_auc": 0.8059116487548896}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 3, "best": "mean_top16_blend", "v0_auc": 0.6087933484372672, "mat_auc": 0.8176046327355824}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 2, "best": "q50_median", "v0_auc": 0.5129582101166144, "mat_auc": 0.7835871915538036}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 1, "best": "mean_top16_blend", "v0_auc": 0.6353883416372919, "mat_auc": 0.8179812673958979}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 0, "best": "mean_top16_blend", "v0_auc": 0.4826324696877222, "mat_auc": 0.7942511069941371}
+{"stage": "done", "status": "finished", "out": "experiments/outputs/v0_set_dmit_dense_hard_shift_tau2_probe.json", "elapsed_sec": 226.11}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+REMOTE_V0_DENSE_HARD_SHIFT_TAU2_DONE

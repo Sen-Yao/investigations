@@ -1,0 +1,285 @@
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:2"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:3"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:5"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:1"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:7"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:4"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:6"}
+Training Counter({0: 2118, 1: 210})
+Training Counter({0: 2110, 1: 218})
+Training Counter({0: 2103, 1: 225})
+Test Counter({0: 39916, 1: 4320})
+Training rate 1
+Test Counter({0: 39909, 1: 4327})
+Training rate 1
+Test Counter({0: 39901, 1: 4335})
+Training rate 1
+Training Counter({0: 2102, 1: 226})
+Training Counter({0: 2109, 1: 219})
+Test Counter({0: 39917, 1: 4319})
+Training rate 1
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+Test Counter({0: 39910, 1: 4326})
+Training rate 1
+Training Counter({0: 2112, 1: 216})
+Test Counter({0: 39907, 1: 4329})
+Training rate 1
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "v0_mixed", "seed": 0, "mat_mean_auc": 0.8259334006288761, "worst_alignment": [{"feature": "response_z_l2", "pseudo_real_wasserstein": 95.02237413069861, "normal_real_wasserstein": 96.32043632085721, "normal_pseudo_wasserstein": 1.3018600759159995, "pseudo_real_ks": 0.9993049119555144, "pseudo_real_js": 0.9965800711529287, "pseudo_minus_real_mean": -95.02237413069861, "pseudo_std_over_real": 0.07506818633132258}, {"feature": "response_pca_residual", "pseudo_real_wasserstein": 56.01491870012198, "normal_real_wasserstein": 56.208468561794334, "normal_pseudo_wasserstein": 0.19553586266545353, "pseudo_real_ks": 0.9993049119555144, "pseudo_real_js": 0.9298602565982863, "pseudo_minus_real_mean": -56.01491870012198, "pseudo_std_over_real": 0.011138081801381632}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.7867442953856987, "normal_real_wasserstein": 2.151169424666417, "normal_pseudo_wasserstein": 0.36525434297766335, "pseudo_real_ks": 0.6352403018668079, "pseudo_real_js": 0.45741671813808266, "pseudo_minus_real_mean": -1.7867442953856978, "pseudo_std_over_real": 0.8181770072567367}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_soft_shift", "seed": 0, "mat_mean_auc": 0.7758718973346359, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 1988.0858545290253, "normal_real_wasserstein": 1988.2813273853326, "normal_pseudo_wasserstein": 0.19547285630712127, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9457092562061129, "pseudo_minus_real_mean": -1988.0858545290253, "pseudo_std_over_real": 0.00022881082742568418}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 332.1083771743412, "normal_real_wasserstein": 333.3526811161554, "normal_pseudo_wasserstein": 1.2530729252136312, "pseudo_real_ks": 0.9995377859949156, "pseudo_real_js": 0.9971321270974641, "pseudo_minus_real_mean": -332.1083771743412, "pseudo_std_over_real": 0.018389531017161075}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.523109993353538, "normal_real_wasserstein": 1.9326731483902662, "normal_pseudo_wasserstein": 0.4096739560877849, "pseudo_real_ks": 0.5383217429669938, "pseudo_real_js": 0.35745296422855344, "pseudo_minus_real_mean": -1.522999192302482, "pseudo_std_over_real": 0.7881683128282819}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:5"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "v0_mixed", "seed": 3, "mat_mean_auc": 0.7833502692662744, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.5952616369125034, "normal_real_wasserstein": 1.9808133020915206, "normal_pseudo_wasserstein": 0.38586187242509984, "pseudo_real_ks": 0.5962126465767242, "pseudo_real_js": 0.3852305630291144, "pseudo_minus_real_mean": -1.5949514296664207, "pseudo_std_over_real": 0.7925266814775935}, {"feature": "q25", "pseudo_real_wasserstein": 0.6428669215238496, "normal_real_wasserstein": 0.6730824814485366, "normal_pseudo_wasserstein": 0.030324357405774133, "pseudo_real_ks": 0.8115543437145379, "pseudo_real_js": 0.7093596544978245, "pseudo_minus_real_mean": -0.6427868414091071, "pseudo_std_over_real": 0.3777266639858767}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.6426340018793691, "normal_real_wasserstein": 1.2300157135693193, "normal_pseudo_wasserstein": 1.1683993233834857, "pseudo_real_ks": 0.2683115832387677, "pseudo_real_js": 0.17036186220416508, "pseudo_minus_real_mean": 0.5990843967273944, "pseudo_std_over_real": 1.6824694267426084}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:3"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "v0_mixed", "seed": 2, "mat_mean_auc": 0.8004106067939141, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.6667989152265665, "normal_real_wasserstein": 1.9683707383141185, "normal_pseudo_wasserstein": 0.30162510764340217, "pseudo_real_ks": 0.5924027768710147, "pseudo_real_js": 0.4101009289437163, "pseudo_minus_real_mean": -1.666720444147055, "pseudo_std_over_real": 0.7376613166320074}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.7440277914660528, "normal_real_wasserstein": 1.3649873739645433, "normal_pseudo_wasserstein": 1.0299052935328954, "pseudo_real_ks": 0.2821483754434071, "pseudo_real_js": 0.17985723515709967, "pseudo_minus_real_mean": 0.5924533173677027, "pseudo_std_over_real": 1.735597829041503}, {"feature": "q25", "pseudo_real_wasserstein": 0.7046881564310401, "normal_real_wasserstein": 0.7283443148636383, "normal_pseudo_wasserstein": 0.024295388685066276, "pseudo_real_ks": 0.8326587016604644, "pseudo_real_js": 0.7250249461235376, "pseudo_minus_real_mean": -0.7046881564310401, "pseudo_std_over_real": 0.49277234282461796}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:2"}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "v0_mixed", "seed": 1, "mat_mean_auc": 0.8099128627293242, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 4055.927476113964, "normal_real_wasserstein": 4056.1137740852682, "normal_pseudo_wasserstein": 0.19445370024585507, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9734480907771245, "pseudo_minus_real_mean": -4055.927476113964, "pseudo_std_over_real": 0.00011274328094523234}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 1154.4486814573831, "normal_real_wasserstein": 1155.7313786794496, "normal_pseudo_wasserstein": 1.293434059511672, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999980504, "pseudo_minus_real_mean": -1154.448681457383, "pseudo_std_over_real": 0.007344955917635661}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.8081430998191717, "normal_real_wasserstein": 2.1579317940428666, "normal_pseudo_wasserstein": 0.34991250247080924, "pseudo_real_ks": 0.6201969792986903, "pseudo_real_js": 0.43831382569214705, "pseudo_minus_real_mean": -1.8080192915720579, "pseudo_std_over_real": 0.7549077603616567}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:1"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+Training Counter({0: 2088, 1: 240})
+Test Counter({0: 39931, 1: 4305})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "v0_mixed", "seed": 4, "mat_mean_auc": 0.778118521496876, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.5579110924923292, "normal_real_wasserstein": 1.9494938426169666, "normal_pseudo_wasserstein": 0.39258666012903654, "pseudo_real_ks": 0.5616626241626241, "pseudo_real_js": 0.36807502133277814, "pseudo_minus_real_mean": -1.5569071824879304, "pseudo_std_over_real": 0.6735254946966724}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.8272131695999287, "normal_real_wasserstein": 1.4498081309656645, "normal_pseudo_wasserstein": 1.1020639774217487, "pseudo_real_ks": 0.2715683340683341, "pseudo_real_js": 0.18796407061748827, "pseudo_minus_real_mean": 0.5042903257456413, "pseudo_std_over_real": 1.6937578763588208}, {"feature": "q25", "pseudo_real_wasserstein": 0.6561077416671997, "normal_real_wasserstein": 0.696856482527269, "normal_pseudo_wasserstein": 0.04074874416144776, "pseudo_real_ks": 0.7859717234717235, "pseudo_real_js": 0.6720113403640808, "pseudo_minus_real_mean": -0.6561077416671997, "pseudo_std_over_real": 0.49191905845260153}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:4"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_soft_shift", "seed": 1, "mat_mean_auc": 0.8095239303657428, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 87172.05162327345, "normal_real_wasserstein": 87172.24969290425, "normal_pseudo_wasserstein": 0.20103649369593835, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9796001460441031, "pseudo_minus_real_mean": -87172.05162327347, "pseudo_std_over_real": 6.83371648658165e-06}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 3079.310939883145, "normal_real_wasserstein": 3080.505114901383, "normal_pseudo_wasserstein": 1.2224284185549252, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999980114, "pseudo_minus_real_mean": -3079.3109398831452, "pseudo_std_over_real": 0.0026598118874158806}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.7138509232198538, "normal_real_wasserstein": 2.0555496364621626, "normal_pseudo_wasserstein": 0.342022156070177, "pseudo_real_ks": 0.5964682537237092, "pseudo_real_js": 0.41114867766797925, "pseudo_minus_real_mean": -1.7129458726962197, "pseudo_std_over_real": 0.7047398463656697}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:6"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_soft_shift", "seed": 2, "mat_mean_auc": 0.811116524638712, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.740738084800555, "normal_real_wasserstein": 2.0863646152566346, "normal_pseudo_wasserstein": 0.3464058204916316, "pseudo_real_ks": 0.5975788869764773, "pseudo_real_js": 0.41355197118633047, "pseudo_minus_real_mean": -1.7399587947650028, "pseudo_std_over_real": 0.7211642637036141}, {"feature": "q25", "pseudo_real_wasserstein": 0.6976907712341202, "normal_real_wasserstein": 0.7152508691167535, "normal_pseudo_wasserstein": 0.018789425424425764, "pseudo_real_ks": 0.8366944701884461, "pseudo_real_js": 0.7498218332026679, "pseudo_minus_real_mean": -0.6976513068689989, "pseudo_std_over_real": 0.439414949817765}, {"feature": "q10", "pseudo_real_wasserstein": 0.6209643225454142, "normal_real_wasserstein": 0.6505362850984995, "normal_pseudo_wasserstein": 0.030768398454733985, "pseudo_real_ks": 0.853336422613531, "pseudo_real_js": 0.7238321760527161, "pseudo_minus_real_mean": -0.6209643225454142, "pseudo_std_over_real": 0.40977988946487043}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:7"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_soft_shift", "seed": 3, "mat_mean_auc": 0.802725777087075, "worst_alignment": [{"feature": "response_z_l2", "pseudo_real_wasserstein": 189.70409904362248, "normal_real_wasserstein": 190.86806683075463, "normal_pseudo_wasserstein": 1.1639677871321215, "pseudo_real_ks": 0.9997683039851715, "pseudo_real_js": 0.999359938629286, "pseudo_minus_real_mean": -189.70409904362253, "pseudo_std_over_real": 0.046780979839328884}, {"feature": "response_pca_residual", "pseudo_real_wasserstein": 68.98208501504347, "normal_real_wasserstein": 69.15400723846831, "normal_pseudo_wasserstein": 0.17401301218553097, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9484649049829071, "pseudo_minus_real_mean": -68.98208501504348, "pseudo_std_over_real": 0.003731380191433316}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.543382973550913, "normal_real_wasserstein": 1.9568304513005836, "normal_pseudo_wasserstein": 0.41354073753634507, "pseudo_real_ks": 0.590245377112847, "pseudo_real_js": 0.3848504931453929, "pseudo_minus_real_mean": -1.5432897137642385, "pseudo_std_over_real": 0.7840851363423765}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_soft_shift", "seed": 4, "mat_mean_auc": 0.8188748114844546, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 8046883.721435613, "normal_real_wasserstein": 8046883.912604072, "normal_pseudo_wasserstein": 0.19254599498784425, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9171615986118332, "pseudo_minus_real_mean": -8046883.721435614, "pseudo_std_over_real": 5.853495667017393e-08}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 22698.60988078603, "normal_real_wasserstein": 22699.72011746185, "normal_pseudo_wasserstein": 1.1124524452772933, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999979519, "pseudo_minus_real_mean": -22698.60988078603, "pseudo_std_over_real": 0.000249242782064249}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.8248740602191482, "normal_real_wasserstein": 2.2027139127701756, "normal_pseudo_wasserstein": 0.37797051560939193, "pseudo_real_ks": 0.6370903028375251, "pseudo_real_js": 0.44895471622383876, "pseudo_minus_real_mean": -1.824743397160784, "pseudo_std_over_real": 0.8096033061414611}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:5"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_hard_shift", "seed": 2, "mat_mean_auc": 0.8132520467725526, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.777081023263222, "normal_real_wasserstein": 2.134864194821703, "normal_pseudo_wasserstein": 0.35778317155848127, "pseudo_real_ks": 0.622971150893775, "pseudo_real_js": 0.43464833322353524, "pseudo_minus_real_mean": -1.7770810232632233, "pseudo_std_over_real": 0.8146995765857076}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.7362471407377753, "normal_real_wasserstein": 1.4099334574218685, "normal_pseudo_wasserstein": 1.1881233630250905, "pseudo_real_ks": 0.2757339100484601, "pseudo_real_js": 0.2169421706917946, "pseudo_minus_real_mean": 0.5084822055269473, "pseudo_std_over_real": 1.7305595917180832}, {"feature": "q25", "pseudo_real_wasserstein": 0.7012157325567715, "normal_real_wasserstein": 0.7317387295539414, "normal_pseudo_wasserstein": 0.030588269143475046, "pseudo_real_ks": 0.8292322479875045, "pseudo_real_js": 0.7327342879714602, "pseudo_minus_real_mean": -0.7012055315852612, "pseudo_std_over_real": 0.4955204967280645}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:1"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "sparse_tail_boost", "seed": 0, "mat_mean_auc": 0.8228997025746688, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 87080.38507821616, "normal_real_wasserstein": 87080.46873231603, "normal_pseudo_wasserstein": 0.09273789092349133, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9861526338018802, "pseudo_minus_real_mean": -87080.38507821616, "pseudo_std_over_real": 6.056166868472118e-06}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 3073.7573710819142, "normal_real_wasserstein": 3073.9736170096403, "normal_pseudo_wasserstein": 0.625940555483414, "pseudo_real_ks": 0.9997676039972112, "pseudo_real_js": 0.9991521547647183, "pseudo_minus_real_mean": -3073.757371081914, "pseudo_std_over_real": 0.005166600876286416}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.7993470999653332, "normal_real_wasserstein": 2.2040737604767693, "normal_pseudo_wasserstein": 0.4047266605114362, "pseudo_real_ks": 0.6319595256984568, "pseudo_real_js": 0.4401890937291274, "pseudo_minus_real_mean": -1.799347099965333, "pseudo_std_over_real": 0.7551903777643699}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:7"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_hard_shift", "seed": 3, "mat_mean_auc": 0.8001247049242136, "worst_alignment": [{"feature": "response_z_l2", "pseudo_real_wasserstein": 212.07689529996608, "normal_real_wasserstein": 213.2476284907066, "normal_pseudo_wasserstein": 1.1707331907405256, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999980633, "pseudo_minus_real_mean": -212.07689529996608, "pseudo_std_over_real": 0.04040613789716902}, {"feature": "response_pca_residual", "pseudo_real_wasserstein": 130.45269045821232, "normal_real_wasserstein": 130.61308402483633, "normal_pseudo_wasserstein": 0.16041375134039357, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9717291833145012, "pseudo_minus_real_mean": -130.4526904582123, "pseudo_std_over_real": 0.0031142640195792543}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.5716810308791582, "normal_real_wasserstein": 1.975096786975553, "normal_pseudo_wasserstein": 0.4034695712335613, "pseudo_real_ks": 0.5620565779601924, "pseudo_real_js": 0.36879451992280804, "pseudo_minus_real_mean": -1.5716272157419917, "pseudo_std_over_real": 0.8152682628140218}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:4"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_hard_shift", "seed": 4, "mat_mean_auc": 0.8164195363585712, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 1418618.324490225, "normal_real_wasserstein": 1418618.511781932, "normal_pseudo_wasserstein": 0.18950327714296766, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.990268196140599, "pseudo_minus_real_mean": -1418618.3244902252, "pseudo_std_over_real": 3.996946069327976e-07}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 11773.688229857598, "normal_real_wasserstein": 11774.854122998711, "normal_pseudo_wasserstein": 1.1685792062786096, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999980433, "pseudo_minus_real_mean": -11773.688229857598, "pseudo_std_over_real": 0.0006389347760947849}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.7619861993929928, "normal_real_wasserstein": 2.147093827539883, "normal_pseudo_wasserstein": 0.38510762814689026, "pseudo_real_ks": 0.6338932335940156, "pseudo_real_js": 0.4432133521765639, "pseudo_minus_real_mean": -1.761986199392993, "pseudo_std_over_real": 0.8183170663598378}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:6"}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_hard_shift", "seed": 1, "mat_mean_auc": 0.7725621793555233, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.6087110638102906, "normal_real_wasserstein": 2.0115223372870634, "normal_pseudo_wasserstein": 0.4028171653024931, "pseudo_real_ks": 0.5926712008961939, "pseudo_real_js": 0.407457528350501, "pseudo_minus_real_mean": -1.6087051719845693, "pseudo_std_over_real": 0.7604721301012698}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.6372783691716822, "normal_real_wasserstein": 1.3878920983672938, "normal_pseudo_wasserstein": 1.368902329962177, "pseudo_real_ks": 0.29117644970183093, "pseudo_real_js": 0.13983538120521852, "pseudo_minus_real_mean": 0.5690434351174618, "pseudo_std_over_real": 1.6732824217125628}, {"feature": "q25", "pseudo_real_wasserstein": 0.6265261628061823, "normal_real_wasserstein": 0.6563412652462187, "normal_pseudo_wasserstein": 0.030728033913223762, "pseudo_real_ks": 0.7828496407590663, "pseudo_real_js": 0.6927642520015408, "pseudo_minus_real_mean": -0.6256615932813736, "pseudo_std_over_real": 0.4298514702509276}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:2"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "dense_hard_shift", "seed": 0, "mat_mean_auc": 0.8162036010596625, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 231910.33556237293, "normal_real_wasserstein": 231910.41063037165, "normal_pseudo_wasserstein": 0.08344767934985925, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9786306259469647, "pseudo_minus_real_mean": -231910.3355623729, "pseudo_std_over_real": 1.9495848874734354e-06}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 4034.3066690176997, "normal_real_wasserstein": 4034.470446178069, "normal_pseudo_wasserstein": 0.5638548929625984, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999980349, "pseudo_minus_real_mean": -4034.3066690176997, "pseudo_std_over_real": 0.003940048848466615}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.8228063046929597, "normal_real_wasserstein": 2.1750558648336513, "normal_pseudo_wasserstein": 0.35224956014069186, "pseudo_real_ks": 0.6405457121156674, "pseudo_real_js": 0.44824456926629697, "pseudo_minus_real_mean": -1.8228063046929588, "pseudo_std_over_real": 0.7417137792168863}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:3"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+Training Counter({0: 2092, 1: 236})
+Test Counter({0: 39927, 1: 4309})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "sparse_tail_boost", "seed": 2, "mat_mean_auc": 0.7839330328016613, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.5901501059726926, "normal_real_wasserstein": 1.941660311835956, "normal_pseudo_wasserstein": 0.35174550034458163, "pseudo_real_ks": 0.5689033342742659, "pseudo_real_js": 0.37789602711737524, "pseudo_minus_real_mean": -1.589914811491374, "pseudo_std_over_real": 0.8364181635458944}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.697798842405996, "normal_real_wasserstein": 1.2043707018652714, "normal_pseudo_wasserstein": 1.1532355320933028, "pseudo_real_ks": 0.2884268851050382, "pseudo_real_js": 0.1370503210605133, "pseudo_minus_real_mean": 0.6969731203626957, "pseudo_std_over_real": 1.7280472944403942}, {"feature": "q25", "pseudo_real_wasserstein": 0.6395531122384115, "normal_real_wasserstein": 0.6620821590613866, "normal_pseudo_wasserstein": 0.027772858338597214, "pseudo_real_ks": 0.7970834642649808, "pseudo_real_js": 0.7136026574780305, "pseudo_minus_real_mean": -0.6395531122384115, "pseudo_std_over_real": 0.462427682556733}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:5"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "sparse_tail_boost", "seed": 1, "mat_mean_auc": 0.8025478089785513, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 455344.0781789428, "normal_real_wasserstein": 455344.1090048554, "normal_pseudo_wasserstein": 0.05754123955765156, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9675713600253616, "pseudo_minus_real_mean": -455344.0781789427, "pseudo_std_over_real": 7.19971196095615e-07}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 5391.405138129443, "normal_real_wasserstein": 5391.2081627171465, "normal_pseudo_wasserstein": 0.472340578451355, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999979627, "pseudo_minus_real_mean": -5391.405138129442, "pseudo_std_over_real": 0.002564950798849136}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.755405022085876, "normal_real_wasserstein": 2.097455959668009, "normal_pseudo_wasserstein": 0.3423467557650499, "pseudo_real_ks": 0.6018332339890059, "pseudo_real_js": 0.418398776924235, "pseudo_minus_real_mean": -1.7552181999740597, "pseudo_std_over_real": 0.7568839091864621}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "sparse_tail_boost", "seed": 3, "mat_mean_auc": 0.7952695996720038, "worst_alignment": [{"feature": "response_z_l2", "pseudo_real_wasserstein": 181.85577881431067, "normal_real_wasserstein": 183.02977886932527, "normal_pseudo_wasserstein": 1.1839588491088477, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999980971, "pseudo_minus_real_mean": -181.8557788143106, "pseudo_std_over_real": 0.04472260359709382}, {"feature": "response_pca_residual", "pseudo_real_wasserstein": 80.37290000133447, "normal_real_wasserstein": 80.54404924806536, "normal_pseudo_wasserstein": 0.17293843273052162, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9751513934860705, "pseudo_minus_real_mean": -80.37290000133446, "pseudo_std_over_real": 0.003762821331970837}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.6089362247728567, "normal_real_wasserstein": 1.9801576118935809, "normal_pseudo_wasserstein": 0.3712795498618946, "pseudo_real_ks": 0.5870554746458361, "pseudo_real_js": 0.394650636787867, "pseudo_minus_real_mean": -1.6088780620316854, "pseudo_std_over_real": 0.8316068651172411}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:1"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "mixed_signed", "seed": 0, "mat_mean_auc": 0.8153922984838787, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 54770.81314762456, "normal_real_wasserstein": 54770.865632178204, "normal_pseudo_wasserstein": 0.0665784477728501, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9795360879672238, "pseudo_minus_real_mean": -54770.81314762457, "pseudo_std_over_real": 9.558429226861348e-06}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 2669.252208969639, "normal_real_wasserstein": 2669.2662409066875, "normal_pseudo_wasserstein": 0.4392344133875817, "pseudo_real_ks": 0.9997676039972112, "pseudo_real_js": 0.9994689652544361, "pseudo_minus_real_mean": -2669.252208969638, "pseudo_std_over_real": 0.006284317712131615}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.7625202957939505, "normal_real_wasserstein": 2.1439906996956677, "normal_pseudo_wasserstein": 0.38159076585276847, "pseudo_real_ks": 0.6029478676108533, "pseudo_real_js": 0.41757021817090695, "pseudo_minus_real_mean": -1.7623999338429002, "pseudo_std_over_real": 0.7561080139013779}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:4"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "sparse_tail_boost", "seed": 4, "mat_mean_auc": 0.8172649984365503, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 5119332.653655495, "normal_real_wasserstein": 5119332.855616557, "normal_pseudo_wasserstein": 0.20256539491004497, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9184130085038055, "pseudo_minus_real_mean": -5119332.6536554955, "pseudo_std_over_real": 9.06172947559071e-08}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 17890.347648525232, "normal_real_wasserstein": 17891.529170571997, "normal_pseudo_wasserstein": 1.1886825850130793, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9984368385839663, "pseudo_minus_real_mean": -17890.34764852523, "pseudo_std_over_real": 0.00030827230411877357}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.8172787267829822, "normal_real_wasserstein": 2.162296317666006, "normal_pseudo_wasserstein": 0.3450315842916194, "pseudo_real_ks": 0.6329604808546577, "pseudo_real_js": 0.4446775348034075, "pseudo_minus_real_mean": -1.8172647333743877, "pseudo_std_over_real": 0.7550319306023678}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:7"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "mixed_signed", "seed": 1, "mat_mean_auc": 0.7711124394848518, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.5722354664941567, "normal_real_wasserstein": 1.9513738031119248, "normal_pseudo_wasserstein": 0.3791383366177678, "pseudo_real_ks": 0.5655581416405248, "pseudo_real_js": 0.37175346973882406, "pseudo_minus_real_mean": -1.5722354664941562, "pseudo_std_over_real": 0.8083019499823616}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.6913432563812223, "normal_real_wasserstein": 1.3566431746668468, "normal_pseudo_wasserstein": 1.405145750111411, "pseudo_real_ks": 0.27919686971280255, "pseudo_real_js": 0.14033039562815824, "pseudo_minus_real_mean": 0.691336879203762, "pseudo_std_over_real": 1.677838745420259}, {"feature": "q25", "pseudo_real_wasserstein": 0.618308067175591, "normal_real_wasserstein": 0.6494930197914147, "normal_pseudo_wasserstein": 0.031184953782624723, "pseudo_real_ks": 0.7900455553365964, "pseudo_real_js": 0.6736597083208181, "pseudo_minus_real_mean": -0.618308067175591, "pseudo_std_over_real": 0.44375465354921284}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:6"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "mixed_signed", "seed": 3, "mat_mean_auc": 0.786517524907649, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.5877596500732172, "normal_real_wasserstein": 1.9534174850404062, "normal_pseudo_wasserstein": 0.3660063772792277, "pseudo_real_ks": 0.5858075520709689, "pseudo_real_js": 0.38907596626859303, "pseudo_minus_real_mean": -1.5872861475868234, "pseudo_std_over_real": 0.7454724452851672}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.7597723336793994, "normal_real_wasserstein": 1.1615587774630733, "normal_pseudo_wasserstein": 1.3385740022779467, "pseudo_real_ks": 0.3103309494512575, "pseudo_real_js": 0.18140024693277204, "pseudo_minus_real_mean": 0.7417250550601526, "pseudo_std_over_real": 1.495744533208715}, {"feature": "q25", "pseudo_real_wasserstein": 0.6540815841278824, "normal_real_wasserstein": 0.6837200748958822, "normal_pseudo_wasserstein": 0.02970176333967803, "pseudo_real_ks": 0.7910851359620378, "pseudo_real_js": 0.6983388089416487, "pseudo_minus_real_mean": -0.6539976077677084, "pseudo_std_over_real": 0.4232818961173504}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:3"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "mixed_signed", "seed": 2, "mat_mean_auc": 0.8060258317840501, "worst_alignment": [{"feature": "response_z_l2", "pseudo_real_wasserstein": 196.5860852150552, "normal_real_wasserstein": 197.7603408961821, "normal_pseudo_wasserstein": 1.1939304661523105, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999980698, "pseudo_minus_real_mean": -196.58608521505522, "pseudo_std_over_real": 0.04278922195390798}, {"feature": "response_pca_residual", "pseudo_real_wasserstein": 101.74156910049382, "normal_real_wasserstein": 101.9075043814338, "normal_pseudo_wasserstein": 0.1696346929729437, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9684021898468035, "pseudo_minus_real_mean": -101.74156910049383, "pseudo_std_over_real": 0.003165271414858397}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.6434724615871992, "normal_real_wasserstein": 2.007773789365439, "normal_pseudo_wasserstein": 0.36440959635288683, "pseudo_real_ks": 0.6021373405710755, "pseudo_real_js": 0.40112868025714615, "pseudo_minus_real_mean": -1.6433641930125527, "pseudo_std_over_real": 0.8029611953471913}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:2"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "mixed_signed", "seed": 4, "mat_mean_auc": 0.8201180169229136, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 4584218.1121655805, "normal_real_wasserstein": 4584218.313705811, "normal_pseudo_wasserstein": 0.20336762665036817, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9055669084422802, "pseudo_minus_real_mean": -4584218.11216558, "pseudo_std_over_real": 1.0790833112682824e-07}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 16770.52704772394, "normal_real_wasserstein": 16771.7626496608, "normal_pseudo_wasserstein": 1.2374270305790414, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999979599, "pseudo_minus_real_mean": -16770.52704772394, "pseudo_std_over_real": 0.0003571199250347332}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.8012877224959056, "normal_real_wasserstein": 2.2004529039000733, "normal_pseudo_wasserstein": 0.39916518140416785, "pseudo_real_ks": 0.6369148084368933, "pseudo_real_js": 0.4478623776092517, "pseudo_minus_real_mean": -1.801287722495906, "pseudo_std_over_real": 0.7900152504996238}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:5"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "normal_shell", "seed": 1, "mat_mean_auc": 0.7995172557976231, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 35575.398163801176, "normal_real_wasserstein": 35575.42809597839, "normal_pseudo_wasserstein": 0.062081506334712835, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9120404946432705, "pseudo_minus_real_mean": -35575.398163801176, "pseudo_std_over_real": 9.243677630198042e-06}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 1439.4095986067164, "normal_real_wasserstein": 1439.1771800530387, "normal_pseudo_wasserstein": 0.5008478347590903, "pseudo_real_ks": 0.9993045897079277, "pseudo_real_js": 0.995447242387898, "pseudo_minus_real_mean": -1439.4095986067164, "pseudo_std_over_real": 0.009420651024126155}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.7436591157181145, "normal_real_wasserstein": 2.100294884520404, "normal_pseudo_wasserstein": 0.3567586588897742, "pseudo_real_ks": 0.6025299688721107, "pseudo_real_js": 0.4143833578311706, "pseudo_minus_real_mean": -1.7436591157181143, "pseudo_std_over_real": 0.7422222656723206}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:1"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "normal_shell", "seed": 2, "mat_mean_auc": 0.7711124394848518, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.5814554982033777, "normal_real_wasserstein": 1.943392790442216, "normal_pseudo_wasserstein": 0.3619372922388383, "pseudo_real_ks": 0.5653473194962993, "pseudo_real_js": 0.3747652298445715, "pseudo_minus_real_mean": -1.5814554982033773, "pseudo_std_over_real": 0.8195067887616128}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.6939956108361739, "normal_real_wasserstein": 1.2046263635725951, "normal_pseudo_wasserstein": 1.157283246997036, "pseudo_real_ks": 0.2636683763232973, "pseudo_real_js": 0.13621128371577848, "pseudo_minus_real_mean": 0.6934018550695207, "pseudo_std_over_real": 1.6717125557944197}, {"feature": "q25", "pseudo_real_wasserstein": 0.628004648048419, "normal_real_wasserstein": 0.6536808796827284, "normal_pseudo_wasserstein": 0.025849162827220933, "pseudo_real_ks": 0.8003070458092109, "pseudo_real_js": 0.6964277081564239, "pseudo_minus_real_mean": -0.628004648048419, "pseudo_std_over_real": 0.45061054112863275}]}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:4"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "normal_shell", "seed": 0, "mat_mean_auc": 0.8183261401611353, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 15371.636671956194, "normal_real_wasserstein": 15371.720771221839, "normal_pseudo_wasserstein": 0.08852512489533457, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9759627576214387, "pseudo_minus_real_mean": -15371.636671956192, "pseudo_std_over_real": 3.6814175192918634e-05}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 1526.1184751883707, "normal_real_wasserstein": 1526.3553608859493, "normal_pseudo_wasserstein": 0.6412880407869854, "pseudo_real_ks": 0.9997676039972112, "pseudo_real_js": 0.9994689652544383, "pseudo_minus_real_mean": -1526.118475188371, "pseudo_std_over_real": 0.010013561841743053}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.8035325153729993, "normal_real_wasserstein": 2.1886691631726762, "normal_pseudo_wasserstein": 0.38513664779967727, "pseudo_real_ks": 0.6346855040989847, "pseudo_real_js": 0.43365724159708136, "pseudo_minus_real_mean": -1.803532515373, "pseudo_std_over_real": 0.7432609218818558}]}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "normal_shell", "seed": 3, "mat_mean_auc": 0.7936610477674533, "worst_alignment": [{"feature": "response_z_l2", "pseudo_real_wasserstein": 196.80890855318918, "normal_real_wasserstein": 198.00462846356447, "normal_pseudo_wasserstein": 1.2024987145191832, "pseudo_real_ks": 0.9997683039851715, "pseudo_real_js": 0.9992465572514873, "pseudo_minus_real_mean": -196.80890855318916, "pseudo_std_over_real": 0.03764575314471082}, {"feature": "response_pca_residual", "pseudo_real_wasserstein": 124.87477219534215, "normal_real_wasserstein": 125.04941608726135, "normal_pseudo_wasserstein": 0.1751861473775772, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9734274962646821, "pseudo_minus_real_mean": -124.87477219534212, "pseudo_std_over_real": 0.003585872417331601}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.6024243285829438, "normal_real_wasserstein": 1.9668669352285992, "normal_pseudo_wasserstein": 0.3644664157195085, "pseudo_real_ks": 0.5727415155125999, "pseudo_real_js": 0.3828593756525333, "pseudo_minus_real_mean": -1.6024145026109649, "pseudo_std_over_real": 0.7870310379303161}]}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "normal_shell", "seed": 4, "mat_mean_auc": 0.8162769329387947, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 397554.85647670674, "normal_real_wasserstein": 397555.05339303793, "normal_pseudo_wasserstein": 0.1980873882784239, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9326271447581902, "pseudo_minus_real_mean": -397554.8564767068, "pseudo_std_over_real": 1.051210543055819e-06}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 4815.796948467138, "normal_real_wasserstein": 4817.021004696142, "normal_pseudo_wasserstein": 1.2366911617915513, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999979918, "pseudo_minus_real_mean": -4815.796948467138, "pseudo_std_over_real": 0.001205288071660197}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.8190174568180963, "normal_real_wasserstein": 2.197453999077236, "normal_pseudo_wasserstein": 0.3784365422591393, "pseudo_real_ks": 0.6466020993517676, "pseudo_real_js": 0.4507087275060012, "pseudo_minus_real_mean": -1.8190174568180968, "pseudo_std_over_real": 0.7685209339161377}]}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "tail_quantile_match", "seed": 0, "mat_mean_auc": 0.8193642809758869, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 6558.126566912769, "normal_real_wasserstein": 6558.181664622761, "normal_pseudo_wasserstein": 0.06446272641286677, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9861526338017325, "pseudo_minus_real_mean": -6558.126566912769, "pseudo_std_over_real": 7.839232008012421e-05}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 1026.5614043466724, "normal_real_wasserstein": 1026.6262692298653, "normal_pseudo_wasserstein": 0.47934916930273425, "pseudo_real_ks": 0.9986056239832675, "pseudo_real_js": 0.9994689652545102, "pseudo_minus_real_mean": -1026.5614043466726, "pseudo_std_over_real": 0.01643310680153045}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.7799778033157008, "normal_real_wasserstein": 2.2025044126677753, "normal_pseudo_wasserstein": 0.4230652835119232, "pseudo_real_ks": 0.629993954142303, "pseudo_real_js": 0.4301244809153888, "pseudo_minus_real_mean": -1.7791907362601496, "pseudo_std_over_real": 0.7575726701514551}]}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "tail_quantile_match", "seed": 1, "mat_mean_auc": 0.7937796186337117, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 106840.84353237003, "normal_real_wasserstein": 106840.88187922398, "normal_pseudo_wasserstein": 0.06366095854629102, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9126545621283794, "pseudo_minus_real_mean": -106840.84353237001, "pseudo_std_over_real": 3.3249006977071908e-06}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 2529.1272421380477, "normal_real_wasserstein": 2528.922475647142, "normal_pseudo_wasserstein": 0.5266179194064428, "pseudo_real_ks": 0.9980952380952381, "pseudo_real_js": 0.9365574702544712, "pseudo_minus_real_mean": -2529.127242138047, "pseudo_std_over_real": 0.005560375488372239}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.7676322996935476, "normal_real_wasserstein": 2.1247356618710334, "normal_pseudo_wasserstein": 0.362361649369207, "pseudo_real_ks": 0.5957162726008345, "pseudo_real_js": 0.4181245165094213, "pseudo_minus_real_mean": -1.767558302549224, "pseudo_std_over_real": 0.7015571981252767}]}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "tail_quantile_match", "seed": 2, "mat_mean_auc": 0.7817391115986492, "worst_alignment": [{"feature": "flat_l2", "pseudo_real_wasserstein": 1.5515687664290567, "normal_real_wasserstein": 1.9359895149030306, "normal_pseudo_wasserstein": 0.38442074847397356, "pseudo_real_ks": 0.5712414628127491, "pseudo_real_js": 0.38534393200016803, "pseudo_minus_real_mean": -1.5515687664290567, "pseudo_std_over_real": 0.8050168974232846}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 0.7222645814814406, "normal_real_wasserstein": 1.14129148327239, "normal_pseudo_wasserstein": 1.097070352531161, "pseudo_real_ks": 0.26702821554811096, "pseudo_real_js": 0.14033853045955516, "pseudo_minus_real_mean": 0.696913248097081, "pseudo_std_over_real": 1.8105108252325146}, {"feature": "q25", "pseudo_real_wasserstein": 0.6413392150433997, "normal_real_wasserstein": 0.6635061686714976, "normal_pseudo_wasserstein": 0.024913005785640305, "pseudo_real_ks": 0.8075100617642307, "pseudo_real_js": 0.7114949025010329, "pseudo_minus_real_mean": -0.6413392150433999, "pseudo_std_over_real": 0.4403114605177168}]}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "tail_quantile_match", "seed": 3, "mat_mean_auc": 0.7923562370338453, "worst_alignment": [{"feature": "response_z_l2", "pseudo_real_wasserstein": 187.35903262067785, "normal_real_wasserstein": 188.53772826396022, "normal_pseudo_wasserstein": 1.180499998233857, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.999999999998062, "pseudo_minus_real_mean": -187.35903262067785, "pseudo_std_over_real": 0.042851368804235936}, {"feature": "response_pca_residual", "pseudo_real_wasserstein": 103.18967835629488, "normal_real_wasserstein": 103.36777216342401, "normal_pseudo_wasserstein": 0.17813443636677545, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9760235938011371, "pseudo_minus_real_mean": -103.18967835629489, "pseudo_std_over_real": 0.0030914983381386167}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.61781584614616, "normal_real_wasserstein": 1.9891715731921273, "normal_pseudo_wasserstein": 0.3713557270459673, "pseudo_real_ks": 0.5951701310737455, "pseudo_real_js": 0.40545832778433716, "pseudo_minus_real_mean": -1.6178158461461605, "pseudo_std_over_real": 0.8043795454643916}]}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "pseudo_strategy": "tail_quantile_match", "seed": 4, "mat_mean_auc": 0.8249539444918123, "worst_alignment": [{"feature": "response_pca_residual", "pseudo_real_wasserstein": 5380408.917744641, "normal_real_wasserstein": 5380409.1207542885, "normal_pseudo_wasserstein": 0.2040128841746508, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9299769673406432, "pseudo_minus_real_mean": -5380408.91774464, "pseudo_std_over_real": 8.470216448971881e-08}, {"feature": "response_z_l2", "pseudo_real_wasserstein": 18254.536452541615, "normal_real_wasserstein": 18255.70950383071, "normal_pseudo_wasserstein": 1.1822373464945684, "pseudo_real_ks": 1.0, "pseudo_real_js": 0.9999999999979532, "pseudo_minus_real_mean": -18254.536452541615, "pseudo_std_over_real": 0.0003019101260521775}, {"feature": "flat_l2", "pseudo_real_wasserstein": 1.8133112519243908, "normal_real_wasserstein": 2.187085534324818, "normal_pseudo_wasserstein": 0.3740012416921512, "pseudo_real_ks": 0.6478617104123021, "pseudo_real_js": 0.45373617430140534, "pseudo_minus_real_mean": -1.8130842926326656, "pseudo_std_over_real": 0.7531796706318761}]}
+{"stage": "done", "status": "finished", "out": "experiments/outputs/pseudo_strategy_gate_probe.json", "elapsed_sec": 1259.48}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+REMOTE_PROBE_DONE

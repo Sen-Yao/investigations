@@ -1,0 +1,55 @@
+program: experiments/scripts/v0_set_dmit_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  epochs:
+    value: 160
+  patience:
+    value: 20
+  batch_size:
+    value: 512
+  d_model:
+    value: 32
+  nhead:
+    value: 4
+  reader_layers:
+    value: 1
+  reader_ffn_dim:
+    value: 64
+  reader_dropout:
+    value: 0.10
+  lr:
+    value: 0.001
+  weight_decay:
+    value: 0.0001
+  lambda_pair:
+    value: 0.5
+  pair_margin:
+    value: 1.0
+  pseudo_noise_scale:
+    value: 1.0
+  pseudo_tail_boost:
+    value: 1.0
+notes:
+  protocol: "Runner-registered pure probe. C-MiT / V0 Set-D-MiT. Frozen C-LEG3 / old_exact response matrix. No row/column/reference/2D position encoding. True anomaly labels diagnostic-only."
+  objective: "Test whether an unordered matrix-entry token reader can learn useful distributional response-matrix signal beyond mat_mean/margin under the two textual constraints."
+  controlled_variables: "fixed C-LEG3 reference construction, fixed GT-3 frozen encoder, elliptic, seeds 0-4, no V1/V2 identity or grid position."
+  expected_output: "experiments/outputs/v0_set_dmit_probe.json"
+  next_gate: "Proceed to V1 only if V0 is close/complementary to mat_mean or exposes an interpretable failure mode worth identity-aware probing."
