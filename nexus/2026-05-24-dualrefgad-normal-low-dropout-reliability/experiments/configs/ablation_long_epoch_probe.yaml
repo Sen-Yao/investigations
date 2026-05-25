@@ -1,0 +1,67 @@
+program: experiments/scripts/ablation_long_epoch_probe.py
+method: diagnostic
+profile: probe
+project: DualRefGAD
+investigation: 2026-05-24-dualrefgad-normal-low-dropout-reliability
+parameters:
+  dataset:
+    value: elliptic
+  devices:
+    value: "0,1,2,3"
+  seeds:
+    value: "0"
+  variants:
+    value: "R0_baseline_untrained,R1_normal_low_only,R2_ref_drop_only,R3_normal_low_ref_drop"
+  parallel_workers:
+    value: 4
+  train_rate:
+    value: 0.05
+  num_epoch:
+    value: 120
+  descriptor_mode:
+    value: hop_attr_rwse
+  pn_estimator:
+    value: diag_gaussian
+  normal_k:
+    value: 8
+  pp_k:
+    value: 8
+  GT_num_layers:
+    value: 1
+  embedding_dim:
+    value: 128
+  GT_ffn_dim:
+    value: 128
+  lambda_normal_low:
+    value: 1.0
+  lambda_ref_drop:
+    value: 1.0
+  ref_dropout_rate:
+    value: 0.5
+  eval_every:
+    value: 5
+  out:
+    value: investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/ablation_long_epoch_probe.json
+  progress_out:
+    value: investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/ablation_long_epoch_probe.progress.json
+notes:
+  protocol: >
+    Runner-registered probe for minimal ablation R0/R1/R2/R3. Because the previous
+    seed-0 R3 AUC curve recovered from epoch 25 to epoch 40, this run extends the
+    training horizon to 120 epochs rather than stopping at 40.
+  variants:
+    R0_baseline_untrained: untrained readout baseline, no training loss
+    R1_normal_low_only: L_normal-low only over labeled normal nodes
+    R2_ref_drop_only: L_ref-drop only reference-subset consistency
+    R3_normal_low_ref_drop: L_normal-low + L_ref-drop
+  excluded_from_training_loss:
+    - anomaly_labels
+    - pseudo_anomalies
+    - reference_ranking
+    - entropy_regularization
+    - anti_hub_regularization
+    - residual_guided_hard_negatives
+  diagnostics_only:
+    - validation/test AUC/AP report-only
+    - reference purity report-only
+    - score/reference-density correlation report-only

@@ -1,0 +1,83 @@
+program: experiments/scripts/acd_reference_loss_ablation_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  devices:
+    value: "0,1,2,3,4,5,6,7"
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: "A_normal_low,A_D_entropy_antihub,A_C_ref_rank,A_C_D"
+  parallel_workers:
+    value: 8
+  train_rate:
+    value: 0.05
+  num_epoch:
+    value: 120
+  descriptor_mode:
+    value: hop_attr_rwse
+  pn_estimator:
+    value: diag_gaussian
+  normal_k:
+    value: 8
+  hops:
+    value: 2
+  rw_steps:
+    value: 8
+  pca_components:
+    value: 32
+  embedding_dim:
+    value: 128
+  GT_ffn_dim:
+    value: 128
+  GT_dropout:
+    value: 0.2
+  GT_attention_dropout:
+    value: 0.2
+  GT_num_heads:
+    value: 2
+  GT_num_layers:
+    value: 1
+  lr:
+    value: 0.001
+  weight_decay:
+    value: 0.0
+  lambda_normal_low:
+    value: 1.0
+  lambda_ref_rank:
+    value: 1.0
+  lambda_entropy:
+    value: 1.0
+  lambda_antihub:
+    value: 1.0
+  ref_rank_temperature:
+    value: 0.2
+  ref_rank_sim_weight:
+    value: 0.5
+  ref_rank_density_weight:
+    value: 0.5
+  entropy_target:
+    value: 0.72
+  antihub_cap:
+    value: 0.03
+  ref_dropout_rate:
+    value: 0.0
+  encode_batch_size:
+    value: 2048
+  eval_every:
+    value: 5
+  out:
+    value: investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/acd_reference_loss_ablation_probe.json
+  progress_out:
+    value: investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/acd_reference_loss_ablation_probe.progress.json
+  sample_rate:
+    value: 0.15
+  pp_k:
+    value: 8
+  ablation_mode:
+    value: acd_reference_loss_ablation
+notes:
+  protocol: "Runner-registered pure probe. Loss uses labeled normal nodes only. Validation/test labels are report-only diagnostics."
+  objective: "Keep A labeled-normal low-score anchor and ablate C normal-reference ranking plus D entropy/anti-hub reference-use constraints."
+  variants: "A, A+D, A+C, A+C+D"

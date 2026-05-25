@@ -1,0 +1,102 @@
+{
+  "status": "finished",
+  "done": 4,
+  "total": 4,
+  "current": "finished",
+  "start_time": 1779675880.601938,
+  "config": {
+    "dataset": "elliptic",
+    "devices": "0,1,2,3",
+    "seeds": "0",
+    "variants": "R0_baseline_untrained,R1_normal_low_only,R2_ref_drop_only,R3_normal_low_ref_drop",
+    "parallel_workers": 4,
+    "train_rate": 0.05,
+    "num_epoch": 120,
+    "descriptor_mode": "hop_attr_rwse",
+    "pn_estimator": "diag_gaussian",
+    "normal_k": 8,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "embedding_dim": 128,
+    "GT_ffn_dim": 128,
+    "GT_dropout": 0.2,
+    "GT_attention_dropout": 0.2,
+    "GT_num_heads": 2,
+    "GT_num_layers": 1,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "lambda_normal_low": 1.0,
+    "lambda_ref_drop": 1.0,
+    "ref_dropout_rate": 0.5,
+    "encode_batch_size": 2048,
+    "eval_every": 5,
+    "out": "investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/ablation_long_epoch_probe.json",
+    "progress_out": "investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/ablation_long_epoch_probe.progress.json",
+    "sample_rate": 0.15,
+    "pp_k": 8,
+    "ablation_mode": "long_epoch_r0_r3"
+  },
+  "tasks": [
+    {
+      "variant": "R0_baseline_untrained",
+      "seed": 0,
+      "device": 0
+    },
+    {
+      "variant": "R1_normal_low_only",
+      "seed": 0,
+      "device": 1
+    },
+    {
+      "variant": "R2_ref_drop_only",
+      "seed": 0,
+      "device": 2
+    },
+    {
+      "variant": "R3_normal_low_ref_drop",
+      "seed": 0,
+      "device": 3
+    }
+  ],
+  "design_note": "R0/R1/R2/R3 ablation with longer epoch because previous AUC recovered from epoch 25 to 40; labels remain report-only.",
+  "elapsed_sec": 65.0069727897644,
+  "leaderboard_report_only": [
+    {
+      "variant": "R2_ref_drop_only",
+      "seed": 0,
+      "val_auc": 0.698012615026572,
+      "val_ap": 0.23783808689844047,
+      "test_auc": 0.6954590531240394,
+      "test_ap": 0.25960346294377407,
+      "epoch": 90
+    },
+    {
+      "variant": "R3_normal_low_ref_drop",
+      "seed": 0,
+      "val_auc": 0.5950983856154367,
+      "val_ap": 0.10219194468971018,
+      "test_auc": 0.5912299122631185,
+      "test_ap": 0.10822112978256579,
+      "epoch": 50
+    },
+    {
+      "variant": "R1_normal_low_only",
+      "seed": 0,
+      "val_auc": 0.5836573099832365,
+      "val_ap": 0.09929538480521133,
+      "test_auc": 0.5949262298042002,
+      "test_ap": 0.10929244650028429,
+      "epoch": 5
+    },
+    {
+      "variant": "R0_baseline_untrained",
+      "seed": 0,
+      "val_auc": 0.44862397234012197,
+      "val_ap": 0.07573398610632182,
+      "test_auc": 0.43826357955301165,
+      "test_ap": 0.0800080831986579,
+      "epoch": 0
+    }
+  ]
+}

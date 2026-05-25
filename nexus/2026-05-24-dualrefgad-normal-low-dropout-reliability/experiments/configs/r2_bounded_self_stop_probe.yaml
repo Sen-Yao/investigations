@@ -1,0 +1,83 @@
+program: experiments/scripts/r2_bounded_self_stop_probe.py
+method: diagnostic
+profile: probe
+project: DualRefGAD
+investigation: 2026-05-24-dualrefgad-normal-low-dropout-reliability
+parameters:
+  dataset:
+    value: elliptic
+  devices:
+    value: "0,1,2,3"
+  seeds:
+    value: "0,1,2,3,4"
+  parallel_workers:
+    value: 4
+  train_rate:
+    value: 0.05
+  num_epoch:
+    value: 120
+  descriptor_mode:
+    value: hop_attr_rwse
+  pn_estimator:
+    value: diag_gaussian
+  normal_k:
+    value: 8
+  pp_k:
+    value: 8
+  GT_num_layers:
+    value: 1
+  embedding_dim:
+    value: 128
+  GT_ffn_dim:
+    value: 128
+  ref_dropout_rate:
+    value: 0.5
+  score_bound:
+    value: 5.0
+  saturation_frac_threshold:
+    value: 0.95
+  saturation_penalty:
+    value: 0.05
+  mean_drift_penalty:
+    value: 0.01
+  collapse_penalty:
+    value: 0.10
+  min_score_std:
+    value: 0.05
+  self_stop_min_epoch:
+    value: 20
+  self_stop_patience:
+    value: 8
+  self_stop_min_delta:
+    value: 0.00001
+  eval_every:
+    value: 5
+  out:
+    value: investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/r2_bounded_self_stop_probe.json
+  progress_out:
+    value: investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/r2_bounded_self_stop_probe.progress.json
+notes:
+  protocol: >
+    Runner-registered pure probe for R2_ref_drop_only with bounded score scale and
+    label-free self-stop. The scientific question is whether the previous R2 peak
+    survives after removing unbounded score-scale drift as an explanation.
+  variant:
+    R2_bounded_refdrop_selfstop: L_ref-drop only; score = B * tanh(raw / B); checkpoint chosen by label-free self-stop health.
+  excluded_from_training_loss:
+    - anomaly_labels
+    - pseudo_anomalies
+    - normal_low_absolute_anchor
+    - reference_ranking
+    - entropy_regularization
+    - anti_hub_regularization
+    - residual_guided_hard_negatives
+  diagnostics_only:
+    - validation/test AUC/AP report-only
+    - reference purity report-only
+    - oracle best-val checkpoint shown only as an upper-bound diagnostic, not as the selected checkpoint
+  report_fields:
+    - self_stop selected epoch per seed
+    - self_stop report-only AUC/AP mean±std
+    - best-val oracle report-only AUC/AP mean±std
+    - score saturation fraction and normal score drift
+    - dropout score MSE over known-normal nodes

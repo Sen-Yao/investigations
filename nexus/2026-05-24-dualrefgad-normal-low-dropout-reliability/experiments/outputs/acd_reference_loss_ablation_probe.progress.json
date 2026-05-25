@@ -1,0 +1,334 @@
+{
+  "status": "finished",
+  "done": 20,
+  "total": 20,
+  "current": "finished",
+  "start_time": 1779682875.4687548,
+  "config": {
+    "dataset": "elliptic",
+    "devices": "0,1,2,3,4,5,6,7",
+    "seeds": "0,1,2,3,4",
+    "variants": "A_normal_low,A_D_entropy_antihub,A_C_ref_rank,A_C_D",
+    "parallel_workers": 4,
+    "train_rate": 0.05,
+    "num_epoch": 120,
+    "descriptor_mode": "hop_attr_rwse",
+    "pn_estimator": "diag_gaussian",
+    "normal_k": 8,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "embedding_dim": 128,
+    "GT_ffn_dim": 128,
+    "GT_dropout": 0.2,
+    "GT_attention_dropout": 0.2,
+    "GT_num_heads": 2,
+    "GT_num_layers": 1,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "lambda_normal_low": 1.0,
+    "lambda_ref_drop": 0.0,
+    "lambda_ref_rank": 1.0,
+    "lambda_entropy": 1.0,
+    "lambda_antihub": 1.0,
+    "ref_rank_temperature": 0.2,
+    "ref_rank_sim_weight": 0.5,
+    "ref_rank_density_weight": 0.5,
+    "entropy_target": 0.72,
+    "antihub_cap": 0.03,
+    "ref_dropout_rate": 0.0,
+    "encode_batch_size": 256,
+    "eval_every": 5,
+    "out": "investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/acd_reference_loss_ablation_probe.json",
+    "progress_out": "investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/acd_reference_loss_ablation_probe.progress.json",
+    "sample_rate": 0.15,
+    "pp_k": 8,
+    "ablation_mode": "acd_reference_loss_ablation"
+  },
+  "tasks": [
+    {
+      "variant": "A_normal_low",
+      "seed": 0,
+      "device": 0
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 0,
+      "device": 1
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 0,
+      "device": 2
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 0,
+      "device": 3
+    },
+    {
+      "variant": "A_normal_low",
+      "seed": 1,
+      "device": 4
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 1,
+      "device": 5
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 1,
+      "device": 6
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 1,
+      "device": 7
+    },
+    {
+      "variant": "A_normal_low",
+      "seed": 2,
+      "device": 0
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 2,
+      "device": 1
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 2,
+      "device": 2
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 2,
+      "device": 3
+    },
+    {
+      "variant": "A_normal_low",
+      "seed": 3,
+      "device": 4
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 3,
+      "device": 5
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 3,
+      "device": 6
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 3,
+      "device": 7
+    },
+    {
+      "variant": "A_normal_low",
+      "seed": 4,
+      "device": 0
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 4,
+      "device": 1
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 4,
+      "device": 2
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 4,
+      "device": 3
+    }
+  ],
+  "design_note": "A/C/D ablation: keep labeled-normal low-score anchor A, test normal-reference ranking C and entropy/anti-hub D. Labels remain report-only.",
+  "elapsed_sec": 569.35267162323,
+  "leaderboard_report_only": [
+    {
+      "variant": "A_normal_low",
+      "seed": 4,
+      "val_auc": 0.6048677579848815,
+      "val_ap": 0.10916953806975993,
+      "test_auc": 0.6205617907426086,
+      "test_ap": 0.11767923423855411,
+      "epoch": 15
+    },
+    {
+      "variant": "A_normal_low",
+      "seed": 0,
+      "val_auc": 0.5835461287762599,
+      "val_ap": 0.09931428342666465,
+      "test_auc": 0.5957612313244822,
+      "test_ap": 0.10962893845500922,
+      "epoch": 5
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 2,
+      "val_auc": 0.5595300026630499,
+      "val_ap": 0.10238773146829441,
+      "test_auc": 0.5553078772280572,
+      "test_ap": 0.09861603841061664,
+      "epoch": 0
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 2,
+      "val_auc": 0.558892109321294,
+      "val_ap": 0.10225395965232606,
+      "test_auc": 0.5552833670967032,
+      "test_ap": 0.09859873683645433,
+      "epoch": 0
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 0,
+      "val_auc": 0.5581979281841851,
+      "val_ap": 0.09352605945187624,
+      "test_auc": 0.5709859282914911,
+      "test_ap": 0.10273306433394182,
+      "epoch": 5
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 0,
+      "val_auc": 0.5576938509826301,
+      "val_ap": 0.0934416777511346,
+      "test_auc": 0.5705545143896906,
+      "test_ap": 0.10262554180721001,
+      "epoch": 5
+    },
+    {
+      "variant": "A_normal_low",
+      "seed": 2,
+      "val_auc": 0.5570248778403284,
+      "val_ap": 0.10158717099329526,
+      "test_auc": 0.5544177923718505,
+      "test_ap": 0.09884887933060868,
+      "epoch": 15
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 2,
+      "val_auc": 0.5478035515589164,
+      "val_ap": 0.10002512448256529,
+      "test_auc": 0.5552921022644901,
+      "test_ap": 0.09939470034137676,
+      "epoch": 0
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 3,
+      "val_auc": 0.5432691722301838,
+      "val_ap": 0.10157297124137307,
+      "test_auc": 0.533242906080021,
+      "test_ap": 0.10113122413854139,
+      "epoch": 20
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 1,
+      "val_auc": 0.5263999907561034,
+      "val_ap": 0.09244446162959136,
+      "test_auc": 0.5379399196695314,
+      "test_ap": 0.09610463927365935,
+      "epoch": 0
+    },
+    {
+      "variant": "A_normal_low",
+      "seed": 1,
+      "val_auc": 0.5224587294159171,
+      "val_ap": 0.09168149837618472,
+      "test_auc": 0.5231825752277053,
+      "test_ap": 0.09267012092725857,
+      "epoch": 0
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 4,
+      "val_auc": 0.5183226365634812,
+      "val_ap": 0.0898695630431823,
+      "test_auc": 0.52807983045618,
+      "test_ap": 0.09464200378992185,
+      "epoch": 40
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 1,
+      "val_auc": 0.5105435568728109,
+      "val_ap": 0.08937721993730338,
+      "test_auc": 0.49425471382972985,
+      "test_ap": 0.08680441434244851,
+      "epoch": 0
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 1,
+      "val_auc": 0.5097722692557981,
+      "val_ap": 0.08921562590931362,
+      "test_auc": 0.4941083223789906,
+      "test_ap": 0.08677118289080733,
+      "epoch": 0
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 4,
+      "val_auc": 0.5032700494602439,
+      "val_ap": 0.08640993155743912,
+      "test_auc": 0.516129094905015,
+      "test_ap": 0.09242234230990973,
+      "epoch": 15
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 4,
+      "val_auc": 0.4988110883368959,
+      "val_ap": 0.08561572556636565,
+      "test_auc": 0.511939929940151,
+      "test_ap": 0.09157223557901539,
+      "epoch": 15
+    },
+    {
+      "variant": "A_normal_low",
+      "seed": 3,
+      "val_auc": 0.49526772380108874,
+      "val_ap": 0.08627944444481375,
+      "test_auc": 0.47794139673589925,
+      "test_ap": 0.08454164015196917,
+      "epoch": 10
+    },
+    {
+      "variant": "A_D_entropy_antihub",
+      "seed": 0,
+      "val_auc": 0.4931931465563363,
+      "val_ap": 0.08126955120651969,
+      "test_auc": 0.5002023696872984,
+      "test_ap": 0.08831142315945588,
+      "epoch": 5
+    },
+    {
+      "variant": "A_C_D",
+      "seed": 3,
+      "val_auc": 0.45341071699887187,
+      "val_ap": 0.08046463347088224,
+      "test_auc": 0.44380954735316946,
+      "test_ap": 0.07994002450914794,
+      "epoch": 10
+    },
+    {
+      "variant": "A_C_ref_rank",
+      "seed": 3,
+      "val_auc": 0.44878776119766456,
+      "val_ap": 0.07965360937085511,
+      "test_auc": 0.43851451111510764,
+      "test_ap": 0.07912534962658338,
+      "epoch": 10
+    }
+  ]
+}

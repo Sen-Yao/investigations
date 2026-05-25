@@ -26,3 +26,20 @@
 ## Risk to watch
 
 如果 gate 与 margin proxy 高度一致，则所谓 reliability 可能只是旧分数的再参数化；此时应停止扩大 loss 组合，优先做诊断与消融。
+
+## 2026-05-25 Learning Signal Discovery pivot
+
+The current investigation should be reinterpreted as a negative/diagnostic precursor to **Learning Signal Discovery** rather than as evidence that normal-low, reference-dropout, reference-ranking, entropy, or anti-hub losses are sufficient.
+
+Key evidence:
+
+- C-LEG3 fixed old-exact response matrix remains the positive control / teacher: untrained `mat_mean` AUC `0.8168 ± 0.0054`, better than centroid `margin` AUC `0.7928 ± 0.0054`.
+- This 0.81+ result proves that strong signal exists in the C-LEG3 reference relation; it does **not** prove that the current trainable reference/reliability losses can learn it.
+- A/C/D loss ablation is negative: best report-only result was `A_normal_low` at test AUC/AP `0.5544 ± 0.0508 / 0.1007 ± 0.0118`; adding C reference ranking and/or D entropy/anti-hub did not recover the teacher-level ordering.
+- Therefore the bottleneck is now **finding a reliable learning signal**, not adding more readout capacity or stacking more regularizers.
+
+Protocol implication:
+
+- Anomaly labels may be used in the exploration phase only for oracle autopsy and diagnostics: to identify where C-LEG3/mat_mean succeeds, where candidate losses fail, and what signal family might be recoverable.
+- Final method training, early stopping, checkpoint selection, and contribution claims must remain anomaly-label-free unless explicitly reframed as an oracle/upper-bound diagnostic.
+- Next claims should be phrased as Learning Signal Discovery until a stable label-free/normal-only objective can approach the C-LEG3 teacher without collapsing into margin proxy, score-scale drift, or reference artifacts.

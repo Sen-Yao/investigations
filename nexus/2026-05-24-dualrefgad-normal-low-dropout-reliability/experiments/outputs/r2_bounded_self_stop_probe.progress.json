@@ -1,0 +1,315 @@
+{
+  "status": "finished",
+  "done": 5,
+  "total": 5,
+  "current": "finished",
+  "start_time": 1779678862.383079,
+  "config": {
+    "dataset": "elliptic",
+    "devices": "0,1,2,3",
+    "seeds": "0,1,2,3,4",
+    "parallel_workers": 4,
+    "train_rate": 0.05,
+    "num_epoch": 120,
+    "descriptor_mode": "hop_attr_rwse",
+    "pn_estimator": "diag_gaussian",
+    "normal_k": 8,
+    "hops": 2,
+    "rw_steps": 8,
+    "pca_components": 32,
+    "embedding_dim": 128,
+    "GT_ffn_dim": 128,
+    "GT_dropout": 0.2,
+    "GT_attention_dropout": 0.2,
+    "GT_num_heads": 2,
+    "GT_num_layers": 1,
+    "lr": 0.001,
+    "weight_decay": 0.0,
+    "ref_dropout_rate": 0.5,
+    "score_bound": 5.0,
+    "saturation_frac_threshold": 0.95,
+    "saturation_penalty": 0.05,
+    "mean_drift_penalty": 0.01,
+    "collapse_penalty": 0.1,
+    "min_score_std": 0.05,
+    "self_stop_min_epoch": 20,
+    "self_stop_patience": 8,
+    "self_stop_min_delta": 1e-05,
+    "encode_batch_size": 2048,
+    "eval_every": 5,
+    "out": "investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/r2_bounded_self_stop_probe.json",
+    "progress_out": "investigations/2026-05-24-dualrefgad-normal-low-dropout-reliability/experiments/outputs/r2_bounded_self_stop_probe.progress.json",
+    "sample_rate": 0.15,
+    "pp_k": 8,
+    "ablation_mode": "r2_bounded_self_stop"
+  },
+  "tasks": [
+    {
+      "seed": 0,
+      "device": 0
+    },
+    {
+      "seed": 1,
+      "device": 1
+    },
+    {
+      "seed": 2,
+      "device": 2
+    },
+    {
+      "seed": 3,
+      "device": 3
+    },
+    {
+      "seed": 4,
+      "device": 0
+    }
+  ],
+  "design_note": "R2 ref-drop-only with bounded tanh score and label-free self-stop; labels are report-only.",
+  "elapsed_sec": 65.44340348243713,
+  "aggregate": {
+    "self_stop_report_only": {
+      "val_auc_report_only": {
+        "mean": 0.5274194622824151,
+        "std": 0.10098241540100672,
+        "n": 5
+      },
+      "val_ap_report_only": {
+        "mean": 0.09852301706593847,
+        "std": 0.025784947306433027,
+        "n": 5
+      },
+      "test_auc_report_only": {
+        "mean": 0.5260733520153416,
+        "std": 0.10638655933831175,
+        "n": 5
+      },
+      "test_ap_report_only": {
+        "mean": 0.1009962723717565,
+        "std": 0.028003332146546836,
+        "n": 5
+      },
+      "epoch": {
+        "mean": 20.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "all_score_std": {
+        "mean": 0.005307861184701323,
+        "std": 0.0024111700969334385,
+        "n": 5
+      },
+      "saturation_frac_all": {
+        "mean": 0.0,
+        "std": 0.0,
+        "n": 5
+      },
+      "dropout_score_mse_normal": {
+        "mean": 1.2763957874994957e-05,
+        "std": 1.3311418022896156e-05,
+        "n": 5
+      }
+    },
+    "best_val_oracle_report_only": {
+      "val_auc": {
+        "mean": 0.6505895889751038,
+        "std": 0.02356941274223851,
+        "n": 5
+      },
+      "val_ap": {
+        "mean": 0.12762213143460938,
+        "std": 0.010777772099634996,
+        "n": 5
+      },
+      "test_auc": {
+        "mean": 0.6490613629760293,
+        "std": 0.026916447634120377,
+        "n": 5
+      },
+      "test_ap": {
+        "mean": 0.13022631388341788,
+        "std": 0.013243174436032606,
+        "n": 5
+      },
+      "epoch": {
+        "mean": 21.0,
+        "std": 8.0,
+        "n": 5
+      }
+    },
+    "self_stop_rows": [
+      {
+        "variant": "R2_bounded_refdrop_selfstop",
+        "seed": 0,
+        "device": 0,
+        "epoch": 20,
+        "loss": 0.0005010174936614931,
+        "L_ref_drop": 0.0005010174936614931,
+        "normal_score_mean": 3.8199782371520996,
+        "normal_score_mean_delta": 3.332397311925888,
+        "all_score_mean": 3.8199963569641113,
+        "all_score_std": 0.0023539464455097914,
+        "raw_score_std": 0.005320652853697538,
+        "score_min": 3.4604148864746094,
+        "score_max": 3.821820020675659,
+        "saturation_frac_all": 0.0,
+        "dropout_score_mse_all": 0.00046866387128829956,
+        "dropout_score_mse_normal": 6.129759640316479e-06,
+        "spearman_score_ref_density": 0.3246067564156293,
+        "val_auc_report_only": 0.5033669236187894,
+        "val_ap_report_only": 0.08371211812123074,
+        "test_auc_report_only": 0.48966011850350066,
+        "test_ap_report_only": 0.08712529957259718,
+        "self_stop_health": -0.03809470823434822,
+        "selected_by": "self_stop_label_free"
+      },
+      {
+        "variant": "R2_bounded_refdrop_selfstop",
+        "seed": 1,
+        "device": 1,
+        "epoch": 20,
+        "loss": 0.00042114045936614275,
+        "L_ref_drop": 0.00042114045936614275,
+        "normal_score_mean": 2.8164687156677246,
+        "normal_score_mean_delta": 2.687725067138672,
+        "all_score_mean": 2.8163187503814697,
+        "all_score_std": 0.009601486846804619,
+        "raw_score_std": 0.013018572703003883,
+        "score_min": 1.8983031511306763,
+        "score_max": 2.819791316986084,
+        "saturation_frac_all": 0.0,
+        "dropout_score_mse_all": 0.001007168204523623,
+        "dropout_score_mse_normal": 6.694641342619434e-06,
+        "spearman_score_ref_density": 0.23685907948585005,
+        "val_auc_report_only": 0.6815272807870336,
+        "val_ap_report_only": 0.14573780491608634,
+        "test_auc_report_only": 0.6925072992152138,
+        "test_ap_report_only": 0.15141602002072385,
+        "self_stop_health": -0.030923796628048877,
+        "selected_by": "self_stop_label_free"
+      },
+      {
+        "variant": "R2_bounded_refdrop_selfstop",
+        "seed": 2,
+        "device": 2,
+        "epoch": 20,
+        "loss": 0.0005103386356495321,
+        "L_ref_drop": 0.0005103386356495321,
+        "normal_score_mean": -3.013970375061035,
+        "normal_score_mean_delta": -2.9465573579072952,
+        "all_score_mean": -3.013965368270874,
+        "all_score_std": 0.004046304151415825,
+        "raw_score_std": 0.00602318998426199,
+        "score_min": -3.0160903930664062,
+        "score_max": -2.434854745864868,
+        "saturation_frac_all": 0.0,
+        "dropout_score_mse_all": 0.0004224723670631647,
+        "dropout_score_mse_normal": 9.084007615456358e-06,
+        "spearman_score_ref_density": -0.23237577233225928,
+        "val_auc_report_only": 0.4446689457419071,
+        "val_ap_report_only": 0.08218723100234711,
+        "test_auc_report_only": 0.44446634360589066,
+        "test_ap_report_only": 0.08020121064517771,
+        "self_stop_health": -0.03407002717154683,
+        "selected_by": "self_stop_label_free"
+      },
+      {
+        "variant": "R2_bounded_refdrop_selfstop",
+        "seed": 3,
+        "device": 3,
+        "epoch": 20,
+        "loss": 0.0004077068588230759,
+        "L_ref_drop": 0.0004077068588230759,
+        "normal_score_mean": -2.832901954650879,
+        "normal_score_mean_delta": -2.6528119295835495,
+        "all_score_mean": -2.8328237533569336,
+        "all_score_std": 0.005664569791406393,
+        "raw_score_std": 0.008062543347477913,
+        "score_min": -2.841554880142212,
+        "score_max": -2.3608014583587646,
+        "saturation_frac_all": 0.0,
+        "dropout_score_mse_all": 0.0009634447633288801,
+        "dropout_score_mse_normal": 3.908534927177243e-05,
+        "spearman_score_ref_density": 0.1043560425456613,
+        "val_auc_report_only": 0.4070898380734623,
+        "val_ap_report_only": 0.0750007645243338,
+        "test_auc_report_only": 0.40253707162938085,
+        "test_ap_report_only": 0.07537323472276668,
+        "self_stop_health": -0.031000747665966628,
+        "selected_by": "self_stop_label_free"
+      },
+      {
+        "variant": "R2_bounded_refdrop_selfstop",
+        "seed": 4,
+        "device": 0,
+        "epoch": 20,
+        "loss": 0.0003783327410928905,
+        "L_ref_drop": 0.0003783327410928905,
+        "normal_score_mean": -3.7356207370758057,
+        "normal_score_mean_delta": -3.515156075358391,
+        "all_score_mean": -3.7355213165283203,
+        "all_score_std": 0.004872998688369989,
+        "raw_score_std": 0.009765432216227055,
+        "score_min": -3.7380566596984863,
+        "score_max": -3.0373315811157227,
+        "saturation_frac_all": 0.0,
+        "dropout_score_mse_all": 0.0006510179373435676,
+        "dropout_score_mse_normal": 2.8260315048100892e-06,
+        "spearman_score_ref_density": -0.2296111673134782,
+        "val_auc_report_only": 0.6004443231908827,
+        "val_ap_report_only": 0.10597716676569433,
+        "test_auc_report_only": 0.6011959271227221,
+        "test_ap_report_only": 0.11086559689751703,
+        "self_stop_health": -0.03966708691625172,
+        "selected_by": "self_stop_label_free"
+      }
+    ],
+    "best_val_oracle_rows": [
+      {
+        "seed": 0,
+        "val_auc": 0.6654069845204551,
+        "val_ap": 0.12898996129492366,
+        "test_auc": 0.648814728504113,
+        "test_ap": 0.13027824836860002,
+        "epoch": 30,
+        "selected_by": "best_val_report_only_oracle"
+      },
+      {
+        "seed": 1,
+        "val_auc": 0.6815272807870336,
+        "val_ap": 0.14573780491608634,
+        "test_auc": 0.6925072992152138,
+        "test_ap": 0.15141602002072385,
+        "epoch": 20,
+        "selected_by": "best_val_report_only_oracle"
+      },
+      {
+        "seed": 2,
+        "val_auc": 0.6241182518006553,
+        "val_ap": 0.12022896459255467,
+        "test_auc": 0.6251457219535773,
+        "test_ap": 0.11857386173423298,
+        "epoch": 15,
+        "selected_by": "best_val_report_only_oracle"
+      },
+      {
+        "seed": 3,
+        "val_auc": 0.6220502683246663,
+        "val_ap": 0.11373457073564722,
+        "test_auc": 0.6173177465834335,
+        "test_ap": 0.11433789042817598,
+        "epoch": 10,
+        "selected_by": "best_val_report_only_oracle"
+      },
+      {
+        "seed": 4,
+        "val_auc": 0.6598451594427086,
+        "val_ap": 0.12941935563383494,
+        "test_auc": 0.6615213186238089,
+        "test_ap": 0.1365255488653565,
+        "epoch": 30,
+        "selected_by": "best_val_report_only_oracle"
+      }
+    ]
+  }
+}
