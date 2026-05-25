@@ -1,0 +1,41 @@
+program: experiments/scripts/route25_ref_length_mat_mean_scan.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  normal_ks:
+    value: "2,4,8,16"
+  anom_ks:
+    value: "4,8,16,32"
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  descriptor_mode:
+    value: hop_attr_rwse
+  pn_estimator:
+    value: diag_gaussian
+  gn_mode:
+    value: label_gate_density
+  ln_mode:
+    value: descriptor_similarity
+  ga_mode:
+    value: normal_rejection
+  la_mode:
+    value: residual_cosine
+  GT_num_layers:
+    value: 1
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  use_approx_anom_refs:
+    value: true
+  anom_approx_k:
+    value: 1000
+notes:
+  protocol: frozen encoder; no AE training; normal_k/anom_k grid; 5 seeds; labels diagnostic-only for AUC/AP
+  objective: test how normal/anomaly reference sequence lengths affect mat_mean and neg_mat_mean performance
+  grid: normal_k in {2,4,8,16}; anom_k in {4,8,16,32}; seeds 0..4; total 80 diagnostic points

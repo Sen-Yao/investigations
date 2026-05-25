@@ -1,0 +1,610 @@
+{"stage": "combo_start", "seed": 0, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.3671858415367237, "neg_mat_mean_auc": 0.6328141584632764, "best": "neg_mat_mean", "time_sec": 12.199094533920288}
+{"stage": "combo_start", "seed": 1, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.365390234647874, "neg_mat_mean_auc": 0.634609765352126, "best": "neg_mat_mean", "time_sec": 8.100259065628052}
+{"stage": "combo_start", "seed": 2, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.32308104971957885, "neg_mat_mean_auc": 0.6769189502804213, "best": "neg_mat_mean", "time_sec": 7.426605939865112}
+{"stage": "combo_start", "seed": 3, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.32127975250779595, "neg_mat_mean_auc": 0.678720247492204, "best": "neg_margin", "time_sec": 11.684950351715088}
+{"stage": "combo_start", "seed": 4, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.2900692624905444, "neg_mat_mean_auc": 0.7099307375094557, "best": "neg_mat_mean", "time_sec": 10.735175371170044}
+{"stage": "combo_start", "seed": 0, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.35783305035004054, "neg_mat_mean_auc": 0.6421669496499596, "best": "neg_margin", "time_sec": 12.690844297409058}
+{"stage": "combo_start", "seed": 1, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.4021681262002862, "neg_mat_mean_auc": 0.5978318737997138, "best": "neg_mat_mean", "time_sec": 11.53757905960083}
+{"stage": "combo_start", "seed": 2, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.3299607963089364, "neg_mat_mean_auc": 0.6700392036910636, "best": "neg_mat_mean", "time_sec": 11.999209880828857}
+{"stage": "combo_start", "seed": 3, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.3249318580395267, "neg_mat_mean_auc": 0.6750681419604733, "best": "neg_mat_mean", "time_sec": 10.910335540771484}
+{"stage": "combo_start", "seed": 4, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.3674142568370694, "neg_mat_mean_auc": 0.6325857431629306, "best": "neg_mat_mean", "time_sec": 10.193643808364868}
+{"stage": "combo_start", "seed": 0, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.4064098033506611, "neg_mat_mean_auc": 0.5935901966493388, "best": "neg_margin", "time_sec": 10.00039792060852}
+{"stage": "combo_start", "seed": 1, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.37163359835870957, "neg_mat_mean_auc": 0.6283664016412904, "best": "neg_mat_mean", "time_sec": 9.318459033966064}
+{"stage": "combo_start", "seed": 2, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.33144321163888874, "neg_mat_mean_auc": 0.6685567883611113, "best": "neg_mat_mean", "time_sec": 10.056360006332397}
+{"stage": "combo_start", "seed": 3, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.33501501380889676, "neg_mat_mean_auc": 0.6649849861911032, "best": "neg_mat_mean", "time_sec": 10.154742240905762}
+{"stage": "combo_start", "seed": 4, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.34009713230434824, "neg_mat_mean_auc": 0.6599028676956517, "best": "neg_mat_mean", "time_sec": 9.278120279312134}
+{"stage": "combo_start", "seed": 0, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.3292466426698138, "neg_mat_mean_auc": 0.6707533573301863, "best": "neg_mat_mean", "time_sec": 32.74082016944885}
+{"stage": "combo_start", "seed": 1, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.34298367096319976, "neg_mat_mean_auc": 0.6570163290368003, "best": "neg_mat_mean", "time_sec": 27.076406955718994}
+{"stage": "combo_start", "seed": 2, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.36377576027285513, "neg_mat_mean_auc": 0.6362242397271449, "best": "neg_mat_mean", "time_sec": 26.32474184036255}
+{"stage": "combo_start", "seed": 3, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.3320418408643051, "neg_mat_mean_auc": 0.6679581591356949, "best": "neg_mat_mean", "time_sec": 27.97026801109314}
+{"stage": "combo_start", "seed": 4, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.4180031494931714, "neg_mat_mean_auc": 0.5819968505068285, "best": "neg_mat_mean", "time_sec": 19.313103675842285}
+{"stage": "combo_start", "seed": 0, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.3394560569409257, "neg_mat_mean_auc": 0.6605439430590744, "best": "neg_margin", "time_sec": 9.96657419204712}
+{"stage": "combo_start", "seed": 1, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.40830720391550723, "neg_mat_mean_auc": 0.5916927960844928, "best": "neg_mat_mean", "time_sec": 9.030738592147827}
+{"stage": "combo_start", "seed": 2, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.31794272692238784, "neg_mat_mean_auc": 0.6820572730776121, "best": "neg_mat_mean", "time_sec": 9.44496750831604}
+{"stage": "combo_start", "seed": 3, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.35714146376627215, "neg_mat_mean_auc": 0.6428585362337279, "best": "neg_mat_mean", "time_sec": 10.638469219207764}
+{"stage": "combo_start", "seed": 4, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.2978833859093709, "neg_mat_mean_auc": 0.7021166140906291, "best": "neg_mat_mean", "time_sec": 10.241884469985962}
+{"stage": "combo_start", "seed": 0, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.3307644679693239, "neg_mat_mean_auc": 0.6692355320306762, "best": "neg_mat_mean", "time_sec": 10.413706302642822}
+{"stage": "combo_start", "seed": 1, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.3987702015685338, "neg_mat_mean_auc": 0.6012297984314662, "best": "neg_mat_mean", "time_sec": 8.264357566833496}
+{"stage": "combo_start", "seed": 2, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.32759594882208587, "neg_mat_mean_auc": 0.6724040511779141, "best": "neg_mat_mean", "time_sec": 8.773308277130127}
+{"stage": "combo_start", "seed": 3, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.357485908448036, "neg_mat_mean_auc": 0.642514091551964, "best": "neg_mat_mean", "time_sec": 9.0075204372406}
+{"stage": "combo_start", "seed": 4, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.3519168763214916, "neg_mat_mean_auc": 0.6480831236785083, "best": "neg_mat_mean", "time_sec": 8.704814910888672}
+{"stage": "combo_start", "seed": 0, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.36231162446924303, "neg_mat_mean_auc": 0.637688375530757, "best": "neg_mat_mean", "time_sec": 10.995523452758789}
+{"stage": "combo_start", "seed": 1, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.364021121321022, "neg_mat_mean_auc": 0.6359788786789781, "best": "neg_mat_mean", "time_sec": 16.130398511886597}
+{"stage": "combo_start", "seed": 2, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.33592522017812193, "neg_mat_mean_auc": 0.6640747798218781, "best": "neg_mat_mean", "time_sec": 16.534456253051758}
+{"stage": "combo_start", "seed": 3, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.350912207292249, "neg_mat_mean_auc": 0.649087792707751, "best": "neg_mat_mean", "time_sec": 13.827624559402466}
+{"stage": "combo_start", "seed": 4, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.3419247333988645, "neg_mat_mean_auc": 0.6580752666011355, "best": "neg_mat_mean", "time_sec": 11.408547163009644}
+{"stage": "combo_start", "seed": 0, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.33485007326849514, "neg_mat_mean_auc": 0.6651499267315049, "best": "neg_margin", "time_sec": 332.69474959373474}
+{"stage": "combo_start", "seed": 1, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.3332210838487856, "neg_mat_mean_auc": 0.6667789161512143, "best": "neg_mat_mean", "time_sec": 273.3886649608612}
+{"stage": "combo_start", "seed": 2, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.34381602820545876, "neg_mat_mean_auc": 0.6561839717945412, "best": "neg_mat_mean", "time_sec": 224.70037031173706}
+{"stage": "combo_start", "seed": 3, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.36147422277362884, "neg_mat_mean_auc": 0.6385257772263713, "best": "neg_mat_mean", "time_sec": 115.24222040176392}
+{"stage": "combo_start", "seed": 4, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.3851957455048466, "neg_mat_mean_auc": 0.6148042544951534, "best": "neg_margin", "time_sec": 102.11828231811523}
+{"stage": "combo_start", "seed": 0, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.3338767953403056, "neg_mat_mean_auc": 0.6661232046596943, "best": "neg_margin", "time_sec": 10.210803508758545}
+{"stage": "combo_start", "seed": 1, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.442671653163632, "neg_mat_mean_auc": 0.5573283468363681, "best": "neg_margin", "time_sec": 12.130754232406616}
+{"stage": "combo_start", "seed": 2, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.3147667949477118, "neg_mat_mean_auc": 0.6852332050522882, "best": "neg_mat_mean", "time_sec": 12.788790225982666}
+{"stage": "combo_start", "seed": 3, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.4285432948844863, "neg_mat_mean_auc": 0.5714567051155137, "best": "neg_mat_mean", "time_sec": 12.148690462112427}
+{"stage": "combo_start", "seed": 4, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.30714231940634384, "neg_mat_mean_auc": 0.6928576805936562, "best": "neg_mat_mean", "time_sec": 13.690629720687866}
+{"stage": "combo_start", "seed": 0, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.33254832101729964, "neg_mat_mean_auc": 0.6674516789827003, "best": "neg_mat_mean", "time_sec": 15.916251420974731}
+{"stage": "combo_start", "seed": 1, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.4130989539476806, "neg_mat_mean_auc": 0.5869010460523194, "best": "neg_mat_mean", "time_sec": 15.643731117248535}
+{"stage": "combo_start", "seed": 2, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.3643948528195692, "neg_mat_mean_auc": 0.6356051471804307, "best": "neg_mat_mean", "time_sec": 11.544426918029785}
+{"stage": "combo_start", "seed": 3, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.4069101914440558, "neg_mat_mean_auc": 0.5930898085559442, "best": "neg_mat_mean", "time_sec": 17.28522300720215}
+{"stage": "combo_start", "seed": 4, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.36845131863482955, "neg_mat_mean_auc": 0.6315486813651705, "best": "neg_mat_mean", "time_sec": 13.445024490356445}
+{"stage": "combo_start", "seed": 0, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.34863423249979036, "neg_mat_mean_auc": 0.6513657675002096, "best": "neg_mat_mean", "time_sec": 171.68414282798767}
+{"stage": "combo_start", "seed": 1, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.3885623297140132, "neg_mat_mean_auc": 0.6114376702859867, "best": "neg_mat_mean", "time_sec": 214.9023036956787}
+{"stage": "combo_start", "seed": 2, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.34050708057232826, "neg_mat_mean_auc": 0.6594929194276717, "best": "neg_mat_mean", "time_sec": 203.7710087299347}
+{"stage": "combo_start", "seed": 3, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.385643306422855, "neg_mat_mean_auc": 0.614356693577145, "best": "neg_mat_mean", "time_sec": 195.0672583580017}
+{"stage": "combo_start", "seed": 4, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.343361528533936, "neg_mat_mean_auc": 0.656638471466064, "best": "neg_mat_mean", "time_sec": 197.11709642410278}
+{"stage": "combo_start", "seed": 0, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.34023058225129926, "neg_mat_mean_auc": 0.6597694177487007, "best": "neg_margin", "time_sec": 720.2482087612152}
+{"stage": "combo_start", "seed": 1, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.3425779597986124, "neg_mat_mean_auc": 0.6574220402013876, "best": "neg_mat_mean", "time_sec": 727.0030734539032}
+{"stage": "combo_start", "seed": 2, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.3584960792704491, "neg_mat_mean_auc": 0.6415039207295509, "best": "neg_mat_mean", "time_sec": 726.8218729496002}
+{"stage": "combo_start", "seed": 3, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.4064890758114932, "neg_mat_mean_auc": 0.5935109241885068, "best": "neg_mat_mean", "time_sec": 592.4343683719635}
+{"stage": "combo_start", "seed": 4, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.38812534189148895, "neg_mat_mean_auc": 0.611874658108511, "best": "neg_mat_mean", "time_sec": 456.617125749588}
+{"stage": "combo_start", "seed": 0, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.34719118676700045, "neg_mat_mean_auc": 0.6528088132329996, "best": "neg_margin", "time_sec": 105.54568696022034}
+{"stage": "combo_start", "seed": 1, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.45741797339303997, "neg_mat_mean_auc": 0.5425820266069601, "best": "neg_margin", "time_sec": 45.57771110534668}
+{"stage": "combo_start", "seed": 2, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.3586190606183052, "neg_mat_mean_auc": 0.6413809393816948, "best": "neg_mat_mean", "time_sec": 34.0304753780365}
+{"stage": "combo_start", "seed": 3, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.49477112241164445, "neg_mat_mean_auc": 0.5052288775883556, "best": "neg_mat_mean", "time_sec": 13.34825325012207}
+{"stage": "combo_start", "seed": 4, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.33655657247780935, "neg_mat_mean_auc": 0.6634434275221907, "best": "neg_mat_mean", "time_sec": 104.24704122543335}
+{"stage": "combo_start", "seed": 0, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.34400136205369186, "neg_mat_mean_auc": 0.6559986379463081, "best": "neg_margin", "time_sec": 162.9300081729889}
+{"stage": "combo_start", "seed": 1, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.46712983282166104, "neg_mat_mean_auc": 0.532870167178339, "best": "neg_margin", "time_sec": 177.2795946598053}
+{"stage": "combo_start", "seed": 2, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.3764078992371971, "neg_mat_mean_auc": 0.6235921007628029, "best": "neg_margin", "time_sec": 205.03078937530518}
+{"stage": "combo_start", "seed": 3, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.5044377303030528, "neg_mat_mean_auc": 0.49556226969694717, "best": "margin", "time_sec": 217.17684864997864}
+{"stage": "combo_start", "seed": 4, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.3827914508625623, "neg_mat_mean_auc": 0.6172085491374377, "best": "neg_mat_mean", "time_sec": 177.34947896003723}
+{"stage": "combo_start", "seed": 0, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.3496490627145577, "neg_mat_mean_auc": 0.6503509372854424, "best": "neg_mat_mean", "time_sec": 436.78566122055054}
+{"stage": "combo_start", "seed": 1, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.4782574368418973, "neg_mat_mean_auc": 0.5217425631581026, "best": "neg_margin", "time_sec": 275.30031538009644}
+{"stage": "combo_start", "seed": 2, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.3439529825924361, "neg_mat_mean_auc": 0.6560470174075639, "best": "neg_margin", "time_sec": 338.58224153518677}
+{"stage": "combo_start", "seed": 3, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.4138544408093295, "neg_mat_mean_auc": 0.5861455591906706, "best": "neg_mat_mean", "time_sec": 382.9266996383667}
+{"stage": "combo_start", "seed": 4, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.3434631766663485, "neg_mat_mean_auc": 0.6565368233336515, "best": "neg_mat_mean", "time_sec": 310.6693503856659}
+{"stage": "combo_start", "seed": 0, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 16, "anom_k": 32, "mat_mean_auc": 0.3484031022704373, "neg_mat_mean_auc": 0.6515968977295628, "best": "neg_margin", "time_sec": 938.2672646045685}
+{"stage": "combo_start", "seed": 1, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 16, "anom_k": 32, "mat_mean_auc": 0.37921002050428565, "neg_mat_mean_auc": 0.6207899794957144, "best": "neg_margin", "time_sec": 850.7009263038635}
+{"stage": "combo_start", "seed": 2, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 16, "anom_k": 32, "mat_mean_auc": 0.3715677396425916, "neg_mat_mean_auc": 0.6284322603574085, "best": "neg_mat_mean", "time_sec": 797.5686395168304}
+{"stage": "combo_start", "seed": 3, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 16, "anom_k": 32, "mat_mean_auc": 0.44319457671134665, "neg_mat_mean_auc": 0.5568054232886532, "best": "neg_mat_mean", "time_sec": 791.406153678894}
+{"stage": "combo_start", "seed": 4, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 16, "anom_k": 32, "mat_mean_auc": 0.3990635522418885, "neg_mat_mean_auc": 0.6009364477581115, "best": "neg_margin", "time_sec": 713.9063563346863}
+FINAL {
+  "normal_k": 2,
+  "anom_k": 4,
+  "flatten_dim": 8,
+  "num_seeds": 5,
+  "mat_mean_auc": {
+    "mean": 0.33340122818050333,
+    "std": 0.029311404404783924,
+    "min": 0.2900692624905444,
+    "max": 0.3671858415367237
+  },
+  "neg_mat_mean_auc": {
+    "mean": 0.6665987718194967,
+    "std": 0.029311404404783935,
+    "min": 0.6328141584632764,
+    "max": 0.7099307375094557
+  },
+  "mat_mean_ap": {
+    "mean": 0.06982495625468928,
+    "std": 0.001905182729777433,
+    "min": 0.0675271768724259,
+    "max": 0.0723127030639842
+  },
+  "neg_mat_mean_ap": {
+    "mean": 0.23409628771093582,
+    "std": 0.06303739835505956,
+    "min": 0.12693695732850846,
+    "max": 0.3174297615387647
+  },
+  "mat_mean_minus_neg_mat_mean_auc": {
+    "mean": -0.3331975436389933,
+    "std": 0.058622808809567856,
+    "min": -0.4198614750189113,
+    "max": -0.2656283169265527
+  },
+  "anom_ref_anom_ratio": {
+    "mean": 0.03450949231165708,
+    "std": 0.021453648734602326,
+    "min": 0.014807576668671076,
+    "max": 0.07618546516622283
+  },
+  "mat_mean_degree_spearman": {
+    "mean": 0.2685698585604675,
+    "std": 0.032994109900802884,
+    "min": 0.2179643988062384,
+    "max": 0.3121525741443146
+  },
+  "negative_orientation_wins": 5
+}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+REF_LENGTH_SCAN_DONE

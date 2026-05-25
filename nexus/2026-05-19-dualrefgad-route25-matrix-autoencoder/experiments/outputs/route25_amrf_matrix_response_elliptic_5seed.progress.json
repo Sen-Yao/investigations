@@ -1,0 +1,54 @@
+{
+  "status": "finished",
+  "done": 15,
+  "total": 15,
+  "devices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "elapsed_sec": 2086.010282278061,
+  "leaderboard_by_delta_auc": [
+    {
+      "variant": "current_refs_amrf",
+      "best_amrf_auc_mean": 0.6095121696359207,
+      "amrf_minus_best_scalar_auc_mean": 0.007149777543729985,
+      "amrf_spearman_with_margin_mean": -0.678006834165474,
+      "winner_counts": {
+        "amrf_reliable_pca_center": 1,
+        "amrf_reliable_pca_resid": 1,
+        "amrf_reliable_negmean": 3
+      },
+      "decision": "PROMOTE_CAUTION__AMRF_IMPROVES_BUT_MAY_TRACK_MARGIN"
+    },
+    {
+      "variant": "old_semantic_refs_amrf",
+      "best_amrf_auc_mean": 0.6950232594979628,
+      "amrf_minus_best_scalar_auc_mean": -0.05550094360528908,
+      "amrf_spearman_with_margin_mean": 0.39798444894801543,
+      "winner_counts": {
+        "amrf_reliable_posmean": 4,
+        "amrf_reliable_pca_mahal": 1
+      },
+      "decision": "DROP_OR_REPAIR_AMRF_FOR_THIS_REFERENCE_REGIME"
+    },
+    {
+      "variant": "old_exact_amrf",
+      "best_amrf_auc_mean": 0.7469067738039759,
+      "amrf_minus_best_scalar_auc_mean": -0.06319208174418726,
+      "amrf_spearman_with_margin_mean": 0.40814081718776907,
+      "winner_counts": {
+        "amrf_reliable_pca_center": 1,
+        "amrf_reliable_posmean": 3,
+        "amrf_reliable_pca_mahal": 1
+      },
+      "decision": "DROP_OR_REPAIR_AMRF_FOR_THIS_REFERENCE_REGIME"
+    }
+  ],
+  "errors": []
+}

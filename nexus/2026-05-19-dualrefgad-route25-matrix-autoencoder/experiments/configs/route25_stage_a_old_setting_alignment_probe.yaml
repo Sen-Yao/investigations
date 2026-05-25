@@ -1,0 +1,33 @@
+program: experiments/scripts/route25_stage_a_old_setting_alignment_probe.py
+method: diagnostic
+parameters:
+  project_root:
+    value: /home/linziyao/DualRefGAD
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  devices:
+    value: "1,2,3,4,5,6,7"
+  variants:
+    value: old_exact_080_regime,old_refs_gt1_low_layer,current_refs_gt3_layer_bridge,current_stage_a_baseline,hybrid_current_descriptor_old_refs
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  ln_mode:
+    value: descriptor_similarity
+notes:
+  protocol: no-training diagnostic; frozen VecGAD encoder; labels diagnostic-only; 5 seeds; multi-variant Stage A mat_mean old-setting alignment; parallel execution on idle HCCS-25 GPUs.
+  gpu_policy: GPU0 was already occupied by route25_ref_length_mat_mean_scan, so this job uses GPU1-7 to maximize available throughput without interrupting the running scan.
+  objective: distinguish whether old mat_mean≈0.80 was caused by old reference regime, GT depth, descriptor/normal-model choice, or current Route2.5 reference construction.
+  variants:
+    old_exact_080_regime: hop_attr + pca_residual + label_gate + normal_soft_or + descriptor_similarity + GT_num_layers=3 + full anomaly candidate pool.
+    old_refs_gt1_low_layer: old reference construction with GT_num_layers=1.
+    current_refs_gt3_layer_bridge: current reference construction with GT_num_layers=3.
+    current_stage_a_baseline: current Route2.5 Stage A setting with GT_num_layers=1 and approximate anomaly candidates.
+    hybrid_current_descriptor_old_refs: current descriptor/diag estimator with old reference semantics.

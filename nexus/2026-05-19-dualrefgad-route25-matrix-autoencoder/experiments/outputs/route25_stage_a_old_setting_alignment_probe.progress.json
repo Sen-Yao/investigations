@@ -1,0 +1,85 @@
+{
+  "status": "finished",
+  "done": 25,
+  "total": 25,
+  "devices": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "elapsed_sec": 5133.397669792175,
+  "leaderboard_by_mat_mean_auc": [
+    {
+      "variant": "old_exact_080_regime",
+      "mat_mean_auc_mean": 0.7999634556026993,
+      "neg_mat_mean_auc_mean": 0.20003654439730073,
+      "anom_ref_anom_ratio_mean": 0.10880750150330727,
+      "best_scalar_auc_mean": 0.8007188954548269,
+      "winner_counts": {
+        "margin": 1,
+        "mat_mean": 3,
+        "mat_q75": 1
+      },
+      "decision": "MIXED_ORIENTATION_REGIME__NEEDS_REFERENCE_POOL_REPAIR_BEFORE_METHOD"
+    },
+    {
+      "variant": "old_refs_gt1_low_layer",
+      "mat_mean_auc_mean": 0.7986494752777703,
+      "neg_mat_mean_auc_mean": 0.20135052472222972,
+      "anom_ref_anom_ratio_mean": 0.10828188085216048,
+      "best_scalar_auc_mean": 0.8011153505935884,
+      "winner_counts": {
+        "mat_mean": 3,
+        "margin": 1,
+        "mat_trimmed_mean": 1
+      },
+      "decision": "MIXED_ORIENTATION_REGIME__NEEDS_REFERENCE_POOL_REPAIR_BEFORE_METHOD"
+    },
+    {
+      "variant": "hybrid_current_descriptor_old_refs",
+      "mat_mean_auc_mean": 0.7519435364253829,
+      "neg_mat_mean_auc_mean": 0.24805646357461705,
+      "anom_ref_anom_ratio_mean": 0.09423508504424019,
+      "best_scalar_auc_mean": 0.7696326675288959,
+      "winner_counts": {
+        "mat_bottom5_mean": 2,
+        "margin": 2,
+        "mat_mean": 1
+      },
+      "decision": "MIXED_ORIENTATION_REGIME__NEEDS_REFERENCE_POOL_REPAIR_BEFORE_METHOD"
+    },
+    {
+      "variant": "current_refs_gt3_layer_bridge",
+      "mat_mean_auc_mean": 0.3862176054326921,
+      "neg_mat_mean_auc_mean": 0.6137823945673079,
+      "anom_ref_anom_ratio_mean": 0.0251065737479598,
+      "best_scalar_auc_mean": 0.6390881226376152,
+      "winner_counts": {
+        "neg_mat_top5_mean": 2,
+        "margin": 1,
+        "neg_mat_median": 1,
+        "neg_mat_trimmed_mean": 1
+      },
+      "decision": "NEGATIVE_ORIENTATION_SIGNAL_STABLE__PRIORITIZE_SIGN_AWARE_SCALAR_OR_REGIME_SCORE"
+    },
+    {
+      "variant": "current_stage_a_baseline",
+      "mat_mean_auc_mean": 0.34944756928455734,
+      "neg_mat_mean_auc_mean": 0.6505524307154428,
+      "anom_ref_anom_ratio_mean": 0.026696052744609566,
+      "best_scalar_auc_mean": 0.6777864978917096,
+      "winner_counts": {
+        "neg_margin": 1,
+        "neg_mat_median": 1,
+        "neg_mat_bottom5_mean": 1,
+        "neg_mat_top5_mean": 2
+      },
+      "decision": "NEGATIVE_ORIENTATION_SIGNAL_STABLE__PRIORITIZE_SIGN_AWARE_SCALAR_OR_REGIME_SCORE"
+    }
+  ],
+  "errors": []
+}

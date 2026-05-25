@@ -1,0 +1,43 @@
+program: experiments/scripts/route25_stage_a_matrix_orientation_regime_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  descriptor_mode:
+    value: hop_attr_rwse
+  pn_estimator:
+    value: diag_gaussian
+  gn_mode:
+    value: label_gate_density
+  ln_mode:
+    value: descriptor_similarity
+  ga_mode:
+    value: normal_rejection
+  la_mode:
+    value: residual_cosine
+  GT_num_layers:
+    value: 1
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  use_approx_anom_refs:
+    value: true
+  anom_approx_k:
+    value: 1000
+  n_bins:
+    value: 3
+notes:
+  protocol: frozen encoder, no AE training; labels diagnostic-only for scalar/orientation/regime autopsy
+  objective: identify whether response-matrix signal is concentrated in sign/orientation, distribution-shape, or split/reference regimes after Matrix AE failure
+  decision_rules: prioritize sign-aware scalar/regime score if negative orientation wins stably without degree-confounding; otherwise repair reference pool before method promotion

@@ -1,0 +1,30 @@
+program: experiments/scripts/route25_amrf_matrix_response_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: "current_refs_amrf,old_semantic_refs_amrf,old_exact_amrf"
+  devices:
+    value: "0,1,2,3,4,5,6,7"
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  pca_dim:
+    value: 12
+  ln_mode:
+    value: descriptor_similarity
+  out:
+    value: experiments/outputs/route25_amrf_matrix_response_elliptic_5seed.json
+  progress_out:
+    value: experiments/outputs/route25_amrf_matrix_response_elliptic_5seed.progress.json
+notes:
+  protocol: "Frozen encoder; AMRF-style adaptive response-matrix reliability scoring fitted only on labeled-normal nodes; labels diagnostic-only for AUC/AP/autopsy."
+  objective: "Test whether AdaFreq-style adaptive reliability filtering over matrix response tokens provides a complementary learning signal beyond margin/simple matrix summaries."

@@ -152,14 +152,55 @@ After combining the earlier Route2 scalar diagnostic, the Phase 1 AE instability
 - More checkpoint selection tricks.
 - More capacity without changing reference/orientation construction.
 
-### Practical conclusion
 
-If response matrix remains the core concept, the best next path is **mechanistic decomposition**:
+## 2026-05-21 — Consolidated interpretation while the parallel scan is still running
 
-- sign/orientation analysis,
-- per-regime stratification,
-- reference-pool sensitivity,
-- and perhaps a lightweight regime-conditioned score or rank-based summary.
+The current evidence chain is now fairly clear:
 
-That is the part still worth mining.
+- **Matrix AE does not merit promotion** as a main component.
+- **The response matrix is still informative**, but mostly through sign/orientation and shape statistics, not through a learned reconstruction head.
+- **The old strong `mat_mean≈0.80` regime is real** and appears tied to the historical sequence-generation/reference regime, not just to the matrix family name.
+- **Current refs frequently prefer `neg_mat_mean`**, which is a warning sign for reference construction quality.
+- **AMRF is useful as a diagnostic** but is not yet a better main score than the best scalar families.
+
+This means the investigation should now be read as an accumulated mechanism record, not as a single model comparison. The pending A/B/C scan will decide how far the old strong regime can be recovered under the current probe family.
+
+## Stage A orientation/regime probe — response matrix value is sign-aware scalar/shape, not AE
+
+Stage A executed a runner-registered, no-AE-training orientation/regime probe after the normal-only Matrix AE route failed to promote.
+
+Runner job: `exp_20260520_093352_route25_stage_a_matrix_orientation_regim`  
+Output: `experiments/outputs/route25_stage_a_matrix_orientation_regime_probe.json`
+
+Key aggregate results:
+
+- Best scalar-family AUC: 0.6636 ± 0.0173.
+- `neg_mat_mean` AUC: 0.6490 ± 0.0110.
+- Negative-orientation family wins in 4/5 seeds.
+- `mat_mean - neg_mat_mean` AUC: -0.2980 ± 0.0220, showing a large and stable orientation asymmetry.
+- Spearman(best score, margin): -0.7306 ± 0.1670.
+- Spearman(best score, degree): -0.3174 ± 0.0670, so the best scores are not merely degree proxies.
+
+Per-seed winners:
+
+- seed0: `neg_mat_median`, AUC/AP 0.6428 / 0.1465.
+- seed1: `mat_iqr`, AUC/AP 0.6520 / 0.2362.
+- seed2: `neg_mat_q75`, AUC/AP 0.6919 / 0.2537.
+- seed3: `neg_mat_bottom5_mean`, AUC/AP 0.6579 / 0.1596.
+- seed4: `neg_mat_top5_mean`, AUC/AP 0.6735 / 0.2365.
+
+Decision:
+
+`NEGATIVE_ORIENTATION_SIGNAL_STABLE__PRIORITIZE_SIGN_AWARE_SCALAR_OR_REGIME_SCORE`
+
+Interpretation:
+
+- The response matrix remains scientifically useful; Stage A actually improves the scalar-family view over the earlier Matrix AE evidence.
+- The stable signal is not “full matrix pattern → train AE”. It is “orientation/sign-aware scalar or distribution-shape summary”.
+- The fact that winners differ across seeds (`neg_mat_median`, `mat_iqr`, `neg_mat_q75`, bottom/top summaries) means there is still regime sensitivity, but the negative orientation direction is stable enough to guide the next method attempt.
+- Since degree correlation is only moderate, this should not be dismissed as pure degree leakage.
+
+Practical next step:
+
+Build a lightweight sign-aware scalar/regime score or reference-pool/orientation repair. Do **not** spend the next round on a larger AE or more unsupervised checkpoint-selection tricks.
 

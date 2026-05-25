@@ -22,7 +22,9 @@ M_ij(v) = cos(h_v - r_{n,i}, r_{a,j} - r_{n,i})
 
 Route2 是 response matrix scalar aggregation：`mean(M)`, `high08_ratio`, `top5_mean` 等。Route2.5 不再假设某个手工统计量足够，而是测试 normal-only response distribution 是否有可学习结构。
 
-它仍然不是最终方法，而是低成本诊断：
+It still starts as a Matrix AE probe, but after the subsequent orientation/regime, old-setting alignment, and AMRF diagnostics it has effectively become a **Route2.5 response-matrix mechanism record**. Treat the later sections as part of the same evidence chain, not as a separate method claim.
+
+It仍然不是最终方法，而是低成本诊断：
 
 - 如果 AE reconstruction error 没有信号，说明 full matrix pattern 大概率不值得继续建模；
 - 如果 AE 有信号但只是在学 degree/rejection，则转向 regime diagnostic；

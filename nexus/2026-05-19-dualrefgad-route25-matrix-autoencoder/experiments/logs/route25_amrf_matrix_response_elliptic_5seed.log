@@ -1,0 +1,169 @@
+{"stage": "task_start", "variant": "current_refs_amrf", "seed": 0, "device": 0, "definition": "Current Route2.5 reference construction; AMRF scores fit on labeled-normal response matrices only."}
+{"stage": "task_start", "variant": "current_refs_amrf", "seed": 1, "device": 1, "definition": "Current Route2.5 reference construction; AMRF scores fit on labeled-normal response matrices only."}
+{"stage": "task_start", "variant": "current_refs_amrf", "seed": 2, "device": 2, "definition": "Current Route2.5 reference construction; AMRF scores fit on labeled-normal response matrices only."}
+{"stage": "task_start", "variant": "current_refs_amrf", "seed": 3, "device": 3, "definition": "Current Route2.5 reference construction; AMRF scores fit on labeled-normal response matrices only."}
+{"stage": "task_start", "variant": "current_refs_amrf", "seed": 4, "device": 4, "definition": "Current Route2.5 reference construction; AMRF scores fit on labeled-normal response matrices only."}
+{"stage": "task_start", "variant": "old_semantic_refs_amrf", "seed": 0, "device": 5, "definition": "Old-style anomaly-reference semantics: label-gated normal refs + normal_soft_or + descriptor_similarity; tests whether AMRF depends on old reference orientation."}
+{"stage": "task_start", "variant": "old_semantic_refs_amrf", "seed": 1, "device": 6, "definition": "Old-style anomaly-reference semantics: label-gated normal refs + normal_soft_or + descriptor_similarity; tests whether AMRF depends on old reference orientation."}
+{"stage": "task_start", "variant": "old_semantic_refs_amrf", "seed": 2, "device": 7, "definition": "Old-style anomaly-reference semantics: label-gated normal refs + normal_soft_or + descriptor_similarity; tests whether AMRF depends on old reference orientation."}
+{"stage": "seed_start", "variant": "current_refs_amrf", "seed": 1, "device": "cuda:1"}
+{"stage": "seed_start", "variant": "current_refs_amrf", "seed": 2, "device": "cuda:2"}
+{"stage": "seed_start", "variant": "current_refs_amrf", "seed": 4, "device": "cuda:4"}
+{"stage": "seed_start", "variant": "old_semantic_refs_amrf", "seed": 0, "device": "cuda:5"}
+{"stage": "seed_start", "variant": "current_refs_amrf", "seed": 0, "device": "cuda:0"}
+{"stage": "seed_start", "variant": "old_semantic_refs_amrf", "seed": 2, "device": "cuda:7"}
+{"stage": "seed_start", "variant": "old_semantic_refs_amrf", "seed": 1, "device": "cuda:6"}
+{"stage": "seed_start", "variant": "current_refs_amrf", "seed": 3, "device": "cuda:3"}
+Training Counter({0: 2096, 1: 232})
+Test Counter({0: 39923, 1: 4313})
+Training rate 1
+Training Counter({0: 2099, 1: 229})
+Training Counter({0: 2092, 1: 236})
+Test Counter({0: 39927, 1: 4309})
+Training rate 1
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+Training Counter({0: 2117, 1: 211})
+Test Counter({0: 39902, 1: 4334})
+Training rate 1
+Training Counter({0: 2079, 1: 249})
+Training Counter({0: 2110, 1: 218})
+Test Counter({0: 39940, 1: 4296})
+Training rate 1
+Test Counter({0: 39909, 1: 4327})
+Training rate 1
+Training Counter({0: 2109, 1: 219})
+Training Counter({0: 2096, 1: 232})
+Test Counter({0: 39910, 1: 4326})
+Training rate 1
+Test Counter({0: 39923, 1: 4313})
+Training rate 1
+{"stage": "seed_done", "variant": "current_refs_amrf", "seed": 4, "best_amrf": "amrf_reliable_negmean", "auc": 0.5593635659387968, "delta": -0.014690040351722722}
+{"stage": "task_start", "variant": "old_semantic_refs_amrf", "seed": 3, "device": 4, "definition": "Old-style anomaly-reference semantics: label-gated normal refs + normal_soft_or + descriptor_similarity; tests whether AMRF depends on old reference orientation."}
+{"stage": "seed_start", "variant": "old_semantic_refs_amrf", "seed": 3, "device": "cuda:4"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "variant": "current_refs_amrf", "seed": 1, "best_amrf": "amrf_reliable_pca_resid", "auc": 0.6136158525345409, "delta": -0.015723137075819738}
+{"stage": "task_start", "variant": "old_semantic_refs_amrf", "seed": 4, "device": 1, "definition": "Old-style anomaly-reference semantics: label-gated normal refs + normal_soft_or + descriptor_similarity; tests whether AMRF depends on old reference orientation."}
+{"stage": "seed_start", "variant": "old_semantic_refs_amrf", "seed": 4, "device": "cuda:1"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "variant": "current_refs_amrf", "seed": 3, "best_amrf": "amrf_reliable_negmean", "auc": 0.6467474174825724, "delta": -0.0040557437779061845}
+{"stage": "task_start", "variant": "old_exact_amrf", "seed": 0, "device": 3, "definition": "Reproduce old 0.80-ish response regime before AMRF scoring: hop_attr + PCA residual + label_gate + normal_soft_or + descriptor_similarity + GT3."}
+{"stage": "seed_start", "variant": "old_exact_amrf", "seed": 0, "device": "cuda:3"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "variant": "current_refs_amrf", "seed": 0, "best_amrf": "amrf_reliable_pca_center", "auc": 0.6709042769550555, "delta": 0.07017513259582597}
+{"stage": "task_start", "variant": "old_exact_amrf", "seed": 1, "device": 0, "definition": "Reproduce old 0.80-ish response regime before AMRF scoring: hop_attr + PCA residual + label_gate + normal_soft_or + descriptor_similarity + GT3."}
+{"stage": "seed_done", "variant": "current_refs_amrf", "seed": 2, "best_amrf": "amrf_reliable_negmean", "auc": 0.5569297352686384, "delta": 4.267632827259504e-05}
+{"stage": "seed_start", "variant": "old_exact_amrf", "seed": 1, "device": "cuda:0"}
+{"stage": "task_start", "variant": "old_exact_amrf", "seed": 2, "device": 2, "definition": "Reproduce old 0.80-ish response regime before AMRF scoring: hop_attr + PCA residual + label_gate + normal_soft_or + descriptor_similarity + GT3."}
+{"stage": "seed_start", "variant": "old_exact_amrf", "seed": 2, "device": "cuda:2"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+Training Counter({0: 2088, 1: 240})
+Test Counter({0: 39931, 1: 4305})
+Training rate 1
+{"stage": "seed_done", "variant": "old_semantic_refs_amrf", "seed": 0, "best_amrf": "amrf_reliable_posmean", "auc": 0.6758538663148803, "delta": -0.0744010267471873}
+{"stage": "task_start", "variant": "old_exact_amrf", "seed": 3, "device": 5, "definition": "Reproduce old 0.80-ish response regime before AMRF scoring: hop_attr + PCA residual + label_gate + normal_soft_or + descriptor_similarity + GT3."}
+{"stage": "seed_start", "variant": "old_exact_amrf", "seed": 3, "device": "cuda:5"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "variant": "old_semantic_refs_amrf", "seed": 2, "best_amrf": "amrf_reliable_posmean", "auc": 0.7206815514055955, "delta": -0.0257162642760822}
+{"stage": "task_start", "variant": "old_exact_amrf", "seed": 4, "device": 7, "definition": "Reproduce old 0.80-ish response regime before AMRF scoring: hop_attr + PCA residual + label_gate + normal_soft_or + descriptor_similarity + GT3."}
+{"stage": "seed_start", "variant": "old_exact_amrf", "seed": 4, "device": "cuda:7"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "variant": "old_semantic_refs_amrf", "seed": 1, "best_amrf": "amrf_reliable_posmean", "auc": 0.6608246146263739, "delta": -0.08921829634497147}
+{"stage": "seed_done", "variant": "old_semantic_refs_amrf", "seed": 3, "best_amrf": "amrf_reliable_pca_mahal", "auc": 0.6984393543806797, "delta": -0.03357869004923675}
+{"stage": "seed_done", "variant": "old_exact_amrf", "seed": 2, "best_amrf": "amrf_reliable_posmean", "auc": 0.7288515247826775, "delta": -0.07295844335030544}
+{"stage": "seed_done", "variant": "old_semantic_refs_amrf", "seed": 4, "best_amrf": "amrf_reliable_posmean", "auc": 0.7193169107622842, "delta": -0.05459044060896767}
+{"stage": "seed_done", "variant": "old_exact_amrf", "seed": 1, "best_amrf": "amrf_reliable_posmean", "auc": 0.7441972274414945, "delta": -0.07233178452342481}
+{"stage": "seed_done", "variant": "old_exact_amrf", "seed": 0, "best_amrf": "amrf_reliable_pca_center", "auc": 0.7732410333671902, "delta": -0.040800251297055556}
+{"stage": "seed_done", "variant": "old_exact_amrf", "seed": 4, "best_amrf": "amrf_reliable_posmean", "auc": 0.7643828066581091, "delta": -0.059349321025408686}
+{"stage": "seed_done", "variant": "old_exact_amrf", "seed": 3, "best_amrf": "amrf_reliable_pca_mahal", "auc": 0.7238612767704082, "delta": -0.07052060852474185}
+FINAL {
+  "status": "finished",
+  "leaderboard_by_delta_auc": [
+    {
+      "variant": "current_refs_amrf",
+      "best_amrf_auc_mean": 0.6095121696359207,
+      "amrf_minus_best_scalar_auc_mean": 0.007149777543729985,
+      "amrf_spearman_with_margin_mean": -0.678006834165474,
+      "winner_counts": {
+        "amrf_reliable_pca_center": 1,
+        "amrf_reliable_pca_resid": 1,
+        "amrf_reliable_negmean": 3
+      },
+      "decision": "PROMOTE_CAUTION__AMRF_IMPROVES_BUT_MAY_TRACK_MARGIN"
+    },
+    {
+      "variant": "old_semantic_refs_amrf",
+      "best_amrf_auc_mean": 0.6950232594979628,
+      "amrf_minus_best_scalar_auc_mean": -0.05550094360528908,
+      "amrf_spearman_with_margin_mean": 0.39798444894801543,
+      "winner_counts": {
+        "amrf_reliable_posmean": 4,
+        "amrf_reliable_pca_mahal": 1
+      },
+      "decision": "DROP_OR_REPAIR_AMRF_FOR_THIS_REFERENCE_REGIME"
+    },
+    {
+      "variant": "old_exact_amrf",
+      "best_amrf_auc_mean": 0.7469067738039759,
+      "amrf_minus_best_scalar_auc_mean": -0.06319208174418726,
+      "amrf_spearman_with_margin_mean": 0.40814081718776907,
+      "winner_counts": {
+        "amrf_reliable_pca_center": 1,
+        "amrf_reliable_posmean": 3,
+        "amrf_reliable_pca_mahal": 1
+      },
+      "decision": "DROP_OR_REPAIR_AMRF_FOR_THIS_REFERENCE_REGIME"
+    }
+  ],
+  "errors": [],
+  "time_sec": 2086.0054194927216
+}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/.conda/envs/DualRefGAD/lib/python3.8/site-packages/sklearn/linear_model/_logistic.py:460: ConvergenceWarning: lbfgs failed to converge (status=1):
+STOP: TOTAL NO. of ITERATIONS REACHED LIMIT.
+
+Increase the number of iterations (max_iter) or scale the data as shown in:
+    https://scikit-learn.org/stable/modules/preprocessing.html
+Please also refer to the documentation for alternative solver options:
+    https://scikit-learn.org/stable/modules/linear_model.html#logistic-regression
+  n_iter_i = _check_optimize_result(
+AMRF_PROBE_DONE

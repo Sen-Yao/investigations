@@ -1,0 +1,987 @@
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 0, "device": 0}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 1, "device": 1}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 2, "device": 2}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 3, "device": 3}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 4, "device": 4}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 0, "device": 5}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 1, "device": 6}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 2, "device": 7}
+{"stage": "combo_start", "seed": 2, "normal_k": 1, "anom_k": 4, "device": "cuda:0"}
+{"stage": "combo_start", "seed": 1, "normal_k": 1, "anom_k": 4, "device": "cuda:0"}
+{"stage": "combo_start", "seed": 0, "normal_k": 1, "anom_k": 8, "device": "cuda:0"}
+{"stage": "combo_start", "seed": 0, "normal_k": 1, "anom_k": 4, "device": "cuda:0"}
+{"stage": "combo_start", "seed": 1, "normal_k": 1, "anom_k": 8, "device": "cuda:0"}
+{"stage": "combo_start", "seed": 4, "normal_k": 1, "anom_k": 4, "device": "cuda:0"}
+{"stage": "combo_start", "seed": 3, "normal_k": 1, "anom_k": 4, "device": "cuda:0"}
+{"stage": "combo_start", "seed": 2, "normal_k": 1, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+Training Counter({0: 2113, 1: 215})
+Test Counter({0: 39906, 1: 4330})
+Training rate 1
+Training Counter({0: 2115, 1: 213})
+Test Counter({0: 39904, 1: 4332})
+Training rate 1
+Training Counter({0: 2106, 1: 222})
+Test Counter({0: 39913, 1: 4323})
+Training rate 1
+Training Counter({0: 2090, 1: 238})
+Training Counter({0: 2088, 1: 240})
+Test Counter({0: 39929, 1: 4307})
+Training rate 1
+Test Counter({0: 39931, 1: 4305})
+Training rate 1
+Training Counter({0: 2115, 1: 213})
+Test Counter({0: 39904, 1: 4332})
+Training rate 1
+Training Counter({0: 2100, 1: 228})
+Test Counter({0: 39919, 1: 4317})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 1, "anom_k": 4, "mat_mean_auc": 0.42963119566368335, "neg_mat_mean_auc": 0.5703688043363166, "best": "neg_mat_mean", "time_sec": 40.44080638885498}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 4, "device": 4, "best": "neg_mat_mean", "best_auc": 0.5703688043363166}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 3, "device": 4}
+{"stage": "combo_start", "seed": 3, "normal_k": 1, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 1, "anom_k": 4, "mat_mean_auc": 0.3212160692496421, "neg_mat_mean_auc": 0.6787839307503579, "best": "neg_mat_mean", "time_sec": 42.44793462753296}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 0, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6787839307503579}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 4, "device": 0}
+{"stage": "combo_start", "seed": 4, "normal_k": 1, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 1, "anom_k": 4, "mat_mean_auc": 0.34196207970945003, "neg_mat_mean_auc": 0.65803792029055, "best": "neg_mat_mean", "time_sec": 53.54548096656799}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 2, "device": 2, "best": "neg_mat_mean", "best_auc": 0.65803792029055}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 0, "device": 2}
+{"stage": "combo_start", "seed": 0, "normal_k": 1, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 1, "anom_k": 8, "mat_mean_auc": 0.33277853204091223, "neg_mat_mean_auc": 0.6672214679590878, "best": "neg_mat_mean", "time_sec": 18.026771306991577}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 3, "device": 4, "best": "neg_mat_mean", "best_auc": 0.6672214679590878}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 1, "device": 4}
+{"stage": "combo_start", "seed": 1, "normal_k": 1, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 1, "anom_k": 4, "mat_mean_auc": 0.36473805016211835, "neg_mat_mean_auc": 0.6352619498378816, "best": "neg_margin", "time_sec": 63.2466607093811}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 3, "device": 3, "best": "neg_margin", "best_auc": 0.6441544176419864}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 2, "device": 3}
+{"stage": "combo_start", "seed": 2, "normal_k": 1, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 1, "anom_k": 8, "mat_mean_auc": 0.3282886966853851, "neg_mat_mean_auc": 0.6717113033146148, "best": "neg_mat_mean", "time_sec": 22.288962364196777}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 4, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6717113033146148}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 3, "device": 0}
+{"stage": "combo_start", "seed": 3, "normal_k": 1, "anom_k": 16, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 0, "normal_k": 1, "anom_k": 8, "mat_mean_auc": 0.4131357428025014, "neg_mat_mean_auc": 0.5868642571974986, "best": "neg_margin", "time_sec": 65.12109637260437}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 0, "device": 5, "best": "neg_margin", "best_auc": 0.5963215887432649}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 4, "device": 5}
+{"stage": "combo_start", "seed": 4, "normal_k": 1, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 1, "anom_k": 4, "mat_mean_auc": 0.35704517723921375, "neg_mat_mean_auc": 0.6429548227607863, "best": "neg_mat_mean", "time_sec": 67.06050562858582}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 4, "seed": 1, "device": 1, "best": "neg_mat_mean", "best_auc": 0.6429548227607863}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 0, "device": 1}
+{"stage": "combo_start", "seed": 0, "normal_k": 1, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+{"stage": "combo_done", "seed": 2, "normal_k": 1, "anom_k": 8, "mat_mean_auc": 0.3704852766588087, "neg_mat_mean_auc": 0.6295147233411913, "best": "neg_mat_mean", "time_sec": 70.31675601005554}
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 1, "anom_k": 8, "mat_mean_auc": 0.4013770369986768, "neg_mat_mean_auc": 0.5986229630013232, "best": "neg_mat_mean", "time_sec": 70.5289375782013}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 2, "device": 7, "best": "neg_mat_mean", "best_auc": 0.6295147233411913}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 8, "seed": 1, "device": 6, "best": "neg_mat_mean", "best_auc": 0.5986229630013232}
+Training Counter({0: 2112, 1: 216})
+Test Counter({0: 39907, 1: 4329})
+Training rate 1
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 1, "device": 7}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 2, "device": 6}
+{"stage": "combo_start", "seed": 1, "normal_k": 1, "anom_k": 32, "device": "cuda:0"}
+{"stage": "combo_start", "seed": 2, "normal_k": 1, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+Training Counter({0: 2088, 1: 240})
+Test Counter({0: 39931, 1: 4305})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 1, "anom_k": 16, "mat_mean_auc": 0.40981088419547085, "neg_mat_mean_auc": 0.5901891158045292, "best": "neg_mat_mean", "time_sec": 55.8067946434021}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 0, "device": 2, "best": "neg_mat_mean", "best_auc": 0.5901891158045292}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 3, "device": 2}
+{"stage": "combo_start", "seed": 3, "normal_k": 1, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 1, "anom_k": 16, "mat_mean_auc": 0.36120972231038284, "neg_mat_mean_auc": 0.6387902776896172, "best": "neg_mat_mean", "time_sec": 56.17155075073242}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 1, "device": 4, "best": "neg_mat_mean", "best_auc": 0.6387902776896172}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 4, "device": 4}
+{"stage": "combo_start", "seed": 4, "normal_k": 1, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 1, "anom_k": 16, "mat_mean_auc": 0.3446416687534388, "neg_mat_mean_auc": 0.6553583312465612, "best": "neg_mat_mean", "time_sec": 84.43321323394775}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 3, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6553583312465612}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 0, "device": 0}
+{"stage": "combo_start", "seed": 0, "normal_k": 1, "anom_k": 64, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 2, "normal_k": 1, "anom_k": 16, "mat_mean_auc": 0.3625549666279526, "neg_mat_mean_auc": 0.6374450333720473, "best": "neg_mat_mean", "time_sec": 86.52516055107117}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 2, "device": 3, "best": "neg_mat_mean", "best_auc": 0.6374450333720473}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 1, "device": 3}
+{"stage": "combo_start", "seed": 1, "normal_k": 1, "anom_k": 64, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 4, "normal_k": 1, "anom_k": 16, "mat_mean_auc": 0.38975083695121937, "neg_mat_mean_auc": 0.6102491630487806, "best": "neg_margin", "time_sec": 86.42505359649658}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 16, "seed": 4, "device": 5, "best": "neg_margin", "best_auc": 0.6231489278354863}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 2, "device": 5}
+{"stage": "combo_start", "seed": 2, "normal_k": 1, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+Training Counter({0: 2095, 1: 233})
+Test Counter({0: 39924, 1: 4312})
+Training rate 1
+Training Counter({0: 2094, 1: 234})
+Test Counter({0: 39925, 1: 4311})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 1, "anom_k": 32, "mat_mean_auc": 0.3086259308340569, "neg_mat_mean_auc": 0.6913740691659431, "best": "neg_mat_mean", "time_sec": 89.7195975780487}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 2, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6913740691659431}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 3, "device": 6}
+{"stage": "combo_start", "seed": 3, "normal_k": 1, "anom_k": 64, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 0, "normal_k": 1, "anom_k": 32, "mat_mean_auc": 0.45885113241717346, "neg_mat_mean_auc": 0.5411488675828265, "best": "neg_margin", "time_sec": 93.63073205947876}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 0, "device": 1, "best": "neg_margin", "best_auc": 0.5514937788223178}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 4, "device": 1}
+{"stage": "combo_start", "seed": 4, "normal_k": 1, "anom_k": 64, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 1, "normal_k": 1, "anom_k": 32, "mat_mean_auc": 0.38836623366349127, "neg_mat_mean_auc": 0.6116337663365088, "best": "neg_margin", "time_sec": 90.21879935264587}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 1, "device": 7, "best": "neg_margin", "best_auc": 0.613547494240794}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 0, "device": 7}
+{"stage": "combo_start", "seed": 0, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+Training Counter({0: 2112, 1: 216})
+Test Counter({0: 39907, 1: 4329})
+Training rate 1
+Training Counter({0: 2103, 1: 225})
+Test Counter({0: 39916, 1: 4320})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 1, "anom_k": 32, "mat_mean_auc": 0.34895809343432, "neg_mat_mean_auc": 0.6510419065656801, "best": "neg_margin", "time_sec": 84.10319781303406}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 3, "device": 2, "best": "neg_margin", "best_auc": 0.6519494532391938}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 1, "device": 2}
+{"stage": "combo_start", "seed": 1, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 1, "anom_k": 32, "mat_mean_auc": 0.3443113760487026, "neg_mat_mean_auc": 0.6556886239512975, "best": "neg_mat_mean", "time_sec": 91.00164723396301}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 32, "seed": 4, "device": 4, "best": "neg_mat_mean", "best_auc": 0.6556886239512975}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 2, "device": 4}
+{"stage": "combo_start", "seed": 2, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.4103436226492301, "neg_mat_mean_auc": 0.5896563773507699, "best": "neg_mat_mean", "time_sec": 50.739166498184204}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 0, "device": 7, "best": "neg_mat_mean", "best_auc": 0.5896563773507699}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 3, "device": 7}
+{"stage": "combo_start", "seed": 3, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.3895733850688955, "neg_mat_mean_auc": 0.6104266149311046, "best": "neg_mat_mean", "time_sec": 46.334110736846924}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 1, "device": 2, "best": "neg_mat_mean", "best_auc": 0.6104266149311046}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 4, "device": 2}
+{"stage": "combo_start", "seed": 4, "normal_k": 2, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.3176172745807821, "neg_mat_mean_auc": 0.682382725419218, "best": "neg_mat_mean", "time_sec": 70.0187361240387}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 2, "device": 4, "best": "neg_mat_mean", "best_auc": 0.682382725419218}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 0, "device": 4}
+{"stage": "combo_start", "seed": 0, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 3, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.31815434042320045, "neg_mat_mean_auc": 0.6818456595767995, "best": "neg_mat_mean", "time_sec": 67.95864820480347}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 3, "device": 7, "best": "neg_mat_mean", "best_auc": 0.6818456595767995}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 1, "device": 7}
+{"stage": "combo_start", "seed": 1, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+Training Counter({0: 2079, 1: 249})
+Test Counter({0: 39940, 1: 4296})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 2, "anom_k": 4, "mat_mean_auc": 0.32100304680804964, "neg_mat_mean_auc": 0.6789969531919504, "best": "neg_mat_mean", "time_sec": 186.75076460838318}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 4, "seed": 4, "device": 2, "best": "neg_mat_mean", "best_auc": 0.6789969531919504}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 2, "device": 2}
+{"stage": "combo_start", "seed": 2, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 3, "normal_k": 1, "anom_k": 64, "mat_mean_auc": 0.43001904815621705, "neg_mat_mean_auc": 0.5699809518437828, "best": "neg_margin", "time_sec": 279.1958239078522}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 3, "device": 6, "best": "neg_margin", "best_auc": 0.571566649447723}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 3, "device": 6}
+{"stage": "combo_start", "seed": 3, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+Training Counter({0: 2092, 1: 236})
+Test Counter({0: 39927, 1: 4309})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 1, "anom_k": 64, "mat_mean_auc": 0.403766030387676, "neg_mat_mean_auc": 0.596233969612324, "best": "neg_mat_mean", "time_sec": 320.4487612247467}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 4, "device": 1, "best": "neg_mat_mean", "best_auc": 0.596233969612324}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 4, "device": 1}
+{"stage": "combo_start", "seed": 4, "normal_k": 2, "anom_k": 8, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 2, "normal_k": 1, "anom_k": 64, "mat_mean_auc": 0.2866959920974155, "neg_mat_mean_auc": 0.7133040079025845, "best": "neg_mat_mean", "time_sec": 327.36396169662476}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 2, "device": 5, "best": "neg_mat_mean", "best_auc": 0.7133040079025845}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 0, "device": 5}
+{"stage": "combo_start", "seed": 0, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+Training Counter({0: 2112, 1: 216})
+Test Counter({0: 39907, 1: 4329})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 1, "anom_k": 64, "mat_mean_auc": 0.3796004977437544, "neg_mat_mean_auc": 0.6203995022562456, "best": "neg_margin", "time_sec": 334.199280500412}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 1, "device": 3, "best": "neg_margin", "best_auc": 0.6257311094349226}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 1, "device": 3}
+{"stage": "combo_start", "seed": 1, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.3970204550307771, "neg_mat_mean_auc": 0.6029795449692229, "best": "neg_mat_mean", "time_sec": 206.29391050338745}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 0, "device": 4, "best": "neg_mat_mean", "best_auc": 0.6029795449692229}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 2, "device": 4}
+{"stage": "combo_start", "seed": 2, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 0, "normal_k": 1, "anom_k": 64, "mat_mean_auc": 0.35352413359832285, "neg_mat_mean_auc": 0.6464758664016772, "best": "neg_margin", "time_sec": 338.3835427761078}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 1, "anom_k": 64, "seed": 0, "device": 0, "best": "neg_margin", "best_auc": 0.6551086611192625}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 3, "device": 0}
+{"stage": "combo_start", "seed": 3, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+Training Counter({0: 2092, 1: 236})
+Test Counter({0: 39927, 1: 4309})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.4077918242148453, "neg_mat_mean_auc": 0.5922081757851547, "best": "neg_mat_mean", "time_sec": 218.79573774337769}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 1, "device": 7, "best": "neg_mat_mean", "best_auc": 0.5922081757851547}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 4, "device": 7}
+{"stage": "combo_start", "seed": 4, "normal_k": 2, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.3216188952278979, "neg_mat_mean_auc": 0.6783811047721021, "best": "neg_mat_mean", "time_sec": 67.28938269615173}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 3, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6783811047721021}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 0, "device": 6}
+{"stage": "combo_start", "seed": 0, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.3344169162329978, "neg_mat_mean_auc": 0.6655830837670021, "best": "neg_mat_mean", "time_sec": 75.61701273918152}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 2, "device": 2, "best": "neg_mat_mean", "best_auc": 0.6655830837670021}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 1, "device": 2}
+{"stage": "combo_start", "seed": 1, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 2, "anom_k": 8, "mat_mean_auc": 0.32885564671044776, "neg_mat_mean_auc": 0.6711443532895522, "best": "neg_mat_mean", "time_sec": 41.59761714935303}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 8, "seed": 4, "device": 1, "best": "neg_mat_mean", "best_auc": 0.6711443532895522}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 2, "device": 1}
+{"stage": "combo_start", "seed": 2, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.2994047467037876, "neg_mat_mean_auc": 0.7005952532962125, "best": "neg_mat_mean", "time_sec": 47.69310712814331}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 2, "device": 4, "best": "neg_mat_mean", "best_auc": 0.7005952532962125}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 3, "device": 4}
+{"stage": "combo_start", "seed": 3, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.3977265998841161, "neg_mat_mean_auc": 0.6022734001158839, "best": "neg_mat_mean", "time_sec": 57.50934910774231}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 0, "device": 5, "best": "neg_mat_mean", "best_auc": 0.6022734001158839}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 4, "device": 5}
+{"stage": "combo_start", "seed": 4, "normal_k": 2, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.3594780246518939, "neg_mat_mean_auc": 0.6405219753481062, "best": "neg_mat_mean", "time_sec": 56.24669790267944}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 3, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6405219753481062}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 0, "device": 0}
+{"stage": "combo_done", "seed": 1, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.36404173987676525, "neg_mat_mean_auc": 0.6359582601232348, "best": "neg_mat_mean", "time_sec": 59.1660099029541}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 1, "device": 3, "best": "neg_mat_mean", "best_auc": 0.6359582601232348}
+{"stage": "combo_start", "seed": 0, "normal_k": 2, "anom_k": 64, "device": "cuda:0"}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 1, "device": 3}
+{"stage": "combo_start", "seed": 1, "normal_k": 2, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+Training Counter({0: 2079, 1: 249})
+Test Counter({0: 39940, 1: 4296})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 2, "anom_k": 16, "mat_mean_auc": 0.3514934283694515, "neg_mat_mean_auc": 0.6485065716305485, "best": "neg_mat_mean", "time_sec": 45.614102602005005}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 16, "seed": 4, "device": 7, "best": "neg_mat_mean", "best_auc": 0.6485065716305485}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 2, "device": 7}
+{"stage": "combo_start", "seed": 2, "normal_k": 2, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.3613145424955576, "neg_mat_mean_auc": 0.6386854575044424, "best": "neg_mat_mean", "time_sec": 209.61591863632202}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 1, "device": 2, "best": "neg_mat_mean", "best_auc": 0.6386854575044424}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 3, "device": 2}
+{"stage": "combo_start", "seed": 3, "normal_k": 2, "anom_k": 64, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 0, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.3621254568401841, "neg_mat_mean_auc": 0.6378745431598158, "best": "neg_mat_mean", "time_sec": 211.99676966667175}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 0, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6378745431598158}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 4, "device": 6}
+{"stage": "combo_start", "seed": 4, "normal_k": 2, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+Training Counter({0: 2101, 1: 227})
+Test Counter({0: 39918, 1: 4318})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.4955524051928569, "neg_mat_mean_auc": 0.5044475948071431, "best": "margin", "time_sec": 203.19478034973145}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 2, "device": 1, "best": "margin", "best_auc": 0.5169145455320041}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 0, "device": 1}
+{"stage": "combo_start", "seed": 0, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.39458221935065685, "neg_mat_mean_auc": 0.605417780649343, "best": "neg_mat_mean", "time_sec": 193.24574732780457}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 3, "device": 4, "best": "neg_mat_mean", "best_auc": 0.605417780649343}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 1, "device": 4}
+{"stage": "combo_start", "seed": 1, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 2, "anom_k": 32, "mat_mean_auc": 0.346459131683603, "neg_mat_mean_auc": 0.653540868316397, "best": "neg_mat_mean", "time_sec": 325.4723207950592}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 32, "seed": 4, "device": 5, "best": "neg_mat_mean", "best_auc": 0.653540868316397}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 2, "device": 5}
+{"stage": "combo_start", "seed": 2, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.35758638457040454, "neg_mat_mean_auc": 0.6424136154295954, "best": "neg_mat_mean", "time_sec": 222.08810782432556}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 0, "device": 1, "best": "neg_mat_mean", "best_auc": 0.6424136154295954}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 3, "device": 1}
+{"stage": "combo_start", "seed": 3, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.4494055451477623, "neg_mat_mean_auc": 0.5505944548522377, "best": "neg_mat_mean", "time_sec": 304.9358158111572}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 1, "device": 4, "best": "neg_mat_mean", "best_auc": 0.5505944548522377}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 4, "device": 4}
+{"stage": "combo_start", "seed": 4, "normal_k": 4, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.37261009507430065, "neg_mat_mean_auc": 0.6273899049256995, "best": "neg_mat_mean", "time_sec": 141.48342752456665}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 3, "device": 1, "best": "neg_mat_mean", "best_auc": 0.6273899049256995}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 0, "device": 1}
+{"stage": "combo_start", "seed": 0, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 2, "anom_k": 64, "mat_mean_auc": 0.3509895051110569, "neg_mat_mean_auc": 0.6490104948889431, "best": "neg_mat_mean", "time_sec": 561.3294303417206}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 2, "device": 7, "best": "neg_mat_mean", "best_auc": 0.6490104948889431}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 1, "device": 7}
+{"stage": "combo_start", "seed": 1, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.32730614560712534, "neg_mat_mean_auc": 0.6726938543928747, "best": "neg_mat_mean", "time_sec": 286.7972242832184}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 2, "device": 5, "best": "neg_mat_mean", "best_auc": 0.6726938543928747}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 2, "device": 5}
+{"stage": "combo_start", "seed": 2, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 2, "anom_k": 64, "mat_mean_auc": 0.3743899584254201, "neg_mat_mean_auc": 0.62561004157458, "best": "neg_mat_mean", "time_sec": 709.0414106845856}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 1, "device": 3, "best": "neg_mat_mean", "best_auc": 0.62561004157458}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 3, "device": 3}
+{"stage": "combo_start", "seed": 3, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 2, "anom_k": 64, "mat_mean_auc": 0.39229109609479396, "neg_mat_mean_auc": 0.607708903905206, "best": "neg_mat_mean", "time_sec": 717.1584916114807}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 0, "device": 0, "best": "neg_mat_mean", "best_auc": 0.607708903905206}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 4, "device": 0}
+{"stage": "combo_start", "seed": 4, "normal_k": 4, "anom_k": 8, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 4, "normal_k": 4, "anom_k": 4, "mat_mean_auc": 0.3149241918760572, "neg_mat_mean_auc": 0.6850758081239428, "best": "neg_mat_mean", "time_sec": 234.18816113471985}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 4, "seed": 4, "device": 4, "best": "neg_mat_mean", "best_auc": 0.6850758081239428}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 0, "device": 4}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_start", "seed": 0, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 2, "anom_k": 64, "mat_mean_auc": 0.4361435610418151, "neg_mat_mean_auc": 0.5638564389581848, "best": "neg_mat_mean", "time_sec": 575.0430362224579}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 3, "device": 2, "best": "neg_mat_mean", "best_auc": 0.5638564389581848}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 1, "device": 2}
+{"stage": "combo_start", "seed": 1, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.35378275867481235, "neg_mat_mean_auc": 0.6462172413251875, "best": "neg_mat_mean", "time_sec": 205.59763717651367}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 0, "device": 1, "best": "neg_mat_mean", "best_auc": 0.6462172413251875}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 2, "device": 1}
+{"stage": "combo_start", "seed": 2, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 4, "normal_k": 2, "anom_k": 64, "mat_mean_auc": 0.34536096879566525, "neg_mat_mean_auc": 0.6546390312043348, "best": "neg_mat_mean", "time_sec": 576.620979309082}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 2, "anom_k": 64, "seed": 4, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6546390312043348}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 3, "device": 6}
+{"stage": "combo_start", "seed": 3, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+Training Counter({0: 2092, 1: 236})
+Test Counter({0: 39927, 1: 4309})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.3462898107963287, "neg_mat_mean_auc": 0.6537101892036713, "best": "neg_mat_mean", "time_sec": 179.87983870506287}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 1, "device": 7, "best": "neg_mat_mean", "best_auc": 0.6537101892036713}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 4, "device": 7}
+{"stage": "combo_start", "seed": 4, "normal_k": 4, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.31937464513654756, "neg_mat_mean_auc": 0.6806253548634524, "best": "neg_mat_mean", "time_sec": 159.74379110336304}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 2, "device": 5, "best": "neg_mat_mean", "best_auc": 0.6806253548634524}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 0, "device": 5}
+{"stage": "combo_start", "seed": 0, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.2797384766056673, "neg_mat_mean_auc": 0.7202615233943328, "best": "neg_mat_mean", "time_sec": 79.38007378578186}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 3, "device": 3, "best": "neg_mat_mean", "best_auc": 0.7202615233943328}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 1, "device": 3}
+{"stage": "combo_start", "seed": 1, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 4, "anom_k": 8, "mat_mean_auc": 0.3117164621919609, "neg_mat_mean_auc": 0.6882835378080391, "best": "neg_mat_mean", "time_sec": 78.51135206222534}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 8, "seed": 4, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6882835378080391}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 2, "device": 0}
+{"stage": "combo_start", "seed": 2, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.36343686213566456, "neg_mat_mean_auc": 0.6365631378643355, "best": "neg_margin", "time_sec": 124.59233498573303}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 0, "device": 4, "best": "neg_margin", "best_auc": 0.656404587491159}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 3, "device": 4}
+{"stage": "combo_start", "seed": 3, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.35688951649968714, "neg_mat_mean_auc": 0.6431104835003129, "best": "neg_mat_mean", "time_sec": 269.1709051132202}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 1, "device": 2, "best": "neg_mat_mean", "best_auc": 0.6431104835003129}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 4, "device": 2}
+{"stage": "combo_start", "seed": 4, "normal_k": 4, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.3392691429786955, "neg_mat_mean_auc": 0.6607308570213045, "best": "neg_mat_mean", "time_sec": 276.06842255592346}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 3, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6607308570213045}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 0, "device": 6}
+{"stage": "combo_start", "seed": 0, "normal_k": 4, "anom_k": 64, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 2, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.31781637881880537, "neg_mat_mean_auc": 0.6821836211811946, "best": "neg_mat_mean", "time_sec": 280.7731854915619}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 2, "device": 1, "best": "neg_mat_mean", "best_auc": 0.6821836211811946}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 1, "device": 1}
+{"stage": "combo_done", "seed": 4, "normal_k": 4, "anom_k": 16, "mat_mean_auc": 0.3493133001274657, "neg_mat_mean_auc": 0.6506866998725342, "best": "neg_mat_mean", "time_sec": 275.8736672401428}
+{"stage": "combo_start", "seed": 1, "normal_k": 4, "anom_k": 64, "device": "cuda:0"}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 16, "seed": 4, "device": 7, "best": "neg_mat_mean", "best_auc": 0.6506866998725342}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 2, "device": 7}
+{"stage": "combo_start", "seed": 2, "normal_k": 4, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+Training Counter({0: 2088, 1: 240})
+Test Counter({0: 39931, 1: 4305})
+Training rate 1
+Training Counter({0: 2083, 1: 245})
+Test Counter({0: 39936, 1: 4300})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.3642552414033921, "neg_mat_mean_auc": 0.635744758596608, "best": "neg_margin", "time_sec": 577.2152187824249}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 0, "device": 5, "best": "neg_margin", "best_auc": 0.6391344300215527}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 3, "device": 5}
+{"stage": "combo_start", "seed": 3, "normal_k": 4, "anom_k": 64, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 1, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.32772443585343763, "neg_mat_mean_auc": 0.6722755641465624, "best": "neg_mat_mean", "time_sec": 570.8797361850739}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 1, "device": 3, "best": "neg_mat_mean", "best_auc": 0.6722755641465624}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 4, "device": 3}
+{"stage": "combo_start", "seed": 4, "normal_k": 4, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+Training Counter({0: 2101, 1: 227})
+Test Counter({0: 39918, 1: 4318})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.3467651010444613, "neg_mat_mean_auc": 0.6532348989555387, "best": "neg_mat_mean", "time_sec": 597.9994142055511}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 2, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6532348989555387}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 0, "device": 0}
+{"stage": "combo_start", "seed": 0, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.40199007531642295, "neg_mat_mean_auc": 0.598009924683577, "best": "neg_margin", "time_sec": 620.5469419956207}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 4, "device": 2, "best": "neg_margin", "best_auc": 0.6122542251886169}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 1, "device": 2}
+{"stage": "combo_start", "seed": 1, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 4, "anom_k": 32, "mat_mean_auc": 0.38205648147546245, "neg_mat_mean_auc": 0.6179435185245375, "best": "neg_mat_mean", "time_sec": 801.600264787674}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 32, "seed": 3, "device": 4, "best": "neg_mat_mean", "best_auc": 0.6179435185245375}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 2, "device": 4}
+{"stage": "combo_start", "seed": 2, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.37266845624333844, "neg_mat_mean_auc": 0.6273315437566616, "best": "neg_mat_mean", "time_sec": 405.6364314556122}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 0, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6273315437566616}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 3, "device": 0}
+{"stage": "combo_start", "seed": 3, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.4279086975745495, "neg_mat_mean_auc": 0.5720913024254506, "best": "neg_mat_mean", "time_sec": 202.22285771369934}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 1, "device": 2, "best": "neg_mat_mean", "best_auc": 0.5720913024254506}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 4, "device": 2}
+{"stage": "combo_start", "seed": 4, "normal_k": 8, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.33400887323737977, "neg_mat_mean_auc": 0.6659911267626202, "best": "neg_mat_mean", "time_sec": 278.9426426887512}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 2, "device": 4, "best": "neg_mat_mean", "best_auc": 0.6659911267626202}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 0, "device": 4}
+{"stage": "combo_start", "seed": 0, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.33164376424303654, "neg_mat_mean_auc": 0.6683562357569633, "best": "neg_mat_mean", "time_sec": 339.5097517967224}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 3, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6683562357569633}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 1, "device": 0}
+{"stage": "combo_start", "seed": 1, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 4, "anom_k": 64, "mat_mean_auc": 0.4693000137429189, "neg_mat_mean_auc": 0.5306999862570811, "best": "neg_mat_mean", "time_sec": 1177.4789881706238}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 1, "device": 1, "best": "neg_mat_mean", "best_auc": 0.5306999862570811}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 2, "device": 1}
+{"stage": "combo_start", "seed": 2, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 4, "anom_k": 64, "mat_mean_auc": 0.3400180474575685, "neg_mat_mean_auc": 0.6599819525424315, "best": "neg_mat_mean", "time_sec": 1214.2730638980865}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 0, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6599819525424315}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 3, "device": 6}
+{"stage": "combo_start", "seed": 3, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 4, "anom_k": 64, "mat_mean_auc": 0.4169632482466634, "neg_mat_mean_auc": 0.5830367517533366, "best": "neg_mat_mean", "time_sec": 1215.1802353858948}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 2, "device": 7, "best": "neg_mat_mean", "best_auc": 0.5830367517533366}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 4, "device": 7}
+{"stage": "combo_start", "seed": 4, "normal_k": 8, "anom_k": 8, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 4, "normal_k": 8, "anom_k": 4, "mat_mean_auc": 0.33101503156662304, "neg_mat_mean_auc": 0.6689849684333771, "best": "neg_mat_mean", "time_sec": 419.7057042121887}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 4, "seed": 4, "device": 2, "best": "neg_mat_mean", "best_auc": 0.6689849684333771}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 0, "device": 2}
+{"stage": "combo_start", "seed": 0, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+Training Counter({0: 2112, 1: 216})
+Test Counter({0: 39907, 1: 4329})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.4423509424765683, "neg_mat_mean_auc": 0.5576490575234317, "best": "neg_mat_mean", "time_sec": 585.9890031814575}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 0, "device": 4, "best": "neg_mat_mean", "best_auc": 0.5576490575234317}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 1, "device": 4}
+{"stage": "combo_start", "seed": 1, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.37183424169945484, "neg_mat_mean_auc": 0.6281657583005452, "best": "neg_mat_mean", "time_sec": 483.49588775634766}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 1, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6281657583005452}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 2, "device": 0}
+{"stage": "combo_start", "seed": 2, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.4553117355669174, "neg_mat_mean_auc": 0.5446882644330826, "best": "neg_margin", "time_sec": 475.3280222415924}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 2, "device": 1, "best": "neg_margin", "best_auc": 0.5640232734614041}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 3, "device": 1}
+{"stage": "combo_start", "seed": 3, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.4212358905395215, "neg_mat_mean_auc": 0.5787641094604785, "best": "neg_mat_mean", "time_sec": 466.34038853645325}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 4, "device": 7, "best": "neg_mat_mean", "best_auc": 0.5787641094604785}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 4, "device": 7}
+{"stage": "combo_start", "seed": 4, "normal_k": 8, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 4, "anom_k": 64, "mat_mean_auc": 0.3440682886949279, "neg_mat_mean_auc": 0.6559317113050721, "best": "neg_mat_mean", "time_sec": 1407.8887650966644}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 3, "device": 5, "best": "neg_mat_mean", "best_auc": 0.6559317113050721}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 0, "device": 5}
+{"stage": "combo_start", "seed": 0, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 8, "anom_k": 8, "mat_mean_auc": 0.34190887567535444, "neg_mat_mean_auc": 0.6580911243246456, "best": "neg_mat_mean", "time_sec": 523.8358497619629}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 8, "seed": 3, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6580911243246456}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 1, "device": 6}
+{"stage": "combo_start", "seed": 1, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 4, "anom_k": 64, "mat_mean_auc": 0.3431793515137655, "neg_mat_mean_auc": 0.6568206484862344, "best": "neg_mat_mean", "time_sec": 1415.7619578838348}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 4, "anom_k": 64, "seed": 4, "device": 3, "best": "neg_mat_mean", "best_auc": 0.6568206484862344}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 2, "device": 3}
+{"stage": "combo_start", "seed": 2, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.3676824088202725, "neg_mat_mean_auc": 0.6323175911797275, "best": "neg_margin", "time_sec": 523.4012756347656}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 0, "device": 2, "best": "neg_margin", "best_auc": 0.6500633040938506}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 3, "device": 2}
+{"stage": "combo_start", "seed": 3, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.4147725959687222, "neg_mat_mean_auc": 0.5852274040312777, "best": "neg_margin", "time_sec": 383.1796727180481}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 1, "device": 4, "best": "neg_margin", "best_auc": 0.6257610923823478}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 4, "device": 4}
+{"stage": "combo_start", "seed": 4, "normal_k": 8, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.34168455692391153, "neg_mat_mean_auc": 0.6583154430760885, "best": "neg_mat_mean", "time_sec": 469.84366750717163}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 2, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6583154430760885}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 0, "device": 0}
+{"stage": "combo_start", "seed": 0, "normal_k": 8, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.385643306422855, "neg_mat_mean_auc": 0.614356693577145, "best": "neg_mat_mean", "time_sec": 625.5601189136505}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 3, "device": 1, "best": "neg_mat_mean", "best_auc": 0.614356693577145}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 1, "device": 1}
+{"stage": "combo_start", "seed": 1, "normal_k": 8, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 8, "anom_k": 16, "mat_mean_auc": 0.33372938024097837, "neg_mat_mean_auc": 0.6662706197590216, "best": "neg_mat_mean", "time_sec": 652.2431817054749}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 16, "seed": 4, "device": 7, "best": "neg_mat_mean", "best_auc": 0.6662706197590216}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 2, "device": 7}
+{"stage": "combo_start", "seed": 2, "normal_k": 8, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.3278210893253899, "neg_mat_mean_auc": 0.6721789106746101, "best": "neg_mat_mean", "time_sec": 1299.5115113258362}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 1, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6721789106746101}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 3, "device": 6}
+{"stage": "combo_start", "seed": 3, "normal_k": 8, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.3550917027521215, "neg_mat_mean_auc": 0.6449082972478786, "best": "neg_mat_mean", "time_sec": 1548.4485268592834}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 3, "device": 2, "best": "neg_mat_mean", "best_auc": 0.6449082972478786}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 4, "device": 2}
+{"stage": "combo_start", "seed": 4, "normal_k": 8, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.3689065747779615, "neg_mat_mean_auc": 0.6310934252220384, "best": "neg_mat_mean", "time_sec": 1640.8704950809479}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 2, "device": 3, "best": "neg_mat_mean", "best_auc": 0.6310934252220384}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 0, "device": 3}
+{"stage": "combo_start", "seed": 0, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.3625798404053492, "neg_mat_mean_auc": 0.6374201595946508, "best": "neg_mat_mean", "time_sec": 1683.6189799308777}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 0, "device": 5, "best": "neg_mat_mean", "best_auc": 0.6374201595946508}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 1, "device": 5}
+{"stage": "combo_start", "seed": 1, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 8, "anom_k": 32, "mat_mean_auc": 0.3793644935125162, "neg_mat_mean_auc": 0.6206355064874838, "best": "neg_margin", "time_sec": 1812.354984998703}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 32, "seed": 4, "device": 4, "best": "neg_margin", "best_auc": 0.6447540980994853}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 2, "device": 4}
+{"stage": "combo_start", "seed": 2, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.3189748097642915, "neg_mat_mean_auc": 0.6810251902357085, "best": "neg_mat_mean", "time_sec": 479.6322247982025}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 0, "device": 3, "best": "neg_mat_mean", "best_auc": 0.6810251902357085}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 3, "device": 3}
+{"stage": "combo_start", "seed": 3, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.4058021854612211, "neg_mat_mean_auc": 0.594197814538779, "best": "neg_mat_mean", "time_sec": 219.1850094795227}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 2, "device": 4, "best": "neg_mat_mean", "best_auc": 0.594197814538779}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 4, "device": 4}
+{"stage": "combo_start", "seed": 4, "normal_k": 16, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.44684702102340174, "neg_mat_mean_auc": 0.5531529789765982, "best": "neg_margin", "time_sec": 531.8067927360535}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 1, "device": 5, "best": "neg_margin", "best_auc": 0.5633926351099526}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 0, "device": 5}
+{"stage": "combo_start", "seed": 0, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 8, "anom_k": 64, "mat_mean_auc": 0.4144202195672382, "neg_mat_mean_auc": 0.5855797804327618, "best": "neg_mat_mean", "time_sec": 2158.5091733932495}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 1, "device": 1, "best": "neg_mat_mean", "best_auc": 0.5855797804327618}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 1, "device": 1}
+{"stage": "combo_start", "seed": 1, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.2777901609521174, "neg_mat_mean_auc": 0.7222098390478825, "best": "neg_mat_mean", "time_sec": 667.6710829734802}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 3, "device": 3, "best": "neg_mat_mean", "best_auc": 0.7222098390478825}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 2, "device": 3}
+{"stage": "combo_start", "seed": 2, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+{"stage": "combo_done", "seed": 2, "normal_k": 8, "anom_k": 64, "mat_mean_auc": 0.4104090764025199, "neg_mat_mean_auc": 0.5895909235974801, "best": "neg_margin", "time_sec": 2195.721627473831}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 2, "device": 7, "best": "neg_margin", "best_auc": 0.6207617246326582}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 3, "device": 7}
+{"stage": "combo_start", "seed": 3, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+Training Counter({0: 2092, 1: 236})
+Test Counter({0: 39927, 1: 4309})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 16, "anom_k": 4, "mat_mean_auc": 0.4219139116325732, "neg_mat_mean_auc": 0.5780860883674268, "best": "neg_margin", "time_sec": 701.7471628189087}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 4, "seed": 4, "device": 4, "best": "neg_margin", "best_auc": 0.6138513742209364}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 4, "device": 4}
+{"stage": "combo_start", "seed": 4, "normal_k": 16, "anom_k": 8, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 8, "anom_k": 64, "mat_mean_auc": 0.37895263434484233, "neg_mat_mean_auc": 0.6210473656551577, "best": "neg_mat_mean", "time_sec": 2675.879346847534}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 0, "device": 0, "best": "neg_mat_mean", "best_auc": 0.6210473656551577}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 0, "device": 0}
+{"stage": "combo_start", "seed": 0, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.34166322536332483, "neg_mat_mean_auc": 0.6583367746366752, "best": "neg_mat_mean", "time_sec": 851.8667342662811}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 0, "device": 5, "best": "neg_mat_mean", "best_auc": 0.6583367746366752}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 1, "device": 5}
+{"stage": "combo_start", "seed": 1, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 8, "anom_k": 64, "mat_mean_auc": 0.3724747020686414, "neg_mat_mean_auc": 0.6275252979313585, "best": "neg_mat_mean", "time_sec": 1853.791568517685}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 3, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6275252979313585}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 2, "device": 6}
+{"stage": "combo_start", "seed": 2, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.378653688206142, "neg_mat_mean_auc": 0.621346311793858, "best": "neg_mat_mean", "time_sec": 662.5042352676392}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 1, "device": 1, "best": "neg_mat_mean", "best_auc": 0.621346311793858}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 3, "device": 1}
+{"stage": "combo_start", "seed": 3, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.3408720508801852, "neg_mat_mean_auc": 0.6591279491198148, "best": "neg_mat_mean", "time_sec": 658.5613543987274}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 3, "device": 7, "best": "neg_mat_mean", "best_auc": 0.6591279491198148}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 4, "device": 7}
+{"stage": "combo_start", "seed": 4, "normal_k": 16, "anom_k": 16, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.396920106775147, "neg_mat_mean_auc": 0.6030798932248531, "best": "neg_mat_mean", "time_sec": 724.5972838401794}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 4, "device": 4, "best": "neg_mat_mean", "best_auc": 0.6030798932248531}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 32, "seed": 0, "device": 4}
+{"stage": "combo_start", "seed": 0, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 16, "anom_k": 8, "mat_mean_auc": 0.5010639879155903, "neg_mat_mean_auc": 0.49893601208440974, "best": "neg_margin", "time_sec": 838.458996295929}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 8, "seed": 2, "device": 3, "best": "neg_margin", "best_auc": 0.5818913255147923}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 32, "seed": 1, "device": 3}
+{"stage": "combo_start", "seed": 1, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 8, "anom_k": 64, "mat_mean_auc": 0.39675351356189487, "neg_mat_mean_auc": 0.6032464864381051, "best": "neg_margin", "time_sec": 2485.4047858715057}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 8, "anom_k": 64, "seed": 4, "device": 2, "best": "neg_margin", "best_auc": 0.6460426269258348}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 32, "seed": 2, "device": 2}
+{"stage": "combo_start", "seed": 2, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.41357677549356014, "neg_mat_mean_auc": 0.5864232245064398, "best": "neg_mat_mean", "time_sec": 1069.0008885860443}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 0, "device": 0, "best": "neg_mat_mean", "best_auc": 0.5864232245064398}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 32, "seed": 3, "device": 0}
+{"stage": "combo_start", "seed": 3, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 2, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.37893942034380546, "neg_mat_mean_auc": 0.6210605796561944, "best": "neg_mat_mean", "time_sec": 1167.9969193935394}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 2, "device": 6, "best": "neg_mat_mean", "best_auc": 0.6210605796561944}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 32, "seed": 4, "device": 6}
+{"stage": "combo_start", "seed": 4, "normal_k": 16, "anom_k": 32, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.36488318133666164, "neg_mat_mean_auc": 0.6351168186633384, "best": "neg_margin", "time_sec": 1264.3103682994843}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 1, "device": 5, "best": "neg_margin", "best_auc": 0.6605145158232406}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 64, "seed": 0, "device": 5}
+{"stage": "combo_start", "seed": 0, "normal_k": 16, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.32386723175829224, "neg_mat_mean_auc": 0.6761327682417078, "best": "neg_mat_mean", "time_sec": 984.0578899383545}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 4, "device": 7, "best": "neg_mat_mean", "best_auc": 0.6761327682417078}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 64, "seed": 1, "device": 7}
+{"stage": "combo_start", "seed": 1, "normal_k": 16, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 16, "anom_k": 16, "mat_mean_auc": 0.3719362380924964, "neg_mat_mean_auc": 0.6280637619075037, "best": "neg_mat_mean", "time_sec": 1094.5694489479065}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 16, "seed": 3, "device": 1, "best": "neg_mat_mean", "best_auc": 0.6280637619075037}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 64, "seed": 2, "device": 1}
+{"stage": "combo_start", "seed": 2, "normal_k": 16, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "combo_done", "seed": 3, "normal_k": 16, "anom_k": 32, "mat_mean_auc": 0.44319457671134665, "neg_mat_mean_auc": 0.5568054232886532, "best": "neg_mat_mean", "time_sec": 2034.2824356555939}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 32, "seed": 3, "device": 0, "best": "neg_mat_mean", "best_auc": 0.5568054232886532}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 64, "seed": 3, "device": 0}
+{"stage": "combo_start", "seed": 3, "normal_k": 16, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "combo_done", "seed": 1, "normal_k": 16, "anom_k": 32, "mat_mean_auc": 0.42792458100435393, "neg_mat_mean_auc": 0.5720754189956461, "best": "neg_margin", "time_sec": 2732.226205587387}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 32, "seed": 1, "device": 3, "best": "neg_margin", "best_auc": 0.6341740727984708}
+{"stage": "task_start", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 64, "seed": 4, "device": 3}
+{"stage": "combo_start", "seed": 4, "normal_k": 16, "anom_k": 64, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "combo_done", "seed": 4, "normal_k": 16, "anom_k": 32, "mat_mean_auc": 0.37448834929394204, "neg_mat_mean_auc": 0.625511650706058, "best": "neg_mat_mean", "time_sec": 2102.1830224990845}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 32, "seed": 4, "device": 6, "best": "neg_mat_mean", "best_auc": 0.625511650706058}
+{"stage": "task_start", "variant": "old_semantic", "variant_cn_name": "旧语义", "normal_k": 1, "anom_k": 4, "seed": 0, "device": 6}
+{"stage": "combo_start", "seed": 0, "normal_k": 1, "anom_k": 4, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "combo_done", "seed": 0, "normal_k": 16, "anom_k": 32, "mat_mean_auc": 0.3717510294768139, "neg_mat_mean_auc": 0.6282489705231862, "best": "neg_mat_mean", "time_sec": 2945.7216470241547}
+{"stage": "task_done", "variant": "current", "variant_cn_name": "当前构造", "normal_k": 16, "anom_k": 32, "seed": 0, "device": 4, "best": "neg_mat_mean", "best_auc": 0.6282489705231862}
+{"stage": "task_start", "variant": "old_semantic", "variant_cn_name": "旧语义", "normal_k": 1, "anom_k": 4, "seed": 1, "device": 4}
+{"stage": "combo_start", "seed": 1, "normal_k": 1, "anom_k": 4, "device": "cuda:0"}
+bash: line 22: 3181268 Killed                  python investigations/route25_matrix/experiments/scripts/route25_parallel_mat_mean_reference_scan.py --project-root ~/DualRefGAD --dataset elliptic --variants "current,old_semantic,old_exact" --seeds "0,1,2,3,4" --normal_ks "1,2,4,8,16" --anom_ks "4,8,16,32,64" --devices "0,1,2,3,4,5,6,7" --train_rate 0.05 --val_rate 0.0 --encode_batch_size 1024 --ref_block_size 1024 --out "$OUT" --progress_out "$PROG"

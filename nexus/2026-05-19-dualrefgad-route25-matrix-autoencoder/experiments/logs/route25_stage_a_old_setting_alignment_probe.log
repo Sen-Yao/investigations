@@ -1,0 +1,298 @@
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 0, "device": 1, "definition": "Reproduce the old reference-response anatomy regime that produced mat_mean≈0.80: hop_attr descriptor, PCA residual normal model, labeled-normal normal refs, normal_soft_or anomaly scoring, descriptor-similarity anomaly refs, GT_num_layers=3, full candidate pool."}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 1, "device": 2, "definition": "Reproduce the old reference-response anatomy regime that produced mat_mean≈0.80: hop_attr descriptor, PCA residual normal model, labeled-normal normal refs, normal_soft_or anomaly scoring, descriptor-similarity anomaly refs, GT_num_layers=3, full candidate pool."}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 2, "device": 3, "definition": "Reproduce the old reference-response anatomy regime that produced mat_mean≈0.80: hop_attr descriptor, PCA residual normal model, labeled-normal normal refs, normal_soft_or anomaly scoring, descriptor-similarity anomaly refs, GT_num_layers=3, full candidate pool."}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 3, "device": 4, "definition": "Reproduce the old reference-response anatomy regime that produced mat_mean≈0.80: hop_attr descriptor, PCA residual normal model, labeled-normal normal refs, normal_soft_or anomaly scoring, descriptor-similarity anomaly refs, GT_num_layers=3, full candidate pool."}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 4, "device": 5, "definition": "Reproduce the old reference-response anatomy regime that produced mat_mean≈0.80: hop_attr descriptor, PCA residual normal model, labeled-normal normal refs, normal_soft_or anomaly scoring, descriptor-similarity anomaly refs, GT_num_layers=3, full candidate pool."}
+{"stage": "task_start", "variant": "old_refs_gt1_low_layer", "seed": 0, "device": 6, "definition": "Old reference construction with GT_num_layers=1 to isolate whether the 0.80+ behavior requires the deeper 3-layer frozen GT stack."}
+{"stage": "task_start", "variant": "old_refs_gt1_low_layer", "seed": 1, "device": 7, "definition": "Old reference construction with GT_num_layers=1 to isolate whether the 0.80+ behavior requires the deeper 3-layer frozen GT stack."}
+{"stage": "seed_start", "seed": 0, "device": "cuda:1"}
+{"stage": "seed_start", "seed": 1, "device": "cuda:2"}
+{"stage": "seed_start", "seed": 4, "device": "cuda:5"}
+{"stage": "seed_start", "seed": 0, "device": "cuda:6"}
+{"stage": "seed_start", "seed": 1, "device": "cuda:7"}
+{"stage": "seed_start", "seed": 3, "device": "cuda:4"}
+{"stage": "seed_start", "seed": 2, "device": "cuda:3"}
+Training Counter({0: 2085, 1: 243})
+Test Counter({0: 39934, 1: 4302})
+Training rate 1
+Training Counter({0: 2120, 1: 208})
+Test Counter({0: 39899, 1: 4337})
+Training rate 1
+Training Counter({0: 2083, 1: 245})
+Training Counter({0: 2098, 1: 230})
+Training Counter({0: 2109, 1: 219})
+Test Counter({0: 39936, 1: 4300})
+Training rate 1
+Test Counter({0: 39921, 1: 4315})
+Training rate 1
+Test Counter({0: 39910, 1: 4326})
+Training rate 1
+Training Counter({0: 2100, 1: 228})
+Test Counter({0: 39919, 1: 4317})
+Training rate 1
+Training Counter({0: 2102, 1: 226})
+Test Counter({0: 39917, 1: 4319})
+Training rate 1
+{"stage": "seed_done", "seed": 0, "best": "margin", "auc": 0.8048796897894644}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 0, "device": 1, "best": "margin", "auc": 0.8048796897894644}
+{"stage": "task_start", "variant": "old_refs_gt1_low_layer", "seed": 2, "device": 1, "definition": "Old reference construction with GT_num_layers=1 to isolate whether the 0.80+ behavior requires the deeper 3-layer frozen GT stack."}
+{"stage": "seed_start", "seed": 2, "device": "cuda:1"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "seed": 4, "best": "mat_mean", "auc": 0.80456894545174}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 4, "device": 5, "best": "mat_mean", "auc": 0.80456894545174}
+{"stage": "task_start", "variant": "old_refs_gt1_low_layer", "seed": 3, "device": 5, "definition": "Old reference construction with GT_num_layers=1 to isolate whether the 0.80+ behavior requires the deeper 3-layer frozen GT stack."}
+{"stage": "seed_start", "seed": 3, "device": "cuda:5"}
+{"stage": "seed_done", "seed": 2, "best": "mat_mean", "auc": 0.792701357055009}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 2, "device": 3, "best": "mat_mean", "auc": 0.792701357055009}
+{"stage": "task_start", "variant": "old_refs_gt1_low_layer", "seed": 4, "device": 3, "definition": "Old reference construction with GT_num_layers=1 to isolate whether the 0.80+ behavior requires the deeper 3-layer frozen GT stack."}
+{"stage": "seed_start", "seed": 4, "device": "cuda:3"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+Training Counter({0: 2101, 1: 227})
+Test Counter({0: 39918, 1: 4318})
+Training rate 1
+{"stage": "seed_done", "seed": 1, "best": "mat_mean", "auc": 0.8250351808675391}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 1, "device": 2, "best": "mat_mean", "auc": 0.8250351808675391}
+{"stage": "task_start", "variant": "current_refs_gt3_layer_bridge", "seed": 0, "device": 2, "definition": "Current Route2.5 reference construction but with GT_num_layers=3 to isolate the GT-depth change from the reference-regime change."}
+{"stage": "seed_start", "seed": 0, "device": "cuda:2"}
+{"stage": "seed_done", "seed": 0, "best": "mat_mean", "auc": 0.791438591015948}
+{"stage": "task_done", "variant": "old_refs_gt1_low_layer", "seed": 0, "device": 6, "best": "mat_mean", "auc": 0.791438591015948}
+{"stage": "task_start", "variant": "current_refs_gt3_layer_bridge", "seed": 1, "device": 6, "definition": "Current Route2.5 reference construction but with GT_num_layers=3 to isolate the GT-depth change from the reference-regime change."}
+{"stage": "seed_start", "seed": 1, "device": "cuda:6"}
+{"stage": "seed_done", "seed": 3, "best": "mat_q75", "auc": 0.7764093041103819}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 3, "device": 4, "best": "mat_q75", "auc": 0.7764093041103819}
+{"stage": "task_start", "variant": "current_refs_gt3_layer_bridge", "seed": 2, "device": 4, "definition": "Current Route2.5 reference construction but with GT_num_layers=3 to isolate the GT-depth change from the reference-regime change."}
+{"stage": "seed_start", "seed": 2, "device": "cuda:4"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+Training Counter({0: 2088, 1: 240})
+Test Counter({0: 39931, 1: 4305})
+Training rate 1
+Training Counter({0: 2083, 1: 245})
+Test Counter({0: 39936, 1: 4300})
+Training rate 1
+{"stage": "seed_done", "seed": 1, "best": "mat_mean", "auc": 0.8105215412379864}
+{"stage": "task_done", "variant": "old_refs_gt1_low_layer", "seed": 1, "device": 7, "best": "mat_mean", "auc": 0.8105215412379864}
+{"stage": "task_start", "variant": "current_refs_gt3_layer_bridge", "seed": 3, "device": 7, "definition": "Current Route2.5 reference construction but with GT_num_layers=3 to isolate the GT-depth change from the reference-regime change."}
+{"stage": "seed_start", "seed": 3, "device": "cuda:7"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "seed": 0, "best": "neg_mat_top5_mean", "auc": 0.6507645516804901}
+{"stage": "task_done", "variant": "current_refs_gt3_layer_bridge", "seed": 0, "device": 2, "best": "neg_mat_top5_mean", "auc": 0.6507645516804901}
+{"stage": "task_start", "variant": "current_refs_gt3_layer_bridge", "seed": 4, "device": 2, "definition": "Current Route2.5 reference construction but with GT_num_layers=3 to isolate the GT-depth change from the reference-regime change."}
+{"stage": "seed_start", "seed": 4, "device": "cuda:2"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "seed": 3, "best": "neg_mat_trimmed_mean", "auc": 0.7085505957466369}
+{"stage": "task_done", "variant": "current_refs_gt3_layer_bridge", "seed": 3, "device": 7, "best": "neg_mat_trimmed_mean", "auc": 0.7085505957466369}
+{"stage": "task_start", "variant": "current_stage_a_baseline", "seed": 0, "device": 7, "definition": "The already-used Route2.5 Stage A regime: hop_attr_rwse descriptor, diagonal Gaussian normal model, label_gate_density normal refs, normal_rejection/residual_cosine anomaly refs, GT_num_layers=1, approximate anomaly-ref candidate pool."}
+{"stage": "seed_start", "seed": 0, "device": "cuda:7"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "seed": 1, "best": "margin", "auc": 0.5906661348549824}
+{"stage": "task_done", "variant": "current_refs_gt3_layer_bridge", "seed": 1, "device": 6, "best": "margin", "auc": 0.5906661348549824}
+{"stage": "task_start", "variant": "current_stage_a_baseline", "seed": 1, "device": 6, "definition": "The already-used Route2.5 Stage A regime: hop_attr_rwse descriptor, diagonal Gaussian normal model, label_gate_density normal refs, normal_rejection/residual_cosine anomaly refs, GT_num_layers=1, approximate anomaly-ref candidate pool."}
+{"stage": "seed_start", "seed": 1, "device": "cuda:6"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "seed_done", "seed": 2, "best": "neg_mat_median", "auc": 0.5786676181891026}
+{"stage": "task_done", "variant": "current_refs_gt3_layer_bridge", "seed": 2, "device": 4, "best": "neg_mat_median", "auc": 0.5786676181891026}
+{"stage": "task_start", "variant": "current_stage_a_baseline", "seed": 2, "device": 4, "definition": "The already-used Route2.5 Stage A regime: hop_attr_rwse descriptor, diagonal Gaussian normal model, label_gate_density normal refs, normal_rejection/residual_cosine anomaly refs, GT_num_layers=1, approximate anomaly-ref candidate pool."}
+{"stage": "seed_start", "seed": 2, "device": "cuda:4"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "seed": 4, "best": "neg_mat_top5_mean", "auc": 0.6667917127168643}
+{"stage": "task_done", "variant": "current_refs_gt3_layer_bridge", "seed": 4, "device": 2, "best": "neg_mat_top5_mean", "auc": 0.6667917127168643}
+{"stage": "task_start", "variant": "current_stage_a_baseline", "seed": 3, "device": 2, "definition": "The already-used Route2.5 Stage A regime: hop_attr_rwse descriptor, diagonal Gaussian normal model, label_gate_density normal refs, normal_rejection/residual_cosine anomaly refs, GT_num_layers=1, approximate anomaly-ref candidate pool."}
+{"stage": "seed_start", "seed": 3, "device": "cuda:2"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "seed": 0, "best": "neg_margin", "auc": 0.6469261064572259}
+{"stage": "task_done", "variant": "current_stage_a_baseline", "seed": 0, "device": 7, "best": "neg_margin", "auc": 0.6469261064572259}
+{"stage": "task_start", "variant": "current_stage_a_baseline", "seed": 4, "device": 7, "definition": "The already-used Route2.5 Stage A regime: hop_attr_rwse descriptor, diagonal Gaussian normal model, label_gate_density normal refs, normal_rejection/residual_cosine anomaly refs, GT_num_layers=1, approximate anomaly-ref candidate pool."}
+{"stage": "seed_start", "seed": 4, "device": "cuda:7"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "seed": 1, "best": "neg_mat_median", "auc": 0.669137708540927}
+{"stage": "task_done", "variant": "current_stage_a_baseline", "seed": 1, "device": 6, "best": "neg_mat_median", "auc": 0.669137708540927}
+{"stage": "task_start", "variant": "hybrid_current_descriptor_old_refs", "seed": 0, "device": 6, "definition": "Use current richer descriptor/diag normal model but old anomaly-reference semantics: normal_soft_or + descriptor_similarity + label-gated normal refs. This tests whether old behavior is specifically tied to old reference scoring rather than hop_attr/PCA alone."}
+{"stage": "seed_start", "seed": 0, "device": "cuda:6"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "seed": 2, "best": "neg_mat_bottom5_mean", "auc": 0.7124528916441424}
+{"stage": "task_done", "variant": "current_stage_a_baseline", "seed": 2, "device": 4, "best": "neg_mat_bottom5_mean", "auc": 0.7124528916441424}
+{"stage": "task_start", "variant": "hybrid_current_descriptor_old_refs", "seed": 1, "device": 4, "definition": "Use current richer descriptor/diag normal model but old anomaly-reference semantics: normal_soft_or + descriptor_similarity + label-gated normal refs. This tests whether old behavior is specifically tied to old reference scoring rather than hop_attr/PCA alone."}
+{"stage": "seed_start", "seed": 1, "device": "cuda:4"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "seed_done", "seed": 4, "best": "mat_mean", "auc": 0.792907471664759}
+{"stage": "task_done", "variant": "old_refs_gt1_low_layer", "seed": 4, "device": 3, "best": "mat_mean", "auc": 0.792907471664759}
+{"stage": "task_start", "variant": "hybrid_current_descriptor_old_refs", "seed": 2, "device": 3, "definition": "Use current richer descriptor/diag normal model but old anomaly-reference semantics: normal_soft_or + descriptor_similarity + label-gated normal refs. This tests whether old behavior is specifically tied to old reference scoring rather than hop_attr/PCA alone."}
+{"stage": "seed_start", "seed": 2, "device": "cuda:3"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "seed": 4, "best": "neg_mat_top5_mean", "auc": 0.6803549689967693}
+{"stage": "task_done", "variant": "current_stage_a_baseline", "seed": 4, "device": 7, "best": "neg_mat_top5_mean", "auc": 0.6803549689967693}
+{"stage": "task_start", "variant": "hybrid_current_descriptor_old_refs", "seed": 3, "device": 7, "definition": "Use current richer descriptor/diag normal model but old anomaly-reference semantics: normal_soft_or + descriptor_similarity + label-gated normal refs. This tests whether old behavior is specifically tied to old reference scoring rather than hop_attr/PCA alone."}
+{"stage": "seed_start", "seed": 3, "device": "cuda:7"}
+{"stage": "seed_done", "seed": 2, "best": "margin", "auc": 0.7907133839053285}
+{"stage": "task_done", "variant": "old_refs_gt1_low_layer", "seed": 2, "device": 1, "best": "margin", "auc": 0.7907133839053285}
+{"stage": "task_start", "variant": "hybrid_current_descriptor_old_refs", "seed": 4, "device": 1, "definition": "Use current richer descriptor/diag normal model but old anomaly-reference semantics: normal_soft_or + descriptor_similarity + label-gated normal refs. This tests whether old behavior is specifically tied to old reference scoring rather than hop_attr/PCA alone."}
+{"stage": "seed_start", "seed": 4, "device": "cuda:1"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "seed": 3, "best": "neg_mat_top5_mean", "auc": 0.6800608138194832}
+{"stage": "task_done", "variant": "current_stage_a_baseline", "seed": 3, "device": 2, "best": "neg_mat_top5_mean", "auc": 0.6800608138194832}
+Training Counter({0: 2101, 1: 227})
+Test Counter({0: 39918, 1: 4318})
+Training rate 1
+{"stage": "seed_done", "seed": 3, "best": "mat_trimmed_mean", "auc": 0.8199957651439193}
+{"stage": "task_done", "variant": "old_refs_gt1_low_layer", "seed": 3, "device": 5, "best": "mat_trimmed_mean", "auc": 0.8199957651439193}
+{"stage": "seed_done", "seed": 0, "best": "mat_bottom5_mean", "auc": 0.7727741782964038}
+{"stage": "task_done", "variant": "hybrid_current_descriptor_old_refs", "seed": 0, "device": 6, "best": "mat_bottom5_mean", "auc": 0.7727741782964038}
+{"stage": "seed_done", "seed": 1, "best": "mat_bottom5_mean", "auc": 0.7623764898575868}
+{"stage": "task_done", "variant": "hybrid_current_descriptor_old_refs", "seed": 1, "device": 4, "best": "mat_bottom5_mean", "auc": 0.7623764898575868}
+{"stage": "seed_done", "seed": 2, "best": "margin", "auc": 0.7546626639185445}
+{"stage": "task_done", "variant": "hybrid_current_descriptor_old_refs", "seed": 2, "device": 3, "best": "margin", "auc": 0.7546626639185445}
+{"stage": "seed_done", "seed": 3, "best": "mat_mean", "auc": 0.7937169595413379}
+{"stage": "task_done", "variant": "hybrid_current_descriptor_old_refs", "seed": 3, "device": 7, "best": "mat_mean", "auc": 0.7937169595413379}
+{"stage": "seed_done", "seed": 4, "best": "margin", "auc": 0.7646330460306064}
+{"stage": "task_done", "variant": "hybrid_current_descriptor_old_refs", "seed": 4, "device": 1, "best": "margin", "auc": 0.7646330460306064}
+FINAL {
+  "status": "finished",
+  "leaderboard_by_mat_mean_auc": [
+    {
+      "variant": "old_exact_080_regime",
+      "mat_mean_auc_mean": 0.7999634556026993,
+      "neg_mat_mean_auc_mean": 0.20003654439730073,
+      "anom_ref_anom_ratio_mean": 0.10880750150330727,
+      "best_scalar_auc_mean": 0.8007188954548269,
+      "winner_counts": {
+        "margin": 1,
+        "mat_mean": 3,
+        "mat_q75": 1
+      },
+      "decision": "MIXED_ORIENTATION_REGIME__NEEDS_REFERENCE_POOL_REPAIR_BEFORE_METHOD"
+    },
+    {
+      "variant": "old_refs_gt1_low_layer",
+      "mat_mean_auc_mean": 0.7986494752777703,
+      "neg_mat_mean_auc_mean": 0.20135052472222972,
+      "anom_ref_anom_ratio_mean": 0.10828188085216048,
+      "best_scalar_auc_mean": 0.8011153505935884,
+      "winner_counts": {
+        "mat_mean": 3,
+        "margin": 1,
+        "mat_trimmed_mean": 1
+      },
+      "decision": "MIXED_ORIENTATION_REGIME__NEEDS_REFERENCE_POOL_REPAIR_BEFORE_METHOD"
+    },
+    {
+      "variant": "hybrid_current_descriptor_old_refs",
+      "mat_mean_auc_mean": 0.7519435364253829,
+      "neg_mat_mean_auc_mean": 0.24805646357461705,
+      "anom_ref_anom_ratio_mean": 0.09423508504424019,
+      "best_scalar_auc_mean": 0.7696326675288959,
+      "winner_counts": {
+        "mat_bottom5_mean": 2,
+        "margin": 2,
+        "mat_mean": 1
+      },
+      "decision": "MIXED_ORIENTATION_REGIME__NEEDS_REFERENCE_POOL_REPAIR_BEFORE_METHOD"
+    },
+    {
+      "variant": "current_refs_gt3_layer_bridge",
+      "mat_mean_auc_mean": 0.3862176054326921,
+      "neg_mat_mean_auc_mean": 0.6137823945673079,
+      "anom_ref_anom_ratio_mean": 0.0251065737479598,
+      "best_scalar_auc_mean": 0.6390881226376152,
+      "winner_counts": {
+        "neg_mat_top5_mean": 2,
+        "margin": 1,
+        "neg_mat_median": 1,
+        "neg_mat_trimmed_mean": 1
+      },
+      "decision": "NEGATIVE_ORIENTATION_SIGNAL_STABLE__PRIORITIZE_SIGN_AWARE_SCALAR_OR_REGIME_SCORE"
+    },
+    {
+      "variant": "current_stage_a_baseline",
+      "mat_mean_auc_mean": 0.34944756928455734,
+      "neg_mat_mean_auc_mean": 0.6505524307154428,
+      "anom_ref_anom_ratio_mean": 0.026696052744609566,
+      "best_scalar_auc_mean": 0.6777864978917096,
+      "winner_counts": {
+        "neg_margin": 1,
+        "neg_mat_median": 1,
+        "neg_mat_bottom5_mean": 1,
+        "neg_mat_top5_mean": 2
+      },
+      "decision": "NEGATIVE_ORIENTATION_SIGNAL_STABLE__PRIORITIZE_SIGN_AWARE_SCALAR_OR_REGIME_SCORE"
+    }
+  ],
+  "errors": [],
+  "time_sec": 5133.374935388565
+}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+OLD_SETTING_ALIGNMENT_DONE

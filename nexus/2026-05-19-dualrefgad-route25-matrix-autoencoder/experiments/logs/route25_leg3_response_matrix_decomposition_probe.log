@@ -1,0 +1,132 @@
+JOB_START 2026-05-21T18:31:55+08:00
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 0, "device": 0}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 1, "device": 1}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 2, "device": 2}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 3, "device": 3}
+{"stage": "task_start", "variant": "old_exact_080_regime", "seed": 4, "device": 4}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:3"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:4"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:2"}
+{"stage": "seed_start", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:1"}
+Training Counter({0: 2111, 1: 217})
+Test Counter({0: 39908, 1: 4328})
+Training rate 1
+Training Counter({0: 2087, 1: 241})
+Training Counter({0: 2117, 1: 211})
+Training Counter({0: 2109, 1: 219})
+Test Counter({0: 39932, 1: 4304})
+Training rate 1
+Test Counter({0: 39910, 1: 4326})
+Training rate 1
+Training Counter({0: 2105, 1: 223})
+Test Counter({0: 39902, 1: 4334})
+Training rate 1
+Test Counter({0: 39914, 1: 4322})
+Training rate 1
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 4, "best": "row_mean_min", "auc": 0.8007855075685166}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 4, "device": 4, "best": "row_mean_min", "auc": 0.8007855075685166}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 2, "best": "mat_mean", "auc": 0.7875669814210483}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 2, "device": 2, "best": "mat_mean", "auc": 0.7875669814210483}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 1, "best": "mat_mean", "auc": 0.7984296526871083}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 1, "device": 1, "best": "mat_mean", "auc": 0.7984296526871083}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 3, "best": "mat_q25", "auc": 0.806712620213657}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 3, "device": 3, "best": "mat_q25", "auc": 0.806712620213657}
+{"stage": "seed_done", "variant": "old_exact_080_regime", "seed": 0, "best": "row_mean_min", "auc": 0.8110050270738266}
+{"stage": "task_done", "variant": "old_exact_080_regime", "seed": 0, "device": 0, "best": "row_mean_min", "auc": 0.8110050270738266}
+FINAL {
+  "status": "finished",
+  "results_summary": [
+    {
+      "variant": "old_exact_080_regime",
+      "aggregate": {
+        "n_rows": 5,
+        "best_auc": {
+          "mean": 0.8008999577928314,
+          "std": 0.00799728997463421,
+          "min": 0.7875669814210483,
+          "max": 0.8110050270738266
+        },
+        "winner_counts": {
+          "row_mean_min": 2,
+          "mat_mean": 2,
+          "mat_q25": 1
+        },
+        "winner_family_counts": {
+          "row_normal_anchor": 2,
+          "scalar_matrix_summary": 3
+        },
+        "reference_anom_ratio": {
+          "mean": 0.10935620865904991,
+          "std": 0.000851573570266189,
+          "min": 0.10769049050768835,
+          "max": 0.1100769908083498
+        },
+        "best_spearman_with_margin": {
+          "mean": 0.6312285347065906,
+          "std": 0.07288292874548113,
+          "min": 0.5408392459241899,
+          "max": 0.7148803106312024
+        },
+        "best_top5_jaccard_with_margin": {
+          "mean": 0.5292371225487301,
+          "std": 0.0761353041742396,
+          "min": 0.38969201759899436,
+          "max": 0.5963898916967509
+        },
+        "best_with_degree_abs": {
+          "mean": 0.07134146296354818,
+          "std": 0.02384159600033648,
+          "min": 0.04668309158377582,
+          "max": 0.10910003238492406
+        },
+        "family_best_auc": {
+          "centroid_margin": {
+            "mean": 0.7828274888273208,
+            "std": 0.009167336696012038,
+            "min": 0.7677987311776312,
+            "max": 0.7949569187460691
+          },
+          "column_anomaly_reference": {
+            "mean": 0.7649376223648838,
+            "std": 0.004361174614668753,
+            "min": 0.759237767197271,
+            "max": 0.7712328811957547
+          },
+          "entry_normal_manifold": {
+            "mean": 0.740477081241843,
+            "std": 0.029125512078368297,
+            "min": 0.6878143558501124,
+            "max": 0.7735827772422416
+          },
+          "proxy_diagnostic": {
+            "mean": 0.32934188228485867,
+            "std": 0.0010925367736674093,
+            "min": 0.3281159552326315,
+            "max": 0.33101822153059246
+          },
+          "row_normal_anchor": {
+            "mean": 0.7892874903571618,
+            "std": 0.016373004146541106,
+            "min": 0.7668066903507503,
+            "max": 0.8110050270738266
+          },
+          "scalar_matrix_summary": {
+            "mean": 0.7985063203270389,
+            "std": 0.0061930644250657065,
+            "min": 0.7875669814210483,
+            "max": 0.806712620213657
+          }
+        },
+        "decision": "SIMPLE_SCALAR_SUMMARY_STILL_DOMINATES"
+      }
+    }
+  ],
+  "errors": [],
+  "time_sec": 89.61393475532532
+}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+JOB_DONE 2026-05-21T18:33:28+08:00

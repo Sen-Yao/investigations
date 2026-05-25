@@ -1,0 +1,86 @@
+{"stage": "seed_start", "seed": 0, "device": "cuda:0"}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "seed": 0, "best": "neg_mat_median", "auc": 0.6427951631904658}
+{"stage": "seed_start", "seed": 1, "device": "cuda:0"}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "seed_done", "seed": 1, "best": "mat_iqr", "auc": 0.6520180247402696}
+{"stage": "seed_start", "seed": 2, "device": "cuda:0"}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "seed": 2, "best": "neg_mat_q75", "auc": 0.6918807032789012}
+{"stage": "seed_start", "seed": 3, "device": "cuda:0"}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "seed": 3, "best": "neg_mat_bottom5_mean", "auc": 0.6579372658663016}
+{"stage": "seed_start", "seed": 4, "device": "cuda:0"}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "seed": 4, "best": "neg_mat_top5_mean", "auc": 0.6734929437651955}
+FINAL {
+  "best_scalar_auc": {
+    "mean": 0.6636248201682268,
+    "std": 0.01730153390624153,
+    "min": 0.6427951631904658,
+    "max": 0.6918807032789012
+  },
+  "neg_mat_mean_auc": {
+    "mean": 0.6489810186680999,
+    "std": 0.011019235955858912,
+    "min": 0.6359788786789781,
+    "max": 0.6640747798218781
+  },
+  "winner_counts": {
+    "neg_mat_median": 1,
+    "mat_iqr": 1,
+    "neg_mat_q75": 1,
+    "neg_mat_bottom5_mean": 1,
+    "neg_mat_top5_mean": 1
+  },
+  "orientation_family_counts": {
+    "negative_orientation": 4,
+    "other": 1
+  },
+  "mat_mean_minus_neg_mat_mean_auc": {
+    "mean": -0.29796203733619986,
+    "std": 0.02203847191171783,
+    "min": -0.3281495596437562,
+    "max": -0.2719577573579561
+  },
+  "anom_ref_anom_ratio": {
+    "mean": 0.026696052744609566,
+    "std": 0.007202652265584626,
+    "min": 0.016992741173438707,
+    "max": 0.037753146207370504
+  },
+  "margin_spearman_with_best": {
+    "mean": -0.7305973180526111,
+    "std": 0.1669649223461456,
+    "min": -0.918882583347854,
+    "max": -0.4395162756077496
+  },
+  "degree_spearman_with_best": {
+    "mean": -0.3174034582037704,
+    "std": 0.06704185592648532,
+    "min": -0.3886610836335553,
+    "max": -0.22503115889894426
+  },
+  "decision": "NEGATIVE_ORIENTATION_SIGNAL_STABLE__PRIORITIZE_SIGN_AWARE_SCALAR_OR_REGIME_SCORE"
+}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+STAGE_A_DONE

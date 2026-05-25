@@ -1,0 +1,31 @@
+program: experiments/scripts/route25_leg3_response_matrix_decomposition_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+notes:
+  protocol: "No-training runner-registered pure probe. Frozen VecGAD encoder. C-LEG3 / old_exact_080_regime fixed. Labels are diagnostic-only for AUC/AP/autopsy."
+  objective: "Decompose LEG3 response matrix into scalar, row, column, entry normal-manifold, complementarity, and proxy-confound families to identify learnable signals beyond mat_mean/margin."
+  expected_output: "experiments/outputs/route25_leg3_response_matrix_decomposition_probe.json"

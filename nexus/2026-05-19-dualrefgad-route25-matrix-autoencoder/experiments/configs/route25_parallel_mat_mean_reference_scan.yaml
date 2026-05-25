@@ -1,0 +1,37 @@
+program: experiments/scripts/route25_parallel_mat_mean_reference_scan.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  variants:
+    value: "current,old_semantic,old_exact"
+  seeds:
+    value: "0,1,2,3,4"
+  normal_ks:
+    value: "1,2,4,8,16"
+  anom_ks:
+    value: "4,8,16,32,64"
+  descriptor_mode:
+    value: hop_attr_rwse
+  pn_estimator:
+    value: diag_gaussian
+  gn_mode:
+    value: label_gate_density
+  ga_mode:
+    value: normal_rejection
+  la_mode:
+    value: residual_cosine
+  ln_mode:
+    value: descriptor_similarity
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+notes:
+  protocol: "no-training diagnostic; labels diagnostic-only for AUC/AP/autopsy"
+  objective: "充分扫描 mat_mean / neg_mat_mean 在不同参考点数量与三种参考点构造下的稳定性，解释旧复刻设置中 0.80+ 信号来源"
+  total_tasks: "3 variants x 5 normal_ks x 5 anom_ks x 5 seeds = 375 independent tasks"
