@@ -27,9 +27,9 @@ investigations/
 
 ## Git 管理
 
-本仓库从 `.openclaw/workspace/agents/nexus/investigations/` 迁移而来（2026-05-12）。
+本仓库是 Nexus 科研调查记录的当前权威位置（2026-05-12 起）。历史上曾从旧 agent workspace mirror 迁入；该旧 mirror 不再作为活跃研究状态来源。
 
-原位置保留作为备份，建议在确认迁移成功后手动清理。
+如需核对迁移历史，请查看 Git 历史和相关迁移记录；不要把旧 workspace 当作 backup source 继续依赖。
 
 ## 活跃 Investigation
 

@@ -18,6 +18,7 @@
 | `2026-04-01-caa` | CAA, 数据泄漏 | Photo | ✅ 完成 | 发现训练集泄漏bug |
 | `2026-05-13-dualrefgad-normal-only-residual-probe` | DualRefGAD, normal-only, residual probe, margin | Elliptic | ✅ 完成 | additive residual route closed；correction 主要是 margin compression |
 | `2026-05-13-dualrefgad-reference-geometry-anatomy` | DualRefGAD, reference geometry, margin anatomy, distributional inconsistency | Elliptic / 待扩展 | 🟡 活跃 | 解剖 margin-only 信号来源与 top-k failure case，判断是否存在 response distribution 信号 |
+| `2026-05-21-dualrefgad-constraint-calibrated-reference-relation` | DualRefGAD, C-LEG3, reference relation, pseudo anomaly gate | Elliptic | 🟡 活跃 | 固定 C-LEG3，先做 R0/R4 decomposition gate，再决定是否启动 R1–R3 伪异常训练 |
 
 ---
 
@@ -41,7 +42,8 @@
 | 探究 | 状态 | 关键洞见 |
 |------|------|---------|
 | `2026-05-13-dualrefgad-normal-only-residual-probe` | ✅ | additive residual route closed；learned correction 主要是 margin compression / calibration |
-| `2026-05-13-dualrefgad-reference-geometry-anatomy` | 🟡 | 新探究：解剖 margin-only 信号来源、reference response distribution 与 top-k failure case |
+| `2026-05-13-dualrefgad-reference-geometry-anatomy` | 🟡 | 解剖 margin-only 信号来源、reference response distribution 与 top-k failure case |
+| `2026-05-21-dualrefgad-constraint-calibrated-reference-relation` | 🟡 | 新探究：约束校准 reference relation；第一步 C-LEG3 decomposition gate 已准备，未启动 |
 
 ---
 
@@ -73,6 +75,7 @@
 | CAA缺少哪些组件？ | ⭐⭐ | 2026-04-01-deep-token-information |
 | Elliptic为什么反转？ | ⭐⭐ | 2026-04-01-delta-offset-cross-dataset |
 | DualRefGAD margin-only 的信号来源与失败机制是什么？ | ⭐⭐⭐ | 2026-05-13-dualrefgad-reference-geometry-anatomy |
+| C-LEG3 固定后，两条 normal-only 约束能否校准无权重 reference relation score？ | ⭐⭐⭐ | 2026-05-21-dualrefgad-constraint-calibrated-reference-relation |
 
 ---
 
@@ -88,4 +91,4 @@
 ---
 
 _创建时间: 2026-04-01_
-_最后更新: 2026-05-13 (添加 DualRefGAD reference geometry anatomy)_
+_最后更新: 2026-05-21 (添加 DualRefGAD constraint-calibrated reference relation)_
