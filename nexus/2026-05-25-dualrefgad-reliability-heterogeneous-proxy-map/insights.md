@@ -63,3 +63,15 @@ Oracle-to-proxy evidence: lost anomalies differ from removed false positives in 
 - Continuation: metric=False, rho=True, shortcut=True
 - Report predecessor: https://report.senyao.org/reports/2026/05/26/dualrefgad-layer1-next-step-decision-2026-05-26.html
 
+## 2026-05-26 — Closure decision: close this investigation and open a new Learning Signal Recovery investigation
+
+本探究已经完成其原始问题：从 C-LEG3 strict reproduction 出发，检查 oracle categories 能否映射为无标签 reliability / heterogeneous-support proxy，并验证固定公式与浅层无标签 gate 是否足以支撑继续训练。
+
+收束判断：
+
+1. `mat_mean` / response matrix 确认包含额外异常排序信息，但该信息不是干净可训练目标。
+2. `consensus_minus_fragmentation` 与 reliability-blend 提供了弱 label-free proxy 信号，但 Layer 1 shallow gate 未通过 metric continuation gate：最佳 Layer 1 仅达到 AUC `0.8037`、AP `0.5341`，相对 `mat_mean` 的 ΔAUC `+0.0028`、ΔAP `+0.0006`，不足以提升为方法组件。
+3. 继续扩大 reader/head 会把当前不稳定 proxy 的 shortcut 风险放大；下一步主问题不再是“如何读 response matrix”，而是“如何恢复一个可靠、可训练、无标签的学习目标”。
+
+因此，本 investigation 作为 **Reliability / Heterogeneous Proxy Map** 收尾。后续建议新开独立 investigation：**DualRefGAD Learning Signal Recovery**，专门研究 trainable-target recovery、reference relation / fragmentation 重新定义、以及固定公式层 continuation gate。
+

@@ -79,3 +79,7 @@ Decision: `CANDIDATE_READY_FOR_SHALLOW_RELIABILITY_GATE_REVIEW`. This does **not
 - Continuation: metric=False, rho=True, shortcut=True
 - Report predecessor: https://report.senyao.org/reports/2026/05/26/dualrefgad-layer1-next-step-decision-2026-05-26.html
 
+## 2026-05-26 — Investigation closure
+
+Closure decision recorded in `insights.md`: this investigation has answered the reliability / heterogeneous proxy-map question and should stop here. The next scientific unit should be a separate **DualRefGAD Learning Signal Recovery** investigation, because the question has shifted from reading the existing response matrix to recovering a reliable, trainable, label-free target.
+
