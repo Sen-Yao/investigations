@@ -85,3 +85,22 @@ Monitoring/publishing prepared:
 
 - Watchdog script: `~/.hermes/scripts/dualrefgad_learning_signal_abcd_probe_watchdog.py`, rendered from the experiment-runner pure-probe template and py_compile-verified.
 - Publisher script: `~/.hermes/scripts/dualrefgad_learning_signal_abcd_probe_publisher.py`, py_compile-verified; it exits silently until final aggregate JSON has `status=finished`, then updates `insights.md`/`PROGRESS.md` and commits terminal artifacts.
+
+## 2026-05-26 15:36 CST — ABCD wrapper parallelized for GPU utilization
+
+Before launch, the wrapper was revised from strict sequential seed execution to a multiprocessing GPU task queue so it can use available HCCS-25 GPUs rather than leaving them idle.
+
+Implementation details:
+
+- Uses `multiprocessing.get_context("spawn")`.
+- Each `(variant, seed)` task runs in an independent child process.
+- Each worker sets `CUDA_VISIBLE_DEVICES` to one physical GPU and passes logical `cuda:0` into the reused Layer-1 helper.
+- Parent process only aggregates rows and writes atomic progress snapshots.
+- Scientific boundary remains unchanged: Layer-1 helper sets `seed` and `data_split_seed` per task; anomaly labels remain diagnostic-only.
+
+Validation after revision:
+
+- Local `py_compile` passed.
+- `experiment.py validate --profile probe` passed.
+- Remote sync to HCCS-25 succeeded.
+- Remote `py_compile` and import check passed (`worker_loop` visible).

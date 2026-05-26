@@ -20,6 +20,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import multiprocessing as mp
 import os
 import sys
 import time
@@ -196,6 +197,33 @@ def build_abcd(rows, aggregate):
     }
 
 
+def worker_loop(worker_id, device, task_queue, result_queue, args_dict):
+    """Run independent tasks in a child process bound to one GPU."""
+    # Make CUDA visibility explicit but still pass the physical device id through
+    # because the lower-level helper logs device identity and constructs cuda:{device}.
+    os.environ["CUDA_VISIBLE_DEVICES"] = str(device)
+    cli_args = argparse.Namespace(**args_dict)
+    strategy_meta = {}
+    while True:
+        task = task_queue.get()
+        if task is None:
+            return
+        variant, seed = task
+        t0 = time.time()
+        try:
+            print(json.dumps({"stage": "task_start", "worker": worker_id, "variant": variant, "seed": seed, "device": device}, ensure_ascii=False), flush=True)
+            row = run_layer1_one(cli_args, variant, seed, 0, strategy_meta)
+            # Preserve physical device assignment in the aggregate row; lower-level
+            # helper sees cuda:0 inside CUDA_VISIBLE_DEVICES.
+            row["physical_device"] = int(device)
+            result_queue.put({"ok": True, "variant": variant, "seed": seed, "device": device, "row": row, "strategy_meta": strategy_meta, "elapsed_sec": time.time() - t0})
+        except Exception as e:
+            import traceback
+            tb = traceback.format_exc()
+            print(tb, flush=True)
+            result_queue.put({"ok": False, "variant": variant, "seed": seed, "device": device, "error": repr(e), "traceback": tb[-4000:], "elapsed_sec": time.time() - t0})
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--project-root", default=str(Path.home() / "DualRefGAD"))
@@ -255,27 +283,49 @@ def main():
             "variants": variants,
             "seeds": seeds,
             "devices": devices,
-            "sequential_seed_discipline": True,
+            "parallel_workers": min(len(devices), total),
+            "parallel_seed_discipline": "multiprocessing spawn; one independent process per GPU worker; each task still sets seed/data_split_seed inside Layer-1 helper",
             "partial": partial,
             "errors": errors[-5:],
             "elapsed_sec": time.time() - start,
         })
 
     snapshot("running")
-    for variant in variants:
-        for i, seed in enumerate(seeds):
-            device = devices[i % len(devices)]
-            try:
-                row = run_layer1_one(args, variant, seed, device, strategy_meta)
-                rows_by_variant[variant].append(row)
-            except Exception as e:  # keep aggregate failure inspectable
-                import traceback
-                tb = traceback.format_exc()
-                print(tb, flush=True)
-                errors.append({"variant": variant, "seed": seed, "device": device, "error": repr(e), "traceback": tb[-4000:]})
-            finally:
-                done += 1
-                snapshot("running")
+    tasks = [(variant, seed) for variant in variants for seed in seeds]
+    if tasks:
+        ctx = mp.get_context("spawn")
+        task_queue = ctx.Queue()
+        result_queue = ctx.Queue()
+        worker_count = min(len(devices), len(tasks))
+        for task in tasks:
+            task_queue.put(task)
+        for _ in range(worker_count):
+            task_queue.put(None)
+        args_dict = vars(args).copy()
+        workers = []
+        for wid, device in enumerate(devices[:worker_count]):
+            p = ctx.Process(target=worker_loop, args=(wid, int(device), task_queue, result_queue, args_dict), daemon=False)
+            p.start()
+            workers.append(p)
+        while done < total:
+            result = result_queue.get()
+            if result.get("ok"):
+                rows_by_variant[result["variant"]].append(result["row"])
+                strategy_meta.update(result.get("strategy_meta") or {})
+            else:
+                errors.append({
+                    "variant": result.get("variant"),
+                    "seed": result.get("seed"),
+                    "device": result.get("device"),
+                    "error": result.get("error"),
+                    "traceback": result.get("traceback"),
+                })
+            done += 1
+            snapshot("running")
+        for p in workers:
+            p.join()
+            if p.exitcode not in (0, None):
+                errors.append({"worker_exitcode": p.exitcode})
 
     variant_summaries = []
     for variant in variants:
@@ -295,10 +345,11 @@ def main():
         "status": "finished" if not errors else "finished_with_errors",
         "probe": "dualrefgad_learning_signal_abcd_probe",
         "protocol": {
-            "type": "runner-registered pure probe; ABCD target-readiness diagnostic; no anomaly-label training",
+            "type": "runner-registered pure probe; ABCD target-readiness diagnostic; no anomaly-label training; multiprocessing GPU task queue",
             "source_report": "https://report.senyao.org/reports/2026/05/26/dualrefgad-learning-signal-recovery-discussion-2026-05-26.html",
             "label_boundary": "labels diagnostic-only for AUC/AP and oracle top-K boundary categories",
             "reuse_boundary": "reuses validated C-LEG3 Layer-1 response-matrix/proxy construction; this wrapper organizes ABCD interpretation",
+            "parallel_boundary": "independent spawned process per GPU worker; CUDA_VISIBLE_DEVICES is set per worker; Layer-1 helper still sets seed and data_split_seed per task",
         },
         "dataset": args.dataset,
         "seeds": seeds,
