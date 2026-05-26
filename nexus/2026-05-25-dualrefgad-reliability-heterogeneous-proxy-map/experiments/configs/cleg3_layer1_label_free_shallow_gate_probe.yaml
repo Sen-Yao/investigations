@@ -1,0 +1,46 @@
+program: experiments/scripts/cleg3_layer1_label_free_shallow_gate_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  ln_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+  q_values:
+    value: "0.05,0.10"
+  qf_values:
+    value: "0.10,0.20"
+  alpha_anchor_values:
+    value: "0.5,1.0"
+  alpha_mono_values:
+    value: "0.1,0.5"
+  lambda_l2_values:
+    value: "0.001,0.01"
+  train_steps:
+    value: 300
+notes:
+  protocol: runner-registered pure probe; Layer-1 label-free shallow monotone logistic gate; labels diagnostic-only
+  objective: test whether pseudo-anchor-trained reliability gate improves beyond Layer 0 fixed formulas while controlling false-positive reintroduction
+  label_boundary: anomaly labels are not used for fitting, pseudo-anchor construction, early stopping, or hyperparameter selection
+  predecessor_report: https://report.senyao.org/reports/2026/05/26/dualrefgad-layer1-next-step-decision-2026-05-26.html

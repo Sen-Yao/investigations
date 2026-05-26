@@ -68,3 +68,14 @@ Decision: `CANDIDATE_READY_FOR_SHALLOW_RELIABILITY_GATE_REVIEW`. This does **not
 - mat_mean AUC: `0.8009 ± 0.0182`
 - Protocol: no training; fixed formulas only; labels diagnostic-only.
 
+## 2026-05-26 13:52:22 — Layer 1 label-free shallow gate probe completed
+
+- Job: `exp_20260526_133750_cleg3_layer1_label_free_shallow_gate_pro`
+- Status: `finished`
+- Decision: `LAYER1_LABEL_FREE_GATE_NOT_PROMOTED_USE_AS_DIAGNOSTIC` — Layer 1 不应被提升为方法组件；它只能作为 reliability proxy 诊断，下一步应回到 reference / fragmentation 机制。
+- Best Layer 1: `L1_lfgate_q0.05_qf0.1_aa0.5_am0.1_l20.01`
+- mat_mean AUC/AP: `0.8009` / `0.5335`
+- Best Layer 1 AUC/AP: `0.8037` / `0.5341` if available
+- Continuation: metric=False, rho=True, shortcut=True
+- Report predecessor: https://report.senyao.org/reports/2026/05/26/dualrefgad-layer1-next-step-decision-2026-05-26.html
+

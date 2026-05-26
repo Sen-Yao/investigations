@@ -1,0 +1,47 @@
+{"stage": "seed_start", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0", "data_split_seed": 0}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "seed_done", "seed": 0, "margin_auc": 0.7937991173561055, "mat_mean_auc": 0.8199880192070963, "best_layer1": "L1_lfgate_q0.1_qf0.1_aa0.5_am0.5_l20.01", "best_l1_auc": 0.813249274221516}
+{"stage": "seed_start", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:0", "data_split_seed": 1}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "seed_done", "seed": 1, "margin_auc": 0.7960189906246713, "mat_mean_auc": 0.7901378654997552, "best_layer1": "L1_lfgate_q0.05_qf0.2_aa0.5_am0.1_l20.01", "best_l1_auc": 0.8017636128977235}
+{"stage": "seed_start", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:0", "data_split_seed": 2}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "seed_done", "seed": 2, "margin_auc": 0.7990622587928465, "mat_mean_auc": 0.771112253448966, "best_layer1": "L1_lfgate_q0.05_qf0.2_aa0.5_am0.1_l20.01", "best_l1_auc": 0.7874206301147078}
+{"stage": "seed_start", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:0", "data_split_seed": 3}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "seed_done", "seed": 3, "margin_auc": 0.7840437246132672, "mat_mean_auc": 0.8060258375880585, "best_layer1": "L1_lfgate_q0.1_qf0.1_aa0.5_am0.5_l20.01", "best_l1_auc": 0.8029776826591087}
+{"stage": "seed_start", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:0", "data_split_seed": 4}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "seed_done", "seed": 4, "margin_auc": 0.8030344163161879, "mat_mean_auc": 0.8170223197481449, "best_layer1": "L1_lfgate_q0.1_qf0.1_aa0.5_am0.1_l20.01", "best_l1_auc": 0.8136264720795677}
+{"stage": "probe_done", "status": "finished", "done": 5, "total": 5, "out": "experiments/outputs/cleg3_layer1_label_free_shallow_gate_probe.json"}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+LAYER1_DONE finished 667.7409768104553
