@@ -56,3 +56,15 @@ Top no-training candidate readouts by AUC:
 - `top25_entry_mean`: AUC `0.7883 ± 0.0016`, Spearman vs `mat_mean` `0.6428 ± 0.0081`, recovered lost anomalies `141.0 ± 193.2`, reintroduced removed FPs `612.2 ± 57.6`
 
 Decision: `CANDIDATE_READY_FOR_SHALLOW_RELIABILITY_GATE_REVIEW`. This does **not** mean a trainable head is already approved; it means the pure-probe evidence is strong enough to design the next shallow reliability gate around `consensus_minus_fragmentation` / reliability-aware support, while treating `trimmed_mean_10_90` as likely too close to raw `mat_mean` and `mixture_support` as useful but FP-expensive.
+
+## 2026-05-26 12:59:24 — Layer 0 fixed-formula gate probe completed
+
+- Job: `exp_20260526_124955_cleg3_layer0_fixed_formula_gate_probe`
+- Status: `finished`
+- Decision: `LAYER0_FIXED_GATE_HAS_USABLE_PROXY_SIGNAL_REVIEW_REQUIRED` — Layer 0 固定门控有可用 proxy 信号，但仍需人工 review；可以考虑进入 Layer 1 label-free shallow gate，不应直接升级为高容量 head。
+- Best diagnostic strategy: `L0_reliability_gate_a0.5_b0.5` (reliability_blend)
+- Best AUC: `0.8047`; delta vs mat_mean: `+0.0038`
+- Best AP: `0.5240`; delta vs mat_mean: `-0.0095`
+- mat_mean AUC: `0.8009 ± 0.0182`
+- Protocol: no training; fixed formulas only; labels diagnostic-only.
+
