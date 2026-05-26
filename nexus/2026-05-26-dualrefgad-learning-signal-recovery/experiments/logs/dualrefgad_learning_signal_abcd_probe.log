@@ -1,0 +1,243 @@
+{"stage": "main_snapshot_written", "event": "point", "done": 0, "total": 5, "progress_out": "experiments/outputs/dualrefgad_learning_signal_abcd_probe.progress.json"}
+{"stage": "main_prepare_workers", "event": "point", "worker_count": 5, "tasks": [["old_exact_080_regime", 0], ["old_exact_080_regime", 1], ["old_exact_080_regime", 2], ["old_exact_080_regime", 3], ["old_exact_080_regime", 4]], "devices": [0, 1, 2, 3, 4, 5, 6, 7]}
+{"stage": "main_worker_start", "event": "enter", "worker": 0, "device": 0}
+{"stage": "main_worker_start", "event": "exit", "worker": 0, "device": 0, "pid": 2846967}
+{"stage": "main_worker_start", "event": "enter", "worker": 1, "device": 1}
+{"stage": "main_worker_start", "event": "exit", "worker": 1, "device": 1, "pid": 2846968}
+{"stage": "main_worker_start", "event": "enter", "worker": 2, "device": 2}
+{"stage": "main_worker_start", "event": "exit", "worker": 2, "device": 2, "pid": 2846969}
+{"stage": "main_worker_start", "event": "enter", "worker": 3, "device": 3}
+{"stage": "main_worker_start", "event": "exit", "worker": 3, "device": 3, "pid": 2846970}
+{"stage": "main_worker_start", "event": "enter", "worker": 4, "device": 4}
+{"stage": "main_worker_start", "event": "exit", "worker": 4, "device": 4, "pid": 2846971}
+{"stage": "main_wait_result", "event": "enter", "done": 0, "total": 5}
+{"stage": "task_start", "event": "point", "pid": 2846970, "worker": 3, "variant": "old_exact_080_regime", "seed": 0, "device": 3}
+{"stage": "task_start", "event": "point", "pid": 2846969, "worker": 2, "variant": "old_exact_080_regime", "seed": 1, "device": 2}
+{"stage": "task_start", "event": "point", "pid": 2846971, "worker": 4, "variant": "old_exact_080_regime", "seed": 2, "device": 4}
+{"stage": "task_start", "event": "point", "pid": 2846967, "worker": 0, "variant": "old_exact_080_regime", "seed": 3, "device": 0}
+{"stage": "task_start", "event": "point", "pid": 2846968, "worker": 1, "variant": "old_exact_080_regime", "seed": 4, "device": 1}
+{"stage": "seed_start", "event": "point", "pid": 2846967, "time": "2026-05-26T19:18:42+0800", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:0", "data_split_seed": 3}
+{"stage": "load_mat", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:42+0800", "variant": "old_exact_080_regime", "seed": 3, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+{"stage": "seed_start", "event": "point", "pid": 2846971, "time": "2026-05-26T19:18:42+0800", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:0", "data_split_seed": 2}
+{"stage": "load_mat", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:42+0800", "variant": "old_exact_080_regime", "seed": 2, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+{"stage": "seed_start", "event": "point", "pid": 2846969, "time": "2026-05-26T19:18:42+0800", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:0", "data_split_seed": 1}
+{"stage": "load_mat", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:18:42+0800", "variant": "old_exact_080_regime", "seed": 1, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+{"stage": "seed_start", "event": "point", "pid": 2846968, "time": "2026-05-26T19:18:42+0800", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:0", "data_split_seed": 4}
+{"stage": "load_mat", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:18:42+0800", "variant": "old_exact_080_regime", "seed": 4, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+{"stage": "seed_start", "event": "point", "pid": 2846970, "time": "2026-05-26T19:18:42+0800", "probe": "layer1_label_free_shallow_gate", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0", "data_split_seed": 0}
+{"stage": "load_mat", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:42+0800", "variant": "old_exact_080_regime", "seed": 0, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+Training Counter({0: 2091, 1: 237})
+Test Counter({0: 39928, 1: 4308})
+Training rate 1
+{"stage": "load_mat", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.4735240936279297, "variant": "old_exact_080_regime", "seed": 2, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+{"stage": "to_dense_features_and_split", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 2}
+Training Counter({0: 2099, 1: 229})
+Test Counter({0: 39920, 1: 4316})
+Training rate 1
+{"stage": "load_mat", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.5192553997039795, "variant": "old_exact_080_regime", "seed": 3, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+{"stage": "to_dense_features_and_split", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 3}
+Training Counter({0: 2097, 1: 231})
+Test Counter({0: 39922, 1: 4314})
+Training rate 1
+{"stage": "load_mat", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.47887611389160156, "variant": "old_exact_080_regime", "seed": 1, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+{"stage": "to_dense_features_and_split", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 1}
+Training Counter({0: 2086, 1: 242})
+Test Counter({0: 39933, 1: 4303})
+Training rate 1
+{"stage": "load_mat", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.5329833030700684, "variant": "old_exact_080_regime", "seed": 0, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+{"stage": "to_dense_features_and_split", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 0}
+Training Counter({0: 2108, 1: 220})
+Test Counter({0: 39911, 1: 4325})
+Training rate 1
+{"stage": "load_mat", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.5649182796478271, "variant": "old_exact_080_regime", "seed": 4, "dataset": "elliptic", "train_rate": 0.05, "val_rate": 0.0}
+{"stage": "to_dense_features_and_split", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "split_fingerprint", "event": "point", "pid": 2846967, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 3, "num_nodes": 46564, "num_test": 44236, "num_normal_train": 2099, "normal_for_train_anom_count": 0}
+{"stage": "to_dense_features_and_split", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.28583836555480957, "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "build_descriptor", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 3, "descriptor_mode": "hop_attr"}
+{"stage": "split_fingerprint", "event": "point", "pid": 2846970, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 0, "num_nodes": 46564, "num_test": 44236, "num_normal_train": 2086, "normal_for_train_anom_count": 0}
+{"stage": "to_dense_features_and_split", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.294266939163208, "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "build_descriptor", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 0, "descriptor_mode": "hop_attr"}
+{"stage": "build_descriptor", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.1825544834136963, "variant": "old_exact_080_regime", "seed": 0, "descriptor_mode": "hop_attr"}
+{"stage": "normal_model_and_residual", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 0, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "build_descriptor", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.31885409355163574, "variant": "old_exact_080_regime", "seed": 3, "descriptor_mode": "hop_attr"}
+{"stage": "normal_model_and_residual", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 3, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "split_fingerprint", "event": "point", "pid": 2846971, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 2, "num_nodes": 46564, "num_test": 44236, "num_normal_train": 2091, "normal_for_train_anom_count": 0}
+{"stage": "to_dense_features_and_split", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.8255763053894043, "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "build_descriptor", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 2, "descriptor_mode": "hop_attr"}
+{"stage": "normal_model_and_residual", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:43+0800", "elapsed_sec": 0.26201748847961426, "variant": "old_exact_080_regime", "seed": 0, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "select_refs", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:43+0800", "variant": "old_exact_080_regime", "seed": 0, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "split_fingerprint", "event": "point", "pid": 2846969, "time": "2026-05-26T19:18:44+0800", "variant": "old_exact_080_regime", "seed": 1, "num_nodes": 46564, "num_test": 44236, "num_normal_train": 2097, "normal_for_train_anom_count": 0}
+{"stage": "to_dense_features_and_split", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:18:44+0800", "elapsed_sec": 0.8862195014953613, "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "build_descriptor", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:18:44+0800", "variant": "old_exact_080_regime", "seed": 1, "descriptor_mode": "hop_attr"}
+{"stage": "normal_model_and_residual", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:44+0800", "elapsed_sec": 0.31331419944763184, "variant": "old_exact_080_regime", "seed": 3, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "select_refs", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:44+0800", "variant": "old_exact_080_regime", "seed": 3, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "build_descriptor", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:18:44+0800", "elapsed_sec": 0.22734856605529785, "variant": "old_exact_080_regime", "seed": 1, "descriptor_mode": "hop_attr"}
+{"stage": "normal_model_and_residual", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:18:44+0800", "variant": "old_exact_080_regime", "seed": 1, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "normal_model_and_residual", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:18:44+0800", "elapsed_sec": 0.2891819477081299, "variant": "old_exact_080_regime", "seed": 1, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "select_refs", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:18:44+0800", "variant": "old_exact_080_regime", "seed": 1, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "split_fingerprint", "event": "point", "pid": 2846968, "time": "2026-05-26T19:18:44+0800", "variant": "old_exact_080_regime", "seed": 4, "num_nodes": 46564, "num_test": 44236, "num_normal_train": 2108, "normal_for_train_anom_count": 0}
+{"stage": "to_dense_features_and_split", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:18:44+0800", "elapsed_sec": 1.4007494449615479, "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "build_descriptor", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:18:44+0800", "variant": "old_exact_080_regime", "seed": 4, "descriptor_mode": "hop_attr"}
+{"stage": "build_descriptor", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:18:44+0800", "elapsed_sec": 0.8718910217285156, "variant": "old_exact_080_regime", "seed": 2, "descriptor_mode": "hop_attr"}
+{"stage": "normal_model_and_residual", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:44+0800", "variant": "old_exact_080_regime", "seed": 2, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "build_descriptor", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:18:45+0800", "elapsed_sec": 0.42196130752563477, "variant": "old_exact_080_regime", "seed": 4, "descriptor_mode": "hop_attr"}
+{"stage": "normal_model_and_residual", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:18:45+0800", "variant": "old_exact_080_regime", "seed": 4, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "normal_model_and_residual", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:18:45+0800", "elapsed_sec": 0.6348052024841309, "variant": "old_exact_080_regime", "seed": 2, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "select_refs", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:45+0800", "variant": "old_exact_080_regime", "seed": 2, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "normal_model_and_residual", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:18:45+0800", "elapsed_sec": 0.7303121089935303, "variant": "old_exact_080_regime", "seed": 4, "pn_estimator": "pca_residual", "pca_components": 32}
+{"stage": "select_refs", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:18:45+0800", "variant": "old_exact_080_regime", "seed": 4, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "select_refs_shape", "event": "point", "pid": 2846967, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 3, "normal_refs_shape": [46564, 4], "anom_refs_shape": [46564, 16]}
+{"stage": "select_refs", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:49+0800", "elapsed_sec": 5.068531036376953, "variant": "old_exact_080_regime", "seed": 3, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "build_tokens", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "select_refs_shape", "event": "point", "pid": 2846970, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 0, "normal_refs_shape": [46564, 4], "anom_refs_shape": [46564, 16]}
+{"stage": "select_refs", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:49+0800", "elapsed_sec": 5.366112232208252, "variant": "old_exact_080_regime", "seed": 0, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "build_tokens", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "token_tensor_shape", "event": "point", "pid": 2846967, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 3, "token_shape": [46564, 21, 93]}
+{"stage": "build_tokens", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:49+0800", "elapsed_sec": 0.4441263675689697, "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "vecgad_init", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:0"}
+{"stage": "vecgad_init", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:49+0800", "elapsed_sec": 0.05192899703979492, "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:0"}
+{"stage": "encode_tokens_batched", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "token_tensor_shape", "event": "point", "pid": 2846970, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 0, "token_shape": [46564, 21, 93]}
+{"stage": "build_tokens", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:49+0800", "elapsed_sec": 0.43851447105407715, "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "vecgad_init", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0"}
+{"stage": "vecgad_init", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:49+0800", "elapsed_sec": 0.02823328971862793, "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0"}
+{"stage": "encode_tokens_batched", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:49+0800", "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "embedding_shape", "event": "point", "pid": 2846967, "time": "2026-05-26T19:18:50+0800", "variant": "old_exact_080_regime", "seed": 3, "emb_shape": [46564, 256]}
+{"stage": "encode_tokens_batched", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:50+0800", "elapsed_sec": 0.5343139171600342, "variant": "old_exact_080_regime", "seed": 3, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "response_matrix", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:50+0800", "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "embedding_shape", "event": "point", "pid": 2846970, "time": "2026-05-26T19:18:50+0800", "variant": "old_exact_080_regime", "seed": 0, "emb_shape": [46564, 256]}
+{"stage": "encode_tokens_batched", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:50+0800", "elapsed_sec": 0.5322496891021729, "variant": "old_exact_080_regime", "seed": 0, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "response_matrix", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:50+0800", "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "select_refs_shape", "event": "point", "pid": 2846969, "time": "2026-05-26T19:18:51+0800", "variant": "old_exact_080_regime", "seed": 1, "normal_refs_shape": [46564, 4], "anom_refs_shape": [46564, 16]}
+{"stage": "select_refs", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:18:51+0800", "elapsed_sec": 6.449288606643677, "variant": "old_exact_080_regime", "seed": 1, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "build_tokens", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:18:51+0800", "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "select_refs_shape", "event": "point", "pid": 2846971, "time": "2026-05-26T19:18:51+0800", "variant": "old_exact_080_regime", "seed": 2, "normal_refs_shape": [46564, 4], "anom_refs_shape": [46564, 16]}
+{"stage": "select_refs", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:18:51+0800", "elapsed_sec": 5.636133432388306, "variant": "old_exact_080_regime", "seed": 2, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "build_tokens", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:51+0800", "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "token_tensor_shape", "event": "point", "pid": 2846971, "time": "2026-05-26T19:18:51+0800", "variant": "old_exact_080_regime", "seed": 2, "token_shape": [46564, 21, 93]}
+{"stage": "build_tokens", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:18:51+0800", "elapsed_sec": 0.47675275802612305, "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "vecgad_init", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:51+0800", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:0"}
+{"stage": "vecgad_init", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:18:51+0800", "elapsed_sec": 0.05562090873718262, "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:0"}
+{"stage": "encode_tokens_batched", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:51+0800", "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "embedding_shape", "event": "point", "pid": 2846971, "time": "2026-05-26T19:18:52+0800", "variant": "old_exact_080_regime", "seed": 2, "emb_shape": [46564, 256]}
+{"stage": "encode_tokens_batched", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:18:52+0800", "elapsed_sec": 0.5359878540039062, "variant": "old_exact_080_regime", "seed": 2, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "response_matrix", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:52+0800", "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "select_refs_shape", "event": "point", "pid": 2846968, "time": "2026-05-26T19:18:52+0800", "variant": "old_exact_080_regime", "seed": 4, "normal_refs_shape": [46564, 4], "anom_refs_shape": [46564, 16]}
+{"stage": "select_refs", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:18:52+0800", "elapsed_sec": 6.652092933654785, "variant": "old_exact_080_regime", "seed": 4, "normal_k": 4, "anom_k": 16, "top_k": 96}
+{"stage": "build_tokens", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:18:52+0800", "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "token_tensor_shape", "event": "point", "pid": 2846968, "time": "2026-05-26T19:18:52+0800", "variant": "old_exact_080_regime", "seed": 4, "token_shape": [46564, 21, 93]}
+{"stage": "build_tokens", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:18:52+0800", "elapsed_sec": 0.45311760902404785, "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "vecgad_init", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:18:52+0800", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:0"}
+{"stage": "vecgad_init", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:18:52+0800", "elapsed_sec": 0.05136680603027344, "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:0"}
+{"stage": "encode_tokens_batched", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:18:52+0800", "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "embedding_shape", "event": "point", "pid": 2846968, "time": "2026-05-26T19:18:53+0800", "variant": "old_exact_080_regime", "seed": 4, "emb_shape": [46564, 256]}
+{"stage": "encode_tokens_batched", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:18:53+0800", "elapsed_sec": 0.5324633121490479, "variant": "old_exact_080_regime", "seed": 4, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "response_matrix", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:18:53+0800", "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "token_tensor_shape", "event": "point", "pid": 2846969, "time": "2026-05-26T19:18:54+0800", "variant": "old_exact_080_regime", "seed": 1, "token_shape": [46564, 21, 93]}
+{"stage": "build_tokens", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:18:54+0800", "elapsed_sec": 3.487294912338257, "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "vecgad_init", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:18:54+0800", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:0"}
+{"stage": "vecgad_init", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:18:54+0800", "elapsed_sec": 0.04708051681518555, "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:0"}
+{"stage": "encode_tokens_batched", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:18:54+0800", "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "embedding_shape", "event": "point", "pid": 2846969, "time": "2026-05-26T19:18:55+0800", "variant": "old_exact_080_regime", "seed": 1, "emb_shape": [46564, 256]}
+{"stage": "encode_tokens_batched", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:18:55+0800", "elapsed_sec": 0.6016690731048584, "variant": "old_exact_080_regime", "seed": 1, "device": "cuda:0", "encode_batch_size": 1024}
+{"stage": "response_matrix", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:18:55+0800", "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "response_matrix_shape", "event": "point", "pid": 2846970, "time": "2026-05-26T19:18:55+0800", "variant": "old_exact_080_regime", "seed": 0, "mat_shape": [46564, 4, 16], "margin_shape": [46564]}
+{"stage": "response_matrix", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:55+0800", "elapsed_sec": 5.2859108448028564, "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "build_decomposition_arrays", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:55+0800", "variant": "old_exact_080_regime", "seed": 0, "pca_dims": "2,4,8,12,24"}
+{"stage": "build_decomposition_arrays", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:56+0800", "elapsed_sec": 0.7787024974822998, "variant": "old_exact_080_regime", "seed": 0, "pca_dims": "2,4,8,12,24"}
+{"stage": "candidate_readouts", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:56+0800", "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "candidate_readouts", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:56+0800", "elapsed_sec": 0.17670512199401855, "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "build_layer0_scores", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:56+0800", "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "build_layer0_scores", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:18:56+0800", "elapsed_sec": 0.07778072357177734, "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "build_layer1_scores", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:18:56+0800", "variant": "old_exact_080_regime", "seed": 0, "train_steps": 300}
+{"stage": "response_matrix_shape", "event": "point", "pid": 2846967, "time": "2026-05-26T19:18:57+0800", "variant": "old_exact_080_regime", "seed": 3, "mat_shape": [46564, 4, 16], "margin_shape": [46564]}
+{"stage": "response_matrix", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:57+0800", "elapsed_sec": 7.474798917770386, "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "build_decomposition_arrays", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:57+0800", "variant": "old_exact_080_regime", "seed": 3, "pca_dims": "2,4,8,12,24"}
+{"stage": "build_decomposition_arrays", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:58+0800", "elapsed_sec": 0.7417502403259277, "variant": "old_exact_080_regime", "seed": 3, "pca_dims": "2,4,8,12,24"}
+{"stage": "candidate_readouts", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:58+0800", "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "candidate_readouts", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:58+0800", "elapsed_sec": 0.17064452171325684, "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "build_layer0_scores", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:58+0800", "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "build_layer0_scores", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:18:58+0800", "elapsed_sec": 0.07307815551757812, "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "build_layer1_scores", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:18:58+0800", "variant": "old_exact_080_regime", "seed": 3, "train_steps": 300}
+{"stage": "response_matrix_shape", "event": "point", "pid": 2846971, "time": "2026-05-26T19:18:59+0800", "variant": "old_exact_080_regime", "seed": 2, "mat_shape": [46564, 4, 16], "margin_shape": [46564]}
+{"stage": "response_matrix", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:18:59+0800", "elapsed_sec": 7.322708368301392, "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "build_decomposition_arrays", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:18:59+0800", "variant": "old_exact_080_regime", "seed": 2, "pca_dims": "2,4,8,12,24"}
+{"stage": "build_decomposition_arrays", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:19:00+0800", "elapsed_sec": 0.7337753772735596, "variant": "old_exact_080_regime", "seed": 2, "pca_dims": "2,4,8,12,24"}
+{"stage": "candidate_readouts", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:19:00+0800", "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "candidate_readouts", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:19:00+0800", "elapsed_sec": 0.17097711563110352, "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "build_layer0_scores", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:19:00+0800", "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "build_layer0_scores", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:19:00+0800", "elapsed_sec": 0.0740504264831543, "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "build_layer1_scores", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:19:00+0800", "variant": "old_exact_080_regime", "seed": 2, "train_steps": 300}
+{"stage": "response_matrix_shape", "event": "point", "pid": 2846968, "time": "2026-05-26T19:19:01+0800", "variant": "old_exact_080_regime", "seed": 4, "mat_shape": [46564, 4, 16], "margin_shape": [46564]}
+{"stage": "response_matrix", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:19:01+0800", "elapsed_sec": 7.514676332473755, "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "build_decomposition_arrays", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:19:01+0800", "variant": "old_exact_080_regime", "seed": 4, "pca_dims": "2,4,8,12,24"}
+{"stage": "build_decomposition_arrays", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:19:01+0800", "elapsed_sec": 0.6902990341186523, "variant": "old_exact_080_regime", "seed": 4, "pca_dims": "2,4,8,12,24"}
+{"stage": "candidate_readouts", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:19:01+0800", "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "candidate_readouts", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:19:01+0800", "elapsed_sec": 0.1612107753753662, "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "build_layer0_scores", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:19:01+0800", "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "build_layer0_scores", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:19:01+0800", "elapsed_sec": 0.06663656234741211, "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "build_layer1_scores", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:19:01+0800", "variant": "old_exact_080_regime", "seed": 4, "train_steps": 300}
+{"stage": "response_matrix_shape", "event": "point", "pid": 2846969, "time": "2026-05-26T19:19:09+0800", "variant": "old_exact_080_regime", "seed": 1, "mat_shape": [46564, 4, 16], "margin_shape": [46564]}
+{"stage": "response_matrix", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:19:09+0800", "elapsed_sec": 14.685163736343384, "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "build_decomposition_arrays", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:19:09+0800", "variant": "old_exact_080_regime", "seed": 1, "pca_dims": "2,4,8,12,24"}
+{"stage": "build_decomposition_arrays", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:19:10+0800", "elapsed_sec": 0.7542829513549805, "variant": "old_exact_080_regime", "seed": 1, "pca_dims": "2,4,8,12,24"}
+{"stage": "candidate_readouts", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:19:10+0800", "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "candidate_readouts", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:19:10+0800", "elapsed_sec": 0.16228389739990234, "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "build_layer0_scores", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:19:10+0800", "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "build_layer0_scores", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:19:10+0800", "elapsed_sec": 0.07169437408447266, "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "build_layer1_scores", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:19:10+0800", "variant": "old_exact_080_regime", "seed": 1, "train_steps": 300}
+{"stage": "build_layer1_scores", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:19:19+0800", "elapsed_sec": 22.987284660339355, "variant": "old_exact_080_regime", "seed": 0, "train_steps": 300}
+{"stage": "metric_and_topk_autopsy", "event": "enter", "pid": 2846970, "time": "2026-05-26T19:19:19+0800", "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "build_layer1_scores", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:19:21+0800", "elapsed_sec": 23.299832105636597, "variant": "old_exact_080_regime", "seed": 3, "train_steps": 300}
+{"stage": "metric_and_topk_autopsy", "event": "enter", "pid": 2846967, "time": "2026-05-26T19:19:21+0800", "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "build_layer1_scores", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:19:22+0800", "elapsed_sec": 20.58109211921692, "variant": "old_exact_080_regime", "seed": 4, "train_steps": 300}
+{"stage": "metric_and_topk_autopsy", "event": "enter", "pid": 2846968, "time": "2026-05-26T19:19:22+0800", "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "build_layer1_scores", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:19:22+0800", "elapsed_sec": 22.459541082382202, "variant": "old_exact_080_regime", "seed": 2, "train_steps": 300}
+{"stage": "metric_and_topk_autopsy", "event": "enter", "pid": 2846971, "time": "2026-05-26T19:19:22+0800", "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "build_layer1_scores", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:19:32+0800", "elapsed_sec": 21.30031657218933, "variant": "old_exact_080_regime", "seed": 1, "train_steps": 300}
+{"stage": "metric_and_topk_autopsy", "event": "enter", "pid": 2846969, "time": "2026-05-26T19:19:32+0800", "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "metric_and_topk_autopsy", "event": "exit", "pid": 2846970, "time": "2026-05-26T19:19:32+0800", "elapsed_sec": 13.337163925170898, "variant": "old_exact_080_regime", "seed": 0}
+{"stage": "metric_and_topk_autopsy", "event": "exit", "pid": 2846967, "time": "2026-05-26T19:19:35+0800", "elapsed_sec": 13.236626148223877, "variant": "old_exact_080_regime", "seed": 3}
+{"stage": "metric_and_topk_autopsy", "event": "exit", "pid": 2846968, "time": "2026-05-26T19:19:35+0800", "elapsed_sec": 13.263488054275513, "variant": "old_exact_080_regime", "seed": 4}
+{"stage": "metric_and_topk_autopsy", "event": "exit", "pid": 2846971, "time": "2026-05-26T19:19:36+0800", "elapsed_sec": 13.156078577041626, "variant": "old_exact_080_regime", "seed": 2}
+{"stage": "metric_and_topk_autopsy", "event": "exit", "pid": 2846969, "time": "2026-05-26T19:19:45+0800", "elapsed_sec": 13.18966817855835, "variant": "old_exact_080_regime", "seed": 1}
+{"stage": "seed_done", "seed": 0, "margin_auc": 0.793794569301209, "mat_mean_auc": 0.8175736305790703, "best_layer1": "L1_lfgate_q0.1_qf0.1_aa0.5_am0.5_l20.01", "best_l1_auc": 0.8093699725334149}
+{"stage": "task_done", "event": "point", "pid": 2846970, "worker": 3, "variant": "old_exact_080_regime", "seed": 0, "device": 3, "elapsed_sec": 72.02792692184448}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+{"stage": "main_wait_result", "event": "exit", "done": 0, "total": 5, "ok": true, "variant": "old_exact_080_regime", "seed": 0, "device": 3}
+{"stage": "main_wait_result", "event": "enter", "done": 1, "total": 5}
+{"stage": "seed_done", "seed": 3, "margin_auc": 0.7893126614675134, "mat_mean_auc": 0.8031562661931834, "best_layer1": "L1_lfgate_q0.05_qf0.1_aa0.5_am0.1_l20.01", "best_l1_auc": 0.801967579157388}
+{"stage": "task_done", "event": "point", "pid": 2846967, "worker": 0, "variant": "old_exact_080_regime", "seed": 3, "device": 0, "elapsed_sec": 74.21824169158936}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+{"stage": "main_wait_result", "event": "exit", "done": 1, "total": 5, "ok": true, "variant": "old_exact_080_regime", "seed": 3, "device": 0}
+{"stage": "main_wait_result", "event": "enter", "done": 2, "total": 5}
+{"stage": "seed_done", "seed": 4, "margin_auc": 0.8012308310847125, "mat_mean_auc": 0.8192926863427195, "best_layer1": "L1_lfgate_q0.1_qf0.1_aa0.5_am0.1_l20.01", "best_l1_auc": 0.8131340990930254}
+{"stage": "task_done", "event": "point", "pid": 2846968, "worker": 1, "variant": "old_exact_080_regime", "seed": 4, "device": 1, "elapsed_sec": 74.84670400619507}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+{"stage": "main_wait_result", "event": "exit", "done": 2, "total": 5, "ok": true, "variant": "old_exact_080_regime", "seed": 4, "device": 1}
+{"stage": "seed_done", "seed": 2, "margin_auc": 0.7991631745405425, "mat_mean_auc": 0.8074242957192956, "best_layer1": "L1_lfgate_q0.1_qf0.1_aa0.5_am0.5_l20.01", "best_l1_auc": 0.8093642343358249}
+{"stage": "main_wait_result", "event": "enter", "done": 3, "total": 5}
+{"stage": "task_done", "event": "point", "pid": 2846971, "worker": 4, "variant": "old_exact_080_regime", "seed": 2, "device": 4, "elapsed_sec": 75.10606241226196}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+{"stage": "main_wait_result", "event": "exit", "done": 3, "total": 5, "ok": true, "variant": "old_exact_080_regime", "seed": 2, "device": 4}
+{"stage": "main_wait_result", "event": "enter", "done": 4, "total": 5}
+{"stage": "seed_done", "seed": 1, "margin_auc": 0.7983526906210736, "mat_mean_auc": 0.804356659022414, "best_layer1": "L1_lfgate_q0.05_qf0.1_aa0.5_am0.1_l20.01", "best_l1_auc": 0.8051078485754686}
+{"stage": "task_done", "event": "point", "pid": 2846969, "worker": 2, "variant": "old_exact_080_regime", "seed": 1, "device": 2, "elapsed_sec": 84.45196533203125}
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+/home/linziyao/DualRefGAD/utils.py:62: RuntimeWarning: divide by zero encountered in power
+  d_inv_sqrt = np.power(rowsum, -0.5).flatten()
+{"stage": "main_wait_result", "event": "exit", "done": 4, "total": 5, "ok": true, "variant": "old_exact_080_regime", "seed": 1, "device": 2}
+{"stage": "abcd_probe_done", "status": "finished", "done": 5, "total": 5, "out": "experiments/outputs/dualrefgad_learning_signal_abcd_probe.json"}

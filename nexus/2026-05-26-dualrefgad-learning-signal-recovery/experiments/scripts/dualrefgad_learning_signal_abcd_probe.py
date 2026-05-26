@@ -211,12 +211,13 @@ def worker_loop(worker_id, device, task_queue, result_queue, args_dict):
         variant, seed = task
         t0 = time.time()
         try:
-            print(json.dumps({"stage": "task_start", "worker": worker_id, "variant": variant, "seed": seed, "device": device}, ensure_ascii=False), flush=True)
+            print(json.dumps({"stage": "task_start", "event": "point", "pid": os.getpid(), "worker": worker_id, "variant": variant, "seed": seed, "device": device}, ensure_ascii=False), flush=True)
             row = run_layer1_one(cli_args, variant, seed, 0, strategy_meta)
             # Preserve physical device assignment in the aggregate row; lower-level
             # helper sees cuda:0 inside CUDA_VISIBLE_DEVICES.
             row["physical_device"] = int(device)
             result_queue.put({"ok": True, "variant": variant, "seed": seed, "device": device, "row": row, "strategy_meta": strategy_meta, "elapsed_sec": time.time() - t0})
+            print(json.dumps({"stage": "task_done", "event": "point", "pid": os.getpid(), "worker": worker_id, "variant": variant, "seed": seed, "device": device, "elapsed_sec": time.time() - t0}, ensure_ascii=False), flush=True)
         except Exception as e:
             import traceback
             tb = traceback.format_exc()
@@ -291,12 +292,14 @@ def main():
         })
 
     snapshot("running")
+    print(json.dumps({"stage": "main_snapshot_written", "event": "point", "done": done, "total": total, "progress_out": args.progress_out}, ensure_ascii=False), flush=True)
     tasks = [(variant, seed) for variant in variants for seed in seeds]
     if tasks:
         ctx = mp.get_context("spawn")
         task_queue = ctx.Queue()
         result_queue = ctx.Queue()
         worker_count = min(len(devices), len(tasks))
+        print(json.dumps({"stage": "main_prepare_workers", "event": "point", "worker_count": worker_count, "tasks": tasks, "devices": devices}, ensure_ascii=False), flush=True)
         for task in tasks:
             task_queue.put(task)
         for _ in range(worker_count):
@@ -304,11 +307,15 @@ def main():
         args_dict = vars(args).copy()
         workers = []
         for wid, device in enumerate(devices[:worker_count]):
+            print(json.dumps({"stage": "main_worker_start", "event": "enter", "worker": wid, "device": int(device)}, ensure_ascii=False), flush=True)
             p = ctx.Process(target=worker_loop, args=(wid, int(device), task_queue, result_queue, args_dict), daemon=False)
             p.start()
+            print(json.dumps({"stage": "main_worker_start", "event": "exit", "worker": wid, "device": int(device), "pid": p.pid}, ensure_ascii=False), flush=True)
             workers.append(p)
         while done < total:
+            print(json.dumps({"stage": "main_wait_result", "event": "enter", "done": done, "total": total}, ensure_ascii=False), flush=True)
             result = result_queue.get()
+            print(json.dumps({"stage": "main_wait_result", "event": "exit", "done": done, "total": total, "ok": result.get("ok"), "variant": result.get("variant"), "seed": result.get("seed"), "device": result.get("device")}, ensure_ascii=False), flush=True)
             if result.get("ok"):
                 rows_by_variant[result["variant"]].append(result["row"])
                 strategy_meta.update(result.get("strategy_meta") or {})

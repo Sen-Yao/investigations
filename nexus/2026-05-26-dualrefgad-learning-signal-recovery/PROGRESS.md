@@ -128,3 +128,26 @@ Cron monitoring/publishing:
 - Watchdog cron: `7f6d14e78dff` (`dualrefgad_learning_signal_abcd_probe_watchdog`, every 10m, no-agent)
 - Publisher cron: `c4ec7cc2edf2` (`dualrefgad_learning_signal_abcd_probe_publisher`, every 15m, agent script-runner)
 - Publisher exits silently until local final aggregate JSON has `status=finished`; it must not interpret partial progress.
+
+## 2026-05-26 17:35 CST — ABCD probe relaunched after GPU top-k fix
+
+- Fixed CPU bottleneck in shared `route25_matrix_autoencoder_probe.py` helper used by Layer-1/ABCD:
+  - added GPU block `torch.topk` path for normal/anomaly reference selection;
+  - kept NumPy fallback for deterministic validation;
+  - vectorized token construction instead of Python per-node loop.
+- Synced patched helper to HCCS-25 `~/DualRefGAD/experiments/scripts/route25_matrix_autoencoder_probe.py`.
+- Validation completed before relaunch:
+  - local and remote `py_compile` passed;
+  - synthetic CPU-vs-GPU top-k equivalence passed (`same_topk=True`);
+  - vectorized token construction matched manual construction;
+  - real elliptic seed0 reduced smoke completed on GPU.
+- Reused runner job `exp_20260526_152642_dualrefgad_learning_signal_abcd_probe`; reset status from cancelled to running.
+- Relaunched formal ABCD pure probe on HCCS-25 with seeds `0,1,2,3,4` and devices `0,1,2,3,4,5,6,7` via Hermes-tracked background process `proc_e8c36f17e12f`.
+- Restored watchdog cron `7f6d14e78dff` and publisher cron `c4ec7cc2edf2`.
+- Early live check: parent and five spawned workers are alive; progress remains `0/5` while workers are in CPU preprocessing before GPU encode, so this is being monitored rather than reported as terminal success.
+
+## 2026-05-26 19:23 CST — ABCD probe terminal artifacts pulled
+
+- Runner job: `exp_20260526_152642_dualrefgad_learning_signal_abcd_probe`
+- Aggregate JSON: `/home/openclawvm/investigations/nexus/2026-05-26-dualrefgad-learning-signal-recovery/experiments/outputs/dualrefgad_learning_signal_abcd_probe.json`
+- Publisher updated `insights.md` with terminal ABCD summary.
