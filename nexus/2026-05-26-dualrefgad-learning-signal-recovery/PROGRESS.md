@@ -104,3 +104,27 @@ Validation after revision:
 - `experiment.py validate --profile probe` passed.
 - Remote sync to HCCS-25 succeeded.
 - Remote `py_compile` and import check passed (`worker_loop` visible).
+
+## 2026-05-26 15:39 CST — ABCD probe launched and watchdogs scheduled
+
+Launch evidence:
+
+- Runner job: `exp_20260526_152642_dualrefgad_learning_signal_abcd_probe`
+- Job status set to `running` before launch.
+- Hermes background session: `proc_df70c67459aa`
+- HCCS-25 GPU preflight immediately before launch: 8 × RTX 2080 Ti idle/free.
+- Remote command uses `set -euo pipefail`, conda env `DualRefGAD`, `PYTHONPATH=experiments/scripts`, and writes through `tee` to the log.
+- Output verification is part of the remote command: `test -s OUT` plus JSON `status == finished` assertion.
+
+Initial running evidence:
+
+- Progress JSON exists with `status=running`, `done=0`, `total=5`, `parallel_workers=5`, `errors=[]`.
+- Log shows five `task_start` events and five `seed_start` events for seeds 0–4.
+- Each seed reports its own `data_split_seed` equal to the seed.
+- Physical GPU assignment at task start used GPUs 0/1/2/3/4; logical device inside each child is `cuda:0` because each worker sets `CUDA_VISIBLE_DEVICES`.
+
+Cron monitoring/publishing:
+
+- Watchdog cron: `7f6d14e78dff` (`dualrefgad_learning_signal_abcd_probe_watchdog`, every 10m, no-agent)
+- Publisher cron: `c4ec7cc2edf2` (`dualrefgad_learning_signal_abcd_probe_publisher`, every 15m, agent script-runner)
+- Publisher exits silently until local final aggregate JSON has `status=finished`; it must not interpret partial progress.
