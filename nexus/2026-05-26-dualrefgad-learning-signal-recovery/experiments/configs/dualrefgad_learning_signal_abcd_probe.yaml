@@ -1,0 +1,64 @@
+program: experiments/scripts/dualrefgad_learning_signal_abcd_probe.py
+method: diagnostic
+name: dualrefgad_learning_signal_abcd_probe
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: old_exact_080_regime
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  ln_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 1024
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+  grid_lambdas:
+    value: "0.25,0.5,0.75,1.0"
+  grid_mus:
+    value: "0.0,0.25,0.5,0.75,1.0"
+  grid_alphas:
+    value: "0.5,1.0,2.0"
+  grid_betas:
+    value: "0.5,1.0,1.5"
+  q_values:
+    value: "0.05,0.10"
+  qf_values:
+    value: "0.10,0.20"
+  alpha_anchor_values:
+    value: "0.5,1.0"
+  alpha_mono_values:
+    value: "0.1,0.5"
+  lambda_l2_values:
+    value: "0.001,0.01"
+  train_steps:
+    value: 300
+notes:
+  protocol: runner-registered pure probe; no anomaly-label training; labels diagnostic-only for AUC/AP and Top-K autopsy
+  source_report: https://report.senyao.org/reports/2026/05/26/dualrefgad-learning-signal-recovery-discussion-2026-05-26.html
+  abcd:
+    A: Top-K failure autopsy extension
+    B: Fragmentation decomposition probe
+    C: Reference relation reliability probe
+    D: Trainable target readiness
+  reuse_boundary: thin ABCD wrapper over validated C-LEG3 Layer-1 label-free shallow reliability gate probe
+  determinism: sequential seeds with data_split_seed=seed inherited from Layer-1 runner
+  expected_outputs:
+    aggregate_json: experiments/outputs/dualrefgad_learning_signal_abcd_probe.json
+    progress_json: experiments/outputs/dualrefgad_learning_signal_abcd_probe.progress.json
+    log: experiments/logs/dualrefgad_learning_signal_abcd_probe.log

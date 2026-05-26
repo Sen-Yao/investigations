@@ -54,3 +54,34 @@ Cleanup performed:
 - Removed generated Python bytecode caches (`__pycache__` / `*.pyc`) under remote `experiments/` and `investigations/`.
 - No scientific scripts, configs, logs, JSON outputs, or evidence artifacts were deleted.
 - Remote status after cleanup still shows untracked `experiments/` and `investigations/`; these are historical runner/probe artifacts and must be treated as evidence unless deliberately archived.
+
+## 2026-05-26 15:32 CST — ABCD probe code/config/watchdog prepared
+
+Prepared the runner-registered pure probe package for report-defined ABCD stages:
+
+- Script: `experiments/scripts/dualrefgad_learning_signal_abcd_probe.py`
+- Config: `experiments/configs/dualrefgad_learning_signal_abcd_probe.yaml`
+- Runner job: `exp_20260526_152642_dualrefgad_learning_signal_abcd_probe` (`profile=probe`, `kind=probe`, status `created`)
+- Remote host: HCCS-25, project `/home/linziyao/DualRefGAD`
+- Remote output: `/home/linziyao/DualRefGAD/experiments/outputs/dualrefgad_learning_signal_abcd_probe.json`
+- Remote progress: `/home/linziyao/DualRefGAD/experiments/outputs/dualrefgad_learning_signal_abcd_probe.progress.json`
+- Remote log: `/home/linziyao/DualRefGAD/experiments/logs/dualrefgad_learning_signal_abcd_probe.log`
+
+Validation completed:
+
+- Local `python3 -m py_compile` passed for the ABCD wrapper.
+- `experiment.py validate --profile probe` passed for the YAML config.
+- Remote helper scripts present: `cleg3_layer1_label_free_shallow_gate_probe.py`, `cleg3_layer0_fixed_formula_gate_probe.py`, `route25_leg3_response_matrix_decomposition_probe.py`, `route25_matrix_autoencoder_probe.py`.
+- Remote env check passed: conda env `DualRefGAD`, `torch 2.0.0+cu117`, CUDA available with 8 GPUs.
+- Remote `py_compile` and import passed after syncing the wrapper/config.
+
+Scientific boundary:
+
+- The ABCD wrapper intentionally reuses the validated C-LEG3 Layer-1 response-matrix/proxy construction instead of reimplementing science logic.
+- Labels are diagnostic-only for AUC/AP and Top-K autopsy.
+- The wrapper organizes A/B/C/D interpretation and readiness gates; it does not introduce anomaly-label training.
+
+Monitoring/publishing prepared:
+
+- Watchdog script: `~/.hermes/scripts/dualrefgad_learning_signal_abcd_probe_watchdog.py`, rendered from the experiment-runner pure-probe template and py_compile-verified.
+- Publisher script: `~/.hermes/scripts/dualrefgad_learning_signal_abcd_probe_publisher.py`, py_compile-verified; it exits silently until final aggregate JSON has `status=finished`, then updates `insights.md`/`PROGRESS.md` and commits terminal artifacts.
