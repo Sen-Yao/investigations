@@ -151,3 +151,11 @@ Cron monitoring/publishing:
 - Runner job: `exp_20260526_152642_dualrefgad_learning_signal_abcd_probe`
 - Aggregate JSON: `/home/openclawvm/investigations/nexus/2026-05-26-dualrefgad-learning-signal-recovery/experiments/outputs/dualrefgad_learning_signal_abcd_probe.json`
 - Publisher updated `insights.md` with terminal ABCD summary.
+
+## 2026-05-26 19:55 CST — ABCD result report and investigation interpretation updated
+
+- Interpreted ABCD as a machine-learning-method step: label-free shallow gate / target-shaping framework established, but current target not promoted to main trainable objective.
+- Added final interpretation to `README.md` and `insights.md`.
+- Prepared sibling HTML result supplement based on the original Learning Signal Recovery discussion report.
+- Key decision: keep ABCD as diagnostic + target-shaping framework; next iteration should improve reference relation / fragmentation target source before increasing model capacity.
+

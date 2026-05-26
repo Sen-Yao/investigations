@@ -77,3 +77,15 @@
 
 ---
 *Created: 2026-05-26 | Hermes / research-investigation skill*
+
+## 6. ABCD 后续定位（2026-05-26 terminal）
+
+ABCD probe 已完成。结论不是“学习方向失败”，而是：**ABCD 已经把问题推进到机器学习方法形态，但当前 label-free target 尚未强到可以直接晋升为正式训练目标。**
+
+- `mat_mean` 仍是最强稳定读数：AUC/AP = 0.8104 ± 0.0068 / 0.5593 ± 0.0279。
+- 固定公式层存在弱但真实的 continuation hints：best-AUC fixed formula ΔAUC `+0.0007`；best-AP fixed formula ΔAP `+0.0031`。
+- 浅层 label-free gate 是本探究的关键跨越：它不使用异常标签训练，而是用 response-matrix 派生的锚点和单调约束学习一个低容量 gate。当前 best Layer-1 相对 `mat_mean` ΔAUC `-0.0026`、ΔAP `-0.0022`，因此只保留 diagnostic / target-shaping 角色。
+- 下一步不应堆大 head；应先改进 reference relation 与 fragmentation 分解，让固定目标先通过 AP/FP continuation gate。
+
+补充报告：`https://report.senyao.org/reports/2026/05/26/dualrefgad-learning-signal-abcd-result-supplement-2026-05-26.html`
+

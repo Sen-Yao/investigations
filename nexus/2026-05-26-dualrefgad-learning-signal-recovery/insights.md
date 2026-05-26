@@ -44,3 +44,17 @@ Do not promote a learnable head unless fixed-formula or low-capacity diagnostics
 - Progress JSON: `/home/openclawvm/investigations/nexus/2026-05-26-dualrefgad-learning-signal-recovery/experiments/outputs/dualrefgad_learning_signal_abcd_probe.progress.json`
 - Log: `/home/openclawvm/investigations/nexus/2026-05-26-dualrefgad-learning-signal-recovery/experiments/logs/dualrefgad_learning_signal_abcd_probe.log`
 <!-- ABCD_PROBE_RESULT_END -->
+
+## ABCD terminal interpretation — 2026-05-26
+
+ABCD probe has finished as a runner-registered pure probe (`exp_20260526_152642_dualrefgad_learning_signal_abcd_probe`) on Elliptic, seeds `[0,1,2,3,4]`, using `old_exact_080_regime / C-LEG3`. The result should be interpreted as a **machine-learning-method step** rather than merely a failed promotion gate:
+
+- Baselines: `margin` AUC/AP = 0.7964 ± 0.0043 / 0.5185 ± 0.0180; `mat_mean` AUC/AP = 0.8104 ± 0.0068 / 0.5593 ± 0.0279.
+- Phase A confirmed that `mat_mean` recovers many anomalies that scalar margin misses: rescued anomalies mean `332.6`, while also introducing false positives mean `1079.2`. This makes the problem a target-shaping problem, not a simple score-selection problem.
+- Phase B fixed-formula decomposition produced usable continuation hints. Best AUC formula `L0_sigmoid_gate_a2_b1_l0.25_m0.5` reached AUC `0.8111` and AP `0.5581`; best AP formula `L0_mix_only` reached AP `0.5624` with ΔAP `+0.0031`.
+- Phase C showed reliability-like strategies are highly correlated with `mat_mean` / top-K overlap; this weakens method-promotion but proves the response-matrix relation can be parameterized and audited.
+- Phase D best shallow label-free gate `L1_lfgate_q0.1_qf0.1_aa0.5_am0.1_l20.01` reached AUC `0.8078` and AP `0.5572`, with ΔAUC `-0.0026` and ΔAP `-0.0022` vs `mat_mean`.
+
+**Updated interpretation.** The earlier phrase “not promoted” should not be read as “no machine-learning method”. The leap is that ABCD converts hand-written response-matrix diagnostics into a low-capacity, label-free, optimizable gate with explicit anchor construction, loss, regularization, and readiness criteria. Current evidence says: method form is established; current target is not yet strong enough to become the main trainable objective.
+
+**Continuation.** Keep ABCD as diagnostic + target-shaping framework. Next work should improve the target source rather than increase head capacity: decompose reference relation by normal/deviation side, penalize false-positive reintroduction directly at fixed-formula level, and test low-capacity differentiable gates only after fixed targets pass AP/FP gates.
