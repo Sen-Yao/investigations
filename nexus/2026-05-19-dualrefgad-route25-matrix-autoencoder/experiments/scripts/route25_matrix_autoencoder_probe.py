@@ -180,12 +180,14 @@ def cosine_rows_to_matrix(a, b, block=1024):
     return np.vstack(outs)
 
 
-def topk_refs_candidate_pool(a, b, score_b, candidate_idx, k, block=1024, exclude_self=True):
+def _topk_refs_candidate_pool_numpy(a, b, score_b, candidate_idx, k, block=1024, exclude_self=True):
+    """CPU fallback reference implementation for deterministic validation."""
     an = l2_rows(a.astype(np.float32))
     bn = l2_rows(b[candidate_idx].astype(np.float32))
     score_b = np.asarray(score_b, dtype=np.float32)
     candidate_idx = np.asarray(candidate_idx, dtype=np.int64)
-    refs = np.empty((a.shape[0], k), dtype=np.int64)
+    k_eff = min(int(k), int(candidate_idx.shape[0]))
+    refs = np.empty((a.shape[0], k_eff), dtype=np.int64)
     for st in range(0, a.shape[0], block):
         ed = min(st + block, a.shape[0])
         scores = an[st:ed] @ bn.T
@@ -195,11 +197,51 @@ def topk_refs_candidate_pool(a, b, score_b, candidate_idx, k, block=1024, exclud
             hit = np.where(candidate_idx[None, :] == rows[:, None])
             if len(hit[0]):
                 scores[hit] = -1e9
-        part = np.argpartition(-scores, kth=min(k - 1, scores.shape[1] - 1), axis=1)[:, :k]
+        part = np.argpartition(-scores, kth=min(k_eff - 1, scores.shape[1] - 1), axis=1)[:, :k_eff]
         part_scores = np.take_along_axis(scores, part, axis=1)
         order = np.argsort(-part_scores, axis=1)
         refs[st:ed] = candidate_idx[np.take_along_axis(part, order, axis=1)]
     return refs
+
+
+def topk_refs_candidate_pool(a, b, score_b, candidate_idx, k, block=1024, exclude_self=True, device=None):
+    """Select per-row top-k references with GPU block top-k when CUDA is available.
+
+    This avoids materializing the full N x candidate matrix on CPU. The function is
+    intentionally equivalent to the historical NumPy implementation: cosine(a_i,
+    b_j) + score_b[j], optional self exclusion, then descending top-k.
+    """
+    candidate_idx = np.asarray(candidate_idx, dtype=np.int64)
+    k_eff = min(int(k), int(candidate_idx.shape[0]))
+    if k_eff <= 0:
+        return np.empty((a.shape[0], 0), dtype=np.int64)
+    if device is None:
+        device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
+    else:
+        device = torch.device(device)
+    if device.type != "cuda" or not torch.cuda.is_available():
+        return _topk_refs_candidate_pool_numpy(a, b, score_b, candidate_idx, k_eff, block=block, exclude_self=exclude_self)
+
+    with torch.no_grad():
+        a_t = torch.as_tensor(a.astype(np.float32), device=device)
+        b_t = torch.as_tensor(b[candidate_idx].astype(np.float32), device=device)
+        cand_t = torch.as_tensor(candidate_idx, dtype=torch.long, device=device)
+        score_t = torch.as_tensor(np.asarray(score_b, dtype=np.float32)[candidate_idx], device=device)
+        a_t = F.normalize(a_t, p=2, dim=1, eps=1e-12)
+        b_t = F.normalize(b_t, p=2, dim=1, eps=1e-12)
+        out = np.empty((a.shape[0], k_eff), dtype=np.int64)
+        for st in range(0, a.shape[0], block):
+            ed = min(st + block, a.shape[0])
+            scores = a_t[st:ed].matmul(b_t.T)
+            scores = scores + score_t.unsqueeze(0)
+            if exclude_self:
+                rows = torch.arange(st, ed, device=device, dtype=torch.long).unsqueeze(1)
+                hit = cand_t.unsqueeze(0).eq(rows)
+                if bool(hit.any().item()):
+                    scores = scores.masked_fill(hit, -1e9)
+            _, topi = torch.topk(scores, k=k_eff, dim=1, largest=True, sorted=True)
+            out[st:ed] = cand_t[topi].detach().cpu().numpy()
+        return out
 
 
 def select_refs(z, residual, normal_idx, nm, features, adj, args, normalize_adj):
@@ -232,27 +274,28 @@ def select_refs(z, residual, normal_idx, nm, features, adj, args, normalize_adj)
     else:
         raise ValueError(args.ga_mode)
 
-    sim_n = cosine_rows_to_matrix(z, z[normal_pool], block=args.ref_block_size)
-    n_scores = sim_n + gn[normal_pool][None, :]
-    part_n = np.argpartition(-n_scores, kth=min(args.normal_k - 1, n_scores.shape[1] - 1), axis=1)[:, :args.normal_k]
-    part_n_scores = np.take_along_axis(n_scores, part_n, axis=1)
-    normal_refs = normal_pool[np.take_along_axis(part_n, np.argsort(-part_n_scores, axis=1), axis=1)]
+    topk_device = torch.device(f"cuda:{int(args.device)}" if torch.cuda.is_available() and int(args.device) >= 0 else "cpu")
+    normal_refs = topk_refs_candidate_pool(
+        z, z, gn, normal_pool, args.normal_k, block=args.ref_block_size,
+        exclude_self=True, device=topk_device,
+    )
 
     cand_global = np.argsort(-ga)[:min(args.anom_approx_k, n)] if args.use_approx_anom_refs else np.arange(n)
     if args.la_mode == "residual_cosine":
-        anom_refs = topk_refs_candidate_pool(residual, residual, ga, cand_global, args.anom_k, block=args.ref_block_size)
+        anom_refs = topk_refs_candidate_pool(residual, residual, ga, cand_global, args.anom_k, block=args.ref_block_size, exclude_self=True, device=topk_device)
     elif args.la_mode == "descriptor_similarity":
-        anom_refs = topk_refs_candidate_pool(z, z, ga, cand_global, args.anom_k, block=args.ref_block_size)
+        anom_refs = topk_refs_candidate_pool(z, z, ga, cand_global, args.anom_k, block=args.ref_block_size, exclude_self=True, device=topk_device)
     else:
         raise ValueError(args.la_mode)
     return normal_refs, anom_refs, {"ga": ga, "rejection": rejection, "residual_norm": residual_norm, "degree": np.asarray(adj.sum(axis=1)).reshape(-1)}
 
 
 def build_tokens(features, normal_refs, anom_refs):
-    toks = []
-    for i in range(features.shape[0]):
-        toks.append(np.concatenate([features[i:i + 1], features[normal_refs[i]], features[anom_refs[i]]], axis=0))
-    return torch.from_numpy(np.stack(toks).astype(np.float32))
+    """Vectorized token construction: [self, normal refs..., anomaly refs...]."""
+    features = np.asarray(features, dtype=np.float32)
+    self_tok = features[:, None, :]
+    ref_tok = np.concatenate([features[np.asarray(normal_refs, dtype=np.int64)], features[np.asarray(anom_refs, dtype=np.int64)]], axis=1)
+    return torch.from_numpy(np.concatenate([self_tok, ref_tok], axis=1).astype(np.float32, copy=False))
 
 
 def encode_tokens_batched(model, token_tensor_cpu, device, batch_size: int):

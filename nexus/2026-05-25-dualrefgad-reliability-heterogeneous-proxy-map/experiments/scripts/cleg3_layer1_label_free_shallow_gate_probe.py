@@ -70,6 +70,37 @@ from cleg3_layer0_fixed_formula_gate_probe import (  # noqa: E402
 EPS = 1e-9
 
 
+def stage_log(stage, event="enter", **kwargs):
+    payload = {
+        "stage": stage,
+        "event": event,
+        "pid": os.getpid(),
+        "time": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+    }
+    payload.update(kwargs)
+    print(json.dumps(payload, ensure_ascii=False, default=str), flush=True)
+
+
+class StageTimer:
+    def __init__(self, stage, **kwargs):
+        self.stage = stage
+        self.kwargs = kwargs
+        self.t0 = None
+
+    def __enter__(self):
+        self.t0 = time.time()
+        stage_log(self.stage, "enter", **self.kwargs)
+        return self
+
+    def __exit__(self, exc_type, exc, tb):
+        elapsed = None if self.t0 is None else time.time() - self.t0
+        if exc_type is None:
+            stage_log(self.stage, "exit", elapsed_sec=elapsed, **self.kwargs)
+        else:
+            stage_log(self.stage, "error", elapsed_sec=elapsed, error=repr(exc), **self.kwargs)
+        return False
+
+
 def sigmoid_np(x):
     x = np.clip(x, -40.0, 40.0)
     return 1.0 / (1.0 + np.exp(-x))
@@ -117,8 +148,16 @@ def sample_monotone_pairs(z_cmf, z_frag, max_pairs, seed):
     return hi.astype(np.int64), lo.astype(np.int64)
 
 
-def fit_monotone_logistic_gate(z_cmf, z_rel, z_frag, q, qf, alpha_anchor, alpha_mono, lambda_l2, steps, seed, max_pairs=20000, max_mono_pairs=20000):
-    """Fit a tiny constrained reliability gate using no anomaly labels."""
+def fit_monotone_logistic_gate(z_cmf, z_rel, z_frag, q, qf, alpha_anchor, alpha_mono, lambda_l2, steps, seed, max_pairs=20000, max_mono_pairs=20000, device=None):
+    """Fit a tiny constrained reliability gate using no anomaly labels.
+
+    The original implementation optimized on CPU and rebuilt anchor tensors inside
+    the step loop.  Formal ABCD uses a grid over many gate settings, so that
+    turns the runner-registered probe into a CPU bottleneck after the GPU
+    response-matrix stage.  Keep the same pseudo-anchor objective, but place the
+    tiny optimization on the task device and precompute all index/target tensors
+    once.
+    """
     z_cmf = np.asarray(z_cmf, dtype=np.float32)
     z_rel = np.asarray(z_rel, dtype=np.float32)
     z_frag = np.asarray(z_frag, dtype=np.float32)
@@ -130,49 +169,61 @@ def fit_monotone_logistic_gate(z_cmf, z_rel, z_frag, q, qf, alpha_anchor, alpha_
     p_idx, n_idx = sample_pairs(pos_idx, neg_idx, max_pairs, seed)
     hi_idx, lo_idx = sample_monotone_pairs(z_cmf, z_frag, max_mono_pairs, seed)
 
-    x = torch.tensor(np.stack([z_cmf, z_rel, z_frag], axis=1), dtype=torch.float32)
-    p_t = torch.tensor(p_idx, dtype=torch.long)
-    n_t = torch.tensor(n_idx, dtype=torch.long)
-    hi_t = torch.tensor(hi_idx, dtype=torch.long)
-    lo_t = torch.tensor(lo_idx, dtype=torch.long)
-    raw = torch.nn.Parameter(torch.tensor([0.0, 0.0, 0.0, 0.0], dtype=torch.float32))
+    if device is None:
+        device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    else:
+        device = torch.device(device)
+    x = torch.as_tensor(np.stack([z_cmf, z_rel, z_frag], axis=1), dtype=torch.float32, device=device)
+    p_t = torch.as_tensor(p_idx, dtype=torch.long, device=device)
+    n_t = torch.as_tensor(n_idx, dtype=torch.long, device=device)
+    hi_t = torch.as_tensor(hi_idx, dtype=torch.long, device=device)
+    lo_t = torch.as_tensor(lo_idx, dtype=torch.long, device=device)
+    pos_t = torch.as_tensor(pos_idx, dtype=torch.long, device=device)
+    neg_t = torch.as_tensor(neg_idx, dtype=torch.long, device=device)
+    pos_target = torch.ones(len(pos_idx), dtype=torch.float32, device=device)
+    neg_target = torch.zeros(len(neg_idx), dtype=torch.float32, device=device)
+
+    raw = torch.nn.Parameter(torch.tensor([0.0, 0.0, 0.0, 0.0], dtype=torch.float32, device=device))
     opt = torch.optim.Adam([raw], lr=0.05)
     losses = []
-    for _ in range(int(steps)):
+    for step in range(int(steps)):
         opt.zero_grad(set_to_none=True)
         wc = F.softplus(raw[0])
         wr = F.softplus(raw[1])
         wf = F.softplus(raw[2])
         b = raw[3]
         h = wc * x[:, 0] + wr * x[:, 1] - wf * x[:, 2] + b
-        g = torch.sigmoid(h)
         rank_loss = F.softplus(-(h[p_t] - h[n_t])).mean()
-        anchor_loss = 0.5 * (F.binary_cross_entropy(g[torch.tensor(pos_idx, dtype=torch.long)], torch.ones(len(pos_idx))) + F.binary_cross_entropy(g[torch.tensor(neg_idx, dtype=torch.long)], torch.zeros(len(neg_idx))))
+        anchor_loss = 0.5 * (
+            F.binary_cross_entropy_with_logits(h[pos_t], pos_target) +
+            F.binary_cross_entropy_with_logits(h[neg_t], neg_target)
+        )
         if len(hi_t) > 0:
-            mono_loss = F.relu(g[lo_t] - g[hi_t]).mean()
+            mono_loss = F.relu(torch.sigmoid(h[lo_t]) - torch.sigmoid(h[hi_t])).mean()
         else:
-            mono_loss = torch.tensor(0.0)
+            mono_loss = h.new_tensor(0.0)
         l2 = wc * wc + wr * wr + wf * wf + b * b
         loss = rank_loss + float(alpha_anchor) * anchor_loss + float(alpha_mono) * mono_loss + float(lambda_l2) * l2
         loss.backward()
         opt.step()
-        losses.append(float(loss.detach().cpu()))
+        if step == 0 or step == int(steps) - 1 or (step + 1) % 100 == 0:
+            losses.append(float(loss.detach().cpu()))
     with torch.no_grad():
         wc = F.softplus(raw[0]).item()
         wr = F.softplus(raw[1]).item()
         wf = F.softplus(raw[2]).item()
         b = raw[3].item()
         h = wc * x[:, 0] + wr * x[:, 1] - wf * x[:, 2] + b
-        gate = torch.sigmoid(h).cpu().numpy().astype(np.float64)
+        gate = torch.sigmoid(h).detach().cpu().numpy().astype(np.float64)
     return {
         "gate": gate,
         "weights": {"w_cmf": float(wc), "w_reliability": float(wr), "w_fragmentation": float(wf), "bias": float(b)},
         "anchor_counts": {"positive": int(len(pos_idx)), "negative": int(len(neg_idx)), "rank_pairs": int(len(p_idx)), "mono_pairs": int(len(hi_idx))},
-        "loss": {"initial": losses[0] if losses else None, "final": losses[-1] if losses else None, "steps": int(steps)},
+        "loss": {"initial": losses[0] if losses else None, "final": losses[-1] if losses else None, "steps": int(steps), "device": str(device)},
     }
 
 
-def build_layer1_scores(mat_mean, margin, cand, proxies, q_values, qf_values, anchor_weights, mono_weights, l2_values, steps, seed):
+def build_layer1_scores(mat_mean, margin, cand, proxies, q_values, qf_values, anchor_weights, mono_weights, l2_values, steps, seed, device=None):
     z_mat = robust_z(mat_mean)
     z_margin = robust_z(margin)
     z_cmf = robust_z(cand["consensus_minus_fragmentation"])
@@ -187,7 +238,7 @@ def build_layer1_scores(mat_mean, margin, cand, proxies, q_values, qf_values, an
                 for am in mono_weights:
                     for l2 in l2_values:
                         name = f"L1_lfgate_q{q:g}_qf{qf:g}_aa{aa:g}_am{am:g}_l2{l2:g}"
-                        fit = fit_monotone_logistic_gate(z_cmf, z_rel, z_frag, q, qf, aa, am, l2, steps, seed)
+                        fit = fit_monotone_logistic_gate(z_cmf, z_rel, z_frag, q, qf, aa, am, l2, steps, seed, device=device)
                         gate = fit["gate"]
                         scores[name] = gate * z_mat + (1.0 - gate) * z_margin
                         meta[name] = {
@@ -230,50 +281,69 @@ def run_one(cli_args, variant, seed, device, strategy_meta):
     from VecGAD import VecGAD  # noqa: E402
 
     device_obj = torch.device(f"cuda:{device}" if torch.cuda.is_available() and int(device) >= 0 else "cpu")
-    print(json.dumps({"stage": "seed_start", "probe": "layer1_label_free_shallow_gate", "variant": variant, "seed": seed, "device": str(device_obj), "data_split_seed": seed}, ensure_ascii=False), flush=True)
-    adj, features, labels, all_idx, idx_train, idx_val, idx_test, ano_label, str_ano_label, attr_ano_label, normal_for_train_idx, normal_for_generation_idx = load_mat(v_args.dataset, v_args.train_rate, v_args.val_rate, args=v_args)
-    features_np = to_dense_features(v_args.dataset, features, preprocess_features)
-    labels_np = np.asarray(ano_label).reshape(-1).astype(int)
-    normal_idx = np.asarray(normal_for_train_idx, dtype=np.int64)
-    idx_test = np.asarray(idx_test, dtype=np.int64)
-    fp = split_fingerprint(labels_np, idx_train, idx_val, idx_test, normal_idx)
-    assert fp["normal_for_train_anom_count"] == 0, "Data leakage: normal_for_train_idx contains anomalies"
+    stage_log("seed_start", "point", probe="layer1_label_free_shallow_gate", variant=variant, seed=seed, device=str(device_obj), data_split_seed=seed)
+    with StageTimer("load_mat", variant=variant, seed=seed, dataset=v_args.dataset, train_rate=v_args.train_rate, val_rate=v_args.val_rate):
+        adj, features, labels, all_idx, idx_train, idx_val, idx_test, ano_label, str_ano_label, attr_ano_label, normal_for_train_idx, normal_for_generation_idx = load_mat(v_args.dataset, v_args.train_rate, v_args.val_rate, args=v_args)
+    with StageTimer("to_dense_features_and_split", variant=variant, seed=seed):
+        features_np = to_dense_features(v_args.dataset, features, preprocess_features)
+        labels_np = np.asarray(ano_label).reshape(-1).astype(int)
+        normal_idx = np.asarray(normal_for_train_idx, dtype=np.int64)
+        idx_test = np.asarray(idx_test, dtype=np.int64)
+        fp = split_fingerprint(labels_np, idx_train, idx_val, idx_test, normal_idx)
+        assert fp["normal_for_train_anom_count"] == 0, "Data leakage: normal_for_train_idx contains anomalies"
+        stage_log("split_fingerprint", "point", variant=variant, seed=seed, num_nodes=int(len(labels_np)), num_test=int(len(idx_test)), num_normal_train=int(len(normal_idx)), normal_for_train_anom_count=fp["normal_for_train_anom_count"])
 
-    z = build_descriptor(v_args.descriptor_mode, features_np, adj, normalize_adj, v_args.hops, v_args.rw_steps)
-    nm = NormalModel(v_args.pn_estimator, z, normal_idx, v_args.pca_components)
-    residual = nm.residual()
-    normal_refs, anom_refs, meta = select_refs(z, residual, normal_idx, nm, features_np, adj, v_args, normalize_adj)
-    token_tensor = build_tokens(features_np, normal_refs, anom_refs)
-    model = VecGAD(features_np.shape[1], v_args.embedding_dim, "prelu", v_args).to(device_obj)
-    model.eval()
-    for p in model.parameters():
-        p.requires_grad = False
-    with torch.no_grad():
-        emb = encode_tokens_batched(model, token_tensor, device_obj, v_args.encode_batch_size)
+    with StageTimer("build_descriptor", variant=variant, seed=seed, descriptor_mode=v_args.descriptor_mode):
+        z = build_descriptor(v_args.descriptor_mode, features_np, adj, normalize_adj, v_args.hops, v_args.rw_steps)
+    with StageTimer("normal_model_and_residual", variant=variant, seed=seed, pn_estimator=v_args.pn_estimator, pca_components=v_args.pca_components):
+        nm = NormalModel(v_args.pn_estimator, z, normal_idx, v_args.pca_components)
+        residual = nm.residual()
+    with StageTimer("select_refs", variant=variant, seed=seed, normal_k=v_args.normal_k, anom_k=v_args.anom_k, top_k=v_args.top_k):
+        normal_refs, anom_refs, meta = select_refs(z, residual, normal_idx, nm, features_np, adj, v_args, normalize_adj)
+        stage_log("select_refs_shape", "point", variant=variant, seed=seed, normal_refs_shape=list(np.asarray(normal_refs).shape), anom_refs_shape=list(np.asarray(anom_refs).shape))
+    with StageTimer("build_tokens", variant=variant, seed=seed):
+        token_tensor = build_tokens(features_np, normal_refs, anom_refs)
+        stage_log("token_tensor_shape", "point", variant=variant, seed=seed, token_shape=list(token_tensor.shape))
+    with StageTimer("vecgad_init", variant=variant, seed=seed, device=str(device_obj)):
+        model = VecGAD(features_np.shape[1], v_args.embedding_dim, "prelu", v_args).to(device_obj)
+        model.eval()
+        for p in model.parameters():
+            p.requires_grad = False
+    with StageTimer("encode_tokens_batched", variant=variant, seed=seed, device=str(device_obj), encode_batch_size=v_args.encode_batch_size):
+        with torch.no_grad():
+            emb = encode_tokens_batched(model, token_tensor, device_obj, v_args.encode_batch_size)
+        stage_log("embedding_shape", "point", variant=variant, seed=seed, emb_shape=list(np.asarray(emb).shape))
     del token_tensor, model
     if torch.cuda.is_available():
         torch.cuda.empty_cache()
 
-    mat, margin = response_matrix_from_embeddings(emb, normal_refs, anom_refs)
-    arrays, _ = build_decomposition_arrays(mat, margin, meta, normal_idx, seed, parse_ints(v_args.pca_dims))
-    mat_mean = arrays["mat_mean"]
-    direct_mat_mean = mat.mean(axis=(1, 2))
-    formula_diff = float(np.max(np.abs(np.asarray(mat_mean) - np.asarray(direct_mat_mean))))
-    candidate_scores, proxy_features = candidate_readouts(mat)
-    l0_scores, l0_meta = build_layer0_scores(
-        mat_mean, margin, candidate_scores, proxy_features,
-        parse_floats(v_args.grid_lambdas), parse_floats(v_args.grid_mus), parse_floats(v_args.grid_alphas), parse_floats(v_args.grid_betas)
-    )
-    l1_scores, l1_meta, l1_diagnostics = build_layer1_scores(
-        mat_mean, margin, candidate_scores, proxy_features,
-        parse_floats(v_args.q_values), parse_floats(v_args.qf_values),
-        parse_floats(v_args.alpha_anchor_values), parse_floats(v_args.alpha_mono_values),
-        parse_floats(v_args.lambda_l2_values), int(v_args.train_steps), int(seed)
-    )
+    with StageTimer("response_matrix", variant=variant, seed=seed):
+        mat, margin = response_matrix_from_embeddings(emb, normal_refs, anom_refs)
+        stage_log("response_matrix_shape", "point", variant=variant, seed=seed, mat_shape=list(np.asarray(mat).shape), margin_shape=list(np.asarray(margin).shape))
+    with StageTimer("build_decomposition_arrays", variant=variant, seed=seed, pca_dims=v_args.pca_dims):
+        arrays, _ = build_decomposition_arrays(mat, margin, meta, normal_idx, seed, parse_ints(v_args.pca_dims))
+        mat_mean = arrays["mat_mean"]
+        direct_mat_mean = mat.mean(axis=(1, 2))
+        formula_diff = float(np.max(np.abs(np.asarray(mat_mean) - np.asarray(direct_mat_mean))))
+    with StageTimer("candidate_readouts", variant=variant, seed=seed):
+        candidate_scores, proxy_features = candidate_readouts(mat)
+    with StageTimer("build_layer0_scores", variant=variant, seed=seed):
+        l0_scores, l0_meta = build_layer0_scores(
+            mat_mean, margin, candidate_scores, proxy_features,
+            parse_floats(v_args.grid_lambdas), parse_floats(v_args.grid_mus), parse_floats(v_args.grid_alphas), parse_floats(v_args.grid_betas)
+        )
+    with StageTimer("build_layer1_scores", variant=variant, seed=seed, train_steps=int(v_args.train_steps)):
+        l1_scores, l1_meta, l1_diagnostics = build_layer1_scores(
+            mat_mean, margin, candidate_scores, proxy_features,
+            parse_floats(v_args.q_values), parse_floats(v_args.qf_values),
+            parse_floats(v_args.alpha_anchor_values), parse_floats(v_args.alpha_mono_values),
+            parse_floats(v_args.lambda_l2_values), int(v_args.train_steps), int(seed), device=device_obj
+        )
     strategy_meta.update(l0_meta)
     strategy_meta.update(l1_meta)
-    all_scores = {"margin": margin, "mat_mean": mat_mean, **candidate_scores, **l0_scores, **l1_scores, "degree": meta["degree"], "rejection": meta["rejection"], "residual_norm": meta["residual_norm"]}
-    metrics = metric_block(labels_np, idx_test, all_scores, base_name="margin")
+    with StageTimer("metric_and_topk_autopsy", variant=variant, seed=seed):
+        all_scores = {"margin": margin, "mat_mean": mat_mean, **candidate_scores, **l0_scores, **l1_scores, "degree": meta["degree"], "rejection": meta["rejection"], "residual_norm": meta["residual_norm"]}
+        metrics = metric_block(labels_np, idx_test, all_scores, base_name="margin")
 
     k = max(1, int(np.sum(labels_np[idx_test] == 1)))
     margin_top = top_set(idx_test, margin, k)
