@@ -1,0 +1,83 @@
+# RIFT-GT R0 ROCC probe - multi-seed, multi-variant
+# No WandB sweep; pure diagnostic probe with internal parallel workers.
+
+program: experiments/scripts/rift_gt_r0_rocc_probe.py
+method: diagnostic
+
+parameters:
+  dataset:
+    value: elliptic
+  project_root:
+    value: ~/DualRefGAD
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  ln_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 512
+  ref_block_size:
+    value: 1024
+  rift_dim:
+    value: 48
+  rift_heads:
+    value: 4
+  rift_layers:
+    value: 1
+  rift_ffn_dim:
+    value: 96
+  rift_dropout:
+    value: 0.10
+  pooling:
+    value: mean
+  rift_lr:
+    value: 0.001
+  rift_weight_decay:
+    value: 0.0001
+  num_epoch:
+    value: 120
+  batch_size:
+    value: 512
+  eval_batch_size:
+    value: 512
+  eval_every:
+    value: 10
+  trim_fraction:
+    value: 0.70
+  lambda_trimmed_unlabeled:
+    value: 0.25
+  lambda_var:
+    value: 0.05
+  var_floor:
+    value: 0.05
+  train_token_drop:
+    value: 0.0
+  rsc_token_drop:
+    value: 0.10
+  grad_clip:
+    value: 5.0
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: "r0_mean_lr1e3,r0_mean_lr3e4,r0_attn_lr1e3"
+  devices:
+    value: "0,1,2,3,5,6,7"
+
+notes:
+  protocol: |
+    No WandB; runner-registered pure probe.
+    C-LEG3 old_exact_080_regime response matrix is fixed.
+    No row/column/rank/role position encoding; scalar response-entry tokens only.
+    Training uses known-normal labels + trimmed majority-unlabeled ROCC.
+    AUC/AP and reference purity are diagnostic-only, computed after training.
+    Selection uses label-free ROCC monitor; never uses test AUC/AP.
+  objective: |
+    Verify that a no-position Set/Transformer reader can at least recover mat_mean-level
+    anomaly signal under ROCC training, before adding row/column encodings in R1.
+  cleg3_regime: old_exact_080_regime (hop_attr, pca_residual, label_gate, normal_soft_or, descriptor_similarity)
+  position_encoding: none (RIFT-R0 baseline)

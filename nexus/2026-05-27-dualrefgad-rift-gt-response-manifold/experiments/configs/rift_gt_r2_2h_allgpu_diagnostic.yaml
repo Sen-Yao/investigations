@@ -1,0 +1,54 @@
+program: experiments/scripts/rift_gt_r1_pos_rocc_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: all
+  devices:
+    value: "0,1,2,3,4,5,6,7"
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  ln_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 512
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+  num_epoch:
+    value: 180
+  eval_every:
+    value: 10
+  batch_size:
+    value: 512
+  eval_batch_size:
+    value: 512
+  trim_fraction:
+    value: 0.70
+  lambda_var:
+    value: 0.05
+  var_floor:
+    value: 0.05
+  train_token_drop:
+    value: 0.0
+  rsc_token_drop:
+    value: 0.10
+notes:
+  protocol: runner-registered pure probe; approximately two-hour all-GPU extended diagnostic over R1 response-matrix reader variants
+  objective: stress-test whether longer ROCC training, token identity choices, pooling choices, and capacity probes can close the gap to matrix mean while preserving no-leakage monitor discipline
+  label_boundary: true anomaly labels used only for diagnostic AUC/AP after training; no test labels used for epoch or hyperparameter selection
+  expected_wallclock: about 2 hours on 8x RTX 2080 Ti based on prior R1 200-task 76min run at 120 epochs

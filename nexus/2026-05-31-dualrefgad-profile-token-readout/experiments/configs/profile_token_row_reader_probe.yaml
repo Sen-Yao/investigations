@@ -1,0 +1,48 @@
+# profile_token_row_reader_probe.yaml
+# Status: planning placeholder only. Do not launch until validated through experiment-runner.
+
+profile: probe
+project: DualRefGAD
+investigation: 2026-05-31-dualrefgad-profile-token-readout
+status: draft
+
+scientific_question: >
+  Can row response-profile tokens recover or exceed the C-LEG3 mat_mean positive control
+  while preserving no-leakage anomaly-detection protocol?
+
+fixed_regime:
+  reference_regime: C-LEG3 / old_exact_080_regime
+  normal_k: 4
+  anom_k: 16
+  train_labels: known-normal only
+  diagnostic_labels: true anomaly labels evaluation-only
+
+reader:
+  tokenization: row_profile
+  projection: Linear(anom_k -> d_model)
+  d_model: 32
+  heads: 2
+  layers: 1
+  pooling: mean
+
+controls:
+  - margin
+  - neg_margin
+  - mat_mean
+  - neg_mat_mean
+  - row_mean_summary
+  - row_std_summary
+  - flatten_mlp_capacity_control
+  - scalar_entry_rift_gt_predecessor
+
+diagnostics:
+  - auc_ap_5seed
+  - spearman_with_mat_mean_margin
+  - topk_overlap
+  - row_column_permutation_stress
+  - degree_hubness_confound
+  - no_leakage_monitor
+
+launch_boundary: >
+  This config is a skeleton. Before execution, load experiment-runner, validate the profile,
+  and register the job according to runner protocol.

@@ -16,3 +16,10 @@ The first scalar loss `||z-c||_2^2` is a stabilizing training handle, not the fi
 - Log no-leakage metrics from the first implementation.
 - Do not use diagnostic AUC/AP for early stopping.
 - Keep R0 minimal; do not add multi-loss complexity until failure mode is observed.
+
+## 2026-05-31 closure insight
+
+The scalar-entry RIFT-GT route is closed as the main next step. R0/R1/P0 experiments did not match the C-LEG3 `mat_mean` positive control. This does not reject response-matrix learning; it rejects the current entry-as-token ontology plus ROCC-style scalar-entry reader as the priority route.
+
+The important interpretation is methodological: a single response value `M_ij(v)` is too poor to serve as a Transformer token. A better first correction is to make the token itself a response profile vector, e.g. a row profile over all anomaly references or a column profile over all normal references. The next investigation should test profile-token readout before any larger entry-token architecture is revived.
+

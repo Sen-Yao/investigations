@@ -1,0 +1,60 @@
+program: experiments/scripts/rift_gt_p0_rocc_mc_probe.py
+method: diagnostic
+parameters:
+  dataset:
+    value: elliptic
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: all
+  devices:
+    value: "0,1,2,3,4,5,6,7"
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  ln_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 512
+  ref_block_size:
+    value: 1024
+  top_k:
+    value: 96
+  n_bins:
+    value: 3
+  pca_dims:
+    value: "2,4,8,12,24"
+  num_epoch:
+    value: 180
+  eval_every:
+    value: 10
+  batch_size:
+    value: 512
+  eval_batch_size:
+    value: 512
+  trim_fraction:
+    value: 0.70
+  lambda_trimmed_unlabeled:
+    value: 0.25
+  lambda_var:
+    value: 0.05
+  var_floor:
+    value: 0.05
+  train_token_drop:
+    value: 0.0
+  rsc_token_drop:
+    value: 0.10
+  grad_clip:
+    value: 5.0
+  mc_prototypes:
+    value: 4
+notes:
+  protocol: runner-registered pure probe; P0 ROCC-MC response-matrix reader over six variants and five seeds
+  objective: test whether replacing single-center ROCC by a known-normal multi-prototype manifold improves anomaly ranking while preserving no-leakage monitor discipline
+  label_boundary: true anomaly labels used only for diagnostic AUC/AP after training; no test labels used for epoch or hyperparameter selection
+  expected_wallclock: about 45-90 minutes on 8x RTX 2080 Ti / HCCS-25, depending on GPU availability

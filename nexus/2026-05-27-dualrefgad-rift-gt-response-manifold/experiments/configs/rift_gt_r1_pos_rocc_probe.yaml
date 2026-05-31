@@ -1,0 +1,91 @@
+# RIFT-GT R1 position/role encoded ROCC probe - broad multi-seed, multi-variant
+# No WandB sweep; runner-registered pure probe with internal parallel workers.
+
+program: experiments/scripts/rift_gt_r1_pos_rocc_probe.py
+method: diagnostic
+
+parameters:
+  dataset:
+    value: elliptic
+  project_root:
+    value: ~/DualRefGAD
+  train_rate:
+    value: 0.05
+  val_rate:
+    value: 0.0
+  ln_mode:
+    value: descriptor_similarity
+  normal_k:
+    value: 4
+  anom_k:
+    value: 16
+  encode_batch_size:
+    value: 512
+  ref_block_size:
+    value: 1024
+  rift_dim:
+    value: 48
+  rift_heads:
+    value: 4
+  rift_layers:
+    value: 1
+  rift_ffn_dim:
+    value: 96
+  rift_dropout:
+    value: 0.10
+  pos_mode:
+    value: rowcol_rank
+  pooling:
+    value: mean
+  rift_lr:
+    value: 0.001
+  rift_weight_decay:
+    value: 0.0001
+  num_epoch:
+    value: 120
+  batch_size:
+    value: 512
+  eval_batch_size:
+    value: 512
+  eval_every:
+    value: 10
+  trim_fraction:
+    value: 0.70
+  lambda_trimmed_unlabeled:
+    value: 0.25
+  lambda_var:
+    value: 0.05
+  var_floor:
+    value: 0.05
+  train_token_drop:
+    value: 0.0
+  rsc_token_drop:
+    value: 0.10
+  grad_clip:
+    value: 5.0
+  seeds:
+    value: "0,1,2,3,4"
+  variants:
+    value: "all"
+  devices:
+    value: "0,1,2,3,4,5,6,7"
+
+notes:
+  protocol: |
+    Runner-registered pure probe; no WandB.
+    C-LEG3 old_exact_080_regime response matrix is fixed.
+    R1 adds controlled token identity: row/column/rank/role embeddings depending on variant.
+    Training uses known-normal labels + trimmed majority-unlabeled ROCC.
+    AUC/AP, Spearman with mat_mean/margin, top-K overlap, and reference purity are diagnostic-only.
+    Selection uses label-free ROCC monitor; never uses test AUC/AP.
+  objective: |
+    Test whether adding minimal response-matrix token identity lets a Transformer reader recover or exceed
+    mat_mean/margin-level anomaly signal after R0 no-position failed.
+  grid: |
+    Main grid: pos_mode {rowcol,rowcol_rank,rowcol_role} × pooling {mean,attn} × lr {1e-3,3e-4} × lambda_unlabeled {0.10,0.25,0.50} = 36 variants.
+    Capacity probes: rowcol_rank × pooling {mean,attn} × dim {64,80} with lr=1e-3/lambda_unlabeled=0.25 = 4 variants.
+    Total = 40 variants × 5 seeds = 200 tasks.
+  continuation_gate: |
+    R1 should at least approach margin-level AUC and preferably exceed mat_mean or improve AP/top-K quality.
+    Stable no-leakage monitors are necessary but not sufficient for promotion.
+  cleg3_regime: old_exact_080_regime (hop_attr, pca_residual, label_gate, normal_soft_or, descriptor_similarity)
