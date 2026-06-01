@@ -1,0 +1,157 @@
+{
+  "status": "finished",
+  "probe": "matguardgt_single_run",
+  "method_family": "MatGuardGT",
+  "seed": 0,
+  "variant_id": 0,
+  "effective_config": {
+    "project_root": "/home/linziyao/DualRefGAD",
+    "dataset": "elliptic",
+    "seed": 0,
+    "device": 0,
+    "wandb": false,
+    "variant_id": 0,
+    "out": "investigations/nexus/2026-06-01-dualrefgad-matguardgt/experiments/outputs/smoke_seed0_variant0.json",
+    "progress_out": "investigations/nexus/2026-06-01-dualrefgad-matguardgt/experiments/outputs/smoke_seed0_variant0.progress.json",
+    "train_rate": 0.05,
+    "val_rate": 0.0,
+    "sample_rate": 0.15,
+    "hops": 1,
+    "normal_k": 4,
+    "anom_k": 16,
+    "ref_block_size": 4096,
+    "tokenization": "row",
+    "identity": "index_type",
+    "d_model": 32,
+    "heads": 2,
+    "layers": 1,
+    "ffn_dim": 64,
+    "dropout": 0.1,
+    "pooling": "mean",
+    "guide_mode": "pairwise",
+    "lr": 0.001,
+    "weight_decay": 0.0001,
+    "num_epoch": 2,
+    "steps_per_epoch": 2,
+    "batch_size": 256,
+    "eval_batch_size": 4096,
+    "eval_every": 1,
+    "pairs_per_batch": 512,
+    "pair_gap": 0.25,
+    "normal_score_margin": -0.5,
+    "lambda_pairwise": 1.0,
+    "lambda_known_normal": 0.25,
+    "lambda_center": 0.05,
+    "lambda_barrier": 0.0,
+    "score_std_floor": 0.25,
+    "ref_drop_prob": 0.0,
+    "grad_clip": 5.0,
+    "variant_definition": {
+      "tokenization": "row",
+      "pooling": "mean",
+      "guide_mode": "pairwise",
+      "lambda_known_normal": 0.25,
+      "lambda_pairwise": 1.0,
+      "lambda_barrier": 0.0,
+      "ref_drop_prob": 0.0
+    }
+  },
+  "protocol": {
+    "token_definition": "row vector-profile tokens over response matrix; no scalar-entry tokens",
+    "mat_mean_role": "label-free high-confidence pairwise ranking teacher only; no residual-over-mat_mean",
+    "known_normal_constraint": "known-normal low-score softplus constraint retained as a primary loss term",
+    "diagnostic_labels": "AUC/AP use true labels after training only; not used for optimization or checkpoint selection"
+  },
+  "matrix_shape": [
+    46564,
+    16,
+    4
+  ],
+  "split_fingerprint": {
+    "idx_train_sha1": "0e4e7b08d516ed4cc96db8f03bf6b3adaf8f99e9",
+    "idx_val_sha1": "da39a3ee5e6b4b0d3255bfef95601890afd80709",
+    "idx_test_sha1": "eed1ab04017c810764aaf77782d2a3b4259d9372",
+    "normal_idx_sha1": "3bf2f1f94758795b73bcb7804e00025bdf52d781",
+    "train_count": 2328,
+    "test_count": 44236,
+    "normal_count": 2086,
+    "train_anom_count_diagnostic": 242,
+    "test_anom_count_diagnostic": 4303
+  },
+  "reference_global": {
+    "normal_refs": [
+      26052,
+      14062,
+      41048,
+      26284
+    ],
+    "anom_refs": [
+      39703,
+      30152,
+      14017,
+      38340,
+      27126,
+      12288,
+      42185,
+      41027,
+      46541,
+      17054,
+      28291,
+      12453,
+      27896,
+      18164,
+      504,
+      10617
+    ],
+    "normal_ref_anom_count_diagnostic": 0,
+    "anom_ref_anom_count_diagnostic": 0
+  },
+  "standardization": {
+    "mode": "global_known_normal",
+    "mean": -0.04661853611469269,
+    "std": 0.409501850605011
+  },
+  "train": {
+    "history": [
+      {
+        "epoch": 1,
+        "train_loss": 1.0546032190322876,
+        "label_free_monitor": 0.20375460640675663,
+        "known_normal_score_q90": 0.1858915165066719,
+        "spearman_score_mat_mean": -0.3572617980016946,
+        "score_std": 0.30399054845467083
+      },
+      {
+        "epoch": 2,
+        "train_loss": 0.9812363982200623,
+        "label_free_monitor": 0.022065059050494752,
+        "known_normal_score_q90": 0.021408379077911377,
+        "spearman_score_mat_mean": -0.013133599451667482,
+        "score_std": 0.29007293498855835
+      }
+    ],
+    "best_label_free_monitor": 0.022065059050494752,
+    "diagnostic_auc": 0.6197616337367414,
+    "diagnostic_ap": 0.14214342264511962
+  },
+  "metrics": {
+    "matguard_score": {
+      "auc": 0.6197616337367414,
+      "ap": 0.14214342264511962
+    },
+    "mat_mean": {
+      "auc": 0.7262636127458647,
+      "ap": 0.2026706209959678
+    },
+    "center_teacher": {
+      "auc": 0.6661470855851807,
+      "ap": 0.15862934692929415
+    }
+  },
+  "comparisons": {
+    "matguard_minus_mat_mean_auc": -0.10650197900912328,
+    "spearman_matguard_mat_mean": -0.013133599451667482,
+    "top5_jaccard_matguard_mat_mean": 0.0
+  },
+  "elapsed_sec": 5.421760559082031
+}

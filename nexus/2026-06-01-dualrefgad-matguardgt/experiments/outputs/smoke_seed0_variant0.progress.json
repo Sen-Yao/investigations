@@ -1,0 +1,7 @@
+{
+  "status": "finished",
+  "out": "investigations/nexus/2026-06-01-dualrefgad-matguardgt/experiments/outputs/smoke_seed0_variant0.json",
+  "elapsed_sec": 5.421760559082031,
+  "auc": 0.6197616337367414,
+  "ap": 0.14214342264511962
+}
